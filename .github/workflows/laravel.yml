@@ -18,9 +18,9 @@ jobs:
       run: |
         sed -i 's/ACTIONS_URL/https://carrental.infinitycode.com.au/g' .env
         sed -i 's/ACTIONS_DB_NAME/Car_rental/g' .env
-        sed -i 's/ACTIONS_DB_USER/${{ secrets.db_user }}/g' .env
-        sed -i 's/ACTIONS_DB_PASSWORD/${{ secrets.db_password }}/g' .env
-    
+        sed -i 's/ACTIONS_DB_USER/"${{ secrets.db_user }}"/g' .env
+        sed -i 's/ACTIONS_DB_PASSWORD/"${{ secrets.db_password }}"/g' .env
+
     - name: Install vendors
       run: composer install --no-dev --optimize-autoloader
 
