@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
     
@@ -11,10 +12,15 @@
     <!-- start sidebar -->
     @include('layouts.navigation')
     <!-- end sidbar -->
+
+    <!-- main home banner  -->
     <div class="main-banner">
         <h1 class="text-white text-5xl font-bold">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
         <p class="text-white text-2xl font-medium mt-5">Rent a Car for Your Next Adventure with Our Convenient <br> and Reliable Services</p>
     </div>
+    <!-- end main home banner  -->
+
+    <!-- why choose us section -->
     <div class="text-center">
         <h1 class="text-5xl font-bold text-emerald-600">Why Choose Us</h1>
         <p class="text-lg text-gray-500 mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
@@ -61,6 +67,9 @@
             </a>
         </div>
     </div>
+    <!-- end why choose us section -->
+    
+    <!-- discover our lates section -->
     <div class="text-center mt-12">
         <h1 class="text-5xl font-bold text-emerald-600">Discover Our Latest Cars for Rental</h1>
         <p class="text-lg text-gray-500 mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
@@ -73,14 +82,14 @@
                 </div>
             </a>
             <div>
-		<div class="tab">
+		<div class="tab pl-4">
 			<input id="tab1" type="radio" name="tabs" checked>
 			<label for="tab1">Features</label>
 			<input id="tab2" type="radio" name="tabs">
 			<label for="tab2">Specifications</label>
 			
 		<section id="content1">
-			<div class="pl-10 slider">
+			<div class="pl-4 slider">
                     <div class="slides mt-2">
                         <div class="slide">
                             <div class="inner_content">
@@ -177,13 +186,15 @@
                         </div>
                     </div>
                 </div>
-
 		</section>
-			<!-- end of section 6 -->
-	</div>	
-</div>
-        </div>
+	    </div>	
     </div>
+</div>
+</div>
+
+    <!-- end discover our lates section -->
+
+    <!-- diverse vehicle section -->
     <div class="text-center mt-12">
         <h1 class="text-5xl font-bold text-emerald-600">Diverse Vehicle Selection for Every Journey</h1>
         <p class="text-lg text-gray-500 mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
@@ -227,11 +238,11 @@
                         <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
                     </div>
 				</div>
-                <div class="slide aspect-square h-full flex-shrink-0 snap-center rounded overflow-hidden">
+                <div class="slide aspect-square h-full flex-shrink-0 snap-center rounded overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
 					<img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
                     <div class="grid justify-items-stretch items-center justify-center">
                         <div class="flex ml-20">
-                        <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">Nimshan</h1>
+                        <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10 hover:hide">Nimshan</h1>
                         </div>
                         <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
                     </div>
@@ -252,5 +263,104 @@
 			</div>
 		</div>
 	</div>
+    <div class="text-center">
+    <button type="button" class="text-white bg-emerald-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm px-5 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 rounded">
+        <a class="text-lg">+ View All</a>
+      </button>
+    </div>
+    <!-- end diverse vehicle section -->
+
+    <!-- car rental section -->
+    <div class="bg-emerald-600 mt-20">
+        <div class="flex items-center justify-center mt-4">
+            <a href="#" class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <div>
+                    <img class="object-cover rounded-lg" src="{{ URL('images/roland-denes-EWf48MRVUNE-unsplash.png')}}" alt="">
+                </div>
+                <div class="pl-5">
+                    <img class="object-cover rounded-lg" src="{{ URL('images/nate-johnston-obOin8-m5sw-unsplash.png')}}" alt="">
+                </div>
+            </a>
+            <a href="#" class="items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <div class="grid p-8">
+                <h1 class="text-white font-semibold text-3xl">Car Rental Experts You Trust</h1>
+                <p class="text-white mt-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+                </div>
+                <div class="container">
+                    <div class="counter-container">
+                        <div class="counter">
+                        <h3 data-target="12" class="text-amber-300 font-semibold text-5xl count">0</h3>
+                        <p class="text-white">Years Expirience</p>
+                        </div>
+                        <div class="counter">
+                        <h3 data-target="62" class="text-amber-300 font-semibold text-5xl count">0</h3>
+                        <p class="text-white">Rental Cars</p>
+                        </div>
+                        <div class="counter">
+                        <h3 data-target="156" class="text-amber-300 font-semibold text-5xl count">0</h3>
+                        <p class="text-white">Satisfied Clients</p>
+                        </div>
+                    </div>
+                    <div class="pl-8 pb-8">
+                        <button class="bg-white p-2 rounded mt-3">+ Read More</button>
+                    </div>
+                </div> 
+            </a>
+        </div>
+    </div>
+    <!-- end car rental section -->
+
+    <!-- happy customert section -->
+    <div class="text-center mt-20">
+        <h1 class="text-5xl font-bold text-emerald-600">Happy Customers, Memorable Journeys</h1>
+        <p class="text-lg text-gray-500 mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+    </div>
+    <div class="flex">
+    <div id="app" class="max-w-screen-lg mx-auto md:px-8 py-12 transition-all duration-500 ease-linear">
+    <div class="content-wrapper">
+
+		<div class="wrapper-for-arrows">
+			<div style="opacity: 0;" class="chicken"></div>
+			<div id="reviewWrap" class="review-wrap">
+				<div id="imgDiv" class="">
+				</div>
+				<div id="personName"></div>
+				<div id="profession"></div>
+				<div id="description" class="-mt-5 h-96 px-12 pb-4">
+				</div>
+			</div>
+			<div id="surpriseMeBtn" class="surprise-me-btn">Surprise me</div>
+			<div class="left-arrow-wrap arrow-wrap">
+				<div class="arrow" id="leftArrow"></div>
+			</div>
+			<div class="right-arrow-wrap arrow-wrap">
+				<div class="arrow" id="rightArrow"></div>
+			</div>
+		</div>
+	</div>
+	</div>
+    <div id="app" class="max-w-screen-lg mx-auto px-4 md:px-8 py-12 transition-all duration-500 ease-linear">
+    <img class="object-cover" src="{{ URL('images/Group 126.png')}}" alt="">
+	</div>
+    </div>
+
+    <!-- happy customert section -->
+
+    <!-- get off section -->
+    <div class="flex getoff-section -mt-40">
+    <div class="max-w-screen-lg mx-auto md:px-8 py-12 transition-all duration-500 ease-linear flex items-center">
+    <div>
+        <h1 class="text-white text-4xl font-bold inline-block">Get 15% Off Your Rental! Choose Your Model</h1>
+    </div>
+</div>
+<div class="max-w-screen-lg mx-auto px-4 md:px-8 py-12 transition-all duration-500 ease-linear flex items-center">
+    <div >
+        <button class="bg-white p-2 px-10 rounded mt-3 text-lg font-bold">Book Now</button>
+    </div>
+</div>
+    </div>
+    
+    <!-- end get off section -->
+
 </body>
 </html>
