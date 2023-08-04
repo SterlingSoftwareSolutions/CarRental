@@ -12,7 +12,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Use production env
-      run: cp .env.staging .env
+      run: cp .env.example .env
 
     - name: Update .env
       run: |
