@@ -71,11 +71,11 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 Requirements - 
 Node V16
 
-First Step ---- composer install
-Second Step --- npm install
-Third Step ---- php artisan migrate
-Fourth Step --- php artisan key:generate
-Fifth Step ---- php artisan serve
-sixth Step ---- npm run dev
+- First Step ---- composer install
+- Second Step --- npm install
+- Third Step ---- php artisan migrate
+- Fourth Step --- php artisan key:generate
+- Fifth Step ---- php artisan serve
+- sixth Step ---- npm run dev
 
-Enjoy :)
+### Enjoy :)
