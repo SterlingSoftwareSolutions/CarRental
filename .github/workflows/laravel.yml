@@ -1,32 +1,56 @@
+name: Deploy Staging on Push
 on:
   push:
     branches:
       - main
-name: Deploy Main on Push
+
+env:
+  PRODUCTION_URL: "carrental.infinitycode.com.au"
+  PRODUCTION_DB_NAME: "Car_rental"
+  PRODUCTION_DB_USER: ${{ secrets.db_user }}
+  PRODUCTION_DB_PASSWORD: ${{ secrets.db_password }}
+  FTP_SERVER: "92.204.221.10"
+  FTP_USERNAME: ${{ secrets.ftp_username }}
+  FTP_PASSWORD: ${{ secrets.ftp_password }}
+
 jobs:
   web-deploy:
-    name: Deploy to the Staging
+    name: Deploy to Staging
     runs-on: ubuntu-latest
+
     steps:
-    - name: Get latest code
-      uses: actions/checkout@v2
+      - name: Get latest code
+        uses: actions/checkout@v2
 
-    - name: Use production env
-      run: cp .env.example .env
+      - name: Use production env
+        run: cp .env.example .env
 
-    - name: Update .env
-      run: |
-        sed -i 's/ACTIONS_URL/carrental.infinitycode.com.au/g' .env
-        sed -i 's/ACTIONS_DB_NAME/Car_rental/g' .env
-        sed -i 's/ACTIONS_DB_USER/"${{ secrets.db_user }}"/g' .env
-        sed -i 's/ACTIONS_DB_PASSWORD/"${{ secrets.db_password }}"/g' .env
+      - name: Update .env
+        run: |
+          sed -i "s/ACTIONS_URL/${{ env.PRODUCTION_URL }}/g" .env
+          sed -i "s/ACTIONS_DB_NAME/${{ env.PRODUCTION_DB_NAME }}/g" .env
+          sed -i "s/ACTIONS_DB_USER/${{ env.PRODUCTION_DB_USER }}/g" .env
+          sed -i "s/ACTIONS_DB_PASSWORD/${{ env.PRODUCTION_DB_PASSWORD }}/g" .env
 
-    - name: Install vendors
-      run: composer install --no-dev --optimize-autoloader
+      - name: Install dependencies
+        run: |
+          composer install --no-dev --optimize-autoloader
+          npm ci --no-optional
 
-    - name: Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.3.3
-      with:
-        server: 92.204.221.10
-        username: ${{ secrets.ftp_username }}
-        password: ${{ secrets.ftp_password }}
+      - name: Build assets
+        run: npm run prod
+
+      - name: Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: ${{ env.FTP_SERVER }}
+          username: ${{ env.FTP_USERNAME }}
+          password: ${{ env.FTP_PASSWORD }}
+          local-dir: public
+
+      - name: Clean up
+        run: |
+          composer install --no-dev --optimize-autoloader --no-interaction --no-progress --no-suggest
+          npm ci --production
+          php artisan clear-compiled
+          php artisan optimize
