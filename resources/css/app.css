@@ -89,27 +89,7 @@ section {
   .tab input {
     display: none;
   }
-  
-  label {
-    display: inline-block;
-    margin: 0 0 -1px;
-    padding: 15px 25px;
-    font-weight: bold;
-    text-align: center;
-    color: #707070;
-    border: 1px solid transparent;
-  }
-  
-  label:before {
-    font-weight: normal;
-    margin-right: 10px;
-  }
-  
-  label:hover {
-    color: #888;
-    cursor: pointer;
-  }
-  
+
   input:checked + label {
     color: #317256;
     border-bottom: 5px solid #317256 ;
