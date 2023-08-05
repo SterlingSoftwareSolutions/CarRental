@@ -1,4 +1,19 @@
-<footer class="bg-emerald-600 dark:bg-gray-900 -z-10 -mt-4">
+    <!-- get off section -->
+    <div class="flex getoff-section">
+    <div class="max-w-screen-lg mx-auto md:px-8 py-12 transition-all duration-500 ease-linear flex items-center">
+    <div>
+        
+        <h1 class="text-white text-4xl font-bold inline-block">Get 15% Off Your Rental! Choose Your Model</h1>
+    </div>
+</div>
+<div class="max-w-screen-lg mx-auto px-4 md:px-8 py-12 transition-all duration-500 ease-linear flex items-center">
+    <div >
+        <button class="bg-white p-2 px-10 rounded mt-3 text-lg font-bold">Book Now</button>
+    </div>
+</div>
+</div>
+    <!-- end get off section -->
+<footer class="bg-emerald-600 dark:bg-gray-900 -mt-5" style="z-index: -999;">
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
@@ -36,10 +51,10 @@
                       <li class="mb-4 flex">
                           <a href="" class="hover:underline flex "><img class="w-5 h-5" src="{{ URL('images/location.png')}}">&nbsp 5Th Floor, AH Building  Melbourne, Australia</a>
                       </li>
-                      <li>
+                      <li class="mb-4 flex">
                           <a href="https://discord.gg/4eeurUVvTy" class="hover:underline flex"><img class="w-5 h-5" src="{{ URL('images/email.png')}}">&nbsp info@carrental.com</a>
                       </li>
-                      <li>
+                      <li class="mb-4 flex">
                           <a href="https://discord.gg/4eeurUVvTy" class="hover:underline flex"><img class="w-5 h-5" src="{{ URL('images/telephone.png')}}">&nbsp + 8801 738 5678 64</a>
                       </li>
                   </ul>

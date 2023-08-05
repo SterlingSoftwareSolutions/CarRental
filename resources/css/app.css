@@ -225,7 +225,7 @@ svg {
     display: none; /* Safari and Chrome */
 }
 
-section {
+#content1, #content2 {
     display: none;
     padding: 20px;
     overflow: hidden;
@@ -235,7 +235,7 @@ section {
     display: none;
 }
 
-label {
+.tab-label {
     display: inline-block;
     margin: 0 0 -1px;
     padding: 15px 25px;
@@ -245,17 +245,17 @@ label {
     border: 1px solid transparent;
 }
 
-label:before {
+.tab-label:before {
     font-weight: normal;
     margin-right: 10px;
 }
 
-label:hover {
+.tab-label:hover {
     color: #888;
     cursor: pointer;
 }
 
-input:checked + label {
+.tab-input:checked + .tab-label {
     color: #317256;
     border-bottom: 5px solid #317256;
 }
@@ -489,11 +489,13 @@ ul > li {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative; 
+    z-index: 999 !important;
+    border-radius: 0px 0px 25px 25px;
 }
 
 /* end home CSS */
 
-/* footer CSS */
   /* footer CSS */
   .subscribe-form {
     position: relative;
@@ -524,45 +526,7 @@ ul > li {
     font-size: 22px;
     transform: rotate(-6deg);
   }
-
-  /* footer CSS */
-  .subscribe-form {
-    position: relative;
-    overflow: hidden;
-  }
-  .subscribe-form input {
-    width: 100%;
-    padding: 15px 28px;
-    background: #fff;
-    color: #fff;
-  }
-
-  .subscribe-form input::placeholder {
-    color: #317256;
-    font-weight: 500;
-  }
-
-  .subscribe-form button {
-    position: absolute;
-    right: 0;
-    background: #fff;
-    border-left: 2px solid #317256;
-    padding: 10px 18px;
-    top: 2px;
-  }
-  .subscribe-form button i {
-    color: #fff;
-    font-size: 22px;
-    transform: rotate(-6deg);
-  }
-
-
   /* end footer CSS */
-
-
-  /* end footer CSS */
-
-/* end footer CSS */
 
 /* Media Queries */
 
