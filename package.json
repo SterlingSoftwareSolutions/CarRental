@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "prod": "npm run production"
+        "prod": "npm run prod"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",
