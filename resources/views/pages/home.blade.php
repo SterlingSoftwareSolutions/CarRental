@@ -3,22 +3,64 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
     
 </head>
 <body>
-    <!-- start sidebar -->
+    <!-- start navigation -->
     @include('layouts.navigation')
-    <!-- end sidbar -->
+    <!-- end navigation -->
 
-    <!-- main home banner  -->
-    <div class="main-banner">
-        <h1 class="text-white text-5xl font-bold">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
-        <p class="text-white text-2xl font-medium mt-5">Rent a Car for Your Next Adventure with Our Convenient <br> and Reliable Services</p>
+<!-- main home banner  -->
+<div class="main-banner">
+    <h1 class="text-white text-5xl font-bold">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
+    <p class="text-white text-2xl font-medium mt-5">Rent a Car for Your Next Adventure with Our Convenient <br> and Reliable Services</p>
+    <div class="grid bg-black search-foam w-auto mt-14">
+        <div class="text-center">
+            <p class="text-white ">Ready to hit the road?</p>
+        </div>
+        <!-- There are two dropdowns to show multi-menu support -->
+        <div class="container mt-4">
+            <div class="wrapper-dropdown" id="dropdown">
+            <span class="selected-display" id="destination">Choose Vehicle</span>
+                    <svg class="drop-arrow" id="drp-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-all ml-auto rotate-180">
+                    <path d="M7 14.5l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    <ul class="dropdown">
+                    <li class="item">Option 1</li>
+                    <li class="item">Option 2</li>
+                    <li class="item">Option 3</li>
+                    <li class="item">Option 4</li>
+                    </ul>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row gap-x-7 mt-4">
+            <div>
+                <input type="text" class="bg-transparent date-input" placeholder="Pick Up Date" onfocus="(this.type='date')" onblur="(this.type='text')">
+            </div>
+            <div>
+                <input type="text" class="bg-transparent date-input mt-3 md:mt-0" placeholder="Pick Up Time" onfocus="(this.type='time')" onblur="(this.type='text')">
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row gap-x-7 mt-5">
+            <div>
+                <input type="text" class="bg-transparent date-input" placeholder="Return Date" onfocus="(this.type='date')" onblur="(this.type='text')">
+            </div>
+            <div>
+                <input type="text" class="bg-transparent date-input mt-3 md:mt-0" placeholder="Return Time" onfocus="(this.type='time')" onblur="(this.type='text')">
+            </div>
+        </div>
+        <div class="flex justify-center mt-7">
+            <button type="button" class="text-white w-3/4 bg-emerald-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm px-5 py-2 text-center md:w-auto md:mr-3 md:mt-0 md:py-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 rounded">
+                <a class="text-lg">Search Now</a>
+            </button>
+        </div>
     </div>
+</div>
+
     <!-- end main home banner  -->
 
     <!-- why choose us section -->
@@ -28,49 +70,50 @@
     </div>
     <div class="whychoose-section">
         <div class="flex items-center justify-center mt-4">
-            <a href="#" class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                <div class="bg-white rounded-md border-2 border-emerald-400 p-4 hover:border-t-8 ">
-                    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ URL('images/car-insurance.png')}}" alt="">
-                </div>
-                <div class="flex flex-col justify-between p-4 leading-normal">
-                    <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Wide Range of Vehicles</h5>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a </p>
-                </div>
-            </a>
-            <a href="#" class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                <div class="bg-white rounded-md border-2 border-emerald-400 p-4 hover:border-t-8 ">
-                    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ URL('images/offer.png')}}" alt="">
-                </div>
-                <div class="flex flex-col justify-between p-4 leading-normal">
-                    <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Wide Range of Vehicles</h5>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a </p>
-                </div>
-            </a>
+        <a href="#" class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+    <div class="bg-white rounded-md border-2 border-emerald-400 p-4 hover:border-t-8 ">
+        <img class="object-cover w-full h-64 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ URL('images/car-insurance.png')}}" alt="">
+    </div>
+    <div class="flex flex-col justify-between p-4 leading-normal">
+        <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Wide Range of Vehicles</h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a </p>
+    </div>
+</a>
+<a href="#" class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+    <div class="bg-white rounded-md border-2 border-emerald-400 p-4 hover:border-t-8 ">
+        <img class="object-cover w-full h-64 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ URL('images/car-insurance.png')}}" alt="">
+    </div>
+    <div class="flex flex-col justify-between p-4 leading-normal">
+        <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Wide Range of Vehicles</h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a </p>
+    </div>
+</a>
         </div>
         <div class="flex items-center justify-center mt-10">
-            <a href="#" class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                <div class="bg-white rounded-md border-2 border-emerald-400 p-4 hover:border-t-8 ">
-                    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ URL('images/tap.png')}}" alt="">
-                </div>
-                <div class="flex flex-col justify-between p-4 leading-normal">
-                    <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Wide Range of Vehicles</h5>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a </p>
-                </div>
-            </a>
-            <a href="#" class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                <div class="bg-white rounded-md border-2 border-emerald-400 p-4 hover:border-t-8 ">
-                    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ URL('images/tap (1).png')}}" alt="">
-                </div>
-                <div class="flex flex-col justify-between p-4 leading-normal">
-                    <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Wide Range of Vehicles</h5>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a </p>
-                </div>
-            </a>
+        <a href="#" class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+    <div class="bg-white rounded-md border-2 border-emerald-400 p-4 hover:border-t-8 ">
+        <img class="object-cover w-full h-64 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ URL('images/car-insurance.png')}}" alt="">
+    </div>
+    <div class="flex flex-col justify-between p-4 leading-normal">
+        <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Wide Range of Vehicles</h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a </p>
+    </div>
+</a>
+<a href="#" class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+    <div class="bg-white rounded-md border-2 border-emerald-400 p-4 hover:border-t-8 ">
+        <img class="object-cover w-full h-64 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ URL('images/car-insurance.png')}}" alt="">
+    </div>
+    <div class="flex flex-col justify-between p-4 leading-normal">
+        <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Wide Range of Vehicles</h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a </p>
+    </div>
+</a>
         </div>
     </div>
     <!-- end why choose us section -->
     
     <!-- discover our lates section -->
+    
     <div class="text-center mt-12">
         <h1 class="text-5xl font-bold text-emerald-600">Discover Our Latest Cars for Rental</h1>
         <p class="text-lg text-gray-500 mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
@@ -136,7 +179,6 @@
                         </div>
                     </div>
                 </div>
-
 		</section>
 		<!-- end of section 1 -->
 		<section id="content2">
@@ -362,6 +404,10 @@
 </div>
 @include('layouts.footer')
     <!-- end get off section -->
+
+    <!-- start navigation -->
+    @include('layouts.footer')
+    <!-- end navigation -->
 
 </body>
 </html>
