@@ -256,6 +256,7 @@ svg {
 }
 
 .tab-input:checked + .tab-label {
+
     color: #317256;
     border-bottom: 5px solid #317256;
 }

@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
-    
+
 </head>
+
 <body>
+    @if (!auth()->check())
+    <x-modal :name="true" :show="true" :maxWidth="'3xl'">
+        <div class=" h-full">
+            @include('auth.login')
+        </div>
+    </x-modal>
+    @endif
     <!-- start navigation -->
+
     @include('layouts.navigation')
     <!-- end navigation -->
 
@@ -111,7 +121,7 @@
         </div>
     </div>
     <!-- end why choose us section -->
-    
+
     <!-- discover our lates section -->
     
     <div class="text-center mt-12">
@@ -126,6 +136,7 @@
                 </div>
             </a>
             <div>
+
 		<div class="tab pl-4">
 			<input class="tab-input" id="tab1" type="radio" name="tabs" checked>
 			<label class="tab-label" for="tab1">Features</label>
@@ -160,21 +171,35 @@
                                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Four Seated Car </p>
                                         <p class="mb-3 text-sm font-semibold font-normal text-green-500 dark:text-gray-400">$ 100 p/day </p>
                                     </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="slide">
-                        <div class="inner_content">
-                                <a href="#" class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                    <div>
-                                        <img class="object-cover w-full rounded-t-lg h-95 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ URL('images/Rectangle 31.png')}}" alt="">
+                                </div>
+                                <div class="slide">
+                                    <div class="inner_content">
+                                        <a href="#" class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                            <div>
+                                                <img class="object-cover w-full rounded-t-lg h-95 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ URL('images/Rectangle 30.png')}}" alt="">
+                                            </div>
+                                            <div class="flex flex-col justify-between p-2 pr-20 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
+                                                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Toyota Crown</h5>
+                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Four Seated Car </p>
+                                                <p class="mb-3 text-sm font-semibold font-normal text-green-500 dark:text-gray-400">$ 100 p/day </p>
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div class="flex flex-col justify-between p-2 pr-20 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
-                                        <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Toyota Crown</h5>
-                                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Four Seated Car </p>
-                                        <p class="mb-3 text-sm font-semibold font-normal text-green-500 dark:text-gray-400">$ 100 p/day </p>
+                                </div>
+                                <div class="slide">
+                                    <div class="inner_content">
+                                        <a href="#" class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                            <div>
+                                                <img class="object-cover w-full rounded-t-lg h-95 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ URL('images/Rectangle 31.png')}}" alt="">
+                                            </div>
+                                            <div class="flex flex-col justify-between p-2 pr-20 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
+                                                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Toyota Crown</h5>
+                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Four Seated Car </p>
+                                                <p class="mb-3 text-sm font-semibold font-normal text-green-500 dark:text-gray-400">$ 100 p/day </p>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -204,36 +229,43 @@
                                     <div>
                                         <img class="object-cover w-full rounded-t-lg h-95 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ URL('images/Rectangle 30.png')}}" alt="">
                                     </div>
-                                    <div class="flex flex-col justify-between p-2 pr-20 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
-                                        <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Toyota Crown</h5>
-                                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Four Seated Car </p>
-                                        <p class="mb-3 text-sm font-semibold font-normal text-green-500 dark:text-gray-400">$ 100 p/day </p>
+                                </div>
+                                <div class="slide">
+                                    <div class="inner_content">
+                                        <a href="#" class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                            <div>
+                                                <img class="object-cover w-full rounded-t-lg h-95 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ URL('images/Rectangle 30.png')}}" alt="">
+                                            </div>
+                                            <div class="flex flex-col justify-between p-2 pr-20 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
+                                                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Toyota Crown</h5>
+                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Four Seated Car </p>
+                                                <p class="mb-3 text-sm font-semibold font-normal text-green-500 dark:text-gray-400">$ 100 p/day </p>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                        </div>
+                                </div>
 
-                        <div class="slide">
-                        <div class="inner_content">
-                                <a href="#" class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                    <div>
-                                        <img class="object-cover w-full rounded-t-lg h-95 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ URL('images/Rectangle 31.png')}}" alt="">
+                                <div class="slide">
+                                    <div class="inner_content">
+                                        <a href="#" class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                            <div>
+                                                <img class="object-cover w-full rounded-t-lg h-95 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ URL('images/Rectangle 31.png')}}" alt="">
+                                            </div>
+                                            <div class="flex flex-col justify-between p-2 pr-20 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
+                                                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Toyota Crown</h5>
+                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Four Seated Car </p>
+                                                <p class="mb-3 text-sm font-semibold font-normal text-green-500 dark:text-gray-400">$ 100 p/day </p>
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div class="flex flex-col justify-between p-2 pr-20 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
-                                        <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Toyota Crown</h5>
-                                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Four Seated Car </p>
-                                        <p class="mb-3 text-sm font-semibold font-normal text-green-500 dark:text-gray-400">$ 100 p/day </p>
-                                    </div>
-                                </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </section>
                 </div>
 		</div>
 	    </div>	
     </div>
-</div>
-</div>
 
     <!-- end discover our lates section -->
 
@@ -243,78 +275,79 @@
         <p class="text-lg text-gray-500 mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
     <div id="app" class="max-w-screen-lg mx-auto px-4 md:px-8 py-12 transition-all duration-500 ease-linear">
-		<div class="relative">
-			<div class="slides-container h-72 flex snap-x snap-mandatory overflow-hidden overflow-x-auto space-x-2 rounded scroll-smooth before:w-[45vw] before:shrink-0 after:w-[45vw] after:shrink-0 md:before:w-0 md:after:w-0">
-				<div class="slide aspect-square h-full flex-shrink-0 snap-center rounded overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-					<img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
+        <div class="relative">
+            <div class="slides-container h-72 flex snap-x snap-mandatory overflow-hidden overflow-x-auto space-x-2 rounded scroll-smooth before:w-[45vw] before:shrink-0 after:w-[45vw] after:shrink-0 md:before:w-0 md:after:w-0">
+                <div class="slide aspect-square h-full flex-shrink-0 snap-center rounded overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
+                    <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
                     <div class="grid justify-items-stretch items-center justify-center ">
                         <div class="flex ml-20">
-                        <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">Nimshan</h1>
+                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">Nimshan</h1>
                         </div>
                         <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
                     </div>
-				</div>
-				<div class="slide aspect-square h-full flex-shrink-0 snap-center rounded overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-					<img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
-                    <div class="grid justify-items-stretch items-center justify-center">
-                        <div class="flex ml-20">
-                        <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">Nimshan</h1>
-                        </div>
-                        <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
-                    </div>
-				</div>
+                </div>
                 <div class="slide aspect-square h-full flex-shrink-0 snap-center rounded overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-					<img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
+                    <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
                     <div class="grid justify-items-stretch items-center justify-center">
                         <div class="flex ml-20">
-                        <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">Nimshan</h1>
+                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">Nimshan</h1>
                         </div>
                         <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
                     </div>
-				</div>
+                </div>
                 <div class="slide aspect-square h-full flex-shrink-0 snap-center rounded overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-					<img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
+                    <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
                     <div class="grid justify-items-stretch items-center justify-center">
                         <div class="flex ml-20">
-                        <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">Nimshan</h1>
+                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">Nimshan</h1>
                         </div>
                         <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
                     </div>
-				</div>
+                </div>
                 <div class="slide aspect-square h-full flex-shrink-0 snap-center rounded overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-					<img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
+                    <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
                     <div class="grid justify-items-stretch items-center justify-center">
                         <div class="flex ml-20">
-                        <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10 hover:hide">Nimshan</h1>
+                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">Nimshan</h1>
                         </div>
                         <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
                     </div>
-				</div>
-			</div>
-			<div class="absolute top-0 -left-4 h-full items-center hidden md:flex">
-				<button role="button" class="prev px-2 py-2 rounded-full bg-emerald-600 text-neutral-900 group" aria-label="prev"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 group-active:-translate-x-2 transition-all duration-200 ease-linear">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-					</svg>
+                </div>
+                <div class="slide aspect-square h-full flex-shrink-0 snap-center rounded overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
+                    <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
+                    <div class="grid justify-items-stretch items-center justify-center">
+                        <div class="flex ml-20">
+                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10 hover:hide">Nimshan</h1>
+                        </div>
+                        <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute top-0 -left-4 h-full items-center hidden md:flex">
+                <button role="button" class="prev px-2 py-2 rounded-full bg-emerald-600 text-neutral-900 group" aria-label="prev"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 group-active:-translate-x-2 transition-all duration-200 ease-linear">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                    </svg>
 
-				</button>
-			</div>
-			<div class="absolute top-0 -right-4 h-full items-center hidden md:flex">
-				<button role="button" class="next px-2 py-2 rounded-full bg-emerald-600 text-neutral-900 group" aria-label="next"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 group-active:translate-x-2 transition-all duration-200 ease-linear">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-					</svg>
-				</button>
-			</div>
-		</div>
-	</div>
+                </button>
+            </div>
+            <div class="absolute top-0 -right-4 h-full items-center hidden md:flex">
+                <button role="button" class="next px-2 py-2 rounded-full bg-emerald-600 text-neutral-900 group" aria-label="next"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 group-active:translate-x-2 transition-all duration-200 ease-linear">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
     <div class="text-center">
-    <button type="button" class="text-white bg-emerald-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm px-5 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 rounded">
-        <a class="text-lg">+ View All</a>
-      </button>
+        <button type="button" class="text-white bg-emerald-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm px-5 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 rounded">
+            <a class="text-lg">+ View All</a>
+        </button>
     </div>
     <!-- end diverse vehicle section -->
 
     <!-- car rental section -->
     <div class="bg-emerald-600 mt-20">
+
     <div class="flex flex-col items-center justify-center mt-4 md:flex-row">
         <a href="#" class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
             <div>
@@ -344,11 +377,13 @@
                         <p class="text-white">Satisfied Clients</p>
                     </div>
                 </div>
+
             </div>
             <div class="mt-3 ml-8 md:mt-5 pb-5">
                     <button class="bg-white p-2 rounded">+ Read More</button>
             </div>
         </a>
+
     </div>
 </div>
     <!-- end car rental section -->
@@ -359,39 +394,42 @@
         <p class="text-lg text-gray-500 mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
     <div class="flex">
-    <div id="app" class="max-w-screen-lg mx-auto md:px-8 py-12 transition-all duration-500 ease-linear">
-    <div class="content-wrapper">
+        <div id="app" class="max-w-screen-lg mx-auto md:px-8 py-12 transition-all duration-500 ease-linear">
+            <div class="content-wrapper">
 
-		<div class="wrapper-for-arrows">
-			<div style="opacity: 0;" class="chicken"></div>
-			<div id="reviewWrap" class="review-wrap">
-				<div id="imgDiv" class="">
-				</div>
-				<div id="personName"></div>
-				<div id="profession"></div>
-				<div id="description" class="-mt-5 h-96 px-12 pb-4">
-				</div>
-			</div>
-			<div id="surpriseMeBtn" class="surprise-me-btn">Surprise me</div>
-			<div class="left-arrow-wrap arrow-wrap">
-				<div class="arrow" id="leftArrow"></div>
-			</div>
-			<div class="right-arrow-wrap arrow-wrap">
-				<div class="arrow" id="rightArrow"></div>
-			</div>
-		</div>
-	</div>
-	</div>
-    <div id="app" class="max-w-screen-lg mx-auto px-4 md:px-8 py-12 transition-all duration-500 ease-linear">
-    <img class="object-cover" src="{{ URL('images/Group 126.png')}}" alt="">
-	</div>
+                <div class="wrapper-for-arrows">
+                    <div style="opacity: 0;" class="chicken"></div>
+                    <div id="reviewWrap" class="review-wrap">
+                        <div id="imgDiv" class="">
+                        </div>
+                        <div id="personName"></div>
+                        <div id="profession"></div>
+                        <div id="description" class="-mt-5 h-96 px-12 pb-4">
+                        </div>
+                    </div>
+                    <div id="surpriseMeBtn" class="surprise-me-btn">Surprise me</div>
+                    <div class="left-arrow-wrap arrow-wrap">
+                        <div class="arrow" id="leftArrow"></div>
+                    </div>
+                    <div class="right-arrow-wrap arrow-wrap">
+                        <div class="arrow" id="rightArrow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="app" class="max-w-screen-lg mx-auto px-4 md:px-8 py-12 transition-all duration-500 ease-linear">
+            <img class="object-cover" src="{{ URL('images/Group 126.png')}}" alt="">
+        </div>
     </div>
 
     <!-- happy customert section -->
+
 
     <!-- start navigation -->
     @include('layouts.footer')
     <!-- end navigation -->
 
+
 </body>
+
 </html>
