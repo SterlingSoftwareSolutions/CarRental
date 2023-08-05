@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
@@ -347,7 +348,7 @@
     <!-- happy customert section -->
 
     <!-- get off section -->
-    <div class="flex getoff-section -mt-40">
+    <div class="flex getoff-section z-20 -mt-40">
     <div class="max-w-screen-lg mx-auto md:px-8 py-12 transition-all duration-500 ease-linear flex items-center">
     <div>
         <h1 class="text-white text-4xl font-bold inline-block">Get 15% Off Your Rental! Choose Your Model</h1>
@@ -358,8 +359,8 @@
         <button class="bg-white p-2 px-10 rounded mt-3 text-lg font-bold">Book Now</button>
     </div>
 </div>
-    </div>
-    
+</div>
+@include('layouts.footer')
     <!-- end get off section -->
 
 </body>
