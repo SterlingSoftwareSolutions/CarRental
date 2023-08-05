@@ -18,17 +18,27 @@
     @endphp
 
 
+
+    @if ($currentRoute === 'login' && !$loggedIn)
     <x-modal :name="true" :show="true" :maxWidth="'3xl'">
         <div class="h-full">
-            @if ($currentRoute === 'login' && !$loggedIn)
             @include('auth.login')
-            @elseif ($currentRoute === 'register' && !$loggedIn)
-            @include('auth.register')
-            @elseif (!$loggedIn)
-            @include('auth.login')
-            @endif
         </div>
     </x-modal>
+    @elseif ($currentRoute === 'register' && !$loggedIn)
+    <x-modal :name="true" :show="true" :maxWidth="'3xl'">
+        <div class="h-full">
+            @include('auth.register')
+        </div>
+    </x-modal>
+    @elseif (!$loggedIn)
+    <x-modal :name="true" :show="true" :maxWidth="'3xl'">
+        <div class="h-full">
+            @include('auth.login')
+        </div>
+    </x-modal>
+    @endif
+
     <!-- start navigation -->
     @include('layouts.navigation')
     <!-- end navigation -->
