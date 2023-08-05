@@ -38,7 +38,7 @@ jobs:
           npm ci --no-optional
 
       - name: Build assets
-        run: npm run prod
+        run: npm run build
 
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
