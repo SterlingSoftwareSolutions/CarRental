@@ -1,6 +1,8 @@
-<div class="flex getoff-section z-50 ">
+    <!-- get off section -->
+    <div class="flex getoff-section">
     <div class="max-w-screen-lg mx-auto md:px-8 py-12 transition-all duration-500 ease-linear flex items-center">
     <div>
+        
         <h1 class="text-white text-4xl font-bold inline-block">Get 15% Off Your Rental! Choose Your Model</h1>
     </div>
 </div>
@@ -11,7 +13,7 @@
 </div>
 </div>
     <!-- end get off section -->
-<footer class="bg-emerald-600 dark:bg-gray-900 -mt-1">
+<footer class="bg-emerald-600 dark:bg-gray-900 -mt-5" style="z-index: -999;">
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">

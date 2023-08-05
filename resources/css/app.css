@@ -225,7 +225,7 @@ svg {
     display: none; /* Safari and Chrome */
 }
 
-section {
+#content1, #content2 {
     display: none;
     padding: 20px;
     overflow: hidden;
@@ -235,7 +235,7 @@ section {
     display: none;
 }
 
-label {
+.tab-label {
     display: inline-block;
     margin: 0 0 -1px;
     padding: 15px 25px;
@@ -245,17 +245,18 @@ label {
     border: 1px solid transparent;
 }
 
-label:before {
+.tab-label:before {
     font-weight: normal;
     margin-right: 10px;
 }
 
-label:hover {
+.tab-label:hover {
     color: #888;
     cursor: pointer;
 }
 
-input:checked + label {
+.tab-input:checked + .tab-label {
+
     color: #317256;
     border-bottom: 5px solid #317256;
 }
@@ -489,8 +490,9 @@ ul > li {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: 99 !important;
-    border-radius: 0px 0px 15px 15px;
+    position: relative; 
+    z-index: 999 !important;
+    border-radius: 0px 0px 25px 25px;
 }
 
 /* end home CSS */
@@ -543,5 +545,7 @@ ul > li {
         width: 100%;
     }
 
- 
+    .wrapper-dropdown {
+        width: 100% !important;
+    }
 }
