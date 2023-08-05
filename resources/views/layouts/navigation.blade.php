@@ -1,3 +1,4 @@
+
 <nav class="backdrop-brightness-75 dark:bg-gray-900 fixed w-full z-20 left-0 dark:border-gray-600 bg-blend-lighten ">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto sm:top-[344px]">
     <a href="#" class="flex items-center">
