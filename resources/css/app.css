@@ -525,6 +525,40 @@ ul > li {
     transform: rotate(-6deg);
   }
 
+  /* footer CSS */
+  .subscribe-form {
+    position: relative;
+    overflow: hidden;
+  }
+  .subscribe-form input {
+    width: 100%;
+    padding: 15px 28px;
+    background: #fff;
+    color: #fff;
+  }
+
+  .subscribe-form input::placeholder {
+    color: #317256;
+    font-weight: 500;
+  }
+
+  .subscribe-form button {
+    position: absolute;
+    right: 0;
+    background: #fff;
+    border-left: 2px solid #317256;
+    padding: 10px 18px;
+    top: 2px;
+  }
+  .subscribe-form button i {
+    color: #fff;
+    font-size: 22px;
+    transform: rotate(-6deg);
+  }
+
+
+  /* end footer CSS */
+
 
   /* end footer CSS */
 
