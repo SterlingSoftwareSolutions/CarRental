@@ -12,13 +12,23 @@
 </head>
 
 <body>
-    @if (!auth()->check())
+    @php
+    $currentRoute = Route::currentRouteName(); // Get the current route name
+    $loggedIn = auth()->check(); // Check if the user is logged in
+    @endphp
+
+
     <x-modal :name="true" :show="true" :maxWidth="'3xl'">
-        <div class=" h-full">
+        <div class="h-full">
+            @if ($currentRoute === 'login' && !$loggedIn)
             @include('auth.login')
+            @elseif ($currentRoute === 'register' && !$loggedIn)
+            @include('auth.register')
+            @elseif (!$loggedIn)
+            @include('auth.login')
+            @endif
         </div>
     </x-modal>
-    @endif
     <!-- start navigation -->
     @include('layouts.navigation')
     <!-- end navigation -->
