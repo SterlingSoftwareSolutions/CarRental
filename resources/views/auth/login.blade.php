@@ -13,7 +13,7 @@
 
                 <!-- Email Address -->
                 <div>
-                    <label for="email" class="font-bold text-gray-500 pl-4 pb-5 ">Username</label>
+                    <label for="email" class="font-bold text-gray-500 pl-4 pb-5 ">Email</label>
                     <x-text-input id="email" class="block w-full bg-neutral-300" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
