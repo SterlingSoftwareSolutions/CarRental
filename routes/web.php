@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('pages.contact');
+    return view('pages.carlist');
 });
 
 Route::get('/dashboard', function () {
