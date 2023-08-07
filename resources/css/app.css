@@ -11,13 +11,164 @@ body {
 /* end general CSS */
 
 /* nav CSS */
-.main-logo {
-    width: 120px;
-    height: 120px;
+
+nav{
+    height: 6rem;
+    width: 100vw;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    position: fixed;
+    z-index: 10;
 }
 
-.navigation-menu {
+/*Styling logo*/
+.logo{
+    padding:1vh 1vw;
+    text-align: center;
+}
+.logo img {
+    height: 5rem;
+    width: 5rem;
+}
+
+/*Styling Links*/
+.nav-links{
+    display: flex;
+    list-style: none; 
+    width: 88vw;
+    padding: 0 0.7vw;
+    justify-content: space-evenly;
+    align-items: center;
+    text-transform: uppercase;
+}
+.nav-links li a{
+    text-decoration: none;
+    margin: 0 0.7vw;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links li a:hover::before{
+    width: 80%;
+}
+
+/*Styling Buttons*/
+.login-button{
+    background-color: #398564;
+    padding: 0.6rem 2.5rem;
+    
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    color: #131418;
+    background-color: #f2f5f7;
+    border:1.5px solid #f2f5f7;
+    transition: all ease-in-out 350ms;
+}
+.join-button{
+    color: #131418;
+    background-color: #61DAFB;
+    border: 1.5px solid #61DAFB;
+    border-radius: 2em;
+    padding: 0.6rem 0.8rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.join-button:hover {
+    color: #f2f5f7;
     background-color: transparent;
+    border:1.5px solid #f2f5f7;
+    transition: all ease-in-out 350ms;
+}
+
+/*Styling Hamburger Icon*/
+.hamburger div{
+    width: 30px;
+    height:3px;
+    background: #f2f5f7;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+.hamburger{
+    display: none;
+}
+
+/*Stying for small screens*/
+@media screen and (max-width: 800px){
+    nav{
+        position: fixed;
+        z-index: 3;
+    }
+    .hamburger{
+        display:block;
+        position: absolute;
+        cursor: pointer;
+        right: 5%;
+        top: 50%;
+        transform: translate(-5%, -50%);
+        z-index: 2;
+        transition: all 0.7s ease;
+    }
+    .nav-links{
+        position: fixed;
+        background: #131418;
+        height: 100vh;
+        width: 100%;
+        flex-direction: column;
+        clip-path: circle(50px at 90% -20%);
+        -webkit-clip-path: circle(50px at 90% -10%);
+        transition: all 1s ease-out;
+        pointer-events: none;
+    }
+    .nav-links.open{
+        clip-path: circle(1000px at 90% -10%);
+        -webkit-clip-path: circle(1000px at 90% -10%);
+        pointer-events: all;
+    }
+    .nav-links li{
+        opacity: 0;
+    }
+    .nav-links li:nth-child(1){
+        transition: all 0.5s ease 0.2s;
+    }
+    .nav-links li:nth-child(2){
+        transition: all 0.5s ease 0.4s;
+    }
+    .nav-links li:nth-child(3){
+        transition: all 0.5s ease 0.6s;
+    }
+    .nav-links li:nth-child(4){
+        transition: all 0.5s ease 0.7s;
+    }
+    .nav-links li:nth-child(5){
+        transition: all 0.5s ease 0.8s;
+    }
+    .nav-links li:nth-child(6){
+        transition: all 0.5s ease 0.9s;
+        margin: 0;
+    }
+    .nav-links li:nth-child(7){
+        transition: all 0.5s ease 1s;
+        margin: 0;
+    }
+    li.fade{
+        opacity: 1;
+    }
+}
+/*Animating Hamburger Icon on Click*/
+.toggle .line1{
+    transform: rotate(-45deg) translate(-5px,6px);
+}
+.toggle .line2{
+    transition: all 0.7s ease;
+    width:0;
+}
+.toggle .line3{
+    transform: rotate(45deg) translate(-5px,-6px);
 }
 /* end nav CSS */
 
@@ -225,7 +376,8 @@ svg {
     display: none; /* Safari and Chrome */
 }
 
-#content1, #content2 {
+#content1,
+#content2 {
     display: none;
     padding: 20px;
     overflow: hidden;
@@ -490,47 +642,127 @@ ul > li {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    position: relative; 
-    z-index: 999 !important;
+    position: relative;
+    z-index: 1 !important;
     border-radius: 0px 0px 25px 25px;
 }
 
 /* end home CSS */
 
-  /* footer CSS */
-  .subscribe-form {
+/* footer CSS */
+.subscribe-form {
     position: relative;
     overflow: hidden;
-  }
-  .subscribe-form input {
+}
+.subscribe-form input {
     width: 100%;
     padding: 15px 28px;
     background: #fff;
     color: #fff;
-  }
+}
 
-  .subscribe-form input::placeholder {
+.subscribe-form input::placeholder {
     color: #317256;
     font-weight: 500;
-  }
+}
 
-  .subscribe-form button {
+.subscribe-form button {
     position: absolute;
     right: 0;
     background: #fff;
     border-left: 2px solid #317256;
     padding: 10px 18px;
     top: 2px;
-  }
-  .subscribe-form button i {
+}
+.subscribe-form button i {
     color: #fff;
     font-size: 22px;
     transform: rotate(-6deg);
-  }
-  /* end footer CSS */
+}
+/* end footer CSS */
+
+/* car list CSS  */
+.dropdown {
+    z-index: 30;
+    min-width: 15em;
+    position: relative;
+    margin: 2em;
+}
+
+.dropdown * {
+    box-sizing: border-box;
+}
+
+.select {
+    background: #fff;
+    color: #23242a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px 0 rgba(42, 45, 53, 0.1); /* Updated box-shadow value */
+    border-radius: 0.5em;
+    padding: 1em;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.select-clicked {
+    border: 2px #26489a solid;
+    box-shadow: 0 0 0.8em #26489a;
+}
+
+
+
+.caret {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #2a2d35;
+    transition: 0.3s;
+}
+
+.caret-rotate {
+    transform: rotate(180deg);
+}
+
+.menu {
+    list-style: none;
+    padding: 0.2em 0.5em;
+    background: #fff;
+    box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 0.5em;
+    color: #23242a;
+    position: absolute;
+    top: 3em;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    opacity: 0;
+    display: none;
+    transition: 0.2s;
+    z-index: 1;
+}
+
+.menu li {
+    padding: 0.7em 0.5em;
+    margin: 0.3em 0;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+
+.active {
+    background: #fff;
+}
+
+.menu-open {
+    display: block;
+    opacity: 1;
+}
+/* end car list CSS */
 
 /* Media Queries */
-
 @media only screen and (max-width: 600px) {
     .main-banner {
         padding: 10px;
