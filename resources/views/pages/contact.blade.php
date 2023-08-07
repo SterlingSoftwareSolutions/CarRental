@@ -91,10 +91,6 @@
             </div>
         </div>
         <!-- end send message section -->
-        
-        
-
-
         <!-- start navigation -->
         @include('layouts.footer')
         <!-- end navigation -->
