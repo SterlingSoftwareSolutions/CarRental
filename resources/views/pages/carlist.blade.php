@@ -82,6 +82,10 @@
     </div>
     <!-- end filtering section -->
 
+    <!-- car list -->
+    
+    <!-- end car list -->
+
 
     <!-- start navigation -->
     @include('layouts.footer')

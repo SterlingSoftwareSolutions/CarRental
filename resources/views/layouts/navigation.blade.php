@@ -1,5 +1,4 @@
-
-<nav class="w-full  z-50">
+<nav class="nav w-full z-50">
   <div class="logo w-3/6 flex justify-center items-center p-4">
     <img src="{{ URL('images/flg_logo11079.png')}}" alt="Logo Image">
   </div>
