@@ -16,10 +16,11 @@
     @include('layouts.navigation')
     <!-- end navigation -->
 
-    <!-- image carosol -->
-    <div class="flex justify-center items-center">
-        <div class="w-2/6">
-            <div class="container">
+    <!-- section one -->
+    <div class="flex flex-wrap h-full md:max-h-full md:justify-center md:items-start">
+        <div class="md:w-full lg:w-2/6">
+            <!-- image carosol -->
+            <div class="container border-2 ">
                 <div class="mySlides">
                     <img src="{{ URL('images/Rectangle 27.png')}}" style="width:100%">
                 </div>
@@ -39,7 +40,7 @@
                 <a class="prev" onclick="plusSlides(-1)">❮</a>
                 <a class="next" onclick="plusSlides(1)">❯</a>
 
-                <div class="flex justify-center items-center">
+                <div class="flex">
                     <div class="row">
                         <div class="column">
                             <img class="demo cursor" src="{{ URL('images/Rectangle 27.png')}}" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
@@ -55,76 +56,215 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-        </div>
-        <!-- end image carosol -->
+            <!-- end image carosol -->
+            <!-- vehicle details section -->
+            <div class="flex justify-between items-center p-4">
+                <div class="grid w-6/6 text-center">
+                    <img src="{{ URL('images/seat-belt.png') }}" class="mx-auto">
+                    <h1 class="text-center text-[#317256] font-semibold mt-2">4 Passengers</h1>
+                </div>
 
-        <!-- pickup foam -->
-        <div class="bg-[#F8FFF2] grid p-12 mt-24">
-            <h1 class="text-emerald-600 font-semibold text-xl">2008 Toyota Crown Sedan Athlete</h1>
-            <p class="mt-2 font-semibold text-[#707070]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis<br> ante nec justo eleifend consequat. </p>
-            <div class="flex items-center justify-right">
-                <div class="bg-emerald-600 p-2 rounded">
-                    <h1 class="text-white">$ 180 /hour</h1>
+                <div class="grid w-6/6 text-center">
+                    <img src="{{ URL('images/luggage.png')}}" class="mx-auto">
+                    <h1 class="text-center text-[#317256] font-semibold mt-2">5 Luggages</h1>
+                </div>
+                <div class="grid w-6/6 text-center">
+                    <img src="{{ URL('images/manual-transmission.png')}}" class="mx-auto">
+                    <h1 class="text-center text-[#317256] font-semibold mt-2">Auto</h1>
                 </div>
             </div>
+            <!-- end vehicle details section -->
+            <!-- vehicle spesification section -->
             <div>
-                <p class="mt-2 font-semibold text-[#707070]">Pick-up Location</p>
-                <form action="/action_page.php">
-                    <select class="w-full" name="cars" id="cars">
+                <div>
+                    <h1 class="text-gray-500 font-semibold text-lg">Vehicle Details</h1>
+                </div>
+                <hr class="border-1 border-gary-600">
+                <div class="w-full">
+                    <div class="flex flex-wrap justify-between w-full">
+                        <div class="flex space-x-16 mt-5">
+                            <ul>
+                                <li>Make:</li>
+                                <li>Model:</li>
+                                <li>Body Type:</li>
+                                <li>Year:</li>
+                                <li>Year:</li>
+                            </ul>
+                            <ul>
+                                <li>Toyota</li>
+                                <li>Crown</li>
+                                <li>Sedan</li>
+                                <li>2008</li>
+                                <li>Petrol</li>
+                            </ul>
+                        </div>
+
+                        <div class="flex space-x-16 mt-5">
+                            <ul>
+                                <li>VIN:</li>
+                                <li>Mileage:</li>
+                                <li>Transmission:</li>
+                                <li>Color:</li>
+                                <li>Doors:</li>
+                            </ul>
+                            <ul>
+                                <li>1VXEDYROTER</li>
+                                <li>31,500</li>
+                                <li>Auto</li>
+                                <li>White</li>
+                                <li>4</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end vehicle spesification section -->
+            <!-- vehicle description section -->
+            <div class="mt-8">
+                <div>
+                    <h1 class="text-gray-500 font-semibold text-lg">Vehicle Details</h1>
+                </div>
+                <hr class="border-1 border-gary-600">
+                <div class="mt-4">
+                    <p>Edipisicing eiusmod tempor incididunt labore sed dolore magna aliqa enim ipsum ad minim veniams quis nostrud citation ullam laboris nisi ut aliquip laboris nisi ut aliquip ex ea commod. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> <br>
+                    <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo cons equat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Exepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ipsum perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+                </div>
+            </div>
+            <!-- end vehicle description section -->
+        </div>
+        <div class="md:w-full lg:w-2/6 grid grid-flow-row h-screen mt-24">
+            <!-- pickup foam -->
+            <div class="bg-[#F8FFF2] grid md:p-8 md:mt-0">
+                <h1 class="text-emerald-600 font-semibold text-xl">2008 Toyota Crown Sedan Athlete</h1>
+                <p class="mt-2 font-semibold text-[#707070]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis<br> ante nec justo eleifend consequat. </p>
+                <div class="flex items-center justify-right">
+                    <div class="bg-emerald-600 p-2 rounded">
+                        <h1 class="text-white">$ 180 /hour</h1>
+                    </div>
+                </div>
+                <div>
+                    <form action="/action_page.php">
+                        <p class="mt-2 font-semibold text-[#707070]">Pick-up Location</p>
+                        <select class="w-full rounded-md border-none shadow-md" name="cars" id="cars">
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="opel">Opel</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                </div>
+                <div>
+                    <p class="mt-2 font-semibold text-[#707070]">Drop-off Location</p>
+                    <select class="w-full rounded-md border-none shadow-md" name="cars" id="cars">
                         <option value="volvo">Volvo</option>
                         <option value="saab">Saab</option>
                         <option value="opel">Opel</option>
                         <option value="audi">Audi</option>
                     </select>
-                </form>
-            </div>
-            <div>
-                <p class="mt-2 font-semibold text-[#707070]">Drop-off Location</p>
-                <form action="/action_page.php">
-                    <select class="w-full" name="cars" id="cars">
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="opel">Opel</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                </form>
-            </div>
-            <p class="mt-2 font-semibold text-[#707070]">Pick-up Date & Time</p>
-            <div class="flex justify-center items-center gap-4 w-full">
-                <div class="w-full">
-                    <form action="/action_page.php">
-                        <input class="w-full" type="date" id="birthday" name="birthday">
-                    </form>
                 </div>
-                <div class="w-full">
-                    <form action="/action_page.php">
-                        <input class="w-full" type="date" id="birthday" name="birthday">
-                    </form>
+                <p class="mt-2 font-semibold text-[#707070]">Pick-up Date & Time</p>
+                <div class="flex justify-center items-center gap-4 w-full">
+                    <div class="w-full">
+                        <input class="w-full rounded-md border-none shadow-md" type="date" id="birthday" name="birthday">
+                    </div>
+                    <div class="w-full">
+                        <input class="w-full rounded-md border-none shadow-md" type="date" id="birthday" name="birthday">
+                    </div>
                 </div>
-            </div>
-            <p class="mt-2 font-semibold text-[#707070]">Drop-off Date & Time</p>
-            <div class="flex items-center gap-4">
-                <div class="w-full">
-                    <form action="/action_page.php">
-                        <input class="w-full" type="time" name="" id="">
-                    </form>
+                <p class="mt-2 font-semibold text-[#707070]">Drop-off Date & Time</p>
+                <div class="flex items-center gap-4">
+                    <div class="w-full">
+                        <input class="w-full rounded-md border-none shadow-md" type="time" name="" id="">
+                    </div>
+                    <div class="w-full">
+                        <input class="w-full rounded-md border-none shadow-md" type="time" name="" id="">
+                    </div>
                 </div>
-                <div class="w-full">
-                    <form action="/action_page.php">
-                        <input class="w-full" type="time" name="" id="">
+                <div class="flex justify-center items-center pt-8">
+                    <button class="w-full bg-emerald-600 p-3 rounded text-white font-semibold" name="cars" id="cars">
+                        Book Now
+                    </button>
                     </form>
                 </div>
             </div>
-            <div class="flex justify-center items-center p-4">
-                <button class="text-white bg-emerald-600 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 hover:text-white rounded text-lg">Book Now</button>
+            <!-- end pickup foam -->
+            <!-- conatct number section -->
+            <div class="flex justify-center items-center">
+                <div class="bg-emerald-600 rounded text-center w-10/12 p-4">
+                    <h1 class="text-white font-semibold text-2xl">Call Us</h1>
+                    <div class="flex justify-center items-center mt-3">
+                        <a href="" class="hover:underline flex">
+                            <img class="w-10 h-10 " src="{{ URL('images/telephone (1).png')}}" alt="Telephone Icon">&nbsp;
+                            <span class="text-white font-semibold text-3xl">+ 8801 738 5678 64</span>
+                        </a>
+                    </div>
+                </div>
             </div>
+            <!-- end conatct number section -->
+            <!-- review section -->
+            <div class="p-8">
+                <h1>1 Comment</h1>
+                <div class="flex items-center space-x-1">
+                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                    </svg>
+                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                    </svg>
+                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                    </svg>
+                    <svg class="w-4 h-4 text-gray-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                    </svg>
+                    <svg class="w-4 h-4 text-gray-300 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                    </svg>
+                </div>
+            </div>
+            <div class="flex justify-center items-center pl-8">
+                <p class="text-black"> <span class="text-emerald-600">hasi_nimantha</span> Excellent service, clean cars, and helpful staff. Highly recommend for car rentals</p>
+            </div>
+            <!-- end review section -->
+            <!--  rating foam -->
+            <div class="p-8">
+                <div>
+                    <h1 class="text-gray-500 font-semibold text-lg">Add a Review</h1>
+                </div>
+                <hr class="border-1 border-gary-600">
+                <div class="mt-4">
+                    <h1 class="text-gray-500 text-sm">Your Email Address Will Not Be Published.</h1>
+                    <form>
+                        <fieldset class="p-0 mt-5">
+                            <h1 class="text-black text-sm">Your Ratings <span class="text-red-500">*</span></h1>
+                            <span class="star-cb-group p-0">
+                                <input type="radio" id="rating-5" name="rating" value="5" /><label for="rating-5">5</label>
+                                <input type="radio" id="rating-4" name="rating" value="4" /><label for="rating-4">4</label>
+                                <input type="radio" id="rating-3" name="rating" value="3" /><label for="rating-3">3</label>
+                                <input type="radio" id="rating-2" name="rating" value="2" /><label for="rating-2">2</label>
+                                <input type="radio" id="rating-1" name="rating" value="1" /><label for="rating-1">1</label>
+                                <input type="radio" id="rating-0" name="rating" value="0" checked="checked" class="star-cb-clear" /><label for="rating-0">0</label>
+                            </span>
+                        </fieldset>
+                        <h1 class="text-black text-sm">Name <span class="text-red-500">*</span></h1>
+                        <input class="w-full bg-slate-300 rounded-md border-none shadow-md" type="text" name="" id="">
+                        <h1 class="text-black text-sm">Email <span class="text-red-500">*</span></h1>
+                        <input class="w-full bg-slate-300 rounded-md border-none shadow-md" type="text" name="" id="">
+                        <h1 class="text-black text-sm">Your Review <span class="text-red-500">*</span></h1>
+                        <textarea class="w-full bg-slate-300 rounded-md border-none shadow-md" name="" id="" cols="30" rows="10"></textarea>
+                        <div class="flex justify-start items-start pt-8 w-4/6">
+                            <button class="bg-emerald-600 p-3 rounded text-white font-semibold" name="cars" id="cars">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- end rating foam -->
         </div>
-        <!-- end pickup foam -->
     </div>
-
-
+    <!-- end section one -->
+    <!-- end vehicle details section -->
 
     <!-- start navigation -->
     @include('layouts.footer')
