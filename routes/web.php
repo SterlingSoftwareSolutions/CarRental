@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VehiclesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,10 +23,13 @@ Route::get('/admin/dashboard', function () {
     return view('pages.admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
 Route::middleware('auth')->group(function () {
     Route::get('/user/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/user/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/user/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/admin/vehicles', [VehiclesController::class, 'show_all_vehicles'])->name('vehicles.all');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
+
