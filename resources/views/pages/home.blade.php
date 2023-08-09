@@ -419,8 +419,11 @@
     <!-- happy customert section -->
 
     <!-- start navigation -->
-    @include('layouts.footer')
+    <div class="-mt-40">
+        @include('layouts.footer')
+    </div>
     <!-- end navigation -->
+
 
 </body>
 

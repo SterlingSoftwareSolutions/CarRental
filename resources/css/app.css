@@ -644,7 +644,6 @@ ul > li {
     background-size: cover;
     position: relative;
     border-radius: 0px 0px 25px 25px;
-    margin-top: 20%;
 }
 
 /* end home CSS */
@@ -973,9 +972,5 @@ fieldset {
 
     .wrapper-dropdown {
         width: 100% !important;
-    }
-
-    .getoff-section {
-        margin-top: 90vh;
     }
 }

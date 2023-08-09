@@ -267,8 +267,11 @@
     <!-- end vehicle details section -->
 
     <!-- start navigation -->
-    @include('layouts.footer')
+    <div class="mt-96">
+        @include('layouts.footer')
+    </div>
     <!-- end navigation -->
+
 
     <script>
         // single car view js

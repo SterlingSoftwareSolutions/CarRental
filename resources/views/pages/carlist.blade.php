@@ -233,15 +233,12 @@
             <!-- End of repeating section -->
         </div>
     </div>
-
-
-
-
     <!-- end car list -->
 
-
     <!-- start navigation -->
-    @include('layouts.footer')
+    <div class="-mt-30">
+        @include('layouts.footer')
+    </div>
     <!-- end navigation -->
 
 </body>
