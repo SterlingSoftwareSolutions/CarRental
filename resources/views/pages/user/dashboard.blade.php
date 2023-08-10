@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    @include('layouts.user-navigation')
     <!-- main section -->
     <div class="p-6">
         <div class="mt-10">
