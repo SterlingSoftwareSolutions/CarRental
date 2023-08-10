@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="flex justify-end">
-                    <svg class="w-11 h-11 p-3 rounded-md text-main-green bg-main-green dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
+                    <svg class="w-11 h-11 p-3 rounded-md text-main-green bg-main-green " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z" />
                     </svg>
                 </div>
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="flex justify-end">
-                    <svg class="w-11 h-11 p-3 rounded-md text-main-green bg-main-green dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
+                    <svg class="w-11 h-11 p-3 rounded-md text-main-green bg-main-green " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z" />
                     </svg>
                 </div>
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <!-- User List  -->
-                <div class=" overflow-auto max-h-[600px] ">s
+                <div class=" overflow-auto max-h-[600px] ">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
                         <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                             <tr>
@@ -138,11 +138,43 @@
 
         </div>
     </div>
-  
-    <x-modal :show="false" :name="true" :id="'add-user-modal'" :maxWidth="'3xl'" >
-        
-           <h1>Hello</h1>
-     
+
+    <x-modal :show="false" :name="true" :id="'add-user-modal'" :maxWidth="'2xl'">
+
+        <div class="w-5/10 mx-auto p-6">
+            <div>
+                <h2>Add a New User</h2>
+            </div>
+            <form class="py-4">
+                <div class="mb-6">
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-500 ">Your Name</label>
+                    <input type="text" id="text" class="shadow-sm  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Your Name" required>
+                </div>
+                <div class="mb-6">
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-500 ">Your email</label>
+                    <input type="email" id="email" class="shadow-sm  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="name@flowbite.com" required>
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="block mb-2 text-sm font-medium text-gray-500 ">Your password</label>
+                    <input type="password" id="password" class="shadow-sm bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required>
+                </div>
+                <div class="mb-6">
+                    <label for="repeat-password" class="block mb-2 text-sm font-medium text-gray-500 ">Repeat password</label>
+                    <input type="password" id="repeat-password" class="shadow-sm bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required>
+                </div>
+                <div class="flex items-start mb-6">
+                    <div class="flex items-center h-5">
+                        <input id="terms" type="checkbox" value="" class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300  dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required>
+                    </div>
+                    <label for="terms" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a></label>
+                </div>
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register new account</button>
+            </form>
+        </div>
+
+
+
+
     </x-modal>
-   
+
 </x-app-layout>
