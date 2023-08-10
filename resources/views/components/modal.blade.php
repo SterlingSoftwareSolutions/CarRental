@@ -1,7 +1,8 @@
 @props([
 'name',
 'show' => false,
-'maxWidth' => '2xl'
+'maxWidth' => '2xl',
+'id' => "default-modal"
 ])
 
 @php
@@ -37,7 +38,8 @@ $maxWidth = [
         } else {
             document.body.classList.remove('overflow-y-hidden');
         }
-    })" x-on:open-modal.window="$event.detail == '{{ $name }}' ? show = true : null" x-on:close.stop="show = false" x-on:keydown.escape.window="show = false" x-on:keydown.tab.prevent="$event.shiftKey || nextFocusable().focus()" x-on:keydown.shift.tab.prevent="prevFocusable().focus()" x-show="show" class="fixed inset-0 overflow-y-auto px-4 py-6 sm:px-0 z-50 grid  place-items-center" style="display: {{ $show ? 'block' : 'none' }};">
+    })" x-on:open-modal.window="$event.detail == '{{ $name }}' ? show = true : null" x-on:close.stop="show = false" x-on:keydown.escape.window="show = false" x-on:keydown.tab.prevent="$event.shiftKey || nextFocusable().focus()" x-on:keydown.shift.tab.prevent="prevFocusable().focus()" x-show="show" class="fixed inset-0 overflow-y-auto px-4 py-6 sm:px-0 z-50 grid  place-items-center" style="display: {{ $show ? 'block' : 'none' }};"
+    id="{{$id}}">
     
     <div x-show="show" class="fixed inset-0 transform transition-all" x-on:click="show = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
