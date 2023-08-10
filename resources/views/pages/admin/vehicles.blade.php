@@ -88,7 +88,7 @@
                     </div>
                 </div>
                 <!-- Vehicle List  -->
-                <div class=" overflow-auto max-h-96 ">
+                <div class=" overflow-auto max-h-[600px] ">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
                         <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                             <tr>
