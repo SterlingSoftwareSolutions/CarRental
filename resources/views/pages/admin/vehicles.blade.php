@@ -68,7 +68,7 @@
         </div>
 
         <div class="mt-10">
-            <div class="relative overflow-auto shadow-md sm:rounded-lg bg-white max-h-96">
+            <div class="relative shadow-md sm:rounded-lg bg-white ">
                 <div class="flex justify-end items-center">
                     <div>
                         <!-- Search bar  -->
@@ -88,75 +88,81 @@
                     </div>
                 </div>
                 <!-- Vehicle List  -->
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">
-                                Vehicle
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                VIN
-                            </th>
+                <div class=" overflow-auto max-h-96 ">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
+                        <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    Vehicle
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    VIN
+                                </th>
 
-                            <th scope="col" class="px-6 py-3">
-                                Body Type
-                            </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Body Type
+                                </th>
 
-                            <th scope="col" class="px-6 py-3">
-                                Color
-                            </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Color
+                                </th>
 
-                            <th scope="col" class="px-6 py-3">
-                                <div class="flex items-center">
-                                    Price
-                                    <a href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                                        </svg></a>
-                                </div>
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                <span class="sr-only">Edit</span>
-
-                            </th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        @for ($i = 0; $i < 100; $i++) <tr class="bg-white border-b">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
-                                <div class="flex items-center">
-                                    <div class="me-3">
-                                        <img src="{{ URL('images/flg_logo11079.png')}}" class="rounded-full w-10 h-10" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
+                                <th scope="col" class="px-6 py-3">
+                                    <div class="flex items-center">
+                                        Price
+                                        <a href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
+                                            </svg></a>
                                     </div>
-                                    <div>
-                                        <p>Nissan Sky-liner (Make + Model)</p>
-                                    </div>
-                                </div>
-                            </th>
-                            <td class="px-6 py-4">
-                                12345664645
-                            </td>
-                            <td class="px-6 py-4">
-                                Hatchback
-                            </td>
-                            <td class="px-6 py-4">
-                                White
-                            </td>
-                            <td class="px-6 py-4">
-                                $ 2999
-                            </td>
-                            <td class="px-6 py-4 text-right">
-                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                /
-                                <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
-                            </td>
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    <span class="sr-only">Edit</span>
+
+                                </th>
                             </tr>
-                            @endfor
+                        </thead>
+
+                        <tbody>
+
+                            @for ($i = 0; $i < 100; $i++) <tr class="bg-white border-b">
+
+
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="me-3">
+                                            <img src="{{ URL('images/flg_logo11079.png')}}" class="rounded-full w-10 h-10" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
+                                        </div>
+                                        <div>
+                                            <p>Nissan Sky-liner (Make + Model)</p>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td class="px-6 py-4">
+                                    12345664645
+                                </td>
+                                <td class="px-6 py-4">
+                                    Hatchback
+                                </td>
+                                <td class="px-6 py-4">
+                                    White
+                                </td>
+                                <td class="px-6 py-4">
+                                    $ 2999
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                    /
+                                    <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                                </td>
+                                </tr>
+                                @endfor
 
 
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
 
         </div>
