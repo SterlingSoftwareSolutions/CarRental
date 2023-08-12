@@ -10,7 +10,9 @@
             <div class="grid lg:grid-cols-2 bg-white p-4 rounded-lg">
                 <div class="">
                     <p class="text-gray-500">Vehicles</p>
-                    <p class="text-gray-600 text-2xl font-bold">89,645</p>
+                    <p class="text-gray-600 text-2xl font-bold"> @php
+                        echo count($vehicles);
+                        @endphp</p>
                     <p class="text-gray-400 text-sm ">Total Vehicles</p>
                 </div>
 
@@ -83,12 +85,12 @@
                             </div>
                         </form>
                     </div>
-                    <div>
-                        <button class=" m-4 px-4 py-2 bg-main-green rounded-lg text-white"> + Add New Vehicle</button>
-                    </div>
+
+                   
+
                 </div>
                 <!-- Vehicle List  -->
-                <div class=" overflow-auto max-h-[600px] ">
+                <div class="overflow-auto max-h-[600px] ">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
                         <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                             <tr>
@@ -124,7 +126,8 @@
 
                         <tbody>
 
-                            @for ($i = 0; $i < 100; $i++) <tr class="bg-white border-b">
+                            @foreach ($vehicles as $vehicle)
+                            <tr class="bg-white border-b">
 
 
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
@@ -133,37 +136,147 @@
                                             <img src="{{ URL('images/flg_logo11079.png')}}" class="rounded-full w-10 h-10" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
                                         </div>
                                         <div>
-                                            <p>Nissan Sky-liner (Make + Model)</p>
+                                            <p>{{ $vehicle['make']}} {{ $vehicle['model']}}</p>
                                         </div>
                                     </div>
                                 </th>
                                 <td class="px-6 py-4">
-                                    12345664645
+                                    {{ $vehicle['vin']}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    Hatchback
+                                    {{ $vehicle['body_type']}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    White
+                                    {{ $vehicle['color']}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    $ 2999
+                                    {{ $vehicle['price']}}
                                 </td>
                                 <td class="px-6 py-4 text-right">
                                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                     /
                                     <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
                                 </td>
-                                </tr>
-                                @endfor
+                            </tr>
 
+                            @endforeach
 
 
                         </tbody>
                     </table>
                 </div>
 
+
+
             </div>
+
+            <div class="w-5/10 mx-auto p-6 m-10 relative shadow-md sm:rounded-lg bg-white ">
+                <div>
+                    <h1 class="flex text-gray-500 font-bold text-2xl justify-center py-6">Add a New Vehicle</h1>
+                </div>
+                <form method="POST" action="{{ route('vehicles.all') }}">
+                    @csrf
+
+                    <!-- Make -->
+                    <div>
+                        <x-input-label for="make" :value="__('Make')" />
+                        <x-text-input id="make" class="block mt-1 w-full" type="text" name="make" :value="old('make')" required autofocus />
+                        <x-input-error :messages="$errors->get('make')" class="mt-2" />
+                    </div>
+
+                    <!-- Model -->
+                    <div>
+                        <x-input-label for="model" :value="__('Model')" />
+                        <x-text-input id="model" class="block mt-1 w-full" type="text" name="model" :value="old('model')" required autofocus />
+                        <x-input-error :messages="$errors->get('model')" class="mt-2" />
+                    </div>
+
+                    <!-- VIN -->
+                    <div>
+                        <x-input-label for="vin" :value="__('VIN')" />
+                        <x-text-input id="vin" class="block mt-1 w-full" type="text" name="vin" :value="old('vin')" required autofocus />
+                        <x-input-error :messages="$errors->get('vin')" class="mt-2" />
+                    </div>
+
+                    <!-- Body Type -->
+                    <div>
+                        <x-input-label for="body_type" :value="__('Body Type')" />
+                        <x-text-input id="body_type" class="block mt-1 w-full" type="text" name="body_type" :value="old('body_type')" required autofocus />
+                        <x-input-error :messages="$errors->get('body_type')" class="mt-2" />
+                    </div>
+
+                    <!-- Year -->
+                    <div>
+                        <x-input-label for="year" :value="__('Year')" />
+                        <x-text-input id="year" class="block mt-1 w-full" type="text" name="year" :value="old('year')" required autofocus />
+                        <x-input-error :messages="$errors->get('year')" class="mt-2" />
+                    </div>
+
+                    <!-- Fuel Type -->
+                    <div>
+                        <x-input-label for="fuel_type" :value="__('Fuel Type')" />
+                        <x-text-input id="fuel_type" class="block mt-1 w-full" type="text" name="fuel_type" :value="old('fuel_type')" required autofocus />
+                        <x-input-error :messages="$errors->get('fuel_type')" class="mt-2" />
+                    </div>
+
+                    <!-- Transmission -->
+                    <div>
+                        <x-input-label for="transmission" :value="__('Transmission')" />
+                        <x-text-input id="transmission" class="block mt-1 w-full" type="text" name="transmission" :value="old('transmission')" required autofocus />
+                        <x-input-error :messages="$errors->get('transmission')" class="mt-2" />
+                    </div>
+
+                    <!-- Mileage -->
+                    <div>
+                        <x-input-label for="mileage" :value="__('Mileage')" />
+                        <x-text-input id="mileage" class="block mt-1 w-full" type="text" name="mileage" :value="old('mileage')" required autofocus />
+                        <x-input-error :messages="$errors->get('mileage')" class="mt-2" />
+                    </div>
+
+                    <!-- Color -->
+                    <div>
+                        <x-input-label for="color" :value="__('Color')" />
+                        <x-text-input id="color" class="block mt-1 w-full" type="text" name="color" :value="old('color')" required autofocus />
+                        <x-input-error :messages="$errors->get('color')" class="mt-2" />
+                    </div>
+
+                    <!-- Luggage -->
+                    <div>
+                        <x-input-label for="luggage" :value="__('Luggage')" />
+                        <x-text-input id="luggage" class="block mt-1 w-full" type="text" name="luggage" :value="old('luggage')" required autofocus />
+                        <x-input-error :messages="$errors->get('luggage')" class="mt-2" />
+                    </div>
+
+                    <!-- Doors -->
+                    <div>
+                        <x-input-label for="doors" :value="__('Doors')" />
+                        <x-text-input id="doors" class="block mt-1 w-full" type="text" name="doors" :value="old('doors')" required autofocus />
+                        <x-input-error :messages="$errors->get('doors')" class="mt-2" />
+                    </div>
+
+                    <!-- Passengers -->
+                    <div>
+                        <x-input-label for="passengers" :value="__('Passengers')" />
+                        <x-text-input id="passengers" class="block mt-1 w-full" type="text" name="passengers" :value="old('passengers')" required />
+                        <x-input-error :messages="$errors->get('passengers')" class="mt-2" />
+                    </div>
+
+                    <!-- Price -->
+                    <div>
+                        <x-input-label for="price" :value="__('Price')" />
+                        <x-text-input id="price" class="block mt-1 w-full" type="text" name="price" :value="old('price')" required autofocus />
+                        <x-input-error :messages="$errors->get('price')" class="mt-2" />
+                    </div>
+
+                    <div class="flex items-center justify-end mt-4">
+                        <x-primary-button class="ml-4">
+                            {{ __('Create Vehicle') }}
+                        </x-primary-button>
+                    </div>
+                </form>
+            </div>
+
+
 
         </div>
     </div>

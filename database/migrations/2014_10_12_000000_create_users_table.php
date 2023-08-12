@@ -13,11 +13,21 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('mobile')->nullable();
             $table->string('email')->unique();
+            $table->string('Address_1')->nullable();
+            $table->string('Address_2')->nullable();
+            $table->string('city')->nullable();
+            $table->string('zip')->nullable();
+            $table->string('driving_license')->nullable();
+            $table->string('driving_license_expire_year')->nullable();
+            $table->string('driving_license_expire_month')->nullable();
+            $table->string('driving_license_expire_date')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('password')->nullable();
+            $table->rememberToken()->nullable();
             $table->timestamps();
         });
     }

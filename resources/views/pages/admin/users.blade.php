@@ -10,7 +10,11 @@
             <div class="grid lg:grid-cols-2 bg-white p-4 rounded-lg">
                 <div class="">
                     <p class="text-gray-500">Users</p>
-                    <p class="text-gray-600 text-2xl font-bold">89,645</p>
+                    <p class="text-gray-600 text-2xl font-bold">
+                        @php
+                        echo count($users);
+                        @endphp
+                    </p>
                     <p class="text-gray-400 text-sm ">Total Users</p>
                 </div>
 
@@ -25,7 +29,9 @@
             <div class="grid grid-cols-2 bg-white p-4 rounded-lg">
                 <div class="">
                     <p class="text-gray-500">Active Users</p>
-                    <p class="text-gray-600 text-2xl font-bold">457</p>
+                    <p class="text-gray-600 text-2xl font-bold">@php
+                        echo count($users);
+                        @endphp</p>
                     <p class="text-gray-400 text-sm ">Active for today</p>
                 </div>
 
@@ -53,10 +59,8 @@
                             </div>
                         </form>
                     </div>
-                    <!-- Add New User Button  -->
-                    <div>
-                        <button type="submit" id="shownewuserpopup" class=" m-4 px-4 py-2 bg-main-green rounded-lg text-white" onclick="document.getElementById('add-user-modal')._x_dataStack[0].show = true;"> + Add New User</button>
-                    </div>
+
+
                 </div>
                 <!-- User List  -->
                 <div class=" overflow-auto max-h-[600px] ">
@@ -67,25 +71,27 @@
                                     User
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    VIN
+                                    Mobile
                                 </th>
 
                                 <th scope="col" class="px-6 py-3">
-                                    Body Type
+                                    Address
                                 </th>
 
                                 <th scope="col" class="px-6 py-3">
-                                    Color
+                                    City
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Zip
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Email
                                 </th>
 
                                 <th scope="col" class="px-6 py-3">
-                                    <div class="flex items-center">
-                                        Price
-                                        <a href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                                            </svg></a>
-                                    </div>
+                                    Created Date
                                 </th>
+
                                 <th scope="col" class="px-6 py-3">
                                     <span class="sr-only">Edit</span>
 
@@ -94,87 +100,168 @@
                         </thead>
 
                         <tbody>
-
-                            @for ($i = 0; $i < 100; $i++) <tr class="bg-white border-b">
-
-
+                            @foreach ($users as $user)
+                            <tr class="bg-white border-b">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
                                     <div class="flex items-center">
                                         <div class="me-3">
                                             <img src="{{ URL('images/flg_logo11079.png')}}" class="rounded-full w-10 h-10" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
                                         </div>
                                         <div>
-                                            <p>Nissan Sky-liner (Make + Model)</p>
+                                            <p> {{ $user['first_name'] }} {{ $user['last_name'] }}</p>
                                         </div>
                                     </div>
                                 </th>
                                 <td class="px-6 py-4">
-                                    12345664645
+                                    {{ $user['mobile'] }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    Hatchback
+                                    {{ $user['Address_1'] }} {{ $user['Address_2'] }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    White
+                                    {{ $user['city'] }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    $ 2999
+                                    {{ $user['zip'] }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $user['email'] }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $user['created_at'] }}
                                 </td>
                                 <td class="px-6 py-4 text-right">
                                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                     /
                                     <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
                                 </td>
-                                </tr>
-                                @endfor
-
-
-
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
 
             </div>
 
+
+
+            <div class="w-5/10 mx-auto p-6 m-10 relative shadow-md sm:rounded-lg bg-white  ">
+                <div>
+                    <h1 class="flex text-gray-500 font-bold text-2xl justify-center py-6">Add a New User</h1>
+                </div>
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
+
+                    <!-- first_name -->
+                    <div>
+                        <x-input-label for="first_name" :value="__('First Name')" />
+                        <x-text-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')" required autofocus autocomplete="first_name" />
+                        <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
+                    </div>
+
+                    <!-- last_name -->
+                    <div>
+                        <x-input-label for="last_name" :value="__('Lasst Name')" />
+                        <x-text-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus autocomplete="last_name" />
+                        <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
+                    </div>
+
+                    <!-- mobile -->
+                    <div>
+                        <x-input-label for="mobile" :value="__('Mobile')" />
+                        <x-text-input id="mobile" class="block mt-1 w-full" type="text" name="mobile" :value="old('mobile')" required autofocus autocomplete="mobile" />
+                        <x-input-error :messages="$errors->get('mobile')" class="mt-2" />
+                    </div>
+
+                    <!-- Address_1 -->
+                    <div>
+                        <x-input-label for="Address_1" :value="__('Address_1')" />
+                        <x-text-input id="Address_1" class="block mt-1 w-full" type="text" name="Address_1" :value="old('Address_1')" required autofocus autocomplete="Address_1" />
+                        <x-input-error :messages="$errors->get('Address_1')" class="mt-2" />
+                    </div>
+
+                    <!-- Address_2 -->
+                    <div>
+                        <x-input-label for="Address_2" :value="__('Address_2')" />
+                        <x-text-input id="Address_2" class="block mt-1 w-full" type="text" name="Address_2" :value="old('Address_2')" required autofocus autocomplete="Address_2" />
+                        <x-input-error :messages="$errors->get('Address_2')" class="mt-2" />
+                    </div>
+
+                    <!-- city -->
+                    <div>
+                        <x-input-label for="city" :value="__('city')" />
+                        <x-text-input id="city" class="block mt-1 w-full" type="text" name="city" :value="old('city')" required autofocus autocomplete="city" />
+                        <x-input-error :messages="$errors->get('city')" class="mt-2" />
+                    </div>
+                    <!-- zip -->
+                    <div>
+                        <x-input-label for="zip" :value="__('zip')" />
+                        <x-text-input id="zip" class="block mt-1 w-full" type="text" name="zip" :value="old('zip')" required autofocus autocomplete="zip" />
+                        <x-input-error :messages="$errors->get('zip')" class="mt-2" />
+                    </div>
+                    <!-- driving_license -->
+                    <div>
+                        <x-input-label for="driving_license" :value="__('driving_license')" />
+                        <x-text-input id="driving_license" class="block mt-1 w-full" type="text" name="driving_license" :value="old('driving_license')" required autofocus autocomplete="driving_license" />
+                        <x-input-error :messages="$errors->get('driving_license')" class="mt-2" />
+                    </div>
+                    <!-- driving_license_expire_year -->
+                    <div>
+                        <x-input-label for="driving_license_expire_year" :value="__('driving_license_expire_year')" />
+                        <x-text-input id="driving_license_expire_year" class="block mt-1 w-full" type="text" name="driving_license_expire_year" :value="old('driving_license_expire_year')" required autofocus autocomplete="driving_license_expire_year" />
+                        <x-input-error :messages="$errors->get('driving_license_expire_year')" class="mt-2" />
+                    </div>
+                    <!-- driving_license_expire_month -->
+                    <div>
+                        <x-input-label for="driving_license_expire_month" :value="__('driving_license_expire_month')" />
+                        <x-text-input id="driving_license_expire_month" class="block mt-1 w-full" type="text" name="driving_license_expire_month" :value="old('driving_license_expire_month')" required autofocus autocomplete="driving_license_expire_month" />
+                        <x-input-error :messages="$errors->get('driving_license_expire_month')" class="mt-2" />
+                    </div>
+
+                    <!-- driving_license_expire_date -->
+                    <div>
+                        <x-input-label for="driving_license_expire_date" :value="__('driving_license_expire_date')" />
+                        <x-text-input id="driving_license_expire_date" class="block mt-1 w-full" type="text" name="driving_license_expire_date" :value="old('driving_license_expire_date')" required autofocus autocomplete="driving_license_expire_date" />
+                        <x-input-error :messages="$errors->get('driving_license_expire_date')" class="mt-2" />
+                    </div>
+
+                    <!-- Email Address -->
+                    <div class="mt-4">
+                        <x-input-label for="email" :value="__('Email')" />
+                        <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mt-4">
+                        <x-input-label for="password" :value="__('Password')" />
+
+                        <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+
+                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="mt-4">
+                        <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+
+                        <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+
+                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                    </div>
+
+                    <div class="flex items-center justify-end mt-4">
+                        <x-primary-button class="ml-4">
+                            {{ __('Register') }}
+                        </x-primary-button>
+                    </div>
+                </form>
+            </div>
+
         </div>
     </div>
 
-    <x-modal :show="false" :name="true" :id="'add-user-modal'" :maxWidth="'2xl'">
-
-        <div class="w-5/10 mx-auto p-6">
-            <div>
-                <h2>Add a New User</h2>
-            </div>
-            <form class="py-4">
-                <div class="mb-6">
-                    <label for="text" class="block mb-2 text-sm font-medium text-gray-500 ">Your Name</label>
-                    <input type="text" id="text" class="shadow-sm  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Your Name" required>
-                </div>
-                <div class="mb-6">
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-500 ">Your email</label>
-                    <input type="email" id="email" class="shadow-sm  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="name@flowbite.com" required>
-                </div>
-                <div class="mb-6">
-                    <label for="password" class="block mb-2 text-sm font-medium text-gray-500 ">Your password</label>
-                    <input type="password" id="password" class="shadow-sm bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required>
-                </div>
-                <div class="mb-6">
-                    <label for="repeat-password" class="block mb-2 text-sm font-medium text-gray-500 ">Repeat password</label>
-                    <input type="password" id="repeat-password" class="shadow-sm bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required>
-                </div>
-                <div class="flex items-start mb-6">
-                    <div class="flex items-center h-5">
-                        <input id="terms" type="checkbox" value="" class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300  dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required>
-                    </div>
-                    <label for="terms" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a></label>
-                </div>
-                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register new account</button>
-            </form>
-        </div>
 
 
-
-
-    </x-modal>
 
 </x-app-layout>
