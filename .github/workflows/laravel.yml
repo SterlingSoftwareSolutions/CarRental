@@ -46,7 +46,7 @@ jobs:
           server: ${{ env.FTP_SERVER }}
           username: ${{ env.FTP_USERNAME }}
           password: ${{ env.FTP_PASSWORD }}
-          local-dir: public/
+          local-dir: ./
 
       - name: Clean up
         run: |
