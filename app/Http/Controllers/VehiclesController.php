@@ -38,8 +38,7 @@ class VehiclesController extends Controller
         for ($i = 1; $i <= 4; $i++) {
             
             if ($request->hasFile('image_' . $i)) {
-                $imagePath = $request->file('image_' . $i)->store('vehicle_images');
-                
+                $imagePath = $request->file('image_' . $i)->store('public/vehicle_images');
                 VehicleImage::create([
                     'vehicle_id' => $car->id,
                     'image_path' => $imagePath,

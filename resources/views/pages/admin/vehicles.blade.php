@@ -136,7 +136,7 @@
                                             <img src="{{ Storage::url($vehicle->images[0]->image_path) }}" class="rounded-full w-10 h-10" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
                                         </div>
                                         <div>
-                                            <p>{{ $vehicle->images[0]->image_path}} {{ $vehicle['make']}} {{ $vehicle['model']}}</p>
+                                            <p>{{ $vehicle['make']}} {{ $vehicle['model']}}</p>
                                         </div>
                                     </div>
                                 </th>
@@ -268,32 +268,70 @@
                         <x-input-error :messages="$errors->get('price')" class="mt-2" />
                     </div>
 
-                    <!-- Image 1 -->
-                    <div>
-                        <x-input-label for="image_1" :value="__('Image 1')" />
-                        <input id="image_1" class="block mt-1 w-full" type="file" name="image_1" required />
-                        <x-input-error :messages="$errors->get('image_1')" class="mt-2" />
-                    </div>
+                    <div class="grid sm:grid-cols-4 gap-10 mt-10">
+                        <!-- Image 1 -->
+                        <div class="mb-6">
+                            <label for="image_1" class="block text-gray-700 font-semibold mb-2">{{ __('Image 1') }}</label>
+                            <div class="relative rounded-lg border-dashed border-2 border-gray-300 p-6 bg-white">
+                                <label for="image_1" class="cursor-pointer text-center">
+                                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 48 48">
+                                        <path d="M19.406 4L16 7.406l5.297 5.297H8v7.828h5.297L16 25.594 19.406 29l6-6-6-6zm9.188 27.172a6.95 6.95 0 0 0 0-9.84l-2.48-2.48 1.416-1.414 2.478 2.478a4.95 4.95 0 0 1 0 7.007 4.95 4.95 0 0 1-7.008 0l-2.478-2.478-1.414 1.414 2.48 2.48a6.95 6.95 0 0 0 9.838 0z" />
+                                        <path d="M24 12a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
+                                    </svg>
+                                    <p class="mt-1 text-sm text-gray-600">{{ __('Drag and drop an image here or click to browse.') }}</p>
+                                </label>
+                                <input id="image_1" class="hidden" type="file" name="image_1" required />
+                            </div>
+                            <x-input-error :messages="$errors->get('image_1')" class="mt-2" />
+                        </div>
 
-                    <!-- Image 2 -->
-                    <div>
-                        <x-input-label for="image_2" :value="__('Image 2')" />
-                        <input id="image_2" class="block mt-1 w-full" type="file" name="image_2" required />
-                        <x-input-error :messages="$errors->get('image_2')" class="mt-2" />
-                    </div>
+                        <!-- Image 2 -->
+                        <div class="mb-6">
+                            <label for="image_2" class="block text-gray-700 font-semibold mb-2">{{ __('Image 2') }}</label>
+                            <div class="relative rounded-lg border-dashed border-2 border-gray-300 p-6 bg-white">
+                                <label for="image_2" class="cursor-pointer text-center">
+                                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 48 48">
+                                        <path d="M19.406 4L16 7.406l5.297 5.297H8v7.828h5.297L16 25.594 19.406 29l6-6-6-6zm9.188 27.172a6.95 6.95 0 0 0 0-9.84l-2.48-2.48 1.416-1.414 2.478 2.478a4.95 4.95 0 0 1 0 7.007 4.95 4.95 0 0 1-7.008 0l-2.478-2.478-1.414 1.414 2.48 2.48a6.95 6.95 0 0 0 9.838 0z" />
+                                        <path d="M24 12a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
+                                    </svg>
+                                    <p class="mt-1 text-sm text-gray-600">{{ __('Drag and drop an image here or click to browse.') }}</p>
+                                </label>
+                                <input id="image_2" class="hidden" type="file" name="image_2" required />
+                            </div>
+                            <x-input-error :messages="$errors->get('image_2')" class="mt-2" />
+                        </div>
 
-                    <!-- Image 3 -->
-                    <div>
-                        <x-input-label for="image_3" :value="__('Image 3')" />
-                        <input id="image_3" class="block mt-1 w-full" type="file" name="image_3" required />
-                        <x-input-error :messages="$errors->get('image_3')" class="mt-2" />
-                    </div>
+                        <!-- Image 3 -->
+                        <div class="mb-6">
+                            <label for="image_3" class="block text-gray-700 font-semibold mb-2">{{ __('Image 3') }}</label>
+                            <div class="relative rounded-lg border-dashed border-2 border-gray-300 p-6 bg-white">
+                                <label for="image_3" class="cursor-pointer text-center">
+                                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 48 48">
+                                        <path d="M19.406 4L16 7.406l5.297 5.297H8v7.828h5.297L16 25.594 19.406 29l6-6-6-6zm9.188 27.172a6.95 6.95 0 0 0 0-9.84l-2.48-2.48 1.416-1.414 2.478 2.478a4.95 4.95 0 0 1 0 7.007 4.95 4.95 0 0 1-7.008 0l-2.478-2.478-1.414 1.414 2.48 2.48a6.95 6.95 0 0 0 9.838 0z" />
+                                        <path d="M24 12a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
+                                    </svg>
+                                    <p class="mt-1 text-sm text-gray-600">{{ __('Drag and drop an image here or click to browse.') }}</p>
+                                </label>
+                                <input id="image_3" class="hidden" type="file" name="image_3" required />
+                            </div>
+                            <x-input-error :messages="$errors->get('image_3')" class="mt-2" />
+                        </div>
 
-                    <!-- Image 4 -->
-                    <div>
-                        <x-input-label for="image_4" :value="__('Image 4')" />
-                        <input id="image_4" class="block mt-1 w-full" type="file" name="image_4" required />
-                        <x-input-error :messages="$errors->get('image_4')" class="mt-2" />
+                        <!-- Image 4 -->
+                        <div class="mb-6">
+                            <label for="image_4" class="block text-gray-700 font-semibold mb-2">{{ __('Image 4') }}</label>
+                            <div class="relative rounded-lg border-dashed border-2 border-gray-300 p-6 bg-white">
+                                <label for="image_4" class="cursor-pointer text-center">
+                                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 48 48">
+                                        <path d="M19.406 4L16 7.406l5.297 5.297H8v7.828h5.297L16 25.594 19.406 29l6-6-6-6zm9.188 27.172a6.95 6.95 0 0 0 0-9.84l-2.48-2.48 1.416-1.414 2.478 2.478a4.95 4.95 0 0 1 0 7.007 4.95 4.95 0 0 1-7.008 0l-2.478-2.478-1.414 1.414 2.48 2.48a6.95 6.95 0 0 0 9.838 0z" />
+                                        <path d="M24 12a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
+                                    </svg>
+                                    <p class="mt-1 text-sm text-gray-600">{{ __('Drag and drop an image here or click to browse.') }}</p>
+                                </label>
+                                <input id="image_4" class="hidden" type="file" name="image_4" required />
+                            </div>
+                            <x-input-error :messages="$errors->get('image_4')" class="mt-2" />
+                        </div>
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
