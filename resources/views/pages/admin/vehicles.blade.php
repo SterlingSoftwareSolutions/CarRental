@@ -269,10 +269,42 @@
                     </div>
 
                     <div class="grid sm:grid-cols-4 gap-10 mt-10">
+                        <script>
+                            function previewImage(event) {
+                                var image = document.getElementById('preview');
+                                image.src = URL.createObjectURL(event.target.files[0]);
+                                image.style.display = 'block';
+                            }
+
+                            function previewImage2(event) {
+                                var image = document.getElementById('preview_2');
+                                image.src = URL.createObjectURL(event.target.files[0]);
+                                image.style.display = 'block';
+                            }
+
+                            function previewImage3(event) {
+                                var image = document.getElementById('preview_3');
+                                image.src = URL.createObjectURL(event.target.files[0]);
+                                image.style.display = 'block';
+                            }
+
+                            function previewImage4(event) {
+                                var image = document.getElementById('preview_4');
+                                image.src = URL.createObjectURL(event.target.files[0]);
+                                image.style.display = 'block';
+                            }
+                        </script>
                         <!-- Image 1 -->
+
                         <div class="mb-6">
                             <label for="image_1" class="block text-gray-700 font-semibold mb-2">{{ __('Image 1') }}</label>
                             <div class="relative rounded-lg border-dashed border-2 border-gray-300 p-6 bg-white">
+                                <div class="overflow-hidden bg-cover  p-4 bg-white text-center flex flex-col items-center justify-center">
+
+                                    <h2 class="mb-2">Preview:</h2>
+                                    <img id="preview" class="object-cover min-w-[300px] max-w-[300px] min-h-[200px] max-h-[200px]" style="display: none;">
+                                </div>
+
                                 <label for="image_1" class="cursor-pointer text-center">
                                     <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 48 48">
                                         <path d="M19.406 4L16 7.406l5.297 5.297H8v7.828h5.297L16 25.594 19.406 29l6-6-6-6zm9.188 27.172a6.95 6.95 0 0 0 0-9.84l-2.48-2.48 1.416-1.414 2.478 2.478a4.95 4.95 0 0 1 0 7.007 4.95 4.95 0 0 1-7.008 0l-2.478-2.478-1.414 1.414 2.48 2.48a6.95 6.95 0 0 0 9.838 0z" />
@@ -280,7 +312,7 @@
                                     </svg>
                                     <p class="mt-1 text-sm text-gray-600">{{ __('Drag and drop an image here or click to browse.') }}</p>
                                 </label>
-                                <input id="image_1" class="hidden" type="file" name="image_1" required />
+                                <input id="image_1" class="hidden" type="file" name="image_1" required onchange="previewImage(event)" />
                             </div>
                             <x-input-error :messages="$errors->get('image_1')" class="mt-2" />
                         </div>
@@ -289,6 +321,11 @@
                         <div class="mb-6">
                             <label for="image_2" class="block text-gray-700 font-semibold mb-2">{{ __('Image 2') }}</label>
                             <div class="relative rounded-lg border-dashed border-2 border-gray-300 p-6 bg-white">
+                                <div class="overflow-hidden bg-cover  p-4 bg-white text-center flex flex-col items-center justify-center">
+
+                                    <h2 class="mb-2">Preview:</h2>
+                                    <img id="preview_2" class="object-cover min-w-[300px] max-w-[300px] min-h-[200px] max-h-[200px]" style="display: none;">
+                                </div>
                                 <label for="image_2" class="cursor-pointer text-center">
                                     <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 48 48">
                                         <path d="M19.406 4L16 7.406l5.297 5.297H8v7.828h5.297L16 25.594 19.406 29l6-6-6-6zm9.188 27.172a6.95 6.95 0 0 0 0-9.84l-2.48-2.48 1.416-1.414 2.478 2.478a4.95 4.95 0 0 1 0 7.007 4.95 4.95 0 0 1-7.008 0l-2.478-2.478-1.414 1.414 2.48 2.48a6.95 6.95 0 0 0 9.838 0z" />
@@ -296,7 +333,7 @@
                                     </svg>
                                     <p class="mt-1 text-sm text-gray-600">{{ __('Drag and drop an image here or click to browse.') }}</p>
                                 </label>
-                                <input id="image_2" class="hidden" type="file" name="image_2" required />
+                                <input id="image_2" class="hidden" type="file" name="image_2" required onchange="previewImage2(event)" />
                             </div>
                             <x-input-error :messages="$errors->get('image_2')" class="mt-2" />
                         </div>
@@ -305,6 +342,10 @@
                         <div class="mb-6">
                             <label for="image_3" class="block text-gray-700 font-semibold mb-2">{{ __('Image 3') }}</label>
                             <div class="relative rounded-lg border-dashed border-2 border-gray-300 p-6 bg-white">
+                                <div class="overflow-hidden bg-cover  p-4 bg-white text-center flex flex-col items-center justify-center">
+                                    <h2 class="mb-2">Preview:</h2>
+                                    <img id="preview_3" class="object-cover min-w-[300px] max-w-[300px] min-h-[200px] max-h-[200px]" style="display: none;">
+                                </div>
                                 <label for="image_3" class="cursor-pointer text-center">
                                     <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 48 48">
                                         <path d="M19.406 4L16 7.406l5.297 5.297H8v7.828h5.297L16 25.594 19.406 29l6-6-6-6zm9.188 27.172a6.95 6.95 0 0 0 0-9.84l-2.48-2.48 1.416-1.414 2.478 2.478a4.95 4.95 0 0 1 0 7.007 4.95 4.95 0 0 1-7.008 0l-2.478-2.478-1.414 1.414 2.48 2.48a6.95 6.95 0 0 0 9.838 0z" />
@@ -312,7 +353,7 @@
                                     </svg>
                                     <p class="mt-1 text-sm text-gray-600">{{ __('Drag and drop an image here or click to browse.') }}</p>
                                 </label>
-                                <input id="image_3" class="hidden" type="file" name="image_3" required />
+                                <input id="image_3" class="hidden" type="file" name="image_3" required onchange="previewImage3(event)" />
                             </div>
                             <x-input-error :messages="$errors->get('image_3')" class="mt-2" />
                         </div>
@@ -321,6 +362,11 @@
                         <div class="mb-6">
                             <label for="image_4" class="block text-gray-700 font-semibold mb-2">{{ __('Image 4') }}</label>
                             <div class="relative rounded-lg border-dashed border-2 border-gray-300 p-6 bg-white">
+                                <div class="overflow-hidden bg-cover  p-4 bg-white text-center flex flex-col items-center justify-center">
+
+                                    <h2 class="mb-2">Preview:</h2>
+                                    <img id="preview_4" class="object-cover min-w-[300px] max-w-[300px] min-h-[200px] max-h-[200px]" style="display: none;">
+                                </div>
                                 <label for="image_4" class="cursor-pointer text-center">
                                     <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 48 48">
                                         <path d="M19.406 4L16 7.406l5.297 5.297H8v7.828h5.297L16 25.594 19.406 29l6-6-6-6zm9.188 27.172a6.95 6.95 0 0 0 0-9.84l-2.48-2.48 1.416-1.414 2.478 2.478a4.95 4.95 0 0 1 0 7.007 4.95 4.95 0 0 1-7.008 0l-2.478-2.478-1.414 1.414 2.48 2.48a6.95 6.95 0 0 0 9.838 0z" />
@@ -328,11 +374,12 @@
                                     </svg>
                                     <p class="mt-1 text-sm text-gray-600">{{ __('Drag and drop an image here or click to browse.') }}</p>
                                 </label>
-                                <input id="image_4" class="hidden" type="file" name="image_4" required />
+                                <input id="image_4" class="hidden" type="file" name="image_4" required onchange="previewImage4(event)" />
                             </div>
                             <x-input-error :messages="$errors->get('image_4')" class="mt-2" />
                         </div>
                     </div>
+
 
                     <div class="flex items-center justify-end mt-4">
                         <x-primary-button class="ml-4">
