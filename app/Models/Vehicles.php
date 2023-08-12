@@ -26,4 +26,10 @@ class Vehicles extends Model
         
     ];
 
+    public function images()
+    {
+        return $this->hasMany(VehicleImage::class, 'vehicle_id'); // Use 'vehicle_id' as the foreign key column
+    }
+    
+
 }

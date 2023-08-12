@@ -86,7 +86,7 @@
                         </form>
                     </div>
 
-                   
+
 
                 </div>
                 <!-- Vehicle List  -->
@@ -133,10 +133,10 @@
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
                                     <div class="flex items-center">
                                         <div class="me-3">
-                                            <img src="{{ URL('images/flg_logo11079.png')}}" class="rounded-full w-10 h-10" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
+                                            <img src="{{ Storage::url($vehicle->images[0]->image_path) }}" class="rounded-full w-10 h-10" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
                                         </div>
                                         <div>
-                                            <p>{{ $vehicle['make']}} {{ $vehicle['model']}}</p>
+                                            <p>{{ $vehicle->images[0]->image_path}} {{ $vehicle['make']}} {{ $vehicle['model']}}</p>
                                         </div>
                                     </div>
                                 </th>
@@ -174,7 +174,7 @@
                 <div>
                     <h1 class="flex text-gray-500 font-bold text-2xl justify-center py-6">Add a New Vehicle</h1>
                 </div>
-                <form method="POST" action="{{ route('vehicles.all') }}">
+                <form method="POST" action="{{ route('vehicles.all') }}" enctype="multipart/form-data">
                     @csrf
 
                     <!-- Make -->
@@ -266,6 +266,34 @@
                         <x-input-label for="price" :value="__('Price')" />
                         <x-text-input id="price" class="block mt-1 w-full" type="text" name="price" :value="old('price')" required autofocus />
                         <x-input-error :messages="$errors->get('price')" class="mt-2" />
+                    </div>
+
+                    <!-- Image 1 -->
+                    <div>
+                        <x-input-label for="image_1" :value="__('Image 1')" />
+                        <input id="image_1" class="block mt-1 w-full" type="file" name="image_1" required />
+                        <x-input-error :messages="$errors->get('image_1')" class="mt-2" />
+                    </div>
+
+                    <!-- Image 2 -->
+                    <div>
+                        <x-input-label for="image_2" :value="__('Image 2')" />
+                        <input id="image_2" class="block mt-1 w-full" type="file" name="image_2" required />
+                        <x-input-error :messages="$errors->get('image_2')" class="mt-2" />
+                    </div>
+
+                    <!-- Image 3 -->
+                    <div>
+                        <x-input-label for="image_3" :value="__('Image 3')" />
+                        <input id="image_3" class="block mt-1 w-full" type="file" name="image_3" required />
+                        <x-input-error :messages="$errors->get('image_3')" class="mt-2" />
+                    </div>
+
+                    <!-- Image 4 -->
+                    <div>
+                        <x-input-label for="image_4" :value="__('Image 4')" />
+                        <input id="image_4" class="block mt-1 w-full" type="file" name="image_4" required />
+                        <x-input-error :messages="$errors->get('image_4')" class="mt-2" />
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
