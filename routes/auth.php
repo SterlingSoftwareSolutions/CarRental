@@ -59,7 +59,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
-    Route::post('carlist/single-car-view/book', [BookingsController::class, 'store'])->name('bookvehicle');
+    Route::post('carlist/single-car-view/book', [BookingsController::class, 'book'])->name('bookvehicle');
 
 
     // Route::post('register', [RegisteredUserController::class, 'store']);

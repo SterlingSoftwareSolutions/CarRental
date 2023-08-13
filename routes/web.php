@@ -2,9 +2,12 @@
 
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BookingsController;
+use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\VehiclesController;
+use App\Models\Payments;
+use Faker\Provider\ar_EG\Payment;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,7 +43,7 @@ Route::get('/admin/dashboard', function () {
     return view('pages.admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-
+Route::get('/carlist/single-car-view/{id}', [VehiclesController::class, 'view_vehicle'])->name('booknow');
 Route::middleware('auth')->group(function () {
 
     Route::get('/user/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -55,8 +58,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin/user/{user_id}', [RegisteredUserController::class, 'destroy'])->name('delete_user');
     Route::delete('/admin/vehicle/{user_id}', [VehiclesController::class, 'destroy'])->name('delete_vehicle');
     Route::put('/admin/vehicle', [VehiclesController::class, 'update'])->name('vehicle_update');
-    Route::get('/carlist/single-car-view/{id}', [VehiclesController::class, 'view_vehicle'])->name('booknow');
+    
     Route::get('/admin/bookings', [BookingsController::class, 'index'])->name('bookings.all');
+    Route::delete('/admin/booking/{bookingId}', [BookingsController::class, 'destroy'])->name('delete_booking');
+
+    Route::get('/car_rent/payment', [PaymentsController::class, 'index'])->name('payment');
     
 
 });
