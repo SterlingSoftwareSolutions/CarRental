@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class Users extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -18,10 +18,21 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'mobile',
         'email',
+        'Address_1',
+        'Address_2',
+        'city',
+        'zip',
+        'driving_license',
+        'driving_license_expire_year',
+        'driving_license_expire_month',
+        'driving_license_expire_date',
         'password',
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -42,4 +53,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    
+    public function images()
+    {
+        return $this->hasMany(Attachments::class, 'referenceId'); // Use 'vehicle_id' as the foreign key column
+    }
 }
