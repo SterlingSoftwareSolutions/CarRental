@@ -42,6 +42,7 @@ Route::get('/admin/dashboard', function () {
 
 
 Route::middleware('auth')->group(function () {
+
     Route::get('/user/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/user/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/user/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -54,8 +55,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin/user/{user_id}', [RegisteredUserController::class, 'destroy'])->name('delete_user');
     Route::delete('/admin/vehicle/{user_id}', [VehiclesController::class, 'destroy'])->name('delete_vehicle');
     Route::put('/admin/vehicle', [VehiclesController::class, 'update'])->name('vehicle_update');
-    Route::get('/admin/bookings', [BookingsController::class, 'index'])->name('bookings.all');
     Route::get('/carlist/single-car-view/{id}', [VehiclesController::class, 'view_vehicle'])->name('booknow');
+    Route::get('/admin/bookings', [BookingsController::class, 'index'])->name('bookings.all');
+    
 
 });
 

@@ -19,6 +19,7 @@
     <!-- section one -->
     <div class="flex flex-wrap h-full md:max-h-full md:justify-center md:items-start">
         <div class="md:w-full lg:w-2/6">
+
             <!-- image carosol -->
             <div class="container border-2 ">
                 <div class="mySlides">
@@ -58,6 +59,7 @@
                 </div>
             </div>
             <!-- end image carosol -->
+
             <!-- vehicle details section -->
             <div class="flex justify-between items-center p-4">
                 <div class="grid w-6/6 text-center">
@@ -75,6 +77,7 @@
                 </div>
             </div>
             <!-- end vehicle details section -->
+
             <!-- vehicle spesification section -->
             <div>
                 <div>
@@ -120,6 +123,7 @@
                 </div>
             </div>
             <!-- end vehicle spesification section -->
+
             <!-- vehicle description section -->
             <div class="mt-8">
                 <div>
@@ -127,12 +131,15 @@
                 </div>
                 <hr class="border-1 border-gary-600">
                 <div class="mt-4 whitespace-normal">
-                {{ $vehicle['description']}}
+                    {{ $vehicle['description']}}
                 </div>
             </div>
             <!-- end vehicle description section -->
+
         </div>
+
         <div class="md:w-full lg:w-2/6 grid grid-flow-row h-screen mt-24">
+
             <!-- pickup foam -->
             <div class="bg-[#F8FFF2] grid md:p-8 md:mt-0">
                 <h1 class="text-emerald-600 font-semibold text-xl">{{ $vehicle['year']}} {{ $vehicle['make']}} {{ $vehicle['model']}} {{ $vehicle['body_type']}}</h1>
@@ -142,51 +149,61 @@
                         <h1 class="text-white">$ {{ $vehicle['price']}} /hour</h1>
                     </div>
                 </div>
-                <div>
-                    <form action="/action_page.php">
+                <form method="POST" action="{{ route('bookvehicle') }}" >
+                    @csrf
+                    <input class="hidden" type="text" id="vehicle_id" name="vehicle_id" value="{{$vehicle['id']}}">
+
+                    <!-- Pickup Location  -->
+                    <div>
                         <p class="mt-2 font-semibold text-[#707070]">Pick-up Location</p>
-                        <select class="w-full rounded-md border-none shadow-md" name="cars" id="cars">
+                        <select class="w-full rounded-md border-none shadow-md" name="pickup" id="pickup">
                             <option value="LocationOne">Location One</option>
                             <option value="LocationTwo">Location two</option>
                             <option value="LocationThree">Location Three</option>
                             <option value="LocationFour">Location four</option>
                         </select>
-                </div>
-                <div>
-                    <p class="mt-2 font-semibold text-[#707070]">Drop-off Location</p>
-                    <select class="w-full rounded-md border-none shadow-md" name="cars" id="cars">
-                        <option value="LocationOne">Location One</option>
-                        <option value="LocationTwo">Location two</option>
-                        <option value="LocationThree">Location Three</option>
-                        <option value="LocationFour">Location four</option>
-                    </select>
-                </div>
-                <p class="mt-2 font-semibold text-[#707070]">Pick-up Date & Time</p>
-                <div class="flex justify-center items-center gap-4 w-full">
-                    <div class="w-full">
-                        <input class="w-full rounded-md border-none shadow-md" type="date" id="birthday" name="birthday">
+
                     </div>
-                    <div class="w-full">
-                        <input class="w-full rounded-md border-none shadow-md" type="date" id="birthday" name="birthday">
+
+                    <!-- Drop Off Location  -->
+                    <div>
+                        <p class="mt-2 font-semibold text-[#707070]">Drop-off Location</p>
+                        <select class="w-full rounded-md border-none shadow-md" name="dropoff" id="dropoff">
+                            <option value="LocationOne">Location One</option>
+                            <option value="LocationTwo">Location two</option>
+                            <option value="LocationThree">Location Three</option>
+                            <option value="LocationFour">Location four</option>
+                        </select>
                     </div>
-                </div>
-                <p class="mt-2 font-semibold text-[#707070]">Drop-off Date & Time</p>
-                <div class="flex items-center gap-4">
-                    <div class="w-full">
-                        <input class="w-full rounded-md border-none shadow-md" type="time" name="" id="">
+
+                    <p class="mt-2 font-semibold text-[#707070]">Pick-up Date & Time</p>
+
+                    <div class="flex justify-center items-center gap-4 w-full">
+                        <div class="w-full">
+                            <input class="w-full rounded-md border-none shadow-md" type="datetime-local" id="pickup_time" name="pickup_time">
+                        </div>
+                      
                     </div>
-                    <div class="w-full">
-                        <input class="w-full rounded-md border-none shadow-md" type="time" name="" id="">
+
+                    <p class="mt-2 font-semibold text-[#707070]">Drop-off Date & Time</p>
+
+                    <div class="flex items-center gap-4">
+                        <div class="w-full">
+                            <input class="w-full rounded-md border-none shadow-md" type="datetime-local" name="dropoff_time" id="dropoff_time">
+                        </div>
+                        
                     </div>
-                </div>
-                <div class="flex justify-center items-center pt-8">
-                    <button class="w-full bg-emerald-600 p-3 rounded text-white font-semibold" name="cars" id="cars">
-                        Book Now
-                    </button>
-                    </form>
-                </div>
+
+                    <div class="flex justify-center items-center pt-8">
+                        <button type="submit" class="w-full bg-emerald-600 p-3 rounded text-white font-semibold" name="cars" id="cars">
+                            Book Now
+                        </button>
+
+                    </div>
+                </form>
             </div>
             <!-- end pickup foam -->
+
             <!-- conatct number section -->
             <div class="flex justify-center items-center">
                 <div class="bg-emerald-600 rounded text-center w-10/12 p-4">
@@ -200,6 +217,7 @@
                 </div>
             </div>
             <!-- end conatct number section -->
+
             <!-- review section -->
             <div class="p-8">
                 <h1>1 Comment</h1>
@@ -225,6 +243,7 @@
                 <p class="text-black"> <span class="text-emerald-600">hasi_nimantha</span> Excellent service, clean cars, and helpful staff. Highly recommend for car rentals</p>
             </div>
             <!-- end review section -->
+
             <!--  rating foam -->
             <div class="p-8">
                 <div>

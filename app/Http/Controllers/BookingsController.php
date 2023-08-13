@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBookingsRequest;
 use App\Http\Requests\UpdateBookingsRequest;
 use App\Models\Bookings;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class BookingsController extends Controller
 {
@@ -14,15 +16,25 @@ class BookingsController extends Controller
     public function index()
     {
         $query = Bookings::query();
-        $vehicles = $query->with('images')->get();
+        $bookings = $query->with(['user', 'vehicle'])->get();
 
-        return view('pages.admin.bookings', ['bookings' => $vehicles]);
+        foreach ($bookings as $key => $booking) {
+            $pickupTime = Carbon::parse($booking['pickup_time']);
+            $dropoffTime = Carbon::parse($booking['dropoff_time']);
+            // Calculate the difference in days
+            $daysCount = $dropoffTime->diffInDays($pickupTime);
+            $booking['bookingDaysCount'] = $daysCount;
+        }
+
+
+
+
+
+        return view('pages.admin.bookings', ['bookings' => $bookings]);
     }
     public function singlecar($id)
     {
         $query = Bookings::query();
-
-        return view('pages.admin.bookings', ['bookings' => $vehicles]);
     }
 
     /**
@@ -36,9 +48,24 @@ class BookingsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreBookingsRequest $request)
+    public function store(Request $request)
     {
-        //
+
+
+
+        $Booking = Bookings::create([
+            'pickup' => $request->pickup,
+            'pickup_time' => $request->pickup_time,
+            'dropoff_time' => $request->dropoff_time,
+            'dropoff' => $request->dropoff,
+            'vehicle_id' => $request->vehicle_id,
+            'user_id' => auth()->id(),
+
+        ]);
+
+        // You can add additional logic or redirect here
+
+        return redirect()->route('home')->with('success', 'Vehicle created successfully.');
     }
 
     /**

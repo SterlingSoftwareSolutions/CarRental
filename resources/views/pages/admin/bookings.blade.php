@@ -81,42 +81,50 @@
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                                     </svg>
                                 </div>
-                                <input type="search" id="default-search" class="border-none w-full p-4 pl-10 text-sm text-gray-500 bg-transparent focus:ring-0" placeholder="Search"  >
+                                <input type="search" id="default-search" class="border-none w-full p-4 pl-10 text-sm text-gray-500 bg-transparent focus:ring-0" placeholder="Search">
                             </div>
                         </form>
                     </div>
-
-
-
                 </div>
                 <!-- booking List  -->
-                <div class="overflow-auto max-h-[600px] ">
+                <div class="">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
                         <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
-                                    booking
+                                    Booking
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    VIN
+                                    Customer
                                 </th>
 
                                 <th scope="col" class="px-6 py-3">
-                                    Body Type
+                                    Driver' License
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Pickup Location
                                 </th>
 
                                 <th scope="col" class="px-6 py-3">
-                                    Color
+                                    Drop Off Location
                                 </th>
 
                                 <th scope="col" class="px-6 py-3">
-                                    <div class="flex items-center">
-                                        Price
-                                        <a href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                                            </svg></a>
-                                    </div>
+                                    Pick up Date & Time
                                 </th>
+
+                                <th scope="col" class="px-6 py-3">
+                                    Drop off Date & Time
+                                </th>
+
+                                <th scope="col" class="px-6 py-3">
+                                    Amount
+                                </th>
+
+                                <th scope="col" class="px-6 py-3 text-center">
+                                    Advance
+                                </th>
+
                                 <th scope="col" class="px-6 py-3">
                                     <span class="sr-only">Edit</span>
 
@@ -128,30 +136,49 @@
 
                             @foreach ($bookings as $booking)
                             <tr class="bg-white border-b">
-
-
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
                                     <div class="flex items-center">
                                         <div class="me-3">
-                                            <img src="{{ Storage::url($booking->images[0]->file_path) }}" class="rounded-full w-10 h-10" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
+                                            <img src="{{ Storage::url($booking->vehicle->images[0]->file_path) }}" class="rounded-full w-10 h-10" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
                                         </div>
                                         <div>
-                                            <p>{{ $booking['make']}} {{ $booking['model']}}</p>
+                                            <p>{{ $booking->vehicle['make']}} {{ $booking->vehicle['model']}} #{{ $booking->vehicle['vin']}}</p>
                                         </div>
                                     </div>
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{ $booking['vin']}}
+                                    {{ $booking->user['first_name']}} {{ $booking->user['last_name']}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $booking['body_type']}}
+                                    {{ $booking->user['driving_license']}}
+                                </td>
+
+                                <td class="px-6 py-4">
+                                    {{ $booking['pickup']}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $booking['color']}}
+                                    {{ $booking['dropoff']}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $booking['price']}}
+                                    {{ $booking['pickup_time']}}
                                 </td>
+                                <td class="px-6 py-4">
+                                    {{ $booking['dropoff_time']}}
+                                </td>
+
+                                <td class="px-6 py-4">
+                                    $ {{ $booking['bookingDaysCount'] * $booking->vehicle['price']}}
+                                </td>
+
+                                <td class="px-6 py-4">
+                                   
+                                    
+                                <span class="bg-green-600 py-2 px-3 rounded-full text-white">Paid</span>
+                                <span class="bg-red-600 py-2 px-3 rounded-full text-white">Unpaid</span>
+                                    
+                                   
+                                </td>
+
                                 <td class="px-6 py-4 text-right">
                                     <a href="/admin/bookings/{{ $booking['id']}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                     /
@@ -174,232 +201,6 @@
 
 
             </div>
-
-            <div class="w-5/10 mx-auto p-6 m-10 relative shadow-md sm:rounded-lg bg-white ">
-                <div>
-                    <h1 class="flex text-gray-500 font-bold text-2xl justify-center py-6">Add a New booking</h1>
-                </div>
-                <form method="POST" action="{{ isset($booking_one) ? route('booking_update', ['booking_id' => $booking_one->id]) : route('bookings.all') }}" enctype="multipart/form-data">
-                    @csrf
-                    
-                    @if(isset($booking_one))
-                    @method('PUT')
-                    @endif
-
-                    <!-- Make -->
-                    <div>
-                        <x-input-label for="make" :value="__('Make')" />
-                        <x-text-input id="make" class="block mt-1 w-full" type="text" name="make" :value="$booking_one['make'] ?? old('make')"   autofocus />
-                        <x-input-error :messages="$errors->get('make')" class="mt-2" />
-                    </div>
-
-                    <!-- Model -->
-                    <div>
-                        <x-input-label for="model" :value="__('Model')" />
-                        <x-text-input id="model" class="block mt-1 w-full" type="text" name="model" :value="$booking_one['model'] ?? old('model')"   autofocus />
-                        <x-input-error :messages="$errors->get('model')" class="mt-2" />
-                    </div>
-
-                    <!-- VIN -->
-                    <div>
-                        <x-input-label for="vin" :value="__('VIN')" />
-                        <x-text-input id="vin" class="block mt-1 w-full" type="text" name="vin" :value="$booking_one['vin'] ?? old('vin')"   autofocus />
-                        <x-input-error :messages="$errors->get('vin')" class="mt-2" />
-                    </div>
-
-                    <!-- Body Type -->
-                    <div>
-                        <x-input-label for="body_type" :value="__('Body Type')" />
-                        <x-text-input id="body_type" class="block mt-1 w-full" type="text" name="body_type" :value="$booking_one['body_type'] ?? old('body_type')"   autofocus />
-                        <x-input-error :messages="$errors->get('body_type')" class="mt-2" />
-                    </div>
-
-                    <!-- Year -->
-                    <div>
-                        <x-input-label for="year" :value="__('Year')" />
-                        <x-text-input id="year" class="block mt-1 w-full" type="text" name="year" :value="$booking_one['year'] ?? old('year')"   autofocus />
-                        <x-input-error :messages="$errors->get('year')" class="mt-2" />
-                    </div>
-
-                    <!-- Fuel Type -->
-                    <div>
-                        <x-input-label for="fuel_type" :value="__('Fuel Type')" />
-                        <x-text-input id="fuel_type" class="block mt-1 w-full" type="text" name="fuel_type" :value="$booking_one['fuel_type'] ?? old('fuel_type')"   autofocus />
-                        <x-input-error :messages="$errors->get('fuel_type')" class="mt-2" />
-                    </div>
-
-                    <!-- Transmission -->
-                    <div>
-                        <x-input-label for="transmission" :value="__('Transmission')" />
-                        <x-text-input id="transmission" class="block mt-1 w-full" type="text" name="transmission" :value="$booking_one['transmission'] ?? old('transmission')"   autofocus />
-                        <x-input-error :messages="$errors->get('transmission')" class="mt-2" />
-                    </div>
-
-                    <!-- Mileage -->
-                    <div>
-                        <x-input-label for="mileage" :value="__('Mileage')" />
-                        <x-text-input id="mileage" class="block mt-1 w-full" type="text" name="mileage" :value="$booking_one['mileage'] ?? old('mileage')"   autofocus />
-                        <x-input-error :messages="$errors->get('mileage')" class="mt-2" />
-                    </div>
-
-                    <!-- Color -->
-                    <div>
-                        <x-input-label for="color" :value="__('Color')" />
-                        <x-text-input id="color" class="block mt-1 w-full" type="text" name="color" :value="$booking_one['color'] ?? old('color')"   autofocus />
-                        <x-input-error :messages="$errors->get('color')" class="mt-2" />
-                    </div>
-
-                    <!-- Luggage -->
-                    <div>
-                        <x-input-label for="luggage" :value="__('Luggage')" />
-                        <x-text-input id="luggage" class="block mt-1 w-full" type="text" name="luggage" :value="$booking_one['luggage'] ?? old('luggage')"   autofocus />
-                        <x-input-error :messages="$errors->get('luggage')" class="mt-2" />
-                    </div>
-
-                    <!-- Doors -->
-                    <div>
-                        <x-input-label for="doors" :value="__('Doors')" />
-                        <x-text-input id="doors" class="block mt-1 w-full" type="text" name="doors" :value="$booking_one['doors'] ?? old('doors')"   autofocus />
-                        <x-input-error :messages="$errors->get('doors')" class="mt-2" />
-                    </div>
-
-                    <!-- Passengers -->
-                    <div>
-                        <x-input-label for="passengers" :value="__('Passengers')" />
-                        <x-text-input id="passengers" class="block mt-1 w-full" type="text" name="passengers" :value="$booking_one['passengers'] ?? old('passengers')"   />
-                        <x-input-error :messages="$errors->get('passengers')" class="mt-2" />
-                    </div>
-
-                    <!-- Price -->
-                    <div>
-                        <x-input-label for="price" :value="__('Price')" />
-                        <x-text-input id="price" class="block mt-1 w-full" type="text" name="price" :value="$booking_one['price'] ?? old('price')"   autofocus />
-                        <x-input-error :messages="$errors->get('price')" class="mt-2" />
-                    </div>
-
-                    <div class="grid sm:grid-cols-4 gap-10 mt-10">
-                        <script>
-                            function previewImage(event) {
-                                var image = document.getElementById('preview');
-                                image.src = URL.createObjectURL(event.target.files[0]);
-                                image.style.display = 'block';
-                            }
-
-                            function previewImage2(event) {
-                                var image = document.getElementById('preview_2');
-                                image.src = URL.createObjectURL(event.target.files[0]);
-                                image.style.display = 'block';
-                            }
-
-                            function previewImage3(event) {
-                                var image = document.getElementById('preview_3');
-                                image.src = URL.createObjectURL(event.target.files[0]);
-                                image.style.display = 'block';
-                            }
-
-                            function previewImage4(event) {
-                                var image = document.getElementById('preview_4');
-                                image.src = URL.createObjectURL(event.target.files[0]);
-                                image.style.display = 'block';
-                            }
-                        </script>
-                        <!-- Image 1 -->
-
-                        <div class="mb-6">
-                            <label for="image_1" class="block text-gray-700 font-semibold mb-2">{{ __('Image 1') }}</label>
-                            <div class="relative rounded-lg border-dashed border-2 border-gray-300 p-6 bg-white">
-                                <div class="overflow-hidden bg-cover  p-4 bg-white text-center flex flex-col items-center justify-center">
-
-                                    <h2 class="mb-2">Preview:</h2>
-                                    <img  id="preview" class="object-cover min-w-[300px] max-w-[300px] min-h-[200px] max-h-[200px]" style="display: none;">
-                                </div>
-
-                                <label for="image_1" class="cursor-pointer text-center">
-                                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 48 48">
-                                        <path d="M19.406 4L16 7.406l5.297 5.297H8v7.828h5.297L16 25.594 19.406 29l6-6-6-6zm9.188 27.172a6.95 6.95 0 0 0 0-9.84l-2.48-2.48 1.416-1.414 2.478 2.478a4.95 4.95 0 0 1 0 7.007 4.95 4.95 0 0 1-7.008 0l-2.478-2.478-1.414 1.414 2.48 2.48a6.95 6.95 0 0 0 9.838 0z" />
-                                        <path d="M24 12a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
-                                    </svg>
-                                    <p class="mt-1 text-sm text-gray-600">{{ __('Drag and drop an image here or click to browse.') }}</p>
-                                </label>
-                                <input id="image_1" class="hidden" type="file" name="image_1"   onchange="previewImage(event)" />
-                            </div>
-                            <x-input-error :messages="$errors->get('image_1')" class="mt-2" />
-                        </div>
-
-                        <!-- Image 2 -->
-                        <div class="mb-6">
-                            <label for="image_2" class="block text-gray-700 font-semibold mb-2">{{ __('Image 2') }}</label>
-                            <div class="relative rounded-lg border-dashed border-2 border-gray-300 p-6 bg-white">
-                                <div class="overflow-hidden bg-cover  p-4 bg-white text-center flex flex-col items-center justify-center">
-
-                                    <h2 class="mb-2">Preview:</h2>
-                                    <img id="preview_2" class="object-cover min-w-[300px] max-w-[300px] min-h-[200px] max-h-[200px]" style="display: none;">
-                                </div>
-                                <label for="image_2" class="cursor-pointer text-center">
-                                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 48 48">
-                                        <path d="M19.406 4L16 7.406l5.297 5.297H8v7.828h5.297L16 25.594 19.406 29l6-6-6-6zm9.188 27.172a6.95 6.95 0 0 0 0-9.84l-2.48-2.48 1.416-1.414 2.478 2.478a4.95 4.95 0 0 1 0 7.007 4.95 4.95 0 0 1-7.008 0l-2.478-2.478-1.414 1.414 2.48 2.48a6.95 6.95 0 0 0 9.838 0z" />
-                                        <path d="M24 12a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
-                                    </svg>
-                                    <p class="mt-1 text-sm text-gray-600">{{ __('Drag and drop an image here or click to browse.') }}</p>
-                                </label>
-                                <input id="image_2" class="hidden" type="file" name="image_2"   onchange="previewImage2(event)" />
-                            </div>
-                            <x-input-error :messages="$errors->get('image_2')" class="mt-2" />
-                        </div>
-
-                        <!-- Image 3 -->
-                        <div class="mb-6">
-                            <label for="image_3" class="block text-gray-700 font-semibold mb-2">{{ __('Image 3') }}</label>
-                            <div class="relative rounded-lg border-dashed border-2 border-gray-300 p-6 bg-white">
-                                <div class="overflow-hidden bg-cover  p-4 bg-white text-center flex flex-col items-center justify-center">
-                                    <h2 class="mb-2">Preview:</h2>
-                                    <img id="preview_3" class="object-cover min-w-[300px] max-w-[300px] min-h-[200px] max-h-[200px]" style="display: none;">
-                                </div>
-                                <label for="image_3" class="cursor-pointer text-center">
-                                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 48 48">
-                                        <path d="M19.406 4L16 7.406l5.297 5.297H8v7.828h5.297L16 25.594 19.406 29l6-6-6-6zm9.188 27.172a6.95 6.95 0 0 0 0-9.84l-2.48-2.48 1.416-1.414 2.478 2.478a4.95 4.95 0 0 1 0 7.007 4.95 4.95 0 0 1-7.008 0l-2.478-2.478-1.414 1.414 2.48 2.48a6.95 6.95 0 0 0 9.838 0z" />
-                                        <path d="M24 12a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
-                                    </svg>
-                                    <p class="mt-1 text-sm text-gray-600">{{ __('Drag and drop an image here or click to browse.') }}</p>
-                                </label>
-                                <input id="image_3" class="hidden" type="file" name="image_3"   onchange="previewImage3(event)" />
-                            </div>
-                            <x-input-error :messages="$errors->get('image_3')" class="mt-2" />
-                        </div>
-
-                        <!-- Image 4 -->
-                        <div class="mb-6">
-                            <label for="image_4" class="block text-gray-700 font-semibold mb-2">{{ __('Image 4') }}</label>
-                            <div class="relative rounded-lg border-dashed border-2 border-gray-300 p-6 bg-white">
-                                <div class="overflow-hidden bg-cover  p-4 bg-white text-center flex flex-col items-center justify-center">
-
-                                    <h2 class="mb-2">Preview:</h2>
-                                    <img id="preview_4" class="object-cover min-w-[300px] max-w-[300px] min-h-[200px] max-h-[200px]" style="display: none;">
-                                </div>
-                                <label for="image_4" class="cursor-pointer text-center">
-                                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 48 48">
-                                        <path d="M19.406 4L16 7.406l5.297 5.297H8v7.828h5.297L16 25.594 19.406 29l6-6-6-6zm9.188 27.172a6.95 6.95 0 0 0 0-9.84l-2.48-2.48 1.416-1.414 2.478 2.478a4.95 4.95 0 0 1 0 7.007 4.95 4.95 0 0 1-7.008 0l-2.478-2.478-1.414 1.414 2.48 2.48a6.95 6.95 0 0 0 9.838 0z" />
-                                        <path d="M24 12a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
-                                    </svg>
-                                    <p class="mt-1 text-sm text-gray-600">{{ __('Drag and drop an image here or click to browse.') }}</p>
-                                </label>
-                                <input id="image_4" class="hidden" type="file" name="image_4"   onchange="previewImage4(event)" />
-                            </div>
-                            <x-input-error :messages="$errors->get('image_4')" class="mt-2" />
-                        </div>
-                    </div>
-
-
-                    <div class="flex items-center justify-end mt-4">
-                        <x-primary-button class="ml-4">
-                            {{ __('Create booking') }}
-                        </x-primary-button>
-                    </div>
-                </form>
-            </div>
-
-
-
         </div>
     </div>
 
