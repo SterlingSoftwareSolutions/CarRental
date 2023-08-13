@@ -1,4 +1,3 @@
-
 <div class="px-6 pt-3 sm:ml-64">
     <div class="grid grid-cols-1 gap-4 mb-4">
         <div class="h-24 bg-gray-50 dark:bg-white rounded-2xl items-center drop-shadow-lg flex px-4">
@@ -55,9 +54,7 @@
                 </div>
             </div>
 
-     
-                </div>
-            </div>
+
         </div>
     </div>
 </div>
