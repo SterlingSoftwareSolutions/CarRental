@@ -133,7 +133,7 @@
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
                                     <div class="flex items-center">
                                         <div class="me-3">
-                                            <img src="{{ Storage::url($vehicle->images[0]->image_path) }}" class="rounded-full w-10 h-10" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
+                                            <img src="{{ Storage::url($vehicle->images[0]->file_path) }}" class="rounded-full w-10 h-10" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
                                         </div>
                                         <div>
                                             <p>{{ $vehicle['make']}} {{ $vehicle['model']}}</p>
@@ -153,7 +153,7 @@
                                     {{ $vehicle['price']}}
                                 </td>
                                 <td class="px-6 py-4 text-right">
-                                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                    <a href="/admin/vehicles/{{ $vehicle['id']}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                     /
                                     <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
                                 </td>
@@ -180,91 +180,91 @@
                     <!-- Make -->
                     <div>
                         <x-input-label for="make" :value="__('Make')" />
-                        <x-text-input id="make" class="block mt-1 w-full" type="text" name="make" :value="old('make')" required autofocus />
+                        <x-text-input id="make" class="block mt-1 w-full" type="text" name="make" :value="$vehicle_one['make'] ?? old('make')" required autofocus />
                         <x-input-error :messages="$errors->get('make')" class="mt-2" />
                     </div>
 
                     <!-- Model -->
                     <div>
                         <x-input-label for="model" :value="__('Model')" />
-                        <x-text-input id="model" class="block mt-1 w-full" type="text" name="model" :value="old('model')" required autofocus />
+                        <x-text-input id="model" class="block mt-1 w-full" type="text" name="model" :value="$vehicle_one['model'] ?? old('model')" required autofocus />
                         <x-input-error :messages="$errors->get('model')" class="mt-2" />
                     </div>
 
                     <!-- VIN -->
                     <div>
                         <x-input-label for="vin" :value="__('VIN')" />
-                        <x-text-input id="vin" class="block mt-1 w-full" type="text" name="vin" :value="old('vin')" required autofocus />
+                        <x-text-input id="vin" class="block mt-1 w-full" type="text" name="vin" :value="$vehicle_one['vin'] ?? old('vin')" required autofocus />
                         <x-input-error :messages="$errors->get('vin')" class="mt-2" />
                     </div>
 
                     <!-- Body Type -->
                     <div>
                         <x-input-label for="body_type" :value="__('Body Type')" />
-                        <x-text-input id="body_type" class="block mt-1 w-full" type="text" name="body_type" :value="old('body_type')" required autofocus />
+                        <x-text-input id="body_type" class="block mt-1 w-full" type="text" name="body_type" :value="$vehicle_one['body_type'] ?? old('body_type')" required autofocus />
                         <x-input-error :messages="$errors->get('body_type')" class="mt-2" />
                     </div>
 
                     <!-- Year -->
                     <div>
                         <x-input-label for="year" :value="__('Year')" />
-                        <x-text-input id="year" class="block mt-1 w-full" type="text" name="year" :value="old('year')" required autofocus />
+                        <x-text-input id="year" class="block mt-1 w-full" type="text" name="year" :value="$vehicle_one['year'] ?? old('year')" required autofocus />
                         <x-input-error :messages="$errors->get('year')" class="mt-2" />
                     </div>
 
                     <!-- Fuel Type -->
                     <div>
                         <x-input-label for="fuel_type" :value="__('Fuel Type')" />
-                        <x-text-input id="fuel_type" class="block mt-1 w-full" type="text" name="fuel_type" :value="old('fuel_type')" required autofocus />
+                        <x-text-input id="fuel_type" class="block mt-1 w-full" type="text" name="fuel_type" :value="$vehicle_one['fuel_type'] ?? old('fuel_type')" required autofocus />
                         <x-input-error :messages="$errors->get('fuel_type')" class="mt-2" />
                     </div>
 
                     <!-- Transmission -->
                     <div>
                         <x-input-label for="transmission" :value="__('Transmission')" />
-                        <x-text-input id="transmission" class="block mt-1 w-full" type="text" name="transmission" :value="old('transmission')" required autofocus />
+                        <x-text-input id="transmission" class="block mt-1 w-full" type="text" name="transmission" :value="$vehicle_one['transmission'] ?? old('transmission')" required autofocus />
                         <x-input-error :messages="$errors->get('transmission')" class="mt-2" />
                     </div>
 
                     <!-- Mileage -->
                     <div>
                         <x-input-label for="mileage" :value="__('Mileage')" />
-                        <x-text-input id="mileage" class="block mt-1 w-full" type="text" name="mileage" :value="old('mileage')" required autofocus />
+                        <x-text-input id="mileage" class="block mt-1 w-full" type="text" name="mileage" :value="$vehicle_one['mileage'] ?? old('mileage')" required autofocus />
                         <x-input-error :messages="$errors->get('mileage')" class="mt-2" />
                     </div>
 
                     <!-- Color -->
                     <div>
                         <x-input-label for="color" :value="__('Color')" />
-                        <x-text-input id="color" class="block mt-1 w-full" type="text" name="color" :value="old('color')" required autofocus />
+                        <x-text-input id="color" class="block mt-1 w-full" type="text" name="color" :value="$vehicle_one['color'] ?? old('color')" required autofocus />
                         <x-input-error :messages="$errors->get('color')" class="mt-2" />
                     </div>
 
                     <!-- Luggage -->
                     <div>
                         <x-input-label for="luggage" :value="__('Luggage')" />
-                        <x-text-input id="luggage" class="block mt-1 w-full" type="text" name="luggage" :value="old('luggage')" required autofocus />
+                        <x-text-input id="luggage" class="block mt-1 w-full" type="text" name="luggage" :value="$vehicle_one['luggage'] ?? old('luggage')" required autofocus />
                         <x-input-error :messages="$errors->get('luggage')" class="mt-2" />
                     </div>
 
                     <!-- Doors -->
                     <div>
                         <x-input-label for="doors" :value="__('Doors')" />
-                        <x-text-input id="doors" class="block mt-1 w-full" type="text" name="doors" :value="old('doors')" required autofocus />
+                        <x-text-input id="doors" class="block mt-1 w-full" type="text" name="doors" :value="$vehicle_one['doors'] ?? old('doors')" required autofocus />
                         <x-input-error :messages="$errors->get('doors')" class="mt-2" />
                     </div>
 
                     <!-- Passengers -->
                     <div>
                         <x-input-label for="passengers" :value="__('Passengers')" />
-                        <x-text-input id="passengers" class="block mt-1 w-full" type="text" name="passengers" :value="old('passengers')" required />
+                        <x-text-input id="passengers" class="block mt-1 w-full" type="text" name="passengers" :value="$vehicle_one['passengers'] ?? old('passengers')" required />
                         <x-input-error :messages="$errors->get('passengers')" class="mt-2" />
                     </div>
 
                     <!-- Price -->
                     <div>
                         <x-input-label for="price" :value="__('Price')" />
-                        <x-text-input id="price" class="block mt-1 w-full" type="text" name="price" :value="old('price')" required autofocus />
+                        <x-text-input id="price" class="block mt-1 w-full" type="text" name="price" :value="$vehicle_one['price'] ?? old('price')" required autofocus />
                         <x-input-error :messages="$errors->get('price')" class="mt-2" />
                     </div>
 
@@ -302,7 +302,7 @@
                                 <div class="overflow-hidden bg-cover  p-4 bg-white text-center flex flex-col items-center justify-center">
 
                                     <h2 class="mb-2">Preview:</h2>
-                                    <img id="preview" class="object-cover min-w-[300px] max-w-[300px] min-h-[200px] max-h-[200px]" style="display: none;">
+                                    <img  id="preview" class="object-cover min-w-[300px] max-w-[300px] min-h-[200px] max-h-[200px]" style="display: none;">
                                 </div>
 
                                 <label for="image_1" class="cursor-pointer text-center">

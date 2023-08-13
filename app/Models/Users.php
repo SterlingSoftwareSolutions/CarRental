@@ -53,4 +53,9 @@ class Users extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    
+    public function images()
+    {
+        return $this->hasMany(Attachments::class, 'referenceId'); // Use 'vehicle_id' as the foreign key column
+    }
 }

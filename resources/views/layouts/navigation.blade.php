@@ -8,11 +8,11 @@
     <div class="line3 bg-white h-1 w-6"></div>
   </div>
   <ul class="nav-links w-2/6 flex justify-between items-center p-4 mx-auto">
-    <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="#">HOME</a></li>
-    <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="#">VEHICLE LIST</a></li>
-    <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="#">ABOUT US</a></li>
-    <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="#">CONTACT US</a></li>
+    <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="{{route('home')}}">HOME</a></li>
+    <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="{{route('carlist')}}">VEHICLE LIST</a></li>
+    <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="{{route('about')}}">ABOUT US</a></li>
+    <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="{{route('contact')}}">CONTACT US</a></li>
     <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="#">MY ACCOUNT</a></li>
-    <li><button class="text-white font-semibold login-button" href="#">Login</button></li>
+    <li><button class="text-white font-semibold login-button" href="{{route('login')}}">Login</button></li>
   </ul>
 </nav>

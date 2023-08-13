@@ -9,24 +9,21 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('vehicle_images', function (Blueprint $table) {
+        Schema::create('attachments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('vehicle_id');
-            $table->string('image_path');
+            $table->unsignedBigInteger('referenceId');
+            $table->string('file_path');
             $table->timestamps();
-    
-            $table->foreign('vehicle_id')->references('id')->on('vehicles')->onDelete('cascade');
         });
     }
-    
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('vehicle_images');
+        Schema::dropIfExists('attachments');
     }
 };
