@@ -18,6 +18,12 @@ class BookingsController extends Controller
 
         return view('pages.admin.bookings', ['bookings' => $vehicles]);
     }
+    public function singlecar($id)
+    {
+        $query = Bookings::query();
+
+        return view('pages.admin.bookings', ['bookings' => $vehicles]);
+    }
 
     /**
      * Show the form for creating a new resource.

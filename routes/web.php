@@ -26,9 +26,11 @@ Route::get('/about', function () {
     return view('pages.about');
 })->name('about');
 
-Route::get('/carlist', function () {
-    return view('pages.carlist');
-})->name('carlist');
+// Route::get('/carlist', function () {
+//     return view('pages.carlist');
+// })->name('carlist');
+
+Route::get('/carlist', [VehiclesController::class, 'index'])->name('carlist');
 
 Route::get('/contact', function () {
     return view('pages.contact');
@@ -53,6 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin/vehicle/{user_id}', [VehiclesController::class, 'destroy'])->name('delete_vehicle');
     Route::put('/admin/vehicle', [VehiclesController::class, 'update'])->name('vehicle_update');
     Route::get('/admin/bookings', [BookingsController::class, 'index'])->name('bookings.all');
+    Route::get('/carlist/single-car-view/{id}', [VehiclesController::class, 'view_vehicle'])->name('booknow');
 
 });
 

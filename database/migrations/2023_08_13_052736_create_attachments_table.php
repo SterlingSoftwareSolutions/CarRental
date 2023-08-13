@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('referenceId');
             $table->string('file_path');
+            $table->string('attachment_type')->default("Other")->nullable();
             $table->timestamps();
         });
     }

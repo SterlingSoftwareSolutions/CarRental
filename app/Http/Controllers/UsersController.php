@@ -9,8 +9,9 @@ class UsersController extends Controller
 {
     public function show_all_users(Request $request)
     {
-        $query = Users::query();
-        $users = $query->with('images')->get();
+        $users = Users::query()->with(['images' => function ($query) {
+            $query->where('attachment_type', 'User Image');
+        }])->get();
         return view('pages.admin.users', ['users' => $users]);
     }
     public function index(Request $request)
@@ -20,10 +21,15 @@ class UsersController extends Controller
     public function edit_user(Request $request,  $userid)
     {
         //dd($request);
-        $query = Users::query();
-        $users = $query->with('images')->get();
+        $users = Users::query()->with(['images' => function ($query) {
+            $query->where('attachment_type', 'User Image');
+        }])->get();
 
-        $user = Users::with('images')->find($userid);
+        $user = Users::query()
+            ->with(['images' => function ($query) {
+                $query->where('attachment_type', 'User Image');
+            }])
+            ->find($userid);
 
         return view('pages.admin.users', ['users' => $users, 'user_one' =>  $user]);
     }

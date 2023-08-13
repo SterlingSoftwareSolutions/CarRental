@@ -62,16 +62,16 @@
             <div class="flex justify-between items-center p-4">
                 <div class="grid w-6/6 text-center">
                     <img src="{{ URL('images/seat-belt.png') }}" class="mx-auto">
-                    <h1 class="text-center text-[#317256] font-semibold mt-2">4 Passengers</h1>
+                    <h1 class="text-center text-[#317256] font-semibold mt-2">{{ $vehicle['passengers']}} Passengers</h1>
                 </div>
 
                 <div class="grid w-6/6 text-center">
                     <img src="{{ URL('images/luggage.png')}}" class="mx-auto">
-                    <h1 class="text-center text-[#317256] font-semibold mt-2">5 Luggages</h1>
+                    <h1 class="text-center text-[#317256] font-semibold mt-2">{{ $vehicle['luggage']}} Luggages</h1>
                 </div>
                 <div class="grid w-6/6 text-center">
                     <img src="{{ URL('images/manual-transmission.png')}}" class="mx-auto">
-                    <h1 class="text-center text-[#317256] font-semibold mt-2">Auto</h1>
+                    <h1 class="text-center text-[#317256] font-semibold mt-2">{{ $vehicle['transmission']}}</h1>
                 </div>
             </div>
             <!-- end vehicle details section -->
@@ -89,14 +89,14 @@
                                 <li>Model:</li>
                                 <li>Body Type:</li>
                                 <li>Year:</li>
-                                <li>Year:</li>
+                                <li>Fuel:</li>
                             </ul>
                             <ul>
-                                <li>Toyota</li>
-                                <li>Crown</li>
-                                <li>Sedan</li>
-                                <li>2008</li>
-                                <li>Petrol</li>
+                                <li>{{ $vehicle['make']}}</li>
+                                <li>{{ $vehicle['model']}}</li>
+                                <li>{{ $vehicle['body_type']}}</li>
+                                <li>{{ $vehicle['year']}}</li>
+                                <li>{{ $vehicle['fuel_type']}}</li>
                             </ul>
                         </div>
 
@@ -109,11 +109,11 @@
                                 <li>Doors:</li>
                             </ul>
                             <ul>
-                                <li>1VXEDYROTER</li>
-                                <li>31,500</li>
-                                <li>Auto</li>
-                                <li>White</li>
-                                <li>4</li>
+                                <li>{{ $vehicle['vin']}}</li>
+                                <li>{{ $vehicle['mileage']}}</li>
+                                <li>{{ $vehicle['transmission']}}</li>
+                                <li>{{ $vehicle['color']}}</li>
+                                <li>{{ $vehicle['doors']}}</li>
                             </ul>
                         </div>
                     </div>
@@ -127,8 +127,7 @@
                 </div>
                 <hr class="border-1 border-gary-600">
                 <div class="mt-4">
-                    <p>Edipisicing eiusmod tempor incididunt labore sed dolore magna aliqa enim ipsum ad minim veniams quis nostrud citation ullam laboris nisi ut aliquip laboris nisi ut aliquip ex ea commod. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> <br>
-                    <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo cons equat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Exepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ipsum perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+                {{ $vehicle['description']}}
                 </div>
             </div>
             <!-- end vehicle description section -->
@@ -136,30 +135,30 @@
         <div class="md:w-full lg:w-2/6 grid grid-flow-row h-screen mt-24">
             <!-- pickup foam -->
             <div class="bg-[#F8FFF2] grid md:p-8 md:mt-0">
-                <h1 class="text-emerald-600 font-semibold text-xl">2008 Toyota Crown Sedan Athlete</h1>
-                <p class="mt-2 font-semibold text-[#707070]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis<br> ante nec justo eleifend consequat. </p>
+                <h1 class="text-emerald-600 font-semibold text-xl">{{ $vehicle['year']}} {{ $vehicle['make']}} {{ $vehicle['model']}} {{ $vehicle['body_type']}}</h1>
+                <p class="mt-2 font-semibold text-[#707070]">{{ $vehicle['short_Description']}}</p>
                 <div class="flex items-center justify-right">
                     <div class="bg-emerald-600 p-2 rounded">
-                        <h1 class="text-white">$ 180 /hour</h1>
+                        <h1 class="text-white">$ {{ $vehicle['price']}} /hour</h1>
                     </div>
                 </div>
                 <div>
                     <form action="/action_page.php">
                         <p class="mt-2 font-semibold text-[#707070]">Pick-up Location</p>
                         <select class="w-full rounded-md border-none shadow-md" name="cars" id="cars">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
+                            <option value="LocationOne">Location One</option>
+                            <option value="LocationTwo">Location two</option>
+                            <option value="LocationThree">Location Three</option>
+                            <option value="LocationFour">Location four</option>
                         </select>
                 </div>
                 <div>
                     <p class="mt-2 font-semibold text-[#707070]">Drop-off Location</p>
                     <select class="w-full rounded-md border-none shadow-md" name="cars" id="cars">
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="opel">Opel</option>
-                        <option value="audi">Audi</option>
+                        <option value="LocationOne">Location One</option>
+                        <option value="LocationTwo">Location two</option>
+                        <option value="LocationThree">Location Three</option>
+                        <option value="LocationFour">Location four</option>
                     </select>
                 </div>
                 <p class="mt-2 font-semibold text-[#707070]">Pick-up Date & Time</p>

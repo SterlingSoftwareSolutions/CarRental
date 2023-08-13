@@ -22,7 +22,9 @@ class Vehicles extends Model
         'luggage',
         'doors',
         'price',
-        'passengers'
+        'passengers',
+        'short_Description',
+        'description'
         
     ];
 
