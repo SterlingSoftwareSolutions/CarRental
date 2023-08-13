@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/vehicles/{vehicle_id}', [VehiclesController::class, 'edit_vehicle'])->name('vehicle.edit');
     Route::post('/admin/vehicles', [VehiclesController::class, 'store'])->name('vehicles.all');
     Route::put('/admin/user', [RegisteredUserController::class, 'update'])->name('update_user');
-    Route::get('/admin/user/{user_id}', [RegisteredUserController::class, 'destroy'])->name('delete_user');
+    Route::delete('/admin/user/{user_id}', [RegisteredUserController::class, 'destroy'])->name('delete_user');
 });
 
 require __DIR__ . '/auth.php';
