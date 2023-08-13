@@ -26,6 +26,8 @@ return new class extends Migration
             $table->string('doors')->nullable();
             $table->string('price')->nullable();
             $table->string('passengers')->nullable();
+            $table->string('short_Description')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

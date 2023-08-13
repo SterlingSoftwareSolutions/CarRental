@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Attachments extends Model
 {
     use HasFactory;
-    protected $fillable = ['referenceId', 'file_path'];
+    protected $fillable = ['referenceId', 'file_path','attachment_type'];
 
     public function vehicle()
     {
