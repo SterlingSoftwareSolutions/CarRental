@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\VehiclesController;
@@ -46,6 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/vehicles', [VehiclesController::class, 'show_all_vehicles'])->name('vehicles.all');
     Route::get('/admin/vehicles/{vehicle_id}', [VehiclesController::class, 'edit_vehicle'])->name('vehicle.edit');
     Route::post('/admin/vehicles', [VehiclesController::class, 'store'])->name('vehicles.all');
+    Route::put('/admin/user', [RegisteredUserController::class, 'update'])->name('update_user');
+    Route::get('/admin/user/{user_id}', [RegisteredUserController::class, 'destroy'])->name('delete_user');
 });
 
 require __DIR__ . '/auth.php';
