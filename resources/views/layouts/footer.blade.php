@@ -7,20 +7,20 @@
         </div>
         <div class="max-w-screen-lg mx-auto px-4 md:px-8 py-12 transition-all duration-500 ease-linear flex items-center">
             <div>
-                <button class="bg-white p-2 px-10 rounded mt-3 text-lg font-bold text-[#3b8665]">Book Now</button>
+                <button class="bg-white p-2 px-10 rounded mt-3 text-lg font-bold text-[#317256] hover:bg">Book Now</button>
             </div>
         </div>
     </div>
     <!-- end get off section -->
     <footer class="bg-emerald-600 dark:bg-gray-900 -mt-5" style="z-index: -999;">
-        <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-            <div class="md:flex md:justify-between">
-                <div class="mb-6 pt-10 md:mb-0">
+        <div class="mx-auto w-full max-w-screen-xl p-4 py-16 lg:py-16">
+            <div class="md:flex md:justify-between mt-5">
+                <div class="mb-6 md:mb-0">
                     <a href="https://flowbite.com/" class="grid items-center mt-5">
                         <p class="text-white">Lorem Ipsum Dolor Sit Amet, Consectetur <br> Adipiscing Elit. Sed Non Risus. Suspendisse <br> Lectus Tortor, Dignissim Sit Amet, </p>
                         <div class="subscribe-form mt-5">
                             <form action="#">
-                                <input class="bg-white" type="text" placeholder="Enter your Email">
+                                <input class="bg-white h-12" type="text" placeholder="Enter your Email">
                                 <button><img src="{{ URL('images/send.png')}}"> </button>
                             </form>
                         </div>
@@ -45,7 +45,7 @@
                         </ul>
                     </div>
                     <div>
-                        <h2 class="mb-6 text-lg font-semibold text-[#E0AA87] uppercase dark:text-white">Our Loaction</h2>
+                        <h2 class="mb-6 text-lg font-semibold text-[#E0AA87] uppercase dark:text-white">Find Us</h2>
                         <ul class="text-white dark:text-gray-400 font-medium">
                             <li class="mb-4 flex">
                                 <a href="" class="hover:underline flex "><img class="w-5 h-5" src="{{ URL('images/location.png')}}">&nbsp 5Th Floor, AH Building Melbourne, Australia</a>
@@ -65,17 +65,17 @@
                     <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
                 </div>
                 <div class="mx-3">
-                    <a href="#" class="bg-white p-3 rounded-lg text-[#059669] hover:text-gray-500">
+                    <a href="#" class="bg-white p-1.5 rounded-lg text-[#317256] hover:text-gray-500">
                         <i class="fab fa-instagram fa-lg"></i>
                     </a>
                 </div>
                 <div class="mx-3">
-                    <a href="#" class="bg-white p-3 rounded-lg text-[#059669] hover:text-gray-500">
+                    <a href="#" class="bg-white p-1.5 rounded-lg text-[#317256] hover:text-gray-500">
                         <i class="fab fa-twitter fa-lg"></i>
                     </a>
                 </div>
                 <div class="mx-3">
-                    <a href="#" class="bg-white p-3 rounded-lg text-[#059669] hover:text-gray-500">
+                    <a href="#" class="bg-white p-1.5 rounded-lg text-[#317256] hover:text-gray-500">
                         <i class="fab fa-facebook-f fa-lg"></i>
                     </a>
                 </div>
