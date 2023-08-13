@@ -143,9 +143,9 @@ class VehiclesController extends Controller
             'description' => 'required|string|max:255',
             'short_Description' => 'required|string|max:255',
             'image_1' => 'required|image|max:2048', // Max file size of 2MB
-            'image_2' => 'nullable|image|max:2048',
-            'image_3' => 'nullable|image|max:2048',
-            'image_4' => 'nullable|image|max:2048',
+            'image_2' => 'required|image|max:2048',
+            'image_3' => 'required|image|max:2048',
+            'image_4' => 'required|image|max:2048',
         ]);
 
         for ($i = 1; $i <= 4; $i++) {

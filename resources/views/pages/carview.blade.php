@@ -22,19 +22,19 @@
             <!-- image carosol -->
             <div class="container border-2 ">
                 <div class="mySlides">
-                    <img src="{{ URL('images/Rectangle 27.png')}}" style="width:100%">
+                    <img src="{{ Storage::url($vehicle->images[0]->file_path) }}" style="width:100%">
                 </div>
 
                 <div class="mySlides">
-                    <img src="{{ URL('images/Group 126.png')}}" style="width:100%">
+                    <img src="{{ Storage::url($vehicle->images[1]->file_path) }}" style="width:100%">
                 </div>
 
                 <div class="mySlides">
-                    <img src="{{ URL('images/Group 126.png')}}" style="width:100%">
+                    <img src="{{ Storage::url($vehicle->images[2]->file_path) }}" style="width:100%">
                 </div>
 
                 <div class="mySlides">
-                    <img src="{{ URL('images/Group 126.png')}}" style="width:100%">
+                    <img src="{{ Storage::url($vehicle->images[3]->file_path) }}" style="width:100%">
                 </div>
 
                 <a class="prev" onclick="plusSlides(-1)">❮</a>
@@ -43,16 +43,16 @@
                 <div class="flex">
                     <div class="row">
                         <div class="column">
-                            <img class="demo cursor" src="{{ URL('images/Rectangle 27.png')}}" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+                            <img class="demo cursor" src="{{ Storage::url($vehicle->images[0]->file_path) }}" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
                         </div>
                         <div class="column">
-                            <img class="demo cursor" src="{{ URL('images/Group 126.png')}}" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
+                            <img class="demo cursor" src="{{ Storage::url($vehicle->images[1]->file_path) }}" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
                         </div>
                         <div class="column">
-                            <img class="demo cursor" src="{{ URL('images/Group 126.png')}}" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+                            <img class="demo cursor" src="{{ Storage::url($vehicle->images[2]->file_path) }}" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
                         </div>
                         <div class="column">
-                            <img class="demo cursor" src="{{ URL('images/Group 126.png')}}" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+                            <img class="demo cursor" src="{{ Storage::url($vehicle->images[3]->file_path) }}" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
                         </div>
                     </div>
                 </div>
@@ -126,7 +126,7 @@
                     <h1 class="text-gray-500 font-semibold text-lg">Vehicle Details</h1>
                 </div>
                 <hr class="border-1 border-gary-600">
-                <div class="mt-4">
+                <div class="mt-4 whitespace-normal">
                 {{ $vehicle['description']}}
                 </div>
             </div>
@@ -136,7 +136,7 @@
             <!-- pickup foam -->
             <div class="bg-[#F8FFF2] grid md:p-8 md:mt-0">
                 <h1 class="text-emerald-600 font-semibold text-xl">{{ $vehicle['year']}} {{ $vehicle['make']}} {{ $vehicle['model']}} {{ $vehicle['body_type']}}</h1>
-                <p class="mt-2 font-semibold text-[#707070]">{{ $vehicle['short_Description']}}</p>
+                <p class="mt-2 font-semibold text-[#707070] whitespace-normal">{{ $vehicle['short_Description']}}</p>
                 <div class="flex items-center justify-right">
                     <div class="bg-emerald-600 p-2 rounded">
                         <h1 class="text-white">$ {{ $vehicle['price']}} /hour</h1>
