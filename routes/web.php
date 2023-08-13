@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\BookingsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\VehiclesController;
@@ -51,6 +52,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin/user/{user_id}', [RegisteredUserController::class, 'destroy'])->name('delete_user');
     Route::delete('/admin/vehicle/{user_id}', [VehiclesController::class, 'destroy'])->name('delete_vehicle');
     Route::put('/admin/vehicle', [VehiclesController::class, 'update'])->name('vehicle_update');
+    Route::get('/admin/bookings', [BookingsController::class, 'index'])->name('bookings.all');
+
 });
 
 require __DIR__ . '/auth.php';
