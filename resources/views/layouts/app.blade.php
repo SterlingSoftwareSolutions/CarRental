@@ -11,13 +11,13 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css" rel="stylesheet" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="font-sans antialiased">
-    <div class="bg-gray-100">
+    <div class="min-h-screen bg-gray-100">
         @php
         $currentUrl = request()->url();
         $excludeUrls = ['/admin/', '/user/'];
@@ -25,9 +25,12 @@
         return strpos($currentUrl, $url) !== false;
         });
         @endphp
+
         @if ($shouldShowNavigation)
         @include('layouts.navigation')
         @endif
+
+
         <!-- Page Heading -->
         @if (isset($header))
         <header class="bg-white shadow">
@@ -42,7 +45,11 @@
             {{ $slot }}
         </main>
     </div>
+    @if ($shouldShowNavigation)
     @include('layouts.footer')
+    @endif
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
 </body>
 
 </html>
