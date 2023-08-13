@@ -44,14 +44,14 @@
                 <div class="flex items-center justify-center mt-12">
                   
                     <a class=" text-base text-main-green hover:text-gray-900 font-bold" href="{{ route('register') }}">
-                        {{ __('Create an Account Now !') }}
+                        {{ __('Create an Account ?') }}
                     </a>
                 
 
                     <a class="text-2xl mx-10">|</a>
 
                     <a class="text-base text-main-green hover:text-gray-900 font-bold" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
+                        {{ __('Forgot your password') }}
                     </a>
                 </div>
             </form>

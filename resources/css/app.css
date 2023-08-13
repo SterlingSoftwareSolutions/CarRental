@@ -259,28 +259,21 @@ svg {
 
 .wrapper-dropdown .dropdown {
     transition: 0.3s;
-
     position: absolute;
     top: 120%;
     right: 0;
     left: 0;
-
     margin: 0;
     padding: 0;
-
     list-style: none;
-
     z-index: 99;
-
     border-radius: 15px;
     box-shadow: inherit;
-    background: inherit;
-
+    background-color: black;
     -webkit-transform-origin: top;
     -moz-transform-origin: top;
     -ms-transform-origin: top;
     transform-origin: top;
-
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
