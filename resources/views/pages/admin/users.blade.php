@@ -264,8 +264,8 @@
                             if (event.target.files.length > 0) {
                                 image.src = URL.createObjectURL(event.target.files[0]);
                                 image.style.display = 'block';
-                            } else if ('{{ $user['
-                                image '] }}' !== '') {
+                            } else if ('{{ $user['image '] }}' !== '') 
+                            {
                                 image.src = '{{ asset($user['
                                 image ']) }}'; // Set default image path
                                 image.style.display = 'block';
@@ -274,9 +274,7 @@
                             }
                         }
                     </script>
-
-
-
+                    
                     <!-- Profile Picture -->
                     <div class="mb-6">
                         <label for="image" class="block text-gray-700 font-semibold mb-2">{{ __('Profile Picture') }}</label>
