@@ -131,9 +131,9 @@
                                     {{ $user['created_at'] }}
                                 </td>
                                 <td class="px-6 py-4 text-right">
-                                    <a href="/admin/users/{{ $user['id']}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                    <a href="/admin/user/{{ $user['id']}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                     /
-                                    <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                                    <a href="/admin/user/{{ $user['id']}}" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -149,91 +149,92 @@
                 <div>
                     <h1 class="flex text-gray-500 font-bold text-2xl justify-center py-6">Add a New User</h1>
                 </div>
-                <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ isset($user_one) ? route('update_user', ['userid' => $user_one->id]) : route('register') }}" enctype="multipart/form-data">
                     @csrf
-
+                    @if(isset($user_one))
+                    @method('PUT')
+                    @endif
                     <!-- first_name -->
                     <div>
                         <x-input-label for="first_name" :value="__('First Name')" />
-                        <h1>{{$user->first_name }}</h1>
-                        <x-text-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name', isset($user) ? $user->first_name : '')" autofocus autocomplete="first_name" />
+                        <x-text-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name', isset($user_one) ? $user_one->first_name : '')" autofocus autocomplete="first_name" />
                         <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
                     </div>
 
                     <!-- last_name -->
                     <div>
                         <x-input-label for="last_name" :value="__('Last Name')" />
-                        <x-text-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" autofocus autocomplete="last_name" />
+                        <x-text-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name', isset($user_one) ? $user_one->last_name : '')" autofocus autocomplete="last_name" />
                         <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
                     </div>
 
                     <!-- mobile -->
                     <div>
                         <x-input-label for="mobile" :value="__('Mobile')" />
-                        <x-text-input id="mobile" class="block mt-1 w-full" type="text" name="mobile" :value="old('mobile')" autofocus autocomplete="mobile" />
+                        <x-text-input id="mobile" class="block mt-1 w-full" type="text" name="mobile" :value="old('mobile', isset($user_one) ? $user_one->mobile : '')" autofocus autocomplete="mobile" />
                         <x-input-error :messages="$errors->get('mobile')" class="mt-2" />
                     </div>
 
                     <!-- Address_1 -->
                     <div>
                         <x-input-label for="Address_1" :value="__('Address 1')" />
-                        <x-text-input id="Address_1" class="block mt-1 w-full" type="text" name="Address_1" :value="old('Address_1')" autofocus autocomplete="Address_1" />
+                        <x-text-input id="Address_1" class="block mt-1 w-full" type="text" name="Address_1" :value="old('Address_1', isset($user_one) ? $user_one->Address_1 : '')" autofocus autocomplete="Address_1" />
                         <x-input-error :messages="$errors->get('Address_1')" class="mt-2" />
                     </div>
 
                     <!-- Address_2 -->
                     <div>
                         <x-input-label for="Address_2" :value="__('Address 2')" />
-                        <x-text-input id="Address_2" class="block mt-1 w-full" type="text" name="Address_2" :value="old('Address_2')" autofocus autocomplete="Address_2" />
+                        <x-text-input id="Address_2" class="block mt-1 w-full" type="text" name="Address_2" :value="old('Address_2', isset($user_one) ? $user_one->Address_2 : '')" autofocus autocomplete="Address_2" />
                         <x-input-error :messages="$errors->get('Address_2')" class="mt-2" />
                     </div>
 
                     <!-- city -->
                     <div>
                         <x-input-label for="city" :value="__('City')" />
-                        <x-text-input id="city" class="block mt-1 w-full" type="text" name="city" :value="old('city')" autofocus autocomplete="city" />
+                        <x-text-input id="city" class="block mt-1 w-full" type="text" name="city" :value="old('city', isset($user_one) ? $user_one->city : '')" autofocus autocomplete="city" />
                         <x-input-error :messages="$errors->get('city')" class="mt-2" />
                     </div>
 
                     <!-- zip -->
                     <div>
                         <x-input-label for="zip" :value="__('ZIP')" />
-                        <x-text-input id="zip" class="block mt-1 w-full" type="text" name="zip" :value="old('zip')" autofocus autocomplete="zip" />
+                        <x-text-input id="zip" class="block mt-1 w-full" type="text" name="zip" :value="old('zip', isset($user_one) ? $user_one->zip : '')" autofocus autocomplete="zip" />
                         <x-input-error :messages="$errors->get('zip')" class="mt-2" />
                     </div>
 
                     <!-- driving_license -->
                     <div>
                         <x-input-label for="driving_license" :value="__('Driving License')" />
-                        <x-text-input id="driving_license" class="block mt-1 w-full" type="text" name="driving_license" :value="old('driving_license')" autofocus autocomplete="driving_license" />
+                        <x-text-input id="driving_license" class="block mt-1 w-full" type="text" name="driving_license" :value="old('driving_license', isset($user_one) ? $user_one->driving_license : '')" autofocus autocomplete="driving_license" />
                         <x-input-error :messages="$errors->get('driving_license')" class="mt-2" />
                     </div>
 
                     <!-- driving_license_expire_year -->
                     <div>
                         <x-input-label for="driving_license_expire_year" :value="__('Driving License Expiry Year')" />
-                        <x-text-input id="driving_license_expire_year" class="block mt-1 w-full" type="text" name="driving_license_expire_year" :value="old('driving_license_expire_year')" autofocus autocomplete="driving_license_expire_year" />
+                        <x-text-input id="driving_license_expire_year" class="block mt-1 w-full" type="text" name="driving_license_expire_year" :value="old('driving_license_expire_year', isset($user_one) ? $user_one->driving_license_expire_year : '')" autofocus autocomplete="driving_license_expire_year" />
                         <x-input-error :messages="$errors->get('driving_license_expire_year')" class="mt-2" />
                     </div>
 
                     <!-- driving_license_expire_month -->
                     <div>
                         <x-input-label for="driving_license_expire_month" :value="__('Driving License Expiry Month')" />
-                        <x-text-input id="driving_license_expire_month" class="block mt-1 w-full" type="text" name="driving_license_expire_month" :value="old('driving_license_expire_month')" autofocus autocomplete="driving_license_expire_month" />
+                        <x-text-input id="driving_license_expire_month" class="block mt-1 w-full" type="text" name="driving_license_expire_month" :value="old('driving_license_expire_month', isset($user_one) ? $user_one->driving_license_expire_month : '')" autofocus autocomplete="driving_license_expire_month" />
                         <x-input-error :messages="$errors->get('driving_license_expire_month')" class="mt-2" />
                     </div>
 
                     <!-- driving_license_expire_date -->
                     <div>
                         <x-input-label for="driving_license_expire_date" :value="__('Driving License Expiry Date')" />
-                        <x-text-input id="driving_license_expire_date" class="block mt-1 w-full" type="text" name="driving_license_expire_date" :value="old('driving_license_expire_date')" autofocus autocomplete="driving_license_expire_date" />
+                        <x-text-input id="driving_license_expire_date" class="block mt-1 w-full" type="text" name="driving_license_expire_date" :value="old('driving_license_expire_date', isset($user_one) ? $user_one->driving_license_expire_date : '')" autofocus autocomplete="driving_license_expire_date" />
                         <x-input-error :messages="$errors->get('driving_license_expire_date')" class="mt-2" />
                     </div>
 
                     <!-- Email Address -->
                     <div class="mt-4">
                         <x-input-label for="email" :value="__('Email')" />
-                        <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" autocomplete="username" />
+                        <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', isset($user_one) ? $user_one->email : '')" autocomplete="username" />
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
 
@@ -250,6 +251,7 @@
                         <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" autocomplete="new-password" />
                         <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                     </div>
+
                     <script>
                         function previewImage(event) {
                             var image = document.getElementById('preview');
