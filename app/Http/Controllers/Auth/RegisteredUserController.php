@@ -56,13 +56,13 @@ class RegisteredUserController extends Controller
             'password' => 'required|string|min:8|confirmed',
             'image' => 'required|image|max:2048', // Max file size of 2MB
         ]);
-        
+
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
-        
+
         $user = Users::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
@@ -78,12 +78,64 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        
+
         $imagePath = $request->file('image')->store('public/user_images');
         Attachments::create([
             'referenceId' => $user->id,
             'file_path' => $imagePath,
         ]);
         return redirect(RouteServiceProvider::HOME);
+    }
+
+    public function update(Request $request)
+    {
+        $user = Users::find($request->userid);
+
+
+        $validatedData = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'mobile' => 'required|string|max:20',
+            'Address_1' => 'required|string|max:255',
+            'Address_2' => 'nullable|string|max:255',
+            'city' => 'required|string|max:255',
+            'zip' => 'required|string|max:20',
+            'driving_license' => 'required|string|max:255',
+            'driving_license_expire_year' => 'required|integer|min:' . date('Y'),
+            'driving_license_expire_month' => 'required|integer|min:1|max:12',
+            'driving_license_expire_date' => 'required|integer|min:1|max:31'
+        ]);
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('public/user_images');
+            Attachments::updateOrCreate([
+                'referenceId' => $user->id,
+            ], [
+                'file_path' => $imagePath,
+            ]);
+        }
+        $user->update($validatedData);
+
+
+        return redirect()->route('users.all')
+            ->with('success', 'User details updated successfully.');
+    }
+
+    public function destroy($id)
+    {
+        $user = Users::find($id);
+
+        if (!$user) {
+            dd($id);
+            return redirect()->route('users.all')
+                ->with('error', 'User not found.');
+        }
+
+        // Delete user's attachment if it exists
+        Attachments::where('referenceId', $user->id)->delete();
+
+        $user->delete();
+
+        return redirect()->route('users.all')
+            ->with('success', 'User deleted successfully.');
     }
 }

@@ -19,13 +19,12 @@ class UsersController extends Controller
 
     public function edit_user(Request $request,  $userid)
     {
- 
+        //dd($request);
         $query = Users::query();
         $users = $query->with('images')->get();
 
         $user = Users::with('images')->find($userid);
 
-
-        return view('pages.admin.users', ['users' => $users, 'user_one' => $userid !== null ? $user : null]);
+        return view('pages.admin.users', ['users' => $users, 'user_one' =>  $user]);
     }
 }
