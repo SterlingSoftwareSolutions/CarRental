@@ -1,6 +1,6 @@
 <div class="grid sm:grid-cols-2 h-full">
     <!-- First Column -->
-    <div class="p-16 grid  place-items-center">
+    <div class="pt-10 grid  place-items-center">
 
         <div class="flex items-center justify-center">
             <h2 class="text-main-green font-extrabold text-3xl">{{ __("Register to Automobex Car Rental") }}</h2>
@@ -12,17 +12,17 @@
                 @csrf
 
 
-                <!-- Email Address -->
+                <!-- Name -->
                 <div>
-                    <label for="email" class="font-bold text-gray-500 pl-4 pb-5 ">Name</label>
-                    <x-text-input id="email" class="block w-full bg-neutral-300" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                    <label for="name" class="font-bold text-gray-500 pl-4 pb-5 ">Name</label>
+                    <x-text-input id="name" class="block w-full bg-neutral-300" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
 
-                <!-- Password -->
+                <!-- Email -->
                 <div class="mt-4">
-                    <label for="password" class="font-bold text-gray-500 pl-4 pb-5 ">Email</label>
+                    <label for="email" class="font-bold text-gray-500 pl-4 pb-5 ">Email</label>
                     <x-text-input id="email" class="block w-full bg-neutral-300" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
@@ -32,10 +32,15 @@
                 <!-- Password -->
                 <div class="mt-4">
                     <label for="password" class="font-bold text-gray-500 pl-4 pb-5 ">Password</label>
-
                     <x-text-input id="password" class="block w-full bg-neutral-300" type="password" name="password" required autocomplete="current-password" />
-
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="mt-4">
+                    <label for="password" class="font-bold text-gray-500 pl-4 pb-5 ">Confirm Password</label>
+                    <x-text-input id="password_confirmation" class="block w-full bg-neutral-300" type="password" name="password_confirmation" required autocomplete="new-password" />
+                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                 </div>
 
                 <!-- Remember Me -->
@@ -52,10 +57,10 @@
                 </div>
 
                 <!-- forget password and new Account links  -->
-                <div class="flex items-center justify-center mt-12">
+                <div class="flex items-center justify-center mt-11">
 
                     <a class=" text-base text-main-green hover:text-gray-900 font-bold" href="{{ route('login') }}">
-                        {{ __('Already have an Account? !') }}
+                        {{ __('Already have an Account ?') }}
                     </a>
                 </div>
             </form>
