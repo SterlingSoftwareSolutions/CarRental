@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('vehicle_id')->references('id')->on('vehicles'); // Replace 'vehicles' with the actual table name
             $table->unsignedBigInteger('user_id'); // Assuming user_id is a foreign key
             $table->foreign('user_id')->references('id')->on('users'); // Replace 'users' with the actual table name
+            $table->string('status');
             $table->timestamps(); // Created_at and updated_at timestamps
         });
     }

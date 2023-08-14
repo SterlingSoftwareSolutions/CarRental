@@ -14,6 +14,7 @@ class Bookings extends Model
         'pickup_time',
         'dropoff_time',
         'vehicle_id',
+        'status',
         'user_id'
     ];
 
@@ -28,4 +29,8 @@ class Bookings extends Model
     {
         return $this->belongsTo(Users::class);
     }
+
+    
+
+
 }

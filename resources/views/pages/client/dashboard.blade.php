@@ -24,8 +24,8 @@
                 </div>
                 <!-- fines vehicle list  -->
                 <h1 class="p-4 font-semibold text-lg text-[#707070]">Fines & Tolls</h1>
-                <div class="flex justify-center items-center">
-                    <div class=" overflow-auto w-4/6 max-h-96 ">
+                <div class="">
+                    <div class="overflow-auto">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
                             <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                                 <tr>
@@ -53,10 +53,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-
-                                @for ($i = 0; $i < 10; $i++) <tr class="bg-white border-b">
-
-
+                                @for ($i = 0; $i < 1; $i++) 
+                                <tr class="bg-white border-b">
                                     <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
                                         <div class="flex items-center">
                                             <div class="me-3">
@@ -88,8 +86,8 @@
                                             </button>
                                         </div>
                                     </td>
-                                    </tr>
-                                    @endfor
+                                </tr>
+                                @endfor
                             </tbody>
                         </table>
                     </div>
@@ -131,7 +129,7 @@
 
                         <tbody>
 
-                            @for ($i = 0; $i < 40; $i++) <tr class="bg-white border-b">
+                            @for ($i = 0; $i < 1; $i++) <tr class="bg-white border-b">
 
 
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
@@ -160,7 +158,7 @@
                                     $ 450.00
                                 </td>
                                 </tr>
-                                @endfor
+                            @endfor
                         </tbody>
                     </table>
                 </div>
