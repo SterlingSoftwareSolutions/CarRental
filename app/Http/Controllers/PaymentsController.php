@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorePaymentsRequest;
 use App\Http\Requests\UpdatePaymentsRequest;
 use App\Models\Bookings;
+use App\Models\Country;
 use App\Models\Payments;
+use Illuminate\Http\Request;
 
 class PaymentsController extends Controller
 {
@@ -13,12 +14,10 @@ class PaymentsController extends Controller
      * Display a listing of the resource.
      */
 
-     public function __construct()
-     {
-         $this->middleware('auth');
-     }
+    
     public function index()
     {
+        $countries = Country::all();
         $bookingData = session('BookingData');
 
         $booking = Bookings::with(['user', 'vehicle'])->find($bookingData->id);
@@ -28,7 +27,7 @@ class PaymentsController extends Controller
         $booking['dropoff_time'] = $bookingData['dropoff_time'];
         $booking['dropoff'] = $bookingData['dropoff'];
         $booking['bookingDaysCount'] = $bookingData['bookingDaysCount'];
-        return view('pages.payment', ['bookingData' => $booking]);
+        return view('pages.payment', ['bookingData' => $booking , 'countries' => $countries]);
     }
 
     /**
@@ -42,9 +41,9 @@ class PaymentsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePaymentsRequest $request)
+    public function store(Request $request)
     {
-        //
+       dd($request);
     }
 
     /**

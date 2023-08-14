@@ -64,6 +64,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/car_rent/payment', [PaymentsController::class, 'index'])->name('payment');
     
+    
 
 });
 
