@@ -133,7 +133,12 @@
                                 <td class="px-6 py-4 text-right">
                                     <a href="/admin/user/{{ $user['id']}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                     /
-                                    <a href="/admin/user/{{ $user['id']}}" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                                    <form action="/admin/user/{{ $user['id'] }}" method="POST" class="inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                                    </form>
+
                                 </td>
                             </tr>
                             @endforeach
@@ -259,8 +264,8 @@
                             if (event.target.files.length > 0) {
                                 image.src = URL.createObjectURL(event.target.files[0]);
                                 image.style.display = 'block';
-                            } else if ('{{ $user['
-                                image '] }}' !== '') {
+                            } else if ('{{ $user['image '] }}' !== '') 
+                            {
                                 image.src = '{{ asset($user['
                                 image ']) }}'; // Set default image path
                                 image.style.display = 'block';
@@ -269,9 +274,7 @@
                             }
                         }
                     </script>
-
-
-
+                    
                     <!-- Profile Picture -->
                     <div class="mb-6">
                         <label for="image" class="block text-gray-700 font-semibold mb-2">{{ __('Profile Picture') }}</label>

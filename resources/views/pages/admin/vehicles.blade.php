@@ -81,7 +81,7 @@
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                                     </svg>
                                 </div>
-                                <input type="search" id="default-search" class="border-none w-full p-4 pl-10 text-sm text-gray-500 bg-transparent focus:ring-0" placeholder="Search" required>
+                                <input type="search" id="default-search" class="border-none w-full p-4 pl-10 text-sm text-gray-500 bg-transparent focus:ring-0" placeholder="Search">
                             </div>
                         </form>
                     </div>
@@ -155,7 +155,12 @@
                                 <td class="px-6 py-4 text-right">
                                     <a href="/admin/vehicles/{{ $vehicle['id']}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                     /
-                                    <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+
+                                    <form action="/admin/vehicle/{{ $vehicle['id'] }}" method="POST" class="inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline" onclick="return confirm('Are you sure you want to delete this Vehicle?')">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
 
@@ -174,99 +179,144 @@
                 <div>
                     <h1 class="flex text-gray-500 font-bold text-2xl justify-center py-6">Add a New Vehicle</h1>
                 </div>
-                <form method="POST" action="{{ route('vehicles.all') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ isset($vehicle_one) ? route('vehicle_update', ['vehicle_id' => $vehicle_one->id]) : route('vehicles.all') }}" enctype="multipart/form-data">
                     @csrf
+
+                    @if(isset($vehicle_one))
+                    @method('PUT')
+                    @endif
 
                     <!-- Make -->
                     <div>
                         <x-input-label for="make" :value="__('Make')" />
-                        <x-text-input id="make" class="block mt-1 w-full" type="text" name="make" :value="$vehicle_one['make'] ?? old('make')" required autofocus />
+                        <x-text-input id="make" class="block mt-1 w-full" type="text" name="make" :value="$vehicle_one['make'] ?? old('make')" autofocus />
                         <x-input-error :messages="$errors->get('make')" class="mt-2" />
                     </div>
 
                     <!-- Model -->
                     <div>
                         <x-input-label for="model" :value="__('Model')" />
-                        <x-text-input id="model" class="block mt-1 w-full" type="text" name="model" :value="$vehicle_one['model'] ?? old('model')" required autofocus />
+                        <x-text-input id="model" class="block mt-1 w-full" type="text" name="model" :value="$vehicle_one['model'] ?? old('model')" autofocus />
                         <x-input-error :messages="$errors->get('model')" class="mt-2" />
                     </div>
 
                     <!-- VIN -->
                     <div>
                         <x-input-label for="vin" :value="__('VIN')" />
-                        <x-text-input id="vin" class="block mt-1 w-full" type="text" name="vin" :value="$vehicle_one['vin'] ?? old('vin')" required autofocus />
+                        <x-text-input id="vin" class="block mt-1 w-full" type="text" name="vin" :value="$vehicle_one['vin'] ?? old('vin')" autofocus />
                         <x-input-error :messages="$errors->get('vin')" class="mt-2" />
                     </div>
 
                     <!-- Body Type -->
                     <div>
                         <x-input-label for="body_type" :value="__('Body Type')" />
-                        <x-text-input id="body_type" class="block mt-1 w-full" type="text" name="body_type" :value="$vehicle_one['body_type'] ?? old('body_type')" required autofocus />
+                        <select id="body_type" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" name="body_type" autofocus>
+                            <option value="Sedan" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Sedan' ? 'selected' : '' }}>Sedan</option>
+                            <option value="SUV" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'SUV' ? 'selected' : '' }}>SUV</option>
+                            <option value="Coupe" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Coupe' ? 'selected' : '' }}>Coupe</option>
+                            <option value="Hatchback" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Hatchback' ? 'selected' : '' }}>Hatchback</option>
+                            <option value="Convertible" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Convertible' ? 'selected' : '' }}>Convertible</option>
+                            <option value="Minivan" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Minivan' ? 'selected' : '' }}>Minivan</option>
+                            <option value="Pickup Truck" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Pickup Truck' ? 'selected' : '' }}>Pickup Truck</option>
+                            <option value="Wagon" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Wagon' ? 'selected' : '' }}>Wagon</option>
+                            <option value="Crossover" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Crossover' ? 'selected' : '' }}>Crossover</option>
+                            <option value="Van" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Van' ? 'selected' : '' }}>Van</option>
+                            <option value="Truck" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Truck' ? 'selected' : '' }}>Truck</option>
+                            <!-- Add more body types as needed with the same `old()` check -->
+                        </select>
                         <x-input-error :messages="$errors->get('body_type')" class="mt-2" />
                     </div>
+
 
                     <!-- Year -->
                     <div>
                         <x-input-label for="year" :value="__('Year')" />
-                        <x-text-input id="year" class="block mt-1 w-full" type="text" name="year" :value="$vehicle_one['year'] ?? old('year')" required autofocus />
+                        <x-text-input id="year" class="block mt-1 w-full" type="text" name="year" :value="$vehicle_one['year'] ?? old('year')" autofocus />
                         <x-input-error :messages="$errors->get('year')" class="mt-2" />
                     </div>
 
                     <!-- Fuel Type -->
                     <div>
                         <x-input-label for="fuel_type" :value="__('Fuel Type')" />
-                        <x-text-input id="fuel_type" class="block mt-1 w-full" type="text" name="fuel_type" :value="$vehicle_one['fuel_type'] ?? old('fuel_type')" required autofocus />
+                        <select id="fuel_type" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" name="fuel_type" autofocus>
+                            <option value="Gasoline" {{ old('fuel_type', $vehicle_one['fuel_type'] ?? '') === 'Gasoline' ? 'selected' : '' }}>Gasoline</option>
+                            <option value="Diesel" {{ old('fuel_type', $vehicle_one['fuel_type'] ?? '') === 'Diesel' ? 'selected' : '' }}>Diesel</option>
+                            <option value="Electric" {{ old('fuel_type', $vehicle_one['fuel_type'] ?? '') === 'Electric' ? 'selected' : '' }}>Electric</option>
+                            <option value="Hybrid" {{ old('fuel_type', $vehicle_one['fuel_type'] ?? '') === 'Hybrid' ? 'selected' : '' }}>Hybrid</option>
+                            <!-- Add more fuel types as needed with the same `old()` check -->
+                        </select>
                         <x-input-error :messages="$errors->get('fuel_type')" class="mt-2" />
                     </div>
+
 
                     <!-- Transmission -->
                     <div>
                         <x-input-label for="transmission" :value="__('Transmission')" />
-                        <x-text-input id="transmission" class="block mt-1 w-full" type="text" name="transmission" :value="$vehicle_one['transmission'] ?? old('transmission')" required autofocus />
+                        <select id="transmission" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" name="transmission" autofocus>
+                            <option value="Auto" {{ old('transmission') === 'Automatic' ? 'selected' : '' }}>Automatic</option>
+                            <option value="Manual" {{ old('transmission') === 'Manual' ? 'selected' : '' }}>Manual</option>
+                        </select>
                         <x-input-error :messages="$errors->get('transmission')" class="mt-2" />
                     </div>
+
 
                     <!-- Mileage -->
                     <div>
                         <x-input-label for="mileage" :value="__('Mileage')" />
-                        <x-text-input id="mileage" class="block mt-1 w-full" type="text" name="mileage" :value="$vehicle_one['mileage'] ?? old('mileage')" required autofocus />
+                        <x-text-input id="mileage" class="block mt-1 w-full" type="text" name="mileage" :value="$vehicle_one['mileage'] ?? old('mileage')" autofocus />
                         <x-input-error :messages="$errors->get('mileage')" class="mt-2" />
                     </div>
 
                     <!-- Color -->
                     <div>
                         <x-input-label for="color" :value="__('Color')" />
-                        <x-text-input id="color" class="block mt-1 w-full" type="text" name="color" :value="$vehicle_one['color'] ?? old('color')" required autofocus />
+                        <x-text-input id="color" class="block mt-1 w-full" type="text" name="color" :value="$vehicle_one['color'] ?? old('color')" autofocus />
                         <x-input-error :messages="$errors->get('color')" class="mt-2" />
                     </div>
 
                     <!-- Luggage -->
                     <div>
                         <x-input-label for="luggage" :value="__('Luggage')" />
-                        <x-text-input id="luggage" class="block mt-1 w-full" type="text" name="luggage" :value="$vehicle_one['luggage'] ?? old('luggage')" required autofocus />
+                        <x-text-input id="luggage" class="block mt-1 w-full" type="text" name="luggage" :value="$vehicle_one['luggage'] ?? old('luggage')" autofocus />
                         <x-input-error :messages="$errors->get('luggage')" class="mt-2" />
                     </div>
 
                     <!-- Doors -->
                     <div>
                         <x-input-label for="doors" :value="__('Doors')" />
-                        <x-text-input id="doors" class="block mt-1 w-full" type="text" name="doors" :value="$vehicle_one['doors'] ?? old('doors')" required autofocus />
+                        <x-text-input id="doors" class="block mt-1 w-full" type="text" name="doors" :value="$vehicle_one['doors'] ?? old('doors')" autofocus />
                         <x-input-error :messages="$errors->get('doors')" class="mt-2" />
                     </div>
 
                     <!-- Passengers -->
                     <div>
                         <x-input-label for="passengers" :value="__('Passengers')" />
-                        <x-text-input id="passengers" class="block mt-1 w-full" type="text" name="passengers" :value="$vehicle_one['passengers'] ?? old('passengers')" required />
+                        <x-text-input id="passengers" class="block mt-1 w-full" type="text" name="passengers" :value="$vehicle_one['passengers'] ?? old('passengers')" />
                         <x-input-error :messages="$errors->get('passengers')" class="mt-2" />
                     </div>
 
                     <!-- Price -->
                     <div>
                         <x-input-label for="price" :value="__('Price')" />
-                        <x-text-input id="price" class="block mt-1 w-full" type="text" name="price" :value="$vehicle_one['price'] ?? old('price')" required autofocus />
+                        <x-text-input id="price" class="block mt-1 w-full" type="text" name="price" :value="$vehicle_one['price'] ?? old('price')" autofocus />
                         <x-input-error :messages="$errors->get('price')" class="mt-2" />
                     </div>
+
+                    <!-- short_Description -->
+                    <div>
+                        <x-input-label for="short_Description" :value="__('Short Description')" />
+                        <textarea id="editor" name="short_Description" rows="8" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" >{{$vehicle_one['short_Description'] ?? old('short_Description')}}</textarea>
+                        <x-input-error :messages="$errors->get('short_Description')" class="mt-2" />
+                    </div>
+
+                    <!-- Description -->
+                    <div>
+                        <x-input-label for="description" :value="__('Description')" />
+                        <textarea id="editor" name="description" rows="8" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">{{$vehicle_one['description'] ?? old('description')}}</textarea>
+                        <x-input-error :messages="$errors->get('description')" class="mt-2" />
+
+                    </div>
+
 
                     <div class="grid sm:grid-cols-4 gap-10 mt-10">
                         <script>
@@ -302,7 +352,7 @@
                                 <div class="overflow-hidden bg-cover  p-4 bg-white text-center flex flex-col items-center justify-center">
 
                                     <h2 class="mb-2">Preview:</h2>
-                                    <img  id="preview" class="object-cover min-w-[300px] max-w-[300px] min-h-[200px] max-h-[200px]" style="display: none;">
+                                    <img id="preview" class="object-cover min-w-[300px] max-w-[300px] min-h-[200px] max-h-[200px]" style="display: none;">
                                 </div>
 
                                 <label for="image_1" class="cursor-pointer text-center">
@@ -312,7 +362,7 @@
                                     </svg>
                                     <p class="mt-1 text-sm text-gray-600">{{ __('Drag and drop an image here or click to browse.') }}</p>
                                 </label>
-                                <input id="image_1" class="hidden" type="file" name="image_1" required onchange="previewImage(event)" />
+                                <input id="image_1" class="hidden" type="file" name="image_1" onchange="previewImage(event)" />
                             </div>
                             <x-input-error :messages="$errors->get('image_1')" class="mt-2" />
                         </div>
@@ -333,7 +383,7 @@
                                     </svg>
                                     <p class="mt-1 text-sm text-gray-600">{{ __('Drag and drop an image here or click to browse.') }}</p>
                                 </label>
-                                <input id="image_2" class="hidden" type="file" name="image_2" required onchange="previewImage2(event)" />
+                                <input id="image_2" class="hidden" type="file" name="image_2" onchange="previewImage2(event)" />
                             </div>
                             <x-input-error :messages="$errors->get('image_2')" class="mt-2" />
                         </div>
@@ -353,7 +403,7 @@
                                     </svg>
                                     <p class="mt-1 text-sm text-gray-600">{{ __('Drag and drop an image here or click to browse.') }}</p>
                                 </label>
-                                <input id="image_3" class="hidden" type="file" name="image_3" required onchange="previewImage3(event)" />
+                                <input id="image_3" class="hidden" type="file" name="image_3" onchange="previewImage3(event)" />
                             </div>
                             <x-input-error :messages="$errors->get('image_3')" class="mt-2" />
                         </div>
@@ -374,7 +424,7 @@
                                     </svg>
                                     <p class="mt-1 text-sm text-gray-600">{{ __('Drag and drop an image here or click to browse.') }}</p>
                                 </label>
-                                <input id="image_4" class="hidden" type="file" name="image_4" required onchange="previewImage4(event)" />
+                                <input id="image_4" class="hidden" type="file" name="image_4" onchange="previewImage4(event)" />
                             </div>
                             <x-input-error :messages="$errors->get('image_4')" class="mt-2" />
                         </div>

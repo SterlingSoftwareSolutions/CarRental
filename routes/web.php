@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\BookingsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\VehiclesController;
@@ -25,9 +26,11 @@ Route::get('/about', function () {
     return view('pages.about');
 })->name('about');
 
-Route::get('/carlist', function () {
-    return view('pages.carlist');
-})->name('carlist');
+// Route::get('/carlist', function () {
+//     return view('pages.carlist');
+// })->name('carlist');
+
+Route::get('/carlist', [VehiclesController::class, 'index'])->name('carlist');
 
 Route::get('/contact', function () {
     return view('pages.contact');
@@ -39,6 +42,7 @@ Route::get('/admin/dashboard', function () {
 
 
 Route::middleware('auth')->group(function () {
+
     Route::get('/user/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/user/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/user/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -48,7 +52,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/vehicles/{vehicle_id}', [VehiclesController::class, 'edit_vehicle'])->name('vehicle.edit');
     Route::post('/admin/vehicles', [VehiclesController::class, 'store'])->name('vehicles.all');
     Route::put('/admin/user', [RegisteredUserController::class, 'update'])->name('update_user');
-    Route::get('/admin/user/{user_id}', [RegisteredUserController::class, 'destroy'])->name('delete_user');
+    Route::delete('/admin/user/{user_id}', [RegisteredUserController::class, 'destroy'])->name('delete_user');
+    Route::delete('/admin/vehicle/{user_id}', [VehiclesController::class, 'destroy'])->name('delete_vehicle');
+    Route::put('/admin/vehicle', [VehiclesController::class, 'update'])->name('vehicle_update');
+    Route::get('/carlist/single-car-view/{id}', [VehiclesController::class, 'view_vehicle'])->name('booknow');
+    Route::get('/admin/bookings', [BookingsController::class, 'index'])->name('bookings.all');
+    
+
 });
 
 require __DIR__ . '/auth.php';

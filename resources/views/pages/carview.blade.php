@@ -19,22 +19,23 @@
     <!-- section one -->
     <div class="flex flex-wrap h-full md:max-h-full md:justify-center md:items-start">
         <div class="md:w-full lg:w-2/6">
+
             <!-- image carosol -->
             <div class="container border-2 ">
                 <div class="mySlides">
-                    <img src="{{ URL('images/Rectangle 27.png')}}" style="width:100%">
+                    <img src="{{ Storage::url($vehicle->images[0]->file_path) }}" style="width:100%">
                 </div>
 
                 <div class="mySlides">
-                    <img src="{{ URL('images/Group 126.png')}}" style="width:100%">
+                    <img src="{{ Storage::url($vehicle->images[1]->file_path) }}" style="width:100%">
                 </div>
 
                 <div class="mySlides">
-                    <img src="{{ URL('images/Group 126.png')}}" style="width:100%">
+                    <img src="{{ Storage::url($vehicle->images[2]->file_path) }}" style="width:100%">
                 </div>
 
                 <div class="mySlides">
-                    <img src="{{ URL('images/Group 126.png')}}" style="width:100%">
+                    <img src="{{ Storage::url($vehicle->images[3]->file_path) }}" style="width:100%">
                 </div>
 
                 <a class="prev" onclick="plusSlides(-1)">❮</a>
@@ -43,38 +44,40 @@
                 <div class="flex">
                     <div class="row">
                         <div class="column">
-                            <img class="demo cursor" src="{{ URL('images/Rectangle 27.png')}}" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+                            <img class="demo cursor" src="{{ Storage::url($vehicle->images[0]->file_path) }}" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
                         </div>
                         <div class="column">
-                            <img class="demo cursor" src="{{ URL('images/Group 126.png')}}" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
+                            <img class="demo cursor" src="{{ Storage::url($vehicle->images[1]->file_path) }}" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
                         </div>
                         <div class="column">
-                            <img class="demo cursor" src="{{ URL('images/Group 126.png')}}" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+                            <img class="demo cursor" src="{{ Storage::url($vehicle->images[2]->file_path) }}" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
                         </div>
                         <div class="column">
-                            <img class="demo cursor" src="{{ URL('images/Group 126.png')}}" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+                            <img class="demo cursor" src="{{ Storage::url($vehicle->images[3]->file_path) }}" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
                         </div>
                     </div>
                 </div>
             </div>
             <!-- end image carosol -->
+
             <!-- vehicle details section -->
             <div class="flex justify-between items-center p-4">
                 <div class="grid w-6/6 text-center">
                     <img src="{{ URL('images/seat-belt.png') }}" class="mx-auto">
-                    <h1 class="text-center text-[#317256] font-semibold mt-2">4 Passengers</h1>
+                    <h1 class="text-center text-[#317256] font-semibold mt-2">{{ $vehicle['passengers']}} Passengers</h1>
                 </div>
 
                 <div class="grid w-6/6 text-center">
                     <img src="{{ URL('images/luggage.png')}}" class="mx-auto">
-                    <h1 class="text-center text-[#317256] font-semibold mt-2">5 Luggages</h1>
+                    <h1 class="text-center text-[#317256] font-semibold mt-2">{{ $vehicle['luggage']}} Luggages</h1>
                 </div>
                 <div class="grid w-6/6 text-center">
                     <img src="{{ URL('images/manual-transmission.png')}}" class="mx-auto">
-                    <h1 class="text-center text-[#317256] font-semibold mt-2">Auto</h1>
+                    <h1 class="text-center text-[#317256] font-semibold mt-2">{{ $vehicle['transmission']}}</h1>
                 </div>
             </div>
             <!-- end vehicle details section -->
+
             <!-- vehicle spesification section -->
             <div>
                 <div>
@@ -89,14 +92,14 @@
                                 <li>Model:</li>
                                 <li>Body Type:</li>
                                 <li>Year:</li>
-                                <li>Year:</li>
+                                <li>Fuel:</li>
                             </ul>
                             <ul>
-                                <li>Toyota</li>
-                                <li>Crown</li>
-                                <li>Sedan</li>
-                                <li>2008</li>
-                                <li>Petrol</li>
+                                <li>{{ $vehicle['make']}}</li>
+                                <li>{{ $vehicle['model']}}</li>
+                                <li>{{ $vehicle['body_type']}}</li>
+                                <li>{{ $vehicle['year']}}</li>
+                                <li>{{ $vehicle['fuel_type']}}</li>
                             </ul>
                         </div>
 
@@ -109,85 +112,98 @@
                                 <li>Doors:</li>
                             </ul>
                             <ul>
-                                <li>1VXEDYROTER</li>
-                                <li>31,500</li>
-                                <li>Auto</li>
-                                <li>White</li>
-                                <li>4</li>
+                                <li>{{ $vehicle['vin']}}</li>
+                                <li>{{ $vehicle['mileage']}}</li>
+                                <li>{{ $vehicle['transmission']}}</li>
+                                <li>{{ $vehicle['color']}}</li>
+                                <li>{{ $vehicle['doors']}}</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- end vehicle spesification section -->
+
             <!-- vehicle description section -->
             <div class="mt-8">
                 <div>
                     <h1 class="text-gray-500 font-semibold text-lg">Vehicle Details</h1>
                 </div>
                 <hr class="border-1 border-gary-600">
-                <div class="mt-4">
-                    <p>Edipisicing eiusmod tempor incididunt labore sed dolore magna aliqa enim ipsum ad minim veniams quis nostrud citation ullam laboris nisi ut aliquip laboris nisi ut aliquip ex ea commod. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> <br>
-                    <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo cons equat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Exepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ipsum perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+                <div class="mt-4 whitespace-normal">
+                    {{ $vehicle['description']}}
                 </div>
             </div>
             <!-- end vehicle description section -->
+
         </div>
+
         <div class="md:w-full lg:w-2/6 grid grid-flow-row h-screen mt-24">
+
             <!-- pickup foam -->
             <div class="bg-[#F8FFF2] grid md:p-8 md:mt-0">
-                <h1 class="text-emerald-600 font-semibold text-xl">2008 Toyota Crown Sedan Athlete</h1>
-                <p class="mt-2 font-semibold text-[#707070]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis<br> ante nec justo eleifend consequat. </p>
+                <h1 class="text-emerald-600 font-semibold text-xl">{{ $vehicle['year']}} {{ $vehicle['make']}} {{ $vehicle['model']}} {{ $vehicle['body_type']}}</h1>
+                <p class="mt-2 font-semibold text-[#707070] whitespace-normal">{{ $vehicle['short_Description']}}</p>
                 <div class="flex items-center justify-right">
                     <div class="bg-emerald-600 p-2 rounded">
-                        <h1 class="text-white">$ 180 /hour</h1>
+                        <h1 class="text-white">$ {{ $vehicle['price']}} /hour</h1>
                     </div>
                 </div>
-                <div>
-                    <form action="/action_page.php">
+                <form method="POST" action="{{ route('bookvehicle') }}" >
+                    @csrf
+                    <input class="hidden" type="text" id="vehicle_id" name="vehicle_id" value="{{$vehicle['id']}}">
+
+                    <!-- Pickup Location  -->
+                    <div>
                         <p class="mt-2 font-semibold text-[#707070]">Pick-up Location</p>
-                        <select class="w-full rounded-md border-none shadow-md" name="cars" id="cars">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
+                        <select class="w-full rounded-md border-none shadow-md" name="pickup" id="pickup">
+                            <option value="LocationOne">Location One</option>
+                            <option value="LocationTwo">Location two</option>
+                            <option value="LocationThree">Location Three</option>
+                            <option value="LocationFour">Location four</option>
                         </select>
-                </div>
-                <div>
-                    <p class="mt-2 font-semibold text-[#707070]">Drop-off Location</p>
-                    <select class="w-full rounded-md border-none shadow-md" name="cars" id="cars">
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="opel">Opel</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                </div>
-                <p class="mt-2 font-semibold text-[#707070]">Pick-up Date & Time</p>
-                <div class="flex justify-center items-center gap-4 w-full">
-                    <div class="w-full">
-                        <input class="w-full rounded-md border-none shadow-md" type="date" id="birthday" name="birthday">
+
                     </div>
-                    <div class="w-full">
-                        <input class="w-full rounded-md border-none shadow-md" type="date" id="birthday" name="birthday">
+
+                    <!-- Drop Off Location  -->
+                    <div>
+                        <p class="mt-2 font-semibold text-[#707070]">Drop-off Location</p>
+                        <select class="w-full rounded-md border-none shadow-md" name="dropoff" id="dropoff">
+                            <option value="LocationOne">Location One</option>
+                            <option value="LocationTwo">Location two</option>
+                            <option value="LocationThree">Location Three</option>
+                            <option value="LocationFour">Location four</option>
+                        </select>
                     </div>
-                </div>
-                <p class="mt-2 font-semibold text-[#707070]">Drop-off Date & Time</p>
-                <div class="flex items-center gap-4">
-                    <div class="w-full">
-                        <input class="w-full rounded-md border-none shadow-md" type="time" name="" id="">
+
+                    <p class="mt-2 font-semibold text-[#707070]">Pick-up Date & Time</p>
+
+                    <div class="flex justify-center items-center gap-4 w-full">
+                        <div class="w-full">
+                            <input class="w-full rounded-md border-none shadow-md" type="datetime-local" id="pickup_time" name="pickup_time">
+                        </div>
+                      
                     </div>
-                    <div class="w-full">
-                        <input class="w-full rounded-md border-none shadow-md" type="time" name="" id="">
+
+                    <p class="mt-2 font-semibold text-[#707070]">Drop-off Date & Time</p>
+
+                    <div class="flex items-center gap-4">
+                        <div class="w-full">
+                            <input class="w-full rounded-md border-none shadow-md" type="datetime-local" name="dropoff_time" id="dropoff_time">
+                        </div>
+                        
                     </div>
-                </div>
-                <div class="flex justify-center items-center pt-8">
-                    <button class="w-full bg-emerald-600 p-3 rounded text-white font-semibold" name="cars" id="cars">
-                        Book Now
-                    </button>
-                    </form>
-                </div>
+
+                    <div class="flex justify-center items-center pt-8">
+                        <button type="submit" class="w-full bg-emerald-600 p-3 rounded text-white font-semibold" name="cars" id="cars">
+                            Book Now
+                        </button>
+
+                    </div>
+                </form>
             </div>
             <!-- end pickup foam -->
+
             <!-- conatct number section -->
             <div class="flex justify-center items-center">
                 <div class="bg-emerald-600 rounded text-center w-10/12 p-4">
@@ -201,6 +217,7 @@
                 </div>
             </div>
             <!-- end conatct number section -->
+
             <!-- review section -->
             <div class="p-8">
                 <h1>1 Comment</h1>
@@ -226,6 +243,7 @@
                 <p class="text-black"> <span class="text-emerald-600">hasi_nimantha</span> Excellent service, clean cars, and helpful staff. Highly recommend for car rentals</p>
             </div>
             <!-- end review section -->
+
             <!--  rating foam -->
             <div class="p-8">
                 <div>

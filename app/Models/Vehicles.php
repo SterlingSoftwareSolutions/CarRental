@@ -22,13 +22,16 @@ class Vehicles extends Model
         'luggage',
         'doors',
         'price',
-        'passengers'
+        'passengers',
+        'short_Description',
+        'description'
         
     ];
 
     public function images()
     {
-        return $this->hasMany(Attachments::class, 'referenceId'); // Use 'vehicle_id' as the foreign key column
+        return $this->hasMany(Attachments::class, 'referenceId')
+            ->where('attachment_type', 'Vehicle Image'); // Add the condition to filter by attachment type
     }
     
 

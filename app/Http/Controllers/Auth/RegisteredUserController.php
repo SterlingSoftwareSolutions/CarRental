@@ -83,6 +83,7 @@ class RegisteredUserController extends Controller
         Attachments::create([
             'referenceId' => $user->id,
             'file_path' => $imagePath,
+            'attachment_type' => "User Image"
         ]);
         return redirect(RouteServiceProvider::HOME);
     }
@@ -107,11 +108,7 @@ class RegisteredUserController extends Controller
         ]);
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('public/user_images');
-            Attachments::updateOrCreate([
-                'referenceId' => $user->id,
-            ], [
-                'file_path' => $imagePath,
-            ]);
+            Attachments::updateOrCreate(['referenceId' => $user->id,], ['file_path' => $imagePath,], ['attachment_type' => "User Image"]);
         }
         $user->update($validatedData);
 
