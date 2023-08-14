@@ -6,6 +6,7 @@ use App\Http\Requests\UpdatePaymentsRequest;
 use App\Models\Bookings;
 use App\Models\Country;
 use App\Models\Payments;
+use DateTime;
 use Illuminate\Http\Request;
 use Stripe\PaymentMethod;
 use Stripe\Stripe;
@@ -88,11 +89,27 @@ class PaymentsController extends Controller
         $bookingData = session('BookingData');
         $booking = Bookings::find($bookingData->id);
 
-        $booking->update([
-            'status' => 'advance_paid'
-        ]);
+        $pickup_time = new DateTime($booking->pickup_time);
+        $dropoff_time = new DateTime($booking->dropoff_time);
+        $days = $dropoff_time->diff($pickup_time)->days;
 
-        dd($user, $booking->vehicle);
+        // Charge for 2 weeks if the vehicle is booked for more than 2 weeks
+        if($days > 14){
+            $amount = $booking->vehicle->price * 14;
+            $charge = $user->charge(
+                $amount * 100,
+                $request->payment_method
+            );
+            if($charge){
+                $booking->update([
+                    'status' => 'booked'
+                ]);
+            } else {
+                return back()->withErrors(['payment' => 'Payment failed']);
+            }
+
+        }
+        dd($user, $booking);
     }
 
     /**
