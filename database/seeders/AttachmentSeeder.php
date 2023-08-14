@@ -17,6 +17,7 @@ class AttachmentSeeder extends Seeder
         DB::table('attachments')->insert([
             'referenceId' => 1, // Assuming user with ID 1
             'file_path' => 'public/user_images/sample_image.jpg', // Replace with the actual file path
+            'attachment_type' => 'User Image',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
