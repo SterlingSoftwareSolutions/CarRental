@@ -15,12 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
+            $table->enum('role', ['client', 'admin'])->default('client');
             $table->string('mobile')->nullable();
             $table->string('email')->unique();
             $table->string('Address_1')->nullable();
             $table->string('Address_2')->nullable();
             $table->string('city')->nullable();
             $table->string('zip')->nullable();
+            $table->string('country')->nullable();
             $table->string('driving_license')->nullable();
             $table->string('driving_license_expire_year')->nullable();
             $table->string('driving_license_expire_month')->nullable();

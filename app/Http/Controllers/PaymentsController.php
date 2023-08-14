@@ -7,6 +7,8 @@ use App\Models\Bookings;
 use App\Models\Country;
 use App\Models\Payments;
 use Illuminate\Http\Request;
+use Stripe\PaymentMethod;
+use Stripe\Stripe;
 
 class PaymentsController extends Controller
 {
@@ -43,7 +45,54 @@ class PaymentsController extends Controller
      */
     public function store(Request $request)
     {
-       dd($request);
+        $request->validate([
+            "country" => "required",
+            "first_name" => "required",
+            "last_name" => "required",
+            "mobile" => "required",
+            "email" => "required",
+            "Address_1" => "required",
+            "Address_2" => "required",
+            "city" => "required",
+            "zip" => "required",
+            "driving_license" => "required",
+            "driving_license_expire_year" => "required",
+            "driving_license_expire_month" => "required",
+            "driving_license_expire_date" => "required",
+            "payment_method" => "required"
+        ]);
+
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+        $paymentMethodObject = PaymentMethod::retrieve($request->payment_method);
+
+        $user = $request->user();
+        $user->createOrGetStripeCustomer();
+        $user->addPaymentMethod($paymentMethodObject);
+
+        $user->update([
+            "country" => $request->country,
+            "first_name" => $request->first_name,
+            "last_name" => $request->last_name,
+            "mobile" => $request->mobile,
+            "email" => $request->email,
+            "Address_1" => $request->Address_1,
+            "Address_2" => $request->Address_2,
+            "city" => $request->city,
+            "zip" => $request->zip,
+            "driving_license" => $request->driving_license,
+            "driving_license_expire_year" => $request->driving_license_expire_year,
+            "driving_license_expire_month" => $request->driving_license_expire_month,
+            "driving_license_expire_date" => $request->driving_license_expire_date,
+        ]);
+
+        $bookingData = session('BookingData');
+        $booking = Bookings::find($bookingData->id);
+
+        $booking->update([
+            'status' => 'advance_paid'
+        ]);
+
+        dd($user, $booking->vehicle);
     }
 
     /**
