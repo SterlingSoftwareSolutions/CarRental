@@ -45,6 +45,33 @@ class BookingsController extends Controller
         //
     }
 
+    public function book(Request $request)
+    {
+       
+        $Booking = Bookings::create([
+            'pickup' => $request->pickup,
+            'pickup_time' => $request->pickup_time,
+            'dropoff_time' => $request->dropoff_time,
+            'dropoff' => $request->dropoff,
+            'vehicle_id' => $request->vehicle_id,
+            'status' => "Unpaid",
+            'user_id' => auth()->id(),
+
+        ]);
+
+
+        
+            $pickupTime = Carbon::parse($Booking['pickup_time']);
+            $dropoffTime = Carbon::parse($Booking['dropoff_time']);
+            // Calculate the difference in days
+            $daysCount = $dropoffTime->diffInDays($pickupTime);
+            $Booking['bookingDaysCount'] = $daysCount;
+        
+        session(['BookingData' => $Booking]);
+       
+        return redirect()->route('payment')->with('success', 'Vehicle booked successfully.');
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -95,8 +122,22 @@ class BookingsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Bookings $bookings)
+    public function destroy($booking_id)
     {
-        //
+        $booking = Bookings::find($booking_id);
+
+        if (!$booking) {
+            dd($booking);
+            return redirect()->route('vehicles.all')
+                ->with('error', 'vehicle not found.');
+        }
+
+        
+
+        $booking->delete();
+
+        return redirect()->route('vehicles.all')
+            ->with('success', 'vehicle deleted successfully.');
     }
+    
 }

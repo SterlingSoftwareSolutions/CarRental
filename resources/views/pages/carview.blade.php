@@ -149,7 +149,7 @@
                         <h1 class="text-white">$ {{ $vehicle['price']}} /hour</h1>
                     </div>
                 </div>
-                <form method="POST" action="{{ route('bookvehicle') }}" >
+                <form method="post" action="{{ route('bookvehicle') }}" >
                     @csrf
                     <input class="hidden" type="text" id="vehicle_id" name="vehicle_id" value="{{$vehicle['id']}}">
 
