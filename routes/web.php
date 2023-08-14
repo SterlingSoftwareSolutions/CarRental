@@ -6,6 +6,7 @@ use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\VehiclesController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -35,29 +36,18 @@ Route::get('/contact', function () {
     return view('pages.contact');
 })->name('contact');
 
-Route::get('/admin/dashboard', function () {
-    return view('pages.admin.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::get('/carlist/single-car-view/{id}', [VehiclesController::class, 'view_vehicle'])->name('booknow');
 
 Route::middleware('auth')->group(function () {
-
+    Route::get('/user/dashboard', [DashboardController::class, 'client']);
     Route::get('/user/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/user/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/user/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    Route::get('/dashboard', function (){
-        return view('pages.user.dashboard');
-    });
+    Route::get('/car_rent/payment', [PaymentsController::class, 'index'])->name('payment');
 
     // Admin Only Routes 
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
-
-        Route::get('/dashboard', function () {
-            return view('pages.admin.dashboard');
-        })->name('dashboard');
-
+        Route::get('/dashboard', [DashboardController::class, 'admin'])->name('dashboard');
         Route::get('/users', [UsersController::class, 'show_all_users'])->name('users.all');
         Route::get('/user/{user_id}', [UsersController::class, 'edit_user'])->name('user.edit');
         Route::put('/user', [RegisteredUserController::class, 'update'])->name('update_user');
@@ -71,7 +61,6 @@ Route::middleware('auth')->group(function () {
         Route::delete('/booking/{bookingId}', [BookingsController::class, 'destroy'])->name('delete_booking');
     });
 
-    Route::get('/car_rent/payment', [PaymentsController::class, 'index'])->name('payment');
 });
 
 require __DIR__ . '/auth.php';

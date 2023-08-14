@@ -26,12 +26,9 @@ class BookingsController extends Controller
             $booking['bookingDaysCount'] = $daysCount;
         }
 
-
-
-
-
         return view('pages.admin.bookings', ['bookings' => $bookings]);
     }
+
     public function singlecar($id)
     {
         $query = Bookings::query();
@@ -47,7 +44,13 @@ class BookingsController extends Controller
 
     public function book(Request $request)
     {
-       
+        $request->validate([
+            'pickup' => 'required',
+            'pickup_time' => 'required',
+            'dropoff_time' => 'required',
+            'dropoff' => 'required'
+        ]);
+
         $Booking = Bookings::create([
             'pickup' => $request->pickup,
             'pickup_time' => $request->pickup_time,
@@ -77,9 +80,6 @@ class BookingsController extends Controller
      */
     public function store(Request $request)
     {
-
-
-
         $Booking = Bookings::create([
             'pickup' => $request->pickup,
             'pickup_time' => $request->pickup_time,
@@ -132,12 +132,9 @@ class BookingsController extends Controller
                 ->with('error', 'vehicle not found.');
         }
 
-        
-
         $booking->delete();
 
         return redirect()->route('vehicles.all')
             ->with('success', 'vehicle deleted successfully.');
     }
-    
 }
