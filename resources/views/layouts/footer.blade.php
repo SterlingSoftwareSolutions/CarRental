@@ -16,7 +16,7 @@
         <div class="mx-auto w-full max-w-screen-xl p-4 py-16 lg:py-16">
             <div class="md:flex md:justify-between mt-5">
                 <div class="mb-6 md:mb-0">
-                    <a href="https://flowbite.com/" class="grid items-center mt-5">
+                    <a href="https://flowbite.com/" class="grid items-center">
                         <p class="text-white">Lorem Ipsum Dolor Sit Amet, Consectetur <br> Adipiscing Elit. Sed Non Risus. Suspendisse <br> Lectus Tortor, Dignissim Sit Amet, </p>
                         <div class="subscribe-form mt-5">
                             <form action="#">

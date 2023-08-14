@@ -179,7 +179,6 @@ body, .main-banner {
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
-    padding: 250px 320px;
 }
 
 /* serach foam CSS  */
@@ -451,11 +450,10 @@ ul > li {
 
 /* end counter css */
 .content-wrapper {
-    height: 63%;
-    width: 63em;
+    height: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: right;
     align-items: end;
 }
 
@@ -628,9 +626,10 @@ ul > li {
     }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 600px) {
     .content-wrapper {
-        width: 100%;
+
+        width: 80%;
     }
 }
 
