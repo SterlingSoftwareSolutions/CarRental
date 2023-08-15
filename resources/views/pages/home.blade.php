@@ -51,12 +51,46 @@
         <div class="grid justify-center items-center align-middle md:pl-32 pl-1">
             <h1 class="text-white text-3xl md:text-5xl font-bold mb-2 md:mb-4">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
             <p class="text-white text-sm md:text-lg font-bold ">Rent a Car for Your Next Adventure with Our Convenient <br class="hidden md:inline"> and Reliable Services</p>
-            <div class="flex flex-col md:flex-row gap-4 mt-12 md:mt-10">
-                <div class="grid bg-black rounded-lg search-foam w-full md:w-auto">
+            <div class="flex flex-col md:flex-row gap-4 mt-12 md:mt-10 md:w-1/2">
+                <div class="grid bg-black rounded-lg search-foam w-full lg:w-auto">
                     <div class="text-center">
                         <p class="text-white text-sm md:text-lg font-bold mt-2 md:mt-4">Ready to hit the road?</p>
                     </div>
-                    <form method="post" action="{{ route('search_vehicle') }}" enctype="multipart/form-data">
+                    <form action="/carlist">                           
+                        <label class="font-bold text-[#707070]" for="">Make</label>
+                        <select class="w-full h-12 mt-2 rounded-md border-none" name="make" id="cars">
+                            <option value="">All Makes</option>
+                            @foreach($filters['makes'] as $opt)
+                            <option value="{{$opt}}" @if(Request()->make == $opt) selected @endif>{{$opt}}</option>
+                            @endforeach
+                        </select>
+                        <label class="font-bold text-[#707070]" for="">Model</label>
+                        <select class="w-full h-12 mt-2 rounded-md border-none" name="model" id="cars">
+                            <option value="">All Models</option>
+                            @foreach($filters['models'] as $opt)
+                            <option value="{{$opt}}" @if(Request()->model == $opt) selected @endif>{{$opt}}</option>
+                            @endforeach
+                        </select>
+
+                        <label class="font-bold text-[#707070]" for="">Body Type</label>
+                        <select class="w-full h-12 mt-2 rounded-md border-none" name="body_type" id="cars">
+                            <option value="">All Body Types</option>
+                            @foreach($filters['body_types'] as $opt)
+                            <option value="{{$opt}}" @if(Request()->body_type == $opt) selected @endif>{{$opt}}</option>
+                            @endforeach
+                        </select>
+                        <label class="font-bold text-[#707070]" for="">Transmission</label>
+                        <select class="w-full h-12 mt-2 rounded-md border-none" name="transmission" id="cars">
+                            <option value="">All Transmissions</option>
+                            @foreach($filters['transmissions'] as $opt)
+                                <option value="{{$opt}}" @if(Request()->transmission == $opt) selected @endif>{{$opt}}</option>
+                            @endforeach
+                        </select>
+                        <button type="submit" class="text-white w-full bg-[#317256] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded mt-3">
+                            <span class="text-base">Search Now</span>
+                        </button>
+                    </form>
+{{--                     <form method="post" action="{{ route('search_vehicle') }}" enctype="multipart/form-data">
                         @csrf
                         @method('GET')
                         <input type="text" hidden name="availability" value="1">
@@ -89,7 +123,7 @@
                             </button>
                         </div>
                     </form>
-
+--}}
                 </div>
             </div>
         </div>
@@ -277,7 +311,7 @@
                 @if (isset($vehicles))
                 @foreach ($vehicles as $vehicle)
                 <div class="slide aspect-square rounded-lg h-full flex-shrink-0 snap-center overflow-hidden shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-                    <img class="w-full" src="{{ Storage::url($firstImage->file_path) }}" alt="mountain_image">
+                    <img class="w-full" src="{{ Storage::url($firstImage->file_path ?? null) }}" alt="mountain_image">
                     <div class="grid justify-items-stretch items-center justify-center ">
                         <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">{{ $vehicle['make']}}</h1>
                         <p class="p-2">{{ $vehicle['short_Description']}} </p>
