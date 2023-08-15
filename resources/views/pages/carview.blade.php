@@ -141,7 +141,7 @@
 
         </div>
 
-        <div class="md:w-full lg:w-2/6 grid grid-flow-row h-screen mt-24">
+        <div class="md:w-full lg:w-2/6 grid grid-flow-row mt-24">
 
             <!-- pickup foam -->
             <div class="bg-[#F8FFF2] grid md:p-8 md:mt-0">
@@ -225,6 +225,7 @@
             </div>
             <!-- end conatct number section -->
 
+        {{-- COMMENTS SECTION 
             <!-- review section -->
             <div class="p-8">
                 <h1>1 Comment</h1>
@@ -286,7 +287,9 @@
                 </div>
             </div>
             <!-- end rating foam -->
-        </div>
+        COMMENTS SECTION --}}
+
+       </div>
     </div>
     <!-- end section one -->
     <!-- end vehicle details section -->

@@ -60,4 +60,9 @@ class Users extends Authenticatable
     {
         return $this->hasMany(Attachments::class, 'referenceId'); // Use 'vehicle_id' as the foreign key column
     }
+
+    public function bookings()
+    {
+        return $this->hasMany(Bookings::class, 'user_id', 'id');
+    }
 }
