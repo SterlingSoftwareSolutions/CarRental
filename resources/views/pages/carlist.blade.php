@@ -20,7 +20,7 @@
     <!-- end navigation -->
 
     <!-- banner section -->
-    <div class="relative -z-1">
+    <div class="relative -z-50">
         <img src="{{ URL('images/Group 180.png')}}" alt="" srcset="">
         <h1 class="absolute top-2/4 left-4/12 pl-0 md:pl-56 text-white font-bold text-2xl md:text-4xl">Find Your Dream Ride</h1>
     </div>
@@ -30,10 +30,10 @@
     <!-- filtering section -->
     <div class="flex justify-center md:grid md:grid-flow-row -mt-2">
         <form>
-            <div class="flex flex-col md:flex-row border-t-8 border-[#398564] bg-[#E1E1E1] md:justify-center w-full" style="z-index: 1;">
+            <div class="flex flex-col md:flex-row border-t-8 border-[#398564] bg-[#D3D3D3] md:justify-center w-full">
                 <div class="dropdown">
                     <label class="font-bold text-[#707070]" for="">Make</label>
-                    <select class="w-full h-12 mt-2 rounded-md border-none" name="make" id="cars" onchange="this.form.submit()">
+                    <select class="w-full h-12 mt-2 rounded-md border-none text-gray-500" name="make" id="cars" onchange="this.form.submit()">
                         <option value="">All Makes</option>
                         @foreach($filters['makes'] as $opt)
                         <option value="{{$opt}}" @if(Request()->make == $opt) selected @endif>{{$opt}}</option>
@@ -42,7 +42,7 @@
                 </div>
                 <div class="dropdown">
                     <label class="font-bold text-[#707070]" for="">Model</label>
-                    <select class="w-full h-12 mt-2 rounded-md border-none" name="model" id="cars" onchange="this.form.submit()">
+                    <select class="w-full h-12 mt-2 rounded-md border-none text-gray-500" name="model" id="cars" onchange="this.form.submit()">
                         <option value="">All Models</option>
                         @foreach($filters['models'] as $opt)
                         <option value="{{$opt}}" @if(Request()->model == $opt) selected @endif>{{$opt}}</option>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="dropdown">
                     <label class="font-bold text-[#707070]" for="">Body Type</label>
-                    <select class="w-full h-12 mt-2 rounded-md border-none" name="body_type" id="cars" onchange="this.form.submit()">
+                    <select class="w-full h-12 mt-2 rounded-md border-none text-gray-500" name="body_type" id="cars" onchange="this.form.submit()">
                         <option value="">All Body Types</option>
                         @foreach($filters['body_types'] as $opt)
                         <option value="{{$opt}}" @if(Request()->body_type == $opt) selected @endif>{{$opt}}</option>
@@ -60,7 +60,7 @@
                 </div>
                 <div class="dropdown">
                     <label class="font-bold text-[#707070]" for="">Transmission</label>
-                    <select class="w-full h-12 mt-2 rounded-md border-none" name="transmission" id="cars" onchange="this.form.submit()">
+                    <select class="w-full h-12 mt-2 rounded-md border-none text-gray-500" name="transmission" id="cars" onchange="this.form.submit()">
                         <option value="">All Transmissions</option>
                         @foreach($filters['transmissions'] as $opt)
                             <option value="{{$opt}}" @if(Request()->transmission == $opt) selected @endif>{{$opt}}</option>
@@ -118,7 +118,7 @@
                     </div>
                 </div>
                 <div class="flex justify-center items-center p-4">
-                    <a href="{{ route('booknow', ['id' => $vehicle['id']]) }}" class="text-white bg-[#317256] border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 hover:text-white rounded text-lg">Book Now</a>
+                    <a href="{{ route('booknow', ['id' => $vehicle['id']]) }}" class="text-white bg-[#317256] border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Book Now</a>
                 </div>
 
 

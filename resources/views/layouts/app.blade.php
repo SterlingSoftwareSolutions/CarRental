@@ -20,7 +20,8 @@
     <div class="min-h-screen bg-gray-100">
         @php
         $currentUrl = request()->url();
-        $excludeUrls = ['/admin/', '/user/'];
+        // $excludeUrls = ['/admin/', '/user/'];
+        $excludeUrls = ['/admin/'];
         $shouldShowNavigation = !collect($excludeUrls)->contains(function ($url) use ($currentUrl) {
             return strpos($currentUrl, $url) !== false;
         });

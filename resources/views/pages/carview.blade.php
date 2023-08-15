@@ -26,19 +26,19 @@
             <!-- image carosol -->
             <div class="container border-2 ">
                 <div class="mySlides">
-                    <img src="{{ Storage::url($vehicle->images[0]->file_path) }}" style="width:100%">
+                    <img src="{{ Storage::url($vehicle->images[0]->file_path ?? null) }}" style="width:100%">
                 </div>
 
                 <div class="mySlides">
-                    <img src="{{ Storage::url($vehicle->images[1]->file_path) }}" style="width:100%">
+                    <img src="{{ Storage::url($vehicle->images[1]->file_path ?? null) }}" style="width:100%">
                 </div>
 
                 <div class="mySlides">
-                    <img src="{{ Storage::url($vehicle->images[2]->file_path) }}" style="width:100%">
+                    <img src="{{ Storage::url($vehicle->images[2]->file_path ?? null) }}" style="width:100%">
                 </div>
 
                 <div class="mySlides">
-                    <img src="{{ Storage::url($vehicle->images[3]->file_path) }}" style="width:100%">
+                    <img src="{{ Storage::url($vehicle->images[3]->file_path ?? null) }}" style="width:100%">
                 </div>
 
                 <a class="prev" onclick="plusSlides(-1)">❮</a>
@@ -47,16 +47,16 @@
                 <div class="flex">
                     <div class="row">
                         <div class="column">
-                            <img class="demo cursor" src="{{ Storage::url($vehicle->images[0]->file_path) }}" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+                            <img class="demo cursor" src="{{ Storage::url($vehicle->images[0]->file_path ?? null)}}" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
                         </div>
                         <div class="column">
-                            <img class="demo cursor" src="{{ Storage::url($vehicle->images[1]->file_path) }}" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
+                            <img class="demo cursor" src="{{ Storage::url($vehicle->images[1]->file_path ?? null)}}" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
                         </div>
                         <div class="column">
-                            <img class="demo cursor" src="{{ Storage::url($vehicle->images[2]->file_path) }}" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+                            <img class="demo cursor" src="{{ Storage::url($vehicle->images[2]->file_path ?? null)}}" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
                         </div>
                         <div class="column">
-                            <img class="demo cursor" src="{{ Storage::url($vehicle->images[3]->file_path) }}" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+                            <img class="demo cursor" src="{{ Storage::url($vehicle->images[3]->file_path ?? null)}}" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
                         </div>
                     </div>
                 </div>

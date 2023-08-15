@@ -30,7 +30,7 @@
 
                 <!-- car image -->
                 <div class="w-full">
-                    <img class="w-full" src="{{ Storage::url($bookingData->vehicle->images[0]->file_path) }}">
+                    <img class="w-full" src="{{ Storage::url($bookingData->vehicle->images[0]->file_path ?? null) }}">
                 </div>
 
                 <!-- pickup details -->
