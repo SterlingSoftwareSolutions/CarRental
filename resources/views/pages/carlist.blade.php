@@ -22,47 +22,47 @@
     <!-- banner section -->
     <div class="relative -z-30">
         <img src="{{ URL('images/Group 180.png')}}" alt="" srcset="">
-        <h1 class="absolute top-60 left-60 text-white font-bold inline-block text-4xl">Find Your Dream Ride</h1>
+        <h1 class="absolute top-48 left-60 text-white font-bold inline-block text-4xl">Find Your Dream Ride</h1>
     </div>
     <!-- end banner section -->
 
     <!-- filtering section -->
     <div class="flex justify-center md:grid md:grid-flow-row -mt-2 z-10">
-        <div class="flex flex-col md:flex-row border-t-8 border-[#398564] bg-[#ECE3E3] md:justify-center w-full">
-            <div class="dropdown">
+        <div class="flex flex-col md:flex-row border-t-8 border-[#398564] bg-[#D3D3D3] md:justify-center w-full">
+            <div class="dropdown space-y-2">
                 <label class="font-bold text-[#707070]" for="">Make</label>
-                <select class="w-full h-12 rounded-md border-none" name="cars" id="cars">
+                <select class="w-full h-12 rounded-md border-none text-gray-500" name="cars" id="cars">
                     <option value="volvo">All Makes</option>
-                    <option value="saab">Saab</option>
-                    <option value="opel">Opel</option>
-                    <option value="audi">Audi</option>
+                    <option value="saab" class="text-black">Saab</option>
+                    <option value="opel" class="text-black">Opel</option>
+                    <option value="audi"class="text-black">Audi</option>
                 </select>
             </div>
-            <div class="dropdown">
+            <div class="dropdown space-y-2">
                 <label class="font-bold text-[#707070]" for="">Model</label>
-                <select class="w-full h-12 rounded-md border-none" name="cars" id="cars">
+                <select class="w-full h-12 rounded-md border-none text-gray-500" name="cars" id="cars">
                     <option value="volvo">All Models</option>
-                    <option value="saab">Saab</option>
-                    <option value="opel">Opel</option>
-                    <option value="audi">Audi</option>
+                    <option value="saab" class="text-black">Saab</option>
+                    <option value="opel" class="text-black">Opel</option>
+                    <option value="audi" class="text-black">Audi</option>
                 </select>
             </div>
-            <div class="dropdown">
+            <div class="dropdown space-y-2">
                 <label class="font-bold text-[#707070]" for="">Body Type</label>
-                <select class="w-full h-12 rounded-md border-none" name="cars" id="cars">
+                <select class="w-full h-12 rounded-md border-none text-gray-500" name="cars" id="cars">
                     <option value="volvo">All Body Types</option>
-                    <option value="saab">Saab</option>
-                    <option value="opel">Opel</option>
-                    <option value="audi">Audi</option>
+                    <option value="saab" class="text-black">Saab</option>
+                    <option value="opel" class="text-black">Opel</option>
+                    <option value="audi" class="text-black">Audi</option>
                 </select>
             </div>
-            <div class="dropdown">
+            <div class="dropdown space-y-2">
                 <label class="font-bold text-[#707070]" for="">Transmission</label>
-                <select class="w-full h-12 rounded-md border-none" name="cars" id="cars">
+                <select class="w-full h-12 rounded-md border-none text-gray-500" name="cars" id="cars">
                     <option value="volvo">All Transmissions</option>
-                    <option value="saab">Saab</option>
-                    <option value="opel">Opel</option>
-                    <option value="audi">Audi</option>
+                    <option value="saab" class="text-black">Saab</option>
+                    <option value="opel" class="text-black">Opel</option>
+                    <option value="audi" class="text-black">Audi</option>
                 </select>
             </div>
         </div>
@@ -115,7 +115,7 @@
                     </div>
                 </div>
                 <div class="flex justify-center items-center p-4">
-                    <a href="{{ route('booknow', ['id' => $vehicle['id']]) }}" class="text-white bg-[#317256] border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 hover:text-white rounded text-lg">Book Now</a>
+                    <a href="{{ route('booknow', ['id' => $vehicle['id']]) }}" class="text-white bg-[#317256] border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Book Now</a>
                 </div>
 
 

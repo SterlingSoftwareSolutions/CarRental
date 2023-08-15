@@ -353,7 +353,7 @@
                     </div>
                 </div>
                 <div class="mt-3 ml-8 md:mt-5 pb-5">
-                    <button class="bg-white p-2 rounded">Read More</button>
+                    <button class="bg-white p-2 rounded font-bold">Read More</button>
                 </div>
             </a>
         </div>

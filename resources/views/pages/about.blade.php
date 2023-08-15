@@ -83,7 +83,7 @@
         <h1 class="text-5xl font-bold text-[#317256]">Our Trusted Brands</h1>
         <p class="text-lg text-gray-500 mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
-    <div class="flex flex-col md:flex-row justify-center mb-14 w-full ">
+    <div class="flex flex-col md:flex-row justify-center mb-14 w-full">
         <img src="{{ URL('images/Group 151.png') }}" class="mx-auto mb-4 md:mb-0 md:mx-4 lg:w-80 md:w-40">
         <img src="{{ URL('images/Group 152.png') }}" class="mx-auto mb-4 md:mb-0 md:mx-4 lg:w-80 md:w-40">
         <img src="{{ URL('images/Group 153.png') }}" class="mx-auto mb-4 md:mb-0 md:mx-4 lg:w-80 md:w-40">
