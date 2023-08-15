@@ -1,3 +1,6 @@
+@props([
+'users'
+])
  <!-- Navifgation  -->
  @include('layouts.user-navigation')
  <!-- hamburger -->
