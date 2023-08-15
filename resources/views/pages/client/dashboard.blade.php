@@ -1,4 +1,5 @@
 <x-app-layout>
+    @include('layouts.navigation')
     @include('layouts.user-navigation')
     <!-- main section -->
     <div class="p-6">
