@@ -22,12 +22,12 @@
         $currentUrl = request()->url();
         $excludeUrls = ['/admin/', '/user/'];
         $shouldShowNavigation = !collect($excludeUrls)->contains(function ($url) use ($currentUrl) {
-        return strpos($currentUrl, $url) !== false;
+            return strpos($currentUrl, $url) !== false;
         });
         @endphp
 
         @if ($shouldShowNavigation)
-        @include('layouts.navigation')
+            @include('layouts.navigation')
         @endif
 
 

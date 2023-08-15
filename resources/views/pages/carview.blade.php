@@ -152,10 +152,14 @@
                         <h1 class="text-white">$ {{ $vehicle['price']}} /hour</h1>
                     </div>
                 </div>
-                <form method="POST" action="{{ route('bookvehicle') }}">
+                <form method="post" action="{{ route('bookvehicle') }}" >
                     @csrf
+                    @if($errors->any())
+                        <div class="alert alert-danger" role="alert">
+                            {!! implode('', $errors->all('<div class="text-red-500">:message</div>')) !!}
+                        </div>
+                    @endif
                     <input class="hidden" type="text" id="vehicle_id" name="vehicle_id" value="{{$vehicle['id']}}">
-
                     <!-- Pickup Location  -->
                     <div>
                         <p class="mt-2 font-semibold text-[#707070]">Pick-up Location</p>
