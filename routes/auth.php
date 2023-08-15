@@ -18,8 +18,6 @@ Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
 
-    Route::post('register', [RegisteredUserController::class, 'store']);
-
     Route::post('register', [RegisteredUserController::class, 'new_register'])->name('register_new');
 
 
@@ -65,6 +63,6 @@ Route::middleware('auth')->group(function () {
     Route::post('carlist/single-car-view/book', [BookingsController::class, 'book'])->name('bookvehicle');
     Route::post('/car_rent/payment-final', [PaymentsController::class, 'store'])->name('payment.saving');
 
-    // Route::post('register', [RegisteredUserController::class, 'store']);
+     Route::post('register', [RegisteredUserController::class, 'store']);
 
 });
