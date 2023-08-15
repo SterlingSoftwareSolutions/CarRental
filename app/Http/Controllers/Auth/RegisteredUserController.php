@@ -26,6 +26,18 @@ class RegisteredUserController extends Controller
         return view('pages.home');
     }
 
+    public function new_register(Request $request)
+    {
+
+        $user = Users::create([
+            'first_name' => $request->first_name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        return redirect(RouteServiceProvider::HOME);
+    }
+
+
     /**
      * Handle an incoming registration request.
      *
@@ -39,7 +51,7 @@ class RegisteredUserController extends Controller
         //     'email' => ['required', 'string', 'email', 'max:255', 'unique:'.Users::class],
         //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
         // ]);
-        //dd($request);
+        dd($request);
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
