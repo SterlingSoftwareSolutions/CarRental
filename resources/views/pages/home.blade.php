@@ -19,7 +19,7 @@
     $currentRoute = Route::currentRouteName(); // Get the current route name
     $loggedIn = auth()->check(); // Check if the user is logged in
     @endphp
-    
+
 @if ($currentRoute === 'login' && !$loggedIn)
     <x-modal :name="true" :show="true" :maxWidth="'3xl'">
         <div class="h-full">
@@ -100,8 +100,8 @@
 
     <!-- why choose us section -->
     <div class="text-center">
-        <h1 class="text-5xl font-bold text-[#317256]">Why Choose Us</h1>
-        <p class="text-lg text-gray-500 mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+        <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Why Choose Us</h1>
+        <p class="text-base md:text-lg text-gray-500 mt-4 md:mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
     <div class="whychoose-section w-full">
         <div class="flex items-center justify-center mt-4">
@@ -154,15 +154,15 @@
 
     <!-- discover our lates section -->
     <div class="text-center mt-12">
-        <h1 class="text-5xl font-bold text-[#317256]">Discover Our Latest Cars for Rental</h1>
-        <p class="text-lg text-gray-500 mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+        <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Discover Our Latest Cars for Rental</h1>
+        <p class="text-base md:text-lg text-gray-500 mt-4 md:mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
     <div class="discover-section">
         <div class="flex items-center justify-center">
             <div class=" mb-4 md:mb-0 ">
                 <a href="" class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                     <div>
-                        <img class="object-cover md:h-96 md:w-50 w-full h-full md:rounded-none md:rounded-l-lg mt-12" src="{{ URL('images/Rectangle 27.png')}}" alt="">
+                        <img class="hidden md:block object-cover md:h-96 md:w-50 w-full h-full md:rounded-none md:rounded-l-lg mt-12" src="{{ URL('images/Rectangle 27.png')}}" alt="">
                     </div>
                 </a>
             </div>
@@ -186,12 +186,12 @@
                                                 @php
                                                 $firstImage = $vehicle->images[0];
                                                 @endphp
-                                                <img class="object-cover w-72 rounded-t-lg md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
+                                                <img class="object-cover w-96 md:h-auto md:w-52 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
                                                 @else
-                                                <img class="object-cover w-72 rounded-t-lg md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
+                                                <img class="object-cover w-72 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
                                                 @endif
                                             </div>
-                                            <div class="flex flex-col justify-between p-2 w-96 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
+                                            <div class="flex flex-col justify-between p-2 w-96 h-36 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
                                                 @if (!empty($vehicle['make']) && !empty($vehicle['model']))
                                                 <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500">{{ $vehicle['make']}} {{ $vehicle['model']}}</h5>
                                                 @else
@@ -231,12 +231,12 @@
                                                 @php
                                                 $firstImage = $vehicle->images[0];
                                                 @endphp
-                                                <img class="object-cover w-72 rounded-t-lg md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
+                                                <img class="object-cover w-96 md:h-auto md:w-52 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
                                                 @else
-                                                <img class="object-cover w-72 rounded-t-lg md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
+                                                <img class="object-cover w-72 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
                                                 @endif
                                             </div>
-                                            <div class="flex flex-col justify-between p-2 w-96 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
+                                            <div class="flex flex-col justify-between p-2 w-96 h-36 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
                                                 @if (!empty($vehicle['make']) && !empty($vehicle['model']))
                                                 <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500">{{ $vehicle['make']}} {{ $vehicle['model']}}</h5>
                                                 @else
@@ -270,8 +270,8 @@
 
     <!-- diverse vehicle section -->
     <div class="text-center mt-12 sm:mt-20">
-        <h1 class="text-5xl font-bold text-[#317256]">Diverse Vehicle Selection for Every Journey</h1>
-        <p class="text-lg text-gray-500 mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+        <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Diverse Vehicle Selection for Every Journey</h1>
+        <p class="text-base md:text-lg text-gray-500 mt-4 md:mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
     <div id="app" class="w-4/6 mx-auto px-4 md:px-8 py-12 transition-all duration-500 ease-linear">
         <div class="relative">
@@ -279,7 +279,7 @@
                 @if (isset($vehicles))
                 @foreach ($vehicles as $vehicle)
                 <div class="slide aspect-square rounded-lg h-full flex-shrink-0 snap-center overflow-hidden shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-                    <img src="{{ Storage::url($firstImage->file_path) }}" alt="mountain_image">
+                    <img class="w-full" src="{{ Storage::url($firstImage->file_path) }}" alt="mountain_image">
                     <div class="grid justify-items-stretch items-center justify-center ">
                         <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">{{ $vehicle['make']}}</h1>
                         <p class="p-2">{{ $vehicle['short_Description']}} </p>
@@ -363,8 +363,8 @@
 
     <!-- happy customert section -->
     <div class="text-center mt-20">
-        <h1 class="text-5xl font-bold text-[#317256]">Happy Customers, Memorable Journeys</h1>
-        <p class="text-lg text-gray-500 mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+        <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Happy Customers, Memorable Journeys</h1>
+        <p class="text-base md:text-lg text-gray-500 mt-4 md:mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
 
     <div class="flex">
