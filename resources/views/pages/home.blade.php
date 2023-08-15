@@ -39,15 +39,14 @@
     </x-modal>
     @endif
 
-
     <!-- start navigation -->
     @include('layouts.navigation')
     <!-- end navigation -->
 
     <!-- main home banner  -->
     <div class="main-banner flex justify-right items-center px-4 py-8 md:py-22">
-        <div class="grid justify-center items-center align-middle md:pl-32 pl-1 lg:mt-36">
-            <h1 class="text-white text-3xl md:text-5xl font-bold  mb-2 md:mb-4">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
+        <div class="grid justify-center items-center align-middle md:pl-32 pl-1">
+            <h1 class="text-white text-3xl md:text-5xl font-bold mb-2 md:mb-4">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
             <p class="text-white text-sm md:text-lg font-bold ">Rent a Car for Your Next Adventure with Our Convenient <br class="hidden md:inline"> and Reliable Services</p>
             <div class="flex flex-col md:flex-row gap-4 mt-12 md:mt-10">
                 <div class="grid bg-black rounded-lg search-foam w-full md:w-auto">
@@ -80,7 +79,7 @@
                                 <input class="date-input text-sm md:text-base" type="datetime-local" id="pickup_time" name="pickup_time">
                             </div>
                             <div>
-                            <p class="mt-2 font-semibold text-[#707070]">Dropp Off Date & Time</p>
+                                <p class="mt-2 font-semibold text-[#707070]">Dropp Off Date & Time</p>
                                 <input class="date-input text-sm md:text-base" type="datetime-local" id="dropoff_time" name="dropoff_time">
                             </div>
                         </div>
@@ -89,6 +88,7 @@
                             <button type="submit" class="text-white w-full bg-[#317256] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded">
                                 <span class="text-base">Search Now</span>
                             </button>
+                        </div>
                     </form>
 
                 </div>
@@ -175,7 +175,7 @@
                     <div id="content1">
                         <div class="px-2 md:px-0 slider">
                             <div class="slides mt-2">
-                                @if (isset($vehicles) && count($vehicles) > 0)
+                                @if (isset($vehicles))
                                 @foreach ($vehicles as $vehicle)
                                 <div class="slide">
                                     <div class="inner_content">
@@ -221,7 +221,6 @@
                         <div class="slider">
                             <div class="slides mt-2">
                                 @if (isset($vehicles))
-
                                 @foreach ($vehicles as $vehicle)
                                 <div class="slide">
                                     <div class="inner_content">
@@ -276,19 +275,51 @@
     <div id="app" class="w-4/6 mx-auto px-4 md:px-8 py-12 transition-all duration-500 ease-linear">
         <div class="relative">
             <div class="slides-container h-72 flex snap-x snap-mandatory overflow-hidden overflow-x-auto space-x-4 rounded scroll-smooth before:w-[45vw] before:shrink-0 after:w-[45vw] after:shrink-0 md:before:w-0 md:after:w-0">
-                @if (isset($vehicles))
-                @foreach ($vehicles as $vehicle)
                 <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-                    <img src="{{ Storage::url($firstImage->file_path) }}" alt="mountain_image">
+                    <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
                     <div class="grid justify-items-stretch items-center justify-center ">
                         <div class="flex ml-20">
-                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">{{ $vehicle['body_type']}}</h1>
+                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">SEDAN</h1>
                         </div>
-                        <p class="p-2">{{ $vehicle['short_Description']}} </p>
+                        <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
                     </div>
                 </div>
-                @endforeach
-                @endif
+                <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
+                    <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
+                    <div class="grid justify-items-stretch items-center justify-center ">
+                        <div class="flex ml-20">
+                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">SUV</h1>
+                        </div>
+                        <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
+                    </div>
+                </div>
+                <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
+                    <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
+                    <div class="grid justify-items-stretch items-center justify-center ">
+                        <div class="flex ml-20">
+                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">MINIVAN</h1>
+                        </div>
+                        <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
+                    </div>
+                </div>
+                <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
+                    <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
+                    <div class="grid justify-items-stretch items-center justify-center ">
+                        <div class="flex ml-20">
+                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">HATCHBACK</h1>
+                        </div>
+                        <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
+                    </div>
+                </div>
+                <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
+                    <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
+                    <div class="grid justify-items-stretch items-center justify-center ">
+                        <div class="flex ml-20">
+                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">HATCHBACK</h1>
+                        </div>
+                        <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
+                    </div>
+                </div>
                 <!-- Add similar slide elements for the remaining images -->
             </div>
             <div class="absolute top-0 -left-4 h-full items-center">
@@ -366,6 +397,7 @@
         <h1 class="text-5xl font-bold text-[#317256]">Happy Customers, Memorable Journeys</h1>
         <p class="text-lg text-gray-500 mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
+
     <div class="flex">
         <div id="app" class="max-w-screen-lg mx-auto md:px-8 py-12 transition-all duration-500 ease-linear">
             <div class="content-wrapper flex justify-center w-full">
