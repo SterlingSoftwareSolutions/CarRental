@@ -11,6 +11,19 @@ use Illuminate\Http\Request;
 class VehiclesController extends Controller
 {
 
+    public function search(Request $request)
+    {
+        dd($request);
+        $query = Vehicles::query();
+
+        $vehicles = Vehicles::query()->with(['images' => function ($query) {
+            $query->where('attachment_type', 'Vehicle Image');
+        }])->get();
+
+
+        return view('pages.carlist', ['vehicles' => $vehicles]);
+    }
+
     public function index(Request $request)
     {
         $query = Vehicles::query();

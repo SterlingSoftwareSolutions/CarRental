@@ -13,6 +13,6 @@
     <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="{{route('about')}}">ABOUT US</a></li>
     <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="{{route('contact')}}">CONTACT US</a></li>
     <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="#">MY ACCOUNT</a></li>
-    <li><button class="text-white font-semibold login-button" href="{{route('login')}}">Login</button></li>
+    <li><a class="text-white font-semibold login-button" href="{{route('login')}}">Login</a></li>
   </ul>
 </nav>
