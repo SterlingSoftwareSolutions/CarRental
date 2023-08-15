@@ -20,18 +20,19 @@
     <!-- end navigation -->
 
     <!-- banner section -->
-    <div class="relative -z-30">
+    <div class="relative -z-1">
         <img src="{{ URL('images/Group 180.png')}}" alt="" srcset="">
-        <h1 class="absolute top-60 left-60 text-white font-bold inline-block text-4xl">Find Your Dream Ride</h1>
+        <h1 class="absolute top-2/4 left-4/12 pl-0 md:pl-56 text-white font-bold text-2xl md:text-4xl">Find Your Dream Ride</h1>
     </div>
+
     <!-- end banner section -->
 
     <!-- filtering section -->
-    <div class="flex justify-center md:grid md:grid-flow-row -mt-2 z-10">
-        <div class="flex flex-col md:flex-row border-t-8 border-[#398564] bg-[#ECE3E3] md:justify-center w-full">
+    <div class="flex justify-center md:grid md:grid-flow-row -mt-2">
+        <div class="flex flex-col md:flex-row border-t-8 border-[#398564] bg-[#E1E1E1] md:justify-center w-full" style="z-index: 1;">
             <div class="dropdown">
                 <label class="font-bold text-[#707070]" for="">Make</label>
-                <select class="w-full h-12 rounded-md border-none" name="cars" id="cars">
+                <select class="w-full h-12 mt-2 rounded-md border-none" name="cars" id="cars">
                     <option value="volvo">All Makes</option>
                     <option value="saab">Saab</option>
                     <option value="opel">Opel</option>
@@ -40,7 +41,7 @@
             </div>
             <div class="dropdown">
                 <label class="font-bold text-[#707070]" for="">Model</label>
-                <select class="w-full h-12 rounded-md border-none" name="cars" id="cars">
+                <select class="w-full h-12 mt-2 rounded-md border-none" name="cars" id="cars">
                     <option value="volvo">All Models</option>
                     <option value="saab">Saab</option>
                     <option value="opel">Opel</option>
@@ -49,7 +50,7 @@
             </div>
             <div class="dropdown">
                 <label class="font-bold text-[#707070]" for="">Body Type</label>
-                <select class="w-full h-12 rounded-md border-none" name="cars" id="cars">
+                <select class="w-full h-12 mt-2 rounded-md border-none" name="cars" id="cars">
                     <option value="volvo">All Body Types</option>
                     <option value="saab">Saab</option>
                     <option value="opel">Opel</option>
@@ -58,7 +59,7 @@
             </div>
             <div class="dropdown">
                 <label class="font-bold text-[#707070]" for="">Transmission</label>
-                <select class="w-full h-12 rounded-md border-none" name="cars" id="cars">
+                <select class="w-full h-12 mt-2 rounded-md border-none" name="cars" id="cars">
                     <option value="volvo">All Transmissions</option>
                     <option value="saab">Saab</option>
                     <option value="opel">Opel</option>
@@ -67,6 +68,7 @@
             </div>
         </div>
     </div>
+
     <!-- end filtering section -->
 
     <!-- car list -->
@@ -76,7 +78,7 @@
             @foreach ($vehicles as $vehicle)
             <!-- Repeat this section for each car item -->
             <div class="bg-[#F8FFF2] grid p-4">
-                <img class="rounded h-56" src="{{ Storage::url($vehicle->images[0]->file_path) }}">
+                <img class="rounded h-56 w-full" src="{{ Storage::url($vehicle->images[0]->file_path) }}">
                 <div class="flex justify-between items-center p-4">
                     <div class="flex w-4/6">
                         <div class="bg-[#F8FFF2] grid">
@@ -93,7 +95,7 @@
                                     @endfor
                             </div>
 
-                        </div> 
+                        </div>
                     </div>
                     <div class="bg-[#317256] px-1 rounded">
                         <h1 class="text-white">$ {{ $vehicle['price']}} /hour</h1>

@@ -37,6 +37,8 @@ class UsersController extends Controller
     }
 
     public function show(Users $user){
-        
+        $bookings = $user->bookings;
+        $fines_tolls = null;
+        return view('pages.admin.users.show', compact('user', 'bookings', 'fines_tolls'));
     }
 }

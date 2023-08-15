@@ -198,47 +198,6 @@ body{
     font-family: Gilroy-Regular !important;
 }
 
-/* the code below is for the dropdown menu */
-.wrapper-dropdown {
-    border-bottom: 1px solid #fff;
-    background-color: black;
-    position: relative;
-    display: inline-block;
-    padding: 0px 0px 0px 0px;
-    min-height: 38px;
-    width: 100%;
-    text-align: left;
-    color: #fff;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    margin-bottom: 20px;
-    font-family: Arial;
-}
-
-.scrollable-menu {
-    height: auto;
-    max-height: 200px;
-    overflow-x: hidden;
-}
-
-.drop-arrow {
-    margin-left: 10px;
-    margin-right: 10px;
-    float: right;
-    rotate: 180deg;
-}
-
-.selected-display {
-    margin-left: 10px;
-    margin-top: -10px;
-}
-
-svg {
-    transition: all 0.3s;
-}
 
 .wrapper-dropdown::before {
     position: absolute;
@@ -265,7 +224,6 @@ svg {
     margin: 0;
     padding: 0;
     list-style: none;
-    z-index: 99;
     border-radius: 15px;
     box-shadow: inherit;
     background-color: black;
@@ -294,11 +252,6 @@ svg {
 
 .dropdown {
     padding: 0.5rem !important;
-}
-
-.wrapper-dropdown .dropdown li:hover {
-    background-color: rgb(35, 40, 49);
-    border-radius: 10px;
 }
 
 .wrapper-dropdown.active .dropdown {
@@ -678,7 +631,6 @@ ul > li {
 
 /* car list CSS  */
 .dropdown {
-    z-index: 30;
     min-width: 15em;
     position: relative;
     margin: 2em;
