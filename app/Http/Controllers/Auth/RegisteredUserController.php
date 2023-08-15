@@ -15,6 +15,8 @@ use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Auth\User;
+
 
 class RegisteredUserController extends Controller
 {
