@@ -179,7 +179,7 @@
                             <div class="slides mt-2">
                                 @if (isset($vehicles))
                                 @foreach ($vehicles as $vehicle)
-                                <div class="slide">
+                                <div class="slide mb-4">
                                     <div class="inner_content">
                                         <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                                             <div>
@@ -187,14 +187,14 @@
                                                 @php
                                                 $firstImage = $vehicle->images[0];
                                                 @endphp
-                                                <img class="object-cover w-96 md:h-auto md:w-52 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
+                                                <img class="w-96 h-auto md:h-32 md:w-52 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
                                                 @else
-                                                <img class="object-cover w-72 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
+                                                <img class="w-72 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
                                                 @endif
                                             </div>
-                                            <div class="flex flex-col justify-between p-2 w-96 h-36 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
+                                            <div class="flex flex-col justify-between p-2 w-96 h-30 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
                                                 @if (!empty($vehicle['make']) && !empty($vehicle['model']))
-                                                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500">{{ $vehicle['make']}} {{ $vehicle['model']}}</h5>
+                                                <h5 class="mb-2 text-lg font-semibold tracking-tight text-gray-500">{{ $vehicle['make']}} {{ $vehicle['model']}}</h5>
                                                 @else
                                                 <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500">Vehicle Details Missing</h5>
                                                 @endif
