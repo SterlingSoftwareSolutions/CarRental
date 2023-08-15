@@ -21,9 +21,9 @@
     @endphp
 
 
-  @if ($currentRoute === 'login' && !$loggedIn)
+@if ($currentRoute === 'login' && !$loggedIn)
 
-    <x-modal :name="true" :show="true" :maxWidth="'3xl'">
+<x-modal :name="true" :show="true" :maxWidth="'3xl'">
         <div class="h-full">
             @include('auth.login')
         </div>
@@ -92,39 +92,6 @@
                         <button type="submit" class="text-white w-full bg-[#317256] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded mt-3">
                             <span class="text-base">Search Now</span>
                         </button>
-                    </form>
-                    <form method="post" action="{{ route('search_vehicle') }}" enctype="multipart/form-data">
-                        @csrf
-                        @method('GET')
-                        <input type="text" hidden name="availability" value="1">
-                        <div class="container-search mt-2 md:mt-4">
-                            <span class="selected-display text-white" id="destination">Choose Vehicle</span>
-                            <select class="w-full text-black h-12 rounded-md border-none" name="make" id="make">
-                                <option value="Toyota" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Toyota' ? 'selected' : '' }}>Toyota</option>
-                                <option value="BMW" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'BMW' ? 'selected' : '' }}>BMW</option>
-                                <option value="Benz" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Benz' ? 'selected' : '' }}>Benz</option>
-                                <option value="Audi" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Audi' ? 'selected' : '' }}>Audi</option>
-                                <option value="Sedan" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Sedan' ? 'selected' : '' }}>Sedan</option>
-                                <option value="Truck" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Truck' ? 'selected' : '' }}>Truck</option>
-                                <!-- Add more body types as needed with the same `old()` check -->
-                            </select>
-                        </div>
-                        <div class="flex flex-col gap-2 md:flex-row md:gap-x-4 mt-3 md:mt-5">
-                            <div>
-                                <p class="mt-2 font-semibold text-[#707070]">Pick-up Date & Time</p>
-                                <input class="date-input rounded-md text-sm w-full md:text-base" type="datetime-local" id="pickup_time" name="pickup_time">
-                            </div>
-                            <div>
-                                <p class="mt-2 font-semibold text-[#707070]">Dropp Off Date & Time</p>
-                                <input class="date-input rounded-md text-sm w-full md:text-base" type="datetime-local" id="dropoff_time" name="dropoff_time">
-                            </div>
-                        </div>
-
-                        <div class="flex justify-center mt-4 md:mt-6">
-                            <button type="submit" class="text-white w-full bg-[#317256] hover:bg-blue-800 font-bold text-sm md:text-base py-2 rounded">
-                                <span class="text-base">Search Now</span>
-                            </button>
-                        </div>
                     </form>
                 </div>
             </div>
