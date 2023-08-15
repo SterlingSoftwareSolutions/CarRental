@@ -42,17 +42,17 @@
             <div class="bg-[#317256] p-4 rounded-lg text-center flex-1">
                 <a href="#" class="hover:underline inline-flex items-center justify-center"><img src="{{ URL('images/bigloc.png')}}" class="w-12 h-12 sm:w-16 sm:h-16" alt="Location"></a>
                 <h1 class="text-white font-semibold text-base sm:text-lg">Our Location</h1>
-                <a href="#" class="text-white hover:underline block mt-2">5th Floor, AH Building, Melbourne, Australia</a>
+                <a href="https://www.google.com/maps/@-26.7738869,134.7806741,12.75z?entry=ttu" class="text-white hover:underline block mt-2">5th Floor, AH Building, Melbourne, Australia</a>
             </div>
             <div class="bg-[#317256] p-4 rounded-lg text-center flex-1">
                 <a href="#" class="hover:underline inline-flex items-center justify-center"><img src="{{ URL('images/bigmail.png')}}" class="w-12 h-12 sm:w-16 sm:h-16" alt="Email"></a>
                 <h1 class="text-white font-semibold text-base sm:text-lg">Email</h1>
-                <a href="#" class="text-white hover:underline block mt-2">Info@Carrental.Com</a>
+                <a href="mailto:info@carrental.com" class="text-white hover:underline block mt-2">Info@Carrental.Com</a>
             </div>
             <div class="bg-[#317256] p-4 rounded-lg text-center flex-1">
                 <a href="#" class="hover:underline inline-flex items-center justify-center"><img src="{{ URL('images/bigsell.png')}}" class="w-12 h-12 sm:w-16 sm:h-16" alt="Phone"></a>
                 <h1 class="text-white font-semibold text-base sm:text-lg">Phone</h1>
-                <a href="#" class="text-white hover:underline block mt-2">+8801 738 5678 64</a>
+                <a href="tel:8801 738 5678 64" class="text-white hover:underline block mt-2">+8801 738 5678 64</a>
             </div>
         </div>
         <!-- end contact infomation section -->

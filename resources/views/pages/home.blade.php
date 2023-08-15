@@ -86,7 +86,7 @@
                         </div>
 
                         <div class="flex justify-center mt-4 md:mt-6">
-                            <button type="submit" class="text-white w-full bg-[#317256] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded">
+                            <button type="submit" class="text-white w-full bg-[#317256] hover:bg-blue-800 font-bold text-sm md:text-base py-2 rounded">
                                 <span class="text-base">Search Now</span>
                             </button>
                         </div>
@@ -309,25 +309,27 @@
         </div>
     </div>
     <div class="text-center">
-        <button type="button" class="text-white bg-[#317256] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm px-5 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 rounded">
-            <a class="text-lg">View All</a>
+        <button type="button" class="text-white bg-[#317256] font-bold hover:bg-blue-800 px-6 py-3 text-center mr-3 md:mr-0 rounded" onclick="window.location.href='{{ route('carlist') }}';">
+            View All
         </button>
     </div>
     <!-- end diverse vehicle section -->
 
     <!-- car rental section -->
     <div class="bg-[#317256] mt-20">
-        <div class="flex flex-col items-center justify-center mt-4 md:flex-row">
+        <div class="flex justify-center mt-4 w-12/12">
             <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                <div class="pt-5 md:pt-0">
-                    <img class="object-cover h-44 md:h-full rounded-lg" src="{{ URL('images/roland-denes-EWf48MRVUNE-unsplash.png')}}" alt="">
-                </div>
-                <div class="pl-5 md:pl-5 pt-5 md:pt-0">
-                    <img class="object-cover h-44 md:h-full rounded-lg" src="{{ URL('images/nate-johnston-obOin8-m5sw-unsplash.png')}}" alt="">
-                </div>
+                <a href="#" class="flex flex-col h-full items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                    <div>
+                        <img class="object-cover h-96 hidden md:block" src="{{ URL('images/roland-denes-EWf48MRVUNE-unsplash.png')}}" alt="">
+                    </div>
+                    <div class="pl-5">
+                        <img class="object-cover h-96 hidden md:block" src="{{ URL('images/nate-johnston-obOin8-m5sw-unsplash.png')}}" alt="">
+                    </div>
+                </a>
             </a>
-            <a href="#" class="items-center md:flex-row md:max-w-xl">
-                <div class="grid p-4 md:p-8">
+            <a href="#" class="grid items-center md:flex-row md:max-w-xl">
+                <div class="grid p-2 md:p-8">
                     <h1 class="text-white font-semibold text-xl md:text-3xl">Car Rental Experts You Trust</h1>
                     <p class="text-white mt-3 md:mt-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate.</p>
                 </div>
@@ -354,7 +356,7 @@
                     </div>
                 </div>
                 <div class="mt-3 ml-8 md:mt-5 pb-5">
-                    <button class="bg-white p-2 rounded">Read More</button>
+                    <button class="bg-white p-2 rounded text-[#317256] font-bold hover:bg-[#e0aa87]" onclick="window.location.href='{{ route('about') }}';">Read More</button>
                 </div>
             </a>
         </div>
@@ -366,7 +368,6 @@
         <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Happy Customers, Memorable Journeys</h1>
         <p class="text-base md:text-lg text-gray-500 mt-4 md:mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
-
     <div class="flex">
         <div id="app" class="max-w-screen-lg mx-auto md:px-8 py-12 transition-all duration-500 ease-linear">
             <div class="content-wrapper flex justify-center w-full">
