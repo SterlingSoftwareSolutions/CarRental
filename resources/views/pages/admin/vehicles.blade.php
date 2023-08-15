@@ -118,6 +118,9 @@
                                     </div>
                                 </th>
                                 <th scope="col" class="px-6 py-3">
+                                    Availability
+                                </th>
+                                <th scope="col" class="px-6 py-3">
                                     <span class="sr-only">Edit</span>
 
                                 </th>
@@ -125,11 +128,8 @@
                         </thead>
 
                         <tbody>
-
                             @foreach ($vehicles as $vehicle)
                             <tr class="bg-white border-b">
-
-
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
                                     <div class="flex items-center">
                                         <div class="me-3">
@@ -152,6 +152,11 @@
                                 <td class="px-6 py-4">
                                     {{ $vehicle['price']}}
                                 </td>
+
+                                <td class="px-6 py-4">
+                                {{ $vehicle['availability'] ? 'Available' : 'Not Available' }}
+
+                                </td>
                                 <td class="px-6 py-4 text-right">
                                     <a href="/admin/vehicles/{{ $vehicle['id']}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                     /
@@ -165,8 +170,6 @@
                             </tr>
 
                             @endforeach
-
-
                         </tbody>
                     </table>
                 </div>
