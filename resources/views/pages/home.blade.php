@@ -161,7 +161,7 @@
             <div class=" mb-4 md:mb-0 ">
                 <a href="" class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                     <div>
-                        <img class="object-cover md:h-auto md:w-50 w-full h-full md:rounded-none md:rounded-l-lg" src="{{ URL('images/Rectangle 27.png')}}" alt="">
+                        <img class="object-cover md:h-96 md:w-50 w-full h-full md:rounded-none md:rounded-l-lg mt-12" src="{{ URL('images/Rectangle 27.png')}}" alt="">
                     </div>
                 </a>
             </div>
@@ -274,8 +274,8 @@
     </div>
     <div id="app" class="w-4/6 mx-auto px-4 md:px-8 py-12 transition-all duration-500 ease-linear">
         <div class="relative">
-            <div class="slides-container h-72 flex snap-x snap-mandatory overflow-hidden overflow-x-auto space-x-4 rounded scroll-smooth before:w-[45vw] before:shrink-0 after:w-[45vw] after:shrink-0 md:before:w-0 md:after:w-0">
-                <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
+            <div class="slides-container h-80 flex snap-x snap-mandatory overflow-hidden overflow-x-auto space-x-4 rounded scroll-smooth before:w-[45vw] before:shrink-0 after:w-[45vw] after:shrink-0 md:before:w-0 md:after:w-0">
+                <div class="slide aspect-square  h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
                     <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
                     <div class="grid justify-items-stretch items-center justify-center ">
                         <div class="flex ml-20">
@@ -284,7 +284,7 @@
                         <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
                     </div>
                 </div>
-                <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
+                <div class="slide aspect-square h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
                     <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
                     <div class="grid justify-items-stretch items-center justify-center ">
                         <div class="flex ml-20">
@@ -293,7 +293,7 @@
                         <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
                     </div>
                 </div>
-                <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
+                <div class="slide aspect-square h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
                     <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
                     <div class="grid justify-items-stretch items-center justify-center ">
                         <div class="flex ml-20">
@@ -302,7 +302,7 @@
                         <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
                     </div>
                 </div>
-                <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
+                <div class="slide aspect-square h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
                     <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
                     <div class="grid justify-items-stretch items-center justify-center ">
                         <div class="flex ml-20">
@@ -311,7 +311,7 @@
                         <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
                     </div>
                 </div>
-                <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
+                <div class="slide aspect-square h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
                     <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
                     <div class="grid justify-items-stretch items-center justify-center ">
                         <div class="flex ml-20">
