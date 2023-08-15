@@ -29,46 +29,47 @@
 
     <!-- filtering section -->
     <div class="flex justify-center md:grid md:grid-flow-row -mt-2">
-        <div class="flex flex-col md:flex-row border-t-8 border-[#398564] bg-[#E1E1E1] md:justify-center w-full" style="z-index: 1;">
-            <div class="dropdown">
-                <label class="font-bold text-[#707070]" for="">Make</label>
-                <select class="w-full h-12 mt-2 rounded-md border-none" name="cars" id="cars">
-                    <option value="volvo">All Makes</option>
-                    <option value="saab">Saab</option>
-                    <option value="opel">Opel</option>
-                    <option value="audi">Audi</option>
-                </select>
+        <form>
+            <div class="flex flex-col md:flex-row border-t-8 border-[#398564] bg-[#E1E1E1] md:justify-center w-full" style="z-index: 1;">
+                <div class="dropdown">
+                    <label class="font-bold text-[#707070]" for="">Make</label>
+                    <select class="w-full h-12 mt-2 rounded-md border-none" name="make" id="cars" onchange="this.form.submit()">
+                        <option value="">All Makes</option>
+                        @foreach($filters['makes'] as $opt)
+                        <option value="{{$opt}}" @if(Request()->make == $opt) selected @endif>{{$opt}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="dropdown">
+                    <label class="font-bold text-[#707070]" for="">Model</label>
+                    <select class="w-full h-12 mt-2 rounded-md border-none" name="model" id="cars" onchange="this.form.submit()">
+                        <option value="">All Models</option>
+                        @foreach($filters['models'] as $opt)
+                        <option value="{{$opt}}" @if(Request()->model == $opt) selected @endif>{{$opt}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="dropdown">
+                    <label class="font-bold text-[#707070]" for="">Body Type</label>
+                    <select class="w-full h-12 mt-2 rounded-md border-none" name="body_type" id="cars" onchange="this.form.submit()">
+                        <option value="">All Body Types</option>
+                        @foreach($filters['body_types'] as $opt)
+                        <option value="{{$opt}}" @if(Request()->body_type == $opt) selected @endif>{{$opt}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="dropdown">
+                    <label class="font-bold text-[#707070]" for="">Transmission</label>
+                    <select class="w-full h-12 mt-2 rounded-md border-none" name="transmission" id="cars" onchange="this.form.submit()">
+                        <option value="">All Transmissions</option>
+                        @foreach($filters['transmissions'] as $opt)
+                            <option value="{{$opt}}" @if(Request()->transmission == $opt) selected @endif>{{$opt}}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
-            <div class="dropdown">
-                <label class="font-bold text-[#707070]" for="">Model</label>
-                <select class="w-full h-12 mt-2 rounded-md border-none" name="cars" id="cars">
-                    <option value="volvo">All Models</option>
-                    <option value="saab">Saab</option>
-                    <option value="opel">Opel</option>
-                    <option value="audi">Audi</option>
-                </select>
-            </div>
-            <div class="dropdown">
-                <label class="font-bold text-[#707070]" for="">Body Type</label>
-                <select class="w-full h-12 mt-2 rounded-md border-none" name="cars" id="cars">
-                    <option value="volvo">All Body Types</option>
-                    <option value="saab">Saab</option>
-                    <option value="opel">Opel</option>
-                    <option value="audi">Audi</option>
-                </select>
-            </div>
-            <div class="dropdown">
-                <label class="font-bold text-[#707070]" for="">Transmission</label>
-                <select class="w-full h-12 mt-2 rounded-md border-none" name="cars" id="cars">
-                    <option value="volvo">All Transmissions</option>
-                    <option value="saab">Saab</option>
-                    <option value="opel">Opel</option>
-                    <option value="audi">Audi</option>
-                </select>
-            </div>
-        </div>
+        </form>
     </div>
-
     <!-- end filtering section -->
 
     <!-- car list -->
@@ -78,7 +79,7 @@
             @foreach ($vehicles as $vehicle)
             <!-- Repeat this section for each car item -->
             <div class="bg-[#F8FFF2] grid p-4">
-                <img class="rounded h-56 w-full" src="{{ Storage::url($vehicle->images[0]->file_path) }}">
+                <img class="rounded h-56 w-full object-cover" src="@if($vehicle->images[0] ?? null) Storage::url($vehicle->images[0]->file_path) @else images/default.png @endif">
                 <div class="flex justify-between items-center p-4">
                     <div class="flex w-4/6">
                         <div class="bg-[#F8FFF2] grid">
