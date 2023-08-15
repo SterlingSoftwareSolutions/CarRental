@@ -175,7 +175,7 @@
                     <div id="content1">
                         <div class="px-2 md:px-0 slider">
                             <div class="slides mt-2">
-                                @if ($vehicles->count() > 0)
+                                @if (isset($vehicles))
                                 @foreach ($vehicles as $vehicle)
                                 <div class="slide">
                                     <div class="inner_content">
