@@ -12,8 +12,11 @@
     <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="{{route('carlist')}}">VEHICLE LIST</a></li>
     <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="{{route('about')}}">ABOUT US</a></li>
     <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="{{route('contact')}}">CONTACT US</a></li>
+
     @if(auth()->check())
-    <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="{{ route('dashboard')}}">DASHBOARD</a></li>
+    <li><a class="text-white font-semibold hover:text-[#E0AA87]"
+        href="@if(Auth::user()->role == 'admin') {{ route('dashboard')}} @else /user/dashboard @endif">DASHBOARD</a>
+    </li>
     @endif
 
     @if(auth()->guest())
@@ -21,7 +24,8 @@
     @endif
 
     @if(auth()->check())
-    <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LogOut</a></li>
+    <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="{{ route('logout') }}"
+        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LogOut</a></li>
     @endif
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
       @csrf
