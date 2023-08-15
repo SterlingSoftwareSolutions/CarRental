@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class VehiclesController extends Controller
 {
-    public function filters(){
+    public static function filters(){
         $makes = Vehicles::pluck('make')->unique();
         $models = Vehicles::pluck('model')->unique();
         $body_types = Vehicles::pluck('body_type')->unique();
@@ -74,6 +74,7 @@ class VehiclesController extends Controller
 
         return view('pages.admin.vehicles.index', ['vehicles' => $vehicles]);
     }
+
     public function edit_vehicle(Request $request,  $vehicle_id)
     {
         $query = Vehicles::query();
