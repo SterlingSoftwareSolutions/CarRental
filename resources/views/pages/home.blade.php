@@ -15,12 +15,10 @@
 </head>
 
 <body>
+    @php
     $currentRoute = Route::currentRouteName(); // Get the current route name
     $loggedIn = auth()->check(); // Check if the user is logged in
     @endphp
-
-
-
     @if ($currentRoute === 'login' && !$loggedIn)
     <x-modal :name="true" :show="true" :maxWidth="'3xl'">
         <div class="h-full">
