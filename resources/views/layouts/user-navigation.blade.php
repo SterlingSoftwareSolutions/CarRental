@@ -34,7 +34,7 @@ $user =session('user_data');
                 </div>
                 <div class="w-1/5">
                     <!-- Profile imgage  -->
-                    <img src="{{ Storage::url(session('user_data')['images'][0]['file_path']) }}" class="rounded-full w-15 h-15" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
+                    <img src="{{ Storage::url(session('user_data')['images'][0]['file_path']) }}" class="rounded-full min-w-[45px] min-h-[45px] max-w-[45px] max-h-[45px]" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
                     <!-- Dropdown menu -->
                     <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
