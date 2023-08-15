@@ -56,6 +56,9 @@
                     <div class="text-center">
                         <p class="text-white text-sm md:text-lg font-bold mt-2 md:mt-4">Ready to hit the road?</p>
                     </div>
+                    @php
+                        $filters = App\Http\Controllers\VehiclesController::filters();
+                    @endphp
                     <form action="/carlist">                           
                         <label class="font-bold text-[#707070]" for="">Make</label>
                         <select class="w-full h-12 mt-2 rounded-md border-none" name="make" id="cars">

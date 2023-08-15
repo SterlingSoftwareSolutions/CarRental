@@ -14,6 +14,6 @@ class HomeController extends Controller
         }])->get();
 
 
-        return view('pages.home', ['vehicles' => $vehicles, 'filters' => VehiclesController::filters()]);
+        return view('pages.home', ['vehicles' => $vehicles]);
     }
 }
