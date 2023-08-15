@@ -22,7 +22,7 @@
     <!-- banner section -->
     <div class="relative -z-30">
         <img src="{{ URL('images/Group 180.png')}}" alt="" srcset="">
-        <h1 class="absolute top-60 left-60 text-white text-4xl font-bold inline-block" text-4xl">Find Your Dream Ride</h1>
+        <h1 class="absolute top-60 left-60 text-white font-bold inline-block text-4xl">Find Your Dream Ride</h1>
     </div>
     <!-- end banner section -->
 
@@ -93,7 +93,7 @@
                                     @endfor
                             </div>
 
-                        </div>
+                        </div> 
                     </div>
                     <div class="bg-[#317256] px-1 rounded">
                         <h1 class="text-white">$ {{ $vehicle['price']}} /hour</h1>

@@ -15,6 +15,31 @@
 </head>
 
 <body>
+    $currentRoute = Route::currentRouteName(); // Get the current route name
+    $loggedIn = auth()->check(); // Check if the user is logged in
+    @endphp
+
+
+
+    @if ($currentRoute === 'login' && !$loggedIn)
+    <x-modal :name="true" :show="true" :maxWidth="'3xl'">
+        <div class="h-full">
+            @include('auth.login')
+        </div>
+    </x-modal>
+    @elseif ($currentRoute === 'register' && !$loggedIn)
+    <x-modal :name="true" :show="true" :maxWidth="'3xl'">
+        <div class="h-full">
+            @include('auth.register')
+        </div>
+    </x-modal>
+    @elseif (!$loggedIn)
+    <x-modal :name="true" :show="true" :maxWidth="'3xl'">
+        <div class="h-full">
+            @include('auth.login')
+        </div>
+    </x-modal>
+    @endif
 
 
     <!-- start navigation -->
@@ -150,48 +175,44 @@
                     <div id="content1">
                         <div class="px-2 md:px-0 slider">
                             <div class="slides mt-2">
+                                @if (isset($vehicles) && count($vehicles) > 0)
+                                @foreach ($vehicles as $vehicle)
                                 <div class="slide">
                                     <div class="inner_content">
                                         <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                                             <div>
-                                                <img class="object-cover w-72 rounded-t-lg md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ URL('images/Rectangle 27.png')}}" alt="">
+                                                @if ($vehicle->images->count() > 0)
+                                                @php
+                                                $firstImage = $vehicle->images[0];
+                                                @endphp
+                                                <img class="object-cover w-72 rounded-t-lg md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
+                                                @else
+                                                <img class="object-cover w-72 rounded-t-lg md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
+                                                @endif
                                             </div>
-                                            <div class="flex flex-col justify-between p-2 w-96 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-[#317256]">
-                                                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Toyota Crown</h5>
-                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Four Seated Car </p>
-                                                <p class="mb-3 text-sm font-semibold text-[#317256] dark:text-gray-400">$ 10 p/day </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="slide">
-                                    <div class="inner_content">
-                                        <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                            <div>
-                                                <img class="object-cover w-72 rounded-t-lg h-95 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ URL('images/Rectangle 27.png')}}" alt="">
-                                            </div>
-                                            <div class="flex flex-col justify-between p-2 w-96 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-[#317256]">
-                                                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Toyota Crown</h5>
-                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Four Seated Car </p>
-                                                <p class="mb-3 text-sm font-semibold text-[#317256] dark:text-gray-400">$ 100 p/day </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="slide">
-                                    <div class="inner_content">
-                                        <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                            <div>
-                                                <img class="object-cover w-72 rounded-t-lg h-95 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ URL('images/Rectangle 27.png')}}" alt="">
-                                            </div>
-                                            <div class="flex flex-col justify-between p-2 w-96 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-[#317256]">
-                                                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Toyota Crown</h5>
-                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Four Seated Car </p>
-                                                <p class="mb-3 text-sm font-semibold text-[#317256] dark:text-gray-400">$ 100 p/day </p>
+                                            <div class="flex flex-col justify-between p-2 w-96 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
+                                                @if (!empty($vehicle['make']) && !empty($vehicle['model']))
+                                                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500">{{ $vehicle['make']}} {{ $vehicle['model']}}</h5>
+                                                @else
+                                                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500">Vehicle Details Missing</h5>
+                                                @endif
+
+                                                @if (!empty($vehicle['passengers']))
+                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $vehicle['passengers']}} Seated Car </p>
+                                                @endif
+
+                                                @if (!empty($vehicle['price']))
+                                                <p class="mb-3 text-sm font-semibold text-green-500 dark:text-gray-400">$ {{ $vehicle['price']}} p/day </p>
+                                                @endif
                                             </div>
                                         </a>
                                     </div>
                                 </div>
+                                @endforeach
+                                @else
+                                <p>No vehicles available.</p>
+                                @endif
+
                             </div>
                         </div>
                     </div>
@@ -199,49 +220,44 @@
                     <div id="content2">
                         <div class="slider">
                             <div class="slides mt-2">
+                                @if (isset($vehicles) && count($vehicles) > 0)
+                                @foreach ($vehicles as $vehicle)
                                 <div class="slide">
                                     <div class="inner_content">
                                         <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                                             <div>
-                                                <img class="object-cover w-72 rounded-t-lg h-95 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ URL('images/Rectangle 27.png')}}" alt="">
+                                                @if ($vehicle->images->count() > 0)
+                                                @php
+                                                $firstImage = $vehicle->images[0];
+                                                @endphp
+                                                <img class="object-cover w-72 rounded-t-lg md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
+                                                @else
+                                                <img class="object-cover w-72 rounded-t-lg md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
+                                                @endif
                                             </div>
-                                            <div class="flex flex-col justify-between p-2 w-96 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-[#317256]">
-                                                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Toyota Crown</h5>
-                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Four Seated Car </p>
-                                                <p class="mb-3 text-sm font-semibold text-[#317256] dark:text-gray-400">$ 100 p/day </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="slide">
-                                    <div class="inner_content">
-                                        <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                            <div>
-                                                <img class="object-cover w-72 rounded-t-lg h-95 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ URL('images/Rectangle 27.png')}}" alt="">
-                                            </div>
-                                            <div class="flex flex-col justify-between p-2 w-96 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-[#317256]">
-                                                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Toyota Crown</h5>
-                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Four Seated Car </p>
-                                                <p class="mb-3 text-sm font-semibold text-[#317256] dark:text-gray-400">$ 100 p/day </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
+                                            <div class="flex flex-col justify-between p-2 w-96 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
+                                                @if (!empty($vehicle['make']) && !empty($vehicle['model']))
+                                                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500">{{ $vehicle['make']}} {{ $vehicle['model']}}</h5>
+                                                @else
+                                                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500">Vehicle Details Missing</h5>
+                                                @endif
 
-                                <div class="slide">
-                                    <div class="inner_content">
-                                        <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                            <div>
-                                                <img class="object-cover w-72 rounded-t-lg h-95 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ URL('images/Rectangle 27.png')}}" alt="">
-                                            </div>
-                                            <div class="flex flex-col justify-between p-2 w-96 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-[#317256]">
-                                                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Toyota Crown</h5>
-                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Four Seated Car </p>
-                                                <p class="mb-3 text-sm font-semibold text-[#317256] dark:text-gray-400">$ 100 p/day </p>
+                                                @if (!empty($vehicle['passengers']))
+                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $vehicle['passengers']}} Seated Car </p>
+                                                @endif
+
+                                                @if (!empty($vehicle['price']))
+                                                <p class="mb-3 text-sm font-semibold text-green-500 dark:text-gray-400">$ {{ $vehicle['price']}} p/day </p>
+                                                @endif
                                             </div>
                                         </a>
                                     </div>
                                 </div>
+                                @endforeach
+                                @else
+                                <p>No vehicles available.</p>
+                                @endif
+
                             </div>
                         </div>
                     </div>
@@ -259,51 +275,19 @@
     <div id="app" class="w-4/6 mx-auto px-4 md:px-8 py-12 transition-all duration-500 ease-linear">
         <div class="relative">
             <div class="slides-container h-72 flex snap-x snap-mandatory overflow-hidden overflow-x-auto space-x-4 rounded scroll-smooth before:w-[45vw] before:shrink-0 after:w-[45vw] after:shrink-0 md:before:w-0 md:after:w-0">
+                @if (isset($vehicles))
+                @foreach ($vehicles as $vehicle)
                 <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-                    <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
+                    <img src="{{ Storage::url($firstImage->file_path) }}" alt="mountain_image">
                     <div class="grid justify-items-stretch items-center justify-center ">
                         <div class="flex ml-20">
-                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">SEDAN</h1>
+                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">{{ $vehicle['body_type']}}</h1>
                         </div>
-                        <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
+                        <p class="p-2">{{ $vehicle['short_Description']}} </p>
                     </div>
                 </div>
-                <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-                    <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
-                    <div class="grid justify-items-stretch items-center justify-center ">
-                        <div class="flex ml-20">
-                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">SUV</h1>
-                        </div>
-                        <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
-                    </div>
-                </div>
-                <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-                    <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
-                    <div class="grid justify-items-stretch items-center justify-center ">
-                        <div class="flex ml-20">
-                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">MINIVAN</h1>
-                        </div>
-                        <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
-                    </div>
-                </div>
-                <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-                    <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
-                    <div class="grid justify-items-stretch items-center justify-center ">
-                        <div class="flex ml-20">
-                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">HATCHBACK</h1>
-                        </div>
-                        <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
-                    </div>
-                </div>
-                <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-                    <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
-                    <div class="grid justify-items-stretch items-center justify-center ">
-                        <div class="flex ml-20">
-                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">HATCHBACK</h1>
-                        </div>
-                        <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
-                    </div>
-                </div>
+                @endforeach
+                @endif
                 <!-- Add similar slide elements for the remaining images -->
             </div>
             <div class="absolute top-0 -left-4 h-full items-center">
