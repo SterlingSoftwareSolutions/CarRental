@@ -172,48 +172,22 @@
                     <div id="content1">
                         <div class="px-2 md:px-0 slider">
                             <div class="slides mt-2">
+                                @foreach ($vehicles as $vehicle)
                                 <div class="slide">
                                     <div class="inner_content">
                                         <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                                             <div>
-                                                <img class="object-cover w-72 rounded-t-lg md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ URL('images/Rectangle 27.png')}}" alt="">
+                                                <img class="object-cover w-72 rounded-t-lg md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($vehicle->images[0]->file_path) }}" alt="">
                                             </div>
                                             <div class="flex flex-col justify-between p-2 w-96 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
-                                                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Toyota Crown</h5>
-                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Four Seated Car </p>
-                                                <p class="mb-3 text-sm font-semibold text-green-500 dark:text-gray-400">$ 10 p/day </p>
+                                                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500">{{ $vehicle['make']}} {{ $vehicle['model']}}</h5>
+                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $vehicle['passengers']}} Seated Car </p>
+                                                <p class="mb-3 text-sm font-semibold text-green-500 dark:text-gray-400">$ {{ $vehicle['price']}} p/day </p>
                                             </div>
                                         </a>
                                     </div>
                                 </div>
-                                <div class="slide">
-                                    <div class="inner_content">
-                                        <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                            <div>
-                                                <img class="object-cover w-72 rounded-t-lg h-95 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ URL('images/Rectangle 27.png')}}" alt="">
-                                            </div>
-                                            <div class="flex flex-col justify-between p-2 w-96 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
-                                                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Toyota Crown</h5>
-                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Four Seated Car </p>
-                                                <p class="mb-3 text-sm font-semibold text-green-500 dark:text-gray-400">$ 100 p/day </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="slide">
-                                    <div class="inner_content">
-                                        <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                            <div>
-                                                <img class="object-cover w-72 rounded-t-lg h-95 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ URL('images/Rectangle 27.png')}}" alt="">
-                                            </div>
-                                            <div class="flex flex-col justify-between p-2 w-96 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
-                                                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Toyota Crown</h5>
-                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Four Seated Car </p>
-                                                <p class="mb-3 text-sm font-semibold text-green-500 dark:text-gray-400">$ 100 p/day </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
