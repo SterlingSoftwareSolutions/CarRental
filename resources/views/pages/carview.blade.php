@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
@@ -142,10 +145,10 @@
 
             <!-- pickup foam -->
             <div class="bg-[#F8FFF2] grid md:p-8 md:mt-0">
-                <h1 class="text-emerald-600 font-semibold text-xl">{{ $vehicle['year']}} {{ $vehicle['make']}} {{ $vehicle['model']}} {{ $vehicle['body_type']}}</h1>
+                <h1 class="text-[#317256] font-semibold text-xl">{{ $vehicle['year']}} {{ $vehicle['make']}} {{ $vehicle['model']}} {{ $vehicle['body_type']}}</h1>
                 <p class="mt-2 font-semibold text-[#707070] whitespace-normal">{{ $vehicle['short_Description']}}</p>
                 <div class="flex items-center justify-right">
-                    <div class="bg-emerald-600 p-2 rounded">
+                    <div class="bg-[#317256] p-2 rounded">
                         <h1 class="text-white">$ {{ $vehicle['price']}} /hour</h1>
                     </div>
                 </div>
@@ -186,7 +189,7 @@
                         <div class="w-full">
                             <input class="w-full rounded-md border-none shadow-md" type="datetime-local" id="pickup_time" name="pickup_time">
                         </div>
-                      
+
                     </div>
 
                     <p class="mt-2 font-semibold text-[#707070]">Drop-off Date & Time</p>
@@ -195,11 +198,11 @@
                         <div class="w-full">
                             <input class="w-full rounded-md border-none shadow-md" type="datetime-local" name="dropoff_time" id="dropoff_time">
                         </div>
-                        
+
                     </div>
 
                     <div class="flex justify-center items-center pt-8">
-                        <button type="submit" class="w-full bg-emerald-600 p-3 rounded text-white font-semibold" name="cars" id="cars">
+                        <button type="submit" class="w-full bg-[#317256] p-3 rounded text-white font-semibold" name="cars" id="cars">
                             Book Now
                         </button>
 
@@ -210,7 +213,7 @@
 
             <!-- conatct number section -->
             <div class="flex justify-center items-center">
-                <div class="bg-emerald-600 rounded text-center w-10/12 p-4">
+                <div class="bg-[#317256] rounded text-center w-10/12 p-4">
                     <h1 class="text-white font-semibold text-2xl">Call Us</h1>
                     <div class="flex justify-center items-center mt-3">
                         <a href="" class="hover:underline flex">
@@ -244,7 +247,7 @@
                 </div>
             </div>
             <div class="flex justify-center items-center pl-8">
-                <p class="text-black"> <span class="text-emerald-600">hasi_nimantha</span> Excellent service, clean cars, and helpful staff. Highly recommend for car rentals</p>
+                <p class="text-black"> <span class="text-[#317256]">hasi_nimantha</span> Excellent service, clean cars, and helpful staff. Highly recommend for car rentals</p>
             </div>
             <!-- end review section -->
 
@@ -275,7 +278,7 @@
                         <h1 class="text-black text-sm">Your Review <span class="text-red-500">*</span></h1>
                         <textarea class="w-full bg-slate-300 rounded-md border-none shadow-md" name="" id="" cols="30" rows="10"></textarea>
                         <div class="flex justify-start items-start pt-8 w-4/6">
-                            <button class="bg-emerald-600 p-3 rounded text-white font-semibold" name="cars" id="cars">
+                            <button class="bg-[#317256] p-3 rounded text-white font-semibold" name="cars" id="cars">
                                 Submit
                             </button>
                         </div>

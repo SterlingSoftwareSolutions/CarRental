@@ -8,15 +8,15 @@
 
         <div class="h-full sm:p-10 mx-auto w-full">
             <!-- Content for the First column -->
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register_new') }}">
                 @csrf
 
 
                 <!-- Name -->
                 <div>
                     <label for="name" class="font-bold text-gray-500 pl-4 pb-5 ">Name</label>
-                    <x-text-input id="name" class="block w-full bg-neutral-300" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    <x-text-input id="name" class="block w-full bg-neutral-300" type="text" name="first_name" :value="old('first_name')" required autofocus autocomplete="name" />
+                    <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
                 </div>
 
 
