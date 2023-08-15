@@ -43,7 +43,7 @@ class VehiclesController extends Controller
             $query->where('attachment_type', 'Vehicle Image');
         }])->get();
 
-        return view('pages.admin.vehicles', ['vehicles' => $vehicles]);
+        return view('pages.admin.vehicles.index', ['vehicles' => $vehicles]);
     }
     public function edit_vehicle(Request $request,  $vehicle_id)
     {
@@ -59,7 +59,7 @@ class VehiclesController extends Controller
             ->find($vehicle_id);
 
 
-        return view('pages.admin.vehicles', ['vehicles' => $vehicles, 'vehicle_one' => $vehicle]);
+        return view('pages.admin.vehicles.index', ['vehicles' => $vehicles, 'vehicle_one' => $vehicle]);
     }
 
 

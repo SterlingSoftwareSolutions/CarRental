@@ -26,7 +26,7 @@ class BookingsController extends Controller
             $booking['bookingDaysCount'] = $daysCount;
         }
 
-        return view('pages.admin.bookings', ['bookings' => $bookings]);
+        return view('pages.admin.bookings.index', ['bookings' => $bookings]);
     }
 
     public function singlecar($id)
