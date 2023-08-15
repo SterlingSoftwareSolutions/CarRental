@@ -31,16 +31,16 @@
                         <h2 class="mb-6 text-lg font-semibold text-[#E0AA87] uppercase dark:text-white">Quick Links</h2>
                         <ul class="text-white dark:text-gray-400 font-medium">
                             <li class="mb-4">
-                                <a href="https://flowbite.com/" class="hover:underline">Home</a>
+                                <a href="{{route('home')}}" class="hover:underline">Home</a>
                             </li>
                             <li>
-                                <a href="https://tailwindcss.com/" class="hover:underline">Vehicle List</a>
+                                <a href="{{route('carlist')}}" class="hover:underline">Vehicle List</a>
                             </li>
                             <li>
-                                <a href="https://tailwindcss.com/" class="hover:underline">About Us</a>
+                                <a href="{{route('about')}}" class="hover:underline">About Us</a>
                             </li>
                             <li>
-                                <a href="https://tailwindcss.com/" class="hover:underline">Contact Us</a>
+                                <a href="{{route('contact')}}" class="hover:underline">Contact Us</a>
                             </li>
                         </ul>
                     </div>
