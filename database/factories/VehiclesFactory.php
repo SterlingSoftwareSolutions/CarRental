@@ -14,7 +14,7 @@ class VehiclesFactory extends Factory
     {
         $faker = \Faker\Factory::create();
         return [
-            'make' => 'Sedan',
+            'make' => $faker->company,
             'model' => $faker->word,
             'vin' => $faker->unique()->randomNumber(6),
             'body_type' => $faker->randomElement(['SUV', 'Coupe', 'Hatchback', 'Sedan']),
