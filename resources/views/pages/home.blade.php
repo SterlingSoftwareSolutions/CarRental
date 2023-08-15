@@ -220,7 +220,7 @@
                     <div id="content2">
                         <div class="slider">
                             <div class="slides mt-2">
-                                @if ($vehicles->count() > 0)
+                                @if (isset($vehicles))
                                 @foreach ($vehicles as $vehicle)
                                 <div class="slide">
                                     <div class="inner_content">
@@ -275,51 +275,17 @@
     <div id="app" class="w-4/6 mx-auto px-4 md:px-8 py-12 transition-all duration-500 ease-linear">
         <div class="relative">
             <div class="slides-container h-72 flex snap-x snap-mandatory overflow-hidden overflow-x-auto space-x-4 rounded scroll-smooth before:w-[45vw] before:shrink-0 after:w-[45vw] after:shrink-0 md:before:w-0 md:after:w-0">
+                @foreach ($vehicles as $vehicle)
                 <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-                    <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
+                    <img src="{{ Storage::url($firstImage->file_path) }}" alt="mountain_image">
                     <div class="grid justify-items-stretch items-center justify-center ">
                         <div class="flex ml-20">
-                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">SEDAN</h1>
+                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">{{ $vehicle['body_type']}}</h1>
                         </div>
-                        <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
+                        <p class="p-2">{{ $vehicle['short_Description']}} </p>
                     </div>
                 </div>
-                <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-                    <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
-                    <div class="grid justify-items-stretch items-center justify-center ">
-                        <div class="flex ml-20">
-                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">SUV</h1>
-                        </div>
-                        <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
-                    </div>
-                </div>
-                <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-                    <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
-                    <div class="grid justify-items-stretch items-center justify-center ">
-                        <div class="flex ml-20">
-                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">MINIVAN</h1>
-                        </div>
-                        <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
-                    </div>
-                </div>
-                <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-                    <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
-                    <div class="grid justify-items-stretch items-center justify-center ">
-                        <div class="flex ml-20">
-                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">HATCHBACK</h1>
-                        </div>
-                        <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
-                    </div>
-                </div>
-                <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-                    <img src="{{ URL('images/Rectangle 27.png')}}" alt="mountain_image">
-                    <div class="grid justify-items-stretch items-center justify-center ">
-                        <div class="flex ml-20">
-                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">HATCHBACK</h1>
-                        </div>
-                        <p class="p-2">Lorem ipsum dolor sit amet, cons ect etur adipis cing elit. </p>
-                    </div>
-                </div>
+                @endforeach
                 <!-- Add similar slide elements for the remaining images -->
             </div>
             <div class="absolute top-0 -left-4 h-full items-center">
