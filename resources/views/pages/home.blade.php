@@ -175,7 +175,7 @@
                     <div id="content1">
                         <div class="px-2 md:px-0 slider">
                             <div class="slides mt-2">
-                                @if (isset($vehicles))
+                                @if (isset($vehicles) && count($vehicles) > 0)
                                 @foreach ($vehicles as $vehicle)
                                 <div class="slide">
                                     <div class="inner_content">
@@ -220,7 +220,7 @@
                     <div id="content2">
                         <div class="slider">
                             <div class="slides mt-2">
-                                @if (isset($vehicles))
+                                @if (isset($vehicles) && count($vehicles) > 0)
                                 @foreach ($vehicles as $vehicle)
                                 <div class="slide">
                                     <div class="inner_content">
