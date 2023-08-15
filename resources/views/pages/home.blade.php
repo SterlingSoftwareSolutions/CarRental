@@ -15,32 +15,7 @@
 </head>
 
 <body>
-@php
-    $currentRoute = Route::currentRouteName(); // Get the current route name
-    $loggedIn = auth()->check(); // Check if the user is logged in
-    @endphp
 
-
-
-    @if ($currentRoute === 'login' && !$loggedIn)
-    <x-modal :name="true" :show="true" :maxWidth="'3xl'">
-        <div class="h-full">
-            @include('auth.login')
-        </div>
-    </x-modal>
-    @elseif ($currentRoute === 'register' && !$loggedIn)
-    <x-modal :name="true" :show="true" :maxWidth="'3xl'">
-        <div class="h-full">
-            @include('auth.register')
-        </div>
-    </x-modal>
-    @elseif (!$loggedIn)
-    <x-modal :name="true" :show="true" :maxWidth="'3xl'">
-        <div class="h-full">
-            @include('auth.login')
-        </div>
-    </x-modal>
-    @endif
 
     <!-- start navigation -->
     @include('layouts.navigation')
@@ -48,8 +23,8 @@
 
     <!-- main home banner  -->
     <div class="main-banner flex justify-right items-center px-4 py-8 md:py-22">
-        <div class="grid justify-center items-center align-middle md:pl-32 pl-1">
-            <h1 class="text-white text-3xl md:text-5xl font-bold mb-2 md:mb-4">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
+        <div class="grid justify-center items-center align-middle md:pl-32 pl-1 lg:mt-36">
+            <h1 class="text-white text-3xl md:text-5xl font-bold  mb-2 md:mb-4">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
             <p class="text-white text-sm md:text-lg font-bold ">Rent a Car for Your Next Adventure with Our Convenient <br class="hidden md:inline"> and Reliable Services</p>
             <div class="flex flex-col md:flex-row gap-4 mt-12 md:mt-10">
                 <div class="grid bg-black rounded-lg search-foam w-full md:w-auto">
@@ -87,8 +62,8 @@
                         </div>
                     </div>
                     <div class="flex justify-center mt-4 md:mt-6">
-                        <button type="button" class="text-white w-full bg-[#317256] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded">
-                            <a class="text-base">Search Now</a>
+                        <button type="button" class="text-white w-full bg-[#317256] hover:bg-[#D3886F] focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded">
+                            <a class="text-base uppercase">Search Now</a>
                         </button>
                     </div>
                 </div>
