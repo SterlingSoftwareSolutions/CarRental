@@ -30,6 +30,8 @@ Route::get('/about', function () {
 
 Route::get('/carlist', [VehiclesController::class, 'index'])->name('carlist');
 
+Route::get('search-carlist', [VehiclesController::class, 'search'])->name('search_vehicle');
+
 Route::get('/contact', function () {
     return view('pages.contact');
 })->name('contact');
@@ -47,7 +49,8 @@ Route::middleware('auth')->group(function () {
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
         Route::get('/dashboard', [DashboardController::class, 'admin'])->name('dashboard');
         Route::get('/users', [UsersController::class, 'show_all_users'])->name('users.all');
-        Route::get('/user/{user_id}', [UsersController::class, 'edit_user'])->name('user.edit');
+        Route::get('/users/{user}/edit', [UsersController::class, 'edit_user'])->name('user.edit');
+        Route::get('/users/{user}', [UsersController::class, 'show'])->name('user.show');
         Route::put('/user', [RegisteredUserController::class, 'update'])->name('update_user');
         Route::delete('/user/{user_id}', [RegisteredUserController::class, 'destroy'])->name('delete_user');
         Route::delete('/vehicle/{user_id}', [VehiclesController::class, 'destroy'])->name('delete_vehicle');

@@ -1,5 +1,5 @@
 <nav class="nav w-full z-50">
-  <div class="logo w-2/12 flex justify-end items-center p-4">
+  <div class="logo w-2/12 flex justify-end items-center p-4 z-50">
     <img src="{{ URL('images/flg_logo11079.png')}}" alt="Logo Image">
   </div>
   <div class="hamburger p-4 cursor-pointer">
@@ -12,7 +12,19 @@
     <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="{{route('carlist')}}">VEHICLE LIST</a></li>
     <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="{{route('about')}}">ABOUT US</a></li>
     <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="{{route('contact')}}">CONTACT US</a></li>
-    <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="#">MY ACCOUNT</a></li>
-    <li><button class="text-white font-semibold login-button" href="{{route('login')}}">Login</button></li>
+    @if(auth()->check())
+    <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="{{ route('dashboard')}}">DASHBOARD</a></li>
+    @endif
+
+    @if(auth()->guest())
+    <li><a class="text-white font-semibold login-button" href="{{ route('login') }}">Login</a></li>
+    @endif
+
+    @if(auth()->check())
+    <li><a class="text-white font-semibold hover:text-[#E0AA87]" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LogOut</a></li>
+    @endif
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+      @csrf
+    </form>
   </ul>
 </nav>

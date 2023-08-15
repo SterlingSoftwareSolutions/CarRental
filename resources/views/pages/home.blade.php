@@ -21,8 +21,8 @@
     @endphp
 
 
+  @if ($currentRoute === 'login' && !$loggedIn)
 
-    @if ($currentRoute === 'login' && !$loggedIn)
     <x-modal :name="true" :show="true" :maxWidth="'3xl'">
         <div class="h-full">
             @include('auth.login')
@@ -51,46 +51,82 @@
         <div class="grid justify-center items-center align-middle md:pl-32 pl-1">
             <h1 class="text-white text-3xl md:text-5xl font-bold mb-2 md:mb-4">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
             <p class="text-white text-sm md:text-lg font-bold ">Rent a Car for Your Next Adventure with Our Convenient <br class="hidden md:inline"> and Reliable Services</p>
-            <div class="flex flex-col md:flex-row gap-4 mt-12 md:mt-10">
-                <div class="grid bg-black rounded-lg search-foam w-full md:w-auto">
+            <div class="flex flex-col md:flex-row gap-4 mt-12 md:mt-10 md:w-1/2">
+                <div class="grid bg-black rounded-lg search-foam w-full lg:w-auto">
                     <div class="text-center">
                         <p class="text-white text-sm md:text-lg font-bold mt-2 md:mt-4">Ready to hit the road?</p>
                     </div>
-                    <div class="container-serach mt-2 md:mt-4">
-                        <div class="wrapper-dropdown">
-                            <span class="selected-display" id="destination">Choose Vehicle</span>
-                            <svg class="drop-arrow ml-auto transform transition-transform md:-rotate-180" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7 8.5l3-3 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
-                            <ul class="dropdown">
-                                <li class="item">Option 1</li>
-                                <li class="item">Option 2</li>
-                                <li class="item">Option 3</li>
-                                <li class="item">Option 4</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-2 md:flex-row md:gap-x-4 mt-3 md:mt-5">
-                        <div>
-                            <input type="text" class="bg-transparent date-input text-sm md:text-base" placeholder="Pick Up Date" onfocus="(this.type='date')" onblur="(this.type='text')">
-                        </div>
-                        <div>
-                            <input type="text" class="bg-transparent date-input mt-2 md:mt-0 text-sm md:text-base" placeholder="Pick Up Time" onfocus="(this.type='time')" onblur="(this.type='text')">
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-2 md:flex-row md:gap-x-4 mt-3 md:mt-5">
-                        <div>
-                            <input type="text" class="bg-transparent date-input text-sm md:text-base" placeholder="Return Date" onfocus="(this.type='date')" onblur="(this.type='text')">
-                        </div>
-                        <div>
-                            <input type="text" class="bg-transparent date-input mt-2 md:mt-0 text-sm md:text-base" placeholder="Return Time" onfocus="(this.type='time')" onblur="(this.type='text')">
-                        </div>
-                    </div>
-                    <div class="flex justify-center mt-4 md:mt-6">
-                        <button type="button" class="text-white w-full bg-[#317256] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded">
-                            <a class="text-base">Search Now</a>
+                    @php
+                        $filters = App\Http\Controllers\VehiclesController::filters();
+                    @endphp
+                    <form action="/carlist">                           
+                        <label class="font-bold text-[#707070]" for="">Make</label>
+                        <select class="w-full h-12 mt-2 rounded-md border-none" name="make" id="cars">
+                            <option value="">All Makes</option>
+                            @foreach($filters['makes'] as $opt)
+                            <option value="{{$opt}}" @if(Request()->make == $opt) selected @endif>{{$opt}}</option>
+                            @endforeach
+                        </select>
+                        <label class="font-bold text-[#707070]" for="">Model</label>
+                        <select class="w-full h-12 mt-2 rounded-md border-none" name="model" id="cars">
+                            <option value="">All Models</option>
+                            @foreach($filters['models'] as $opt)
+                            <option value="{{$opt}}" @if(Request()->model == $opt) selected @endif>{{$opt}}</option>
+                            @endforeach
+                        </select>
+
+                        <label class="font-bold text-[#707070]" for="">Body Type</label>
+                        <select class="w-full h-12 mt-2 rounded-md border-none" name="body_type" id="cars">
+                            <option value="">All Body Types</option>
+                            @foreach($filters['body_types'] as $opt)
+                            <option value="{{$opt}}" @if(Request()->body_type == $opt) selected @endif>{{$opt}}</option>
+                            @endforeach
+                        </select>
+                        <label class="font-bold text-[#707070]" for="">Transmission</label>
+                        <select class="w-full h-12 mt-2 rounded-md border-none" name="transmission" id="cars">
+                            <option value="">All Transmissions</option>
+                            @foreach($filters['transmissions'] as $opt)
+                                <option value="{{$opt}}" @if(Request()->transmission == $opt) selected @endif>{{$opt}}</option>
+                            @endforeach
+                        </select>
+                        <button type="submit" class="text-white w-full bg-[#317256] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded mt-3">
+                            <span class="text-base">Search Now</span>
                         </button>
-                    </div>
+                    </form>
+{{--                     <form method="post" action="{{ route('search_vehicle') }}" enctype="multipart/form-data">
+                        @csrf
+                        @method('GET')
+                        <input type="text" hidden name="availability" value="1">
+                        <div class="container-search mt-2 md:mt-4">
+                            <span class="selected-display text-white" id="destination">Choose Vehicle</span>
+                            <select class="w-full text-black h-12 rounded-md border-none" name="make" id="make">
+                                <option value="Toyota" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Toyota' ? 'selected' : '' }}>Toyota</option>
+                                <option value="BMW" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'BMW' ? 'selected' : '' }}>BMW</option>
+                                <option value="Benz" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Benz' ? 'selected' : '' }}>Benz</option>
+                                <option value="Audi" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Audi' ? 'selected' : '' }}>Audi</option>
+                                <option value="Sedan" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Sedan' ? 'selected' : '' }}>Sedan</option>
+                                <option value="Truck" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Truck' ? 'selected' : '' }}>Truck</option>
+                                <!-- Add more body types as needed with the same `old()` check -->
+                            </select>
+                        </div>
+                        <div class="flex flex-col gap-2 md:flex-row md:gap-x-4 mt-3 md:mt-5">
+                            <div>
+                                <p class="mt-2 font-semibold text-[#707070]">Pick-up Date & Time</p>
+                                <input class="date-input rounded-md text-sm w-full md:text-base" type="datetime-local" id="pickup_time" name="pickup_time">
+                            </div>
+                            <div>
+                                <p class="mt-2 font-semibold text-[#707070]">Dropp Off Date & Time</p>
+                                <input class="date-input rounded-md text-sm w-full md:text-base" type="datetime-local" id="dropoff_time" name="dropoff_time">
+                            </div>
+                        </div>
+
+                        <div class="flex justify-center mt-4 md:mt-6">
+                            <button type="submit" class="text-white w-full bg-[#317256] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded">
+                                <span class="text-base">Search Now</span>
+                            </button>
+                        </div>
+                    </form>
+--}}
                 </div>
             </div>
         </div>
@@ -99,8 +135,8 @@
 
     <!-- why choose us section -->
     <div class="text-center">
-        <h1 class="text-5xl font-bold text-[#317256]">Why Choose Us</h1>
-        <p class="text-lg text-gray-500 mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+        <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Why Choose Us</h1>
+        <p class="text-base md:text-lg text-gray-500 mt-4 md:mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
     <div class="whychoose-section w-full">
         <div class="flex items-center justify-center mt-4">
@@ -153,15 +189,15 @@
 
     <!-- discover our lates section -->
     <div class="text-center mt-12">
-        <h1 class="text-5xl font-bold text-[#317256]">Discover Our Latest Cars for Rental</h1>
-        <p class="text-lg text-gray-500 mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+        <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Discover Our Latest Cars for Rental</h1>
+        <p class="text-base md:text-lg text-gray-500 mt-4 md:mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
     <div class="discover-section">
         <div class="flex items-center justify-center">
             <div class=" mb-4 md:mb-0 ">
                 <a href="" class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                     <div>
-                        <img class="object-cover md:h-auto md:w-50 w-full h-full md:rounded-none md:rounded-l-lg" src="{{ URL('images/Rectangle 27.png')}}" alt="">
+                        <img class="hidden md:block object-cover md:h-96 md:w-50 w-full h-full md:rounded-none md:rounded-l-lg mt-12" src="{{ URL('images/Rectangle 27.png')}}" alt="">
                     </div>
                 </a>
             </div>
@@ -175,7 +211,7 @@
                     <div id="content1">
                         <div class="px-2 md:px-0 slider">
                             <div class="slides mt-2">
-                                @if (isset($vehicles) && count($vehicles) > 0)
+                                @if (isset($vehicles))
                                 @foreach ($vehicles as $vehicle)
                                 <div class="slide">
                                     <div class="inner_content">
@@ -185,12 +221,12 @@
                                                 @php
                                                 $firstImage = $vehicle->images[0];
                                                 @endphp
-                                                <img class="object-cover w-72 rounded-t-lg md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
+                                                <img class="object-cover w-96 md:h-auto md:w-52 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
                                                 @else
-                                                <img class="object-cover w-72 rounded-t-lg md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
+                                                <img class="object-cover w-72 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
                                                 @endif
                                             </div>
-                                            <div class="flex flex-col justify-between p-2 w-96 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
+                                            <div class="flex flex-col justify-between p-2 w-96 h-36 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
                                                 @if (!empty($vehicle['make']) && !empty($vehicle['model']))
                                                 <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500">{{ $vehicle['make']}} {{ $vehicle['model']}}</h5>
                                                 @else
@@ -220,7 +256,7 @@
                     <div id="content2">
                         <div class="slider">
                             <div class="slides mt-2">
-                                @if (isset($vehicles) && count($vehicles) > 0)
+                                @if (isset($vehicles))
                                 @foreach ($vehicles as $vehicle)
                                 <div class="slide">
                                     <div class="inner_content">
@@ -230,12 +266,12 @@
                                                 @php
                                                 $firstImage = $vehicle->images[0];
                                                 @endphp
-                                                <img class="object-cover w-72 rounded-t-lg md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
+                                                <img class="object-cover w-96 md:h-auto md:w-52 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
                                                 @else
-                                                <img class="object-cover w-72 rounded-t-lg md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
+                                                <img class="object-cover w-72 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
                                                 @endif
                                             </div>
-                                            <div class="flex flex-col justify-between p-2 w-96 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
+                                            <div class="flex flex-col justify-between p-2 w-96 h-36 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
                                                 @if (!empty($vehicle['make']) && !empty($vehicle['model']))
                                                 <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500">{{ $vehicle['make']}} {{ $vehicle['model']}}</h5>
                                                 @else
@@ -269,24 +305,24 @@
 
     <!-- diverse vehicle section -->
     <div class="text-center mt-12 sm:mt-20">
-        <h1 class="text-5xl font-bold text-[#317256]">Diverse Vehicle Selection for Every Journey</h1>
-        <p class="text-lg text-gray-500 mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+        <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Diverse Vehicle Selection for Every Journey</h1>
+        <p class="text-base md:text-lg text-gray-500 mt-4 md:mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
     <div id="app" class="w-4/6 mx-auto px-4 md:px-8 py-12 transition-all duration-500 ease-linear">
         <div class="relative">
-            <div class="slides-container h-72 flex snap-x snap-mandatory overflow-hidden overflow-x-auto space-x-4 rounded scroll-smooth before:w-[45vw] before:shrink-0 after:w-[45vw] after:shrink-0 md:before:w-0 md:after:w-0">
+            <div class="slides-container h-80 flex snap-x snap-mandatory overflow-hidden overflow-x-auto space-x-4 rounded scroll-smooth before:w-[45vw] before:shrink-0 after:w-[45vw] after:shrink-0 md:before:w-0 md:after:w-0">
                 @if (isset($vehicles))
                 @foreach ($vehicles as $vehicle)
-                <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-                    <img src="{{ Storage::url($firstImage->file_path) }}" alt="mountain_image">
+                <div class="slide aspect-square rounded-lg h-full flex-shrink-0 snap-center overflow-hidden shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
+                    <img class="w-full" src="{{ Storage::url($firstImage->file_path ?? null) }}" alt="mountain_image">
                     <div class="grid justify-items-stretch items-center justify-center ">
-                        <div class="flex ml-20">
-                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">{{ $vehicle['body_type']}}</h1>
-                        </div>
+                        <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">{{ $vehicle['make']}}</h1>
                         <p class="p-2">{{ $vehicle['short_Description']}} </p>
                     </div>
                 </div>
                 @endforeach
+                @else
+                <p>No vehicles available.</p>
                 @endif
                 <!-- Add similar slide elements for the remaining images -->
             </div>
@@ -362,9 +398,10 @@
 
     <!-- happy customert section -->
     <div class="text-center mt-20">
-        <h1 class="text-5xl font-bold text-[#317256]">Happy Customers, Memorable Journeys</h1>
-        <p class="text-lg text-gray-500 mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+        <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Happy Customers, Memorable Journeys</h1>
+        <p class="text-base md:text-lg text-gray-500 mt-4 md:mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
+
     <div class="flex">
         <div id="app" class="max-w-screen-lg mx-auto md:px-8 py-12 transition-all duration-500 ease-linear">
             <div class="content-wrapper flex justify-center w-full">

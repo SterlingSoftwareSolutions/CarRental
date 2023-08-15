@@ -20,52 +20,55 @@
     <!-- end navigation -->
 
     <!-- banner section -->
-    <div class="relative -z-30">
+    <div class="relative -z-1">
         <img src="{{ URL('images/Group 180.png')}}" alt="" srcset="">
-        <h1 class="absolute top-48 left-60 text-white font-bold inline-block text-4xl">Find Your Dream Ride</h1>
+        <h1 class="absolute top-2/4 left-4/12 pl-0 md:pl-56 text-white font-bold text-2xl md:text-4xl">Find Your Dream Ride</h1>
     </div>
+
     <!-- end banner section -->
 
     <!-- filtering section -->
-    <div class="flex justify-center md:grid md:grid-flow-row -mt-2 z-10">
-        <div class="flex flex-col md:flex-row border-t-8 border-[#398564] bg-[#D3D3D3] md:justify-center w-full">
-            <div class="dropdown space-y-2">
-                <label class="font-bold text-[#707070]" for="">Make</label>
-                <select class="w-full h-12 rounded-md border-none text-gray-500" name="cars" id="cars">
-                    <option value="volvo">All Makes</option>
-                    <option value="saab" class="text-black">Saab</option>
-                    <option value="opel" class="text-black">Opel</option>
-                    <option value="audi"class="text-black">Audi</option>
-                </select>
+    <div class="flex justify-center md:grid md:grid-flow-row -mt-2">
+        <form>
+            <div class="flex flex-col md:flex-row border-t-8 border-[#398564] bg-[#D3D3D3] md:justify-center w-full" style="z-index: 1;">
+                <div class="dropdown">
+                    <label class="font-bold text-[#707070]" for="">Make</label>
+                    <select class="w-full h-12 mt-2 rounded-md border-none text-gray-500" name="make" id="cars" onchange="this.form.submit()">
+                        <option value="">All Makes</option>
+                        @foreach($filters['makes'] as $opt)
+                        <option value="{{$opt}}" @if(Request()->make == $opt) selected @endif>{{$opt}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="dropdown">
+                    <label class="font-bold text-[#707070]" for="">Model</label>
+                    <select class="w-full h-12 mt-2 rounded-md border-none text-gray-500" name="model" id="cars" onchange="this.form.submit()">
+                        <option value="">All Models</option>
+                        @foreach($filters['models'] as $opt)
+                        <option value="{{$opt}}" @if(Request()->model == $opt) selected @endif>{{$opt}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="dropdown">
+                    <label class="font-bold text-[#707070]" for="">Body Type</label>
+                    <select class="w-full h-12 mt-2 rounded-md border-none text-gray-500" name="body_type" id="cars" onchange="this.form.submit()">
+                        <option value="">All Body Types</option>
+                        @foreach($filters['body_types'] as $opt)
+                        <option value="{{$opt}}" @if(Request()->body_type == $opt) selected @endif>{{$opt}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="dropdown">
+                    <label class="font-bold text-[#707070]" for="">Transmission</label>
+                    <select class="w-full h-12 mt-2 rounded-md border-none text-gray-500" name="transmission" id="cars" onchange="this.form.submit()">
+                        <option value="">All Transmissions</option>
+                        @foreach($filters['transmissions'] as $opt)
+                            <option value="{{$opt}}" @if(Request()->transmission == $opt) selected @endif>{{$opt}}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
-            <div class="dropdown space-y-2">
-                <label class="font-bold text-[#707070]" for="">Model</label>
-                <select class="w-full h-12 rounded-md border-none text-gray-500" name="cars" id="cars">
-                    <option value="volvo">All Models</option>
-                    <option value="saab" class="text-black">Saab</option>
-                    <option value="opel" class="text-black">Opel</option>
-                    <option value="audi" class="text-black">Audi</option>
-                </select>
-            </div>
-            <div class="dropdown space-y-2">
-                <label class="font-bold text-[#707070]" for="">Body Type</label>
-                <select class="w-full h-12 rounded-md border-none text-gray-500" name="cars" id="cars">
-                    <option value="volvo">All Body Types</option>
-                    <option value="saab" class="text-black">Saab</option>
-                    <option value="opel" class="text-black">Opel</option>
-                    <option value="audi" class="text-black">Audi</option>
-                </select>
-            </div>
-            <div class="dropdown space-y-2">
-                <label class="font-bold text-[#707070]" for="">Transmission</label>
-                <select class="w-full h-12 rounded-md border-none text-gray-500" name="cars" id="cars">
-                    <option value="volvo">All Transmissions</option>
-                    <option value="saab" class="text-black">Saab</option>
-                    <option value="opel" class="text-black">Opel</option>
-                    <option value="audi" class="text-black">Audi</option>
-                </select>
-            </div>
-        </div>
+        </form>
     </div>
     <!-- end filtering section -->
 
@@ -76,7 +79,7 @@
             @foreach ($vehicles as $vehicle)
             <!-- Repeat this section for each car item -->
             <div class="bg-[#F8FFF2] grid p-4">
-                <img class="rounded h-56" src="{{ Storage::url($vehicle->images[0]->file_path) }}">
+                <img class="rounded h-56 w-full object-cover" src="@if($vehicle->images[0] ?? null) Storage::url($vehicle->images[0]->file_path) @else images/default.png @endif">
                 <div class="flex justify-between items-center p-4">
                     <div class="flex w-4/6">
                         <div class="bg-[#F8FFF2] grid">
@@ -87,13 +90,13 @@
                                 $maxRating = 5; // Maximum rating value (number of stars)
                                 @endphp
 
-                                @for ($i = 1; $i <= $maxRating; $i++) <svg class="w-4 h-4 {{ $i <= $rating ? 'text-yellow-300' : 'text-gray-300 dark:text-gray-500' }}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                @for ($i = 1; $i <= $maxRating; $i++) <svg class="w-4 h-4 {{ $i <= $rating ? 'text-[#398564]' : 'text-gray-300 dark:text-gray-500' }}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                                     <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                                     </svg>
                                     @endfor
                             </div>
 
-                        </div> 
+                        </div>
                     </div>
                     <div class="bg-[#317256] px-1 rounded">
                         <h1 class="text-white">$ {{ $vehicle['price']}} /hour</h1>

@@ -30,7 +30,7 @@ class PaymentsController extends Controller
         $booking['dropoff_time'] = $bookingData['dropoff_time'];
         $booking['dropoff'] = $bookingData['dropoff'];
         $booking['bookingDaysCount'] = $bookingData['bookingDaysCount'];
-        return view('pages.payment', ['bookingData' => $booking , 'countries' => $countries]);
+        return view('pages.client.payment', ['bookingData' => $booking , 'countries' => $countries]);
     }
 
     /**

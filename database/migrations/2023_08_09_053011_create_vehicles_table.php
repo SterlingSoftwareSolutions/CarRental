@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('passengers')->nullable();
             $table->string('short_Description')->nullable();
             $table->string('description')->nullable();
+            $table->boolean('availability')->default(true)->nullable();
             $table->timestamps();
         });
     }
