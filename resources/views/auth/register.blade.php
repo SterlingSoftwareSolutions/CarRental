@@ -3,7 +3,7 @@
     <div class="pt-10 grid  place-items-center">
 
         <div class="flex items-center justify-center">
-            <h2 class="text-main-green font-extrabold text-3xl">{{ __("Register to Automobex Car Rental") }}</h2>
+            <h2 class="text-main-green font-extrabold text-3xl text-center">{{ __("Register to Automobex Car Rental") }}</h2>
         </div>
 
         <div class="h-full sm:p-10 mx-auto w-full">
@@ -43,16 +43,8 @@
                     <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                 </div>
 
-                <!-- Remember Me -->
-                <div class="block mt-4">
-                    <label for="remember_me" class="inline-flex items-center">
-                        <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                        <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                    </label>
-                </div>
-
                 <!-- SignIn Button  -->
-                <div class="flex items-center justify-end mt-4">
+                <div class="flex items-center justify-end mt-6">
                     <button type="submit" class="w-full bg-main-green py-2 text-white font-medium text-base rounded-md"> {{ __('REGISTER') }}</button>
                 </div>
 

@@ -20,7 +20,9 @@
     $loggedIn = auth()->check(); // Check if the user is logged in
     @endphp
 
-@if ($currentRoute === 'login' && !$loggedIn)
+
+  @if ($currentRoute === 'login' && !$loggedIn)
+
     <x-modal :name="true" :show="true" :maxWidth="'3xl'">
         <div class="h-full">
             @include('auth.login')
@@ -49,27 +51,60 @@
         <div class="grid justify-center items-center align-middle md:pl-32 pl-1">
             <h1 class="text-white text-3xl md:text-5xl font-bold mb-2 md:mb-4">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
             <p class="text-white text-sm md:text-lg font-bold ">Rent a Car for Your Next Adventure with Our Convenient <br class="hidden md:inline"> and Reliable Services</p>
-            <div class="flex flex-col md:flex-row gap-4 mt-12 md:mt-10">
-                <div class="grid bg-black rounded-lg search-foam w-full md:w-auto">
+            <div class="flex flex-col md:flex-row gap-4 mt-12 md:mt-10 md:w-1/2">
+                <div class="grid bg-black rounded-lg search-foam w-full lg:w-auto">
                     <div class="text-center">
                         <p class="text-white text-sm md:text-lg font-bold mt-2 md:mt-4">Ready to hit the road?</p>
                     </div>
-                    <form method="post" action="{{ route('search_vehicle') }}" enctype="multipart/form-data">
+                    @php
+                        $filters = App\Http\Controllers\VehiclesController::filters();
+                    @endphp
+                    <form action="/carlist">                           
+                        <label class="font-bold text-[#707070]" for="">Make</label>
+                        <select class="w-full h-12 mt-2 rounded-md border-none" name="make" id="cars">
+                            <option value="">All Makes</option>
+                            @foreach($filters['makes'] as $opt)
+                            <option value="{{$opt}}" @if(Request()->make == $opt) selected @endif>{{$opt}}</option>
+                            @endforeach
+                        </select>
+                        <label class="font-bold text-[#707070]" for="">Model</label>
+                        <select class="w-full h-12 mt-2 rounded-md border-none" name="model" id="cars">
+                            <option value="">All Models</option>
+                            @foreach($filters['models'] as $opt)
+                            <option value="{{$opt}}" @if(Request()->model == $opt) selected @endif>{{$opt}}</option>
+                            @endforeach
+                        </select>
+
+                        <label class="font-bold text-[#707070]" for="">Body Type</label>
+                        <select class="w-full h-12 mt-2 rounded-md border-none" name="body_type" id="cars">
+                            <option value="">All Body Types</option>
+                            @foreach($filters['body_types'] as $opt)
+                            <option value="{{$opt}}" @if(Request()->body_type == $opt) selected @endif>{{$opt}}</option>
+                            @endforeach
+                        </select>
+                        <label class="font-bold text-[#707070]" for="">Transmission</label>
+                        <select class="w-full h-12 mt-2 rounded-md border-none" name="transmission" id="cars">
+                            <option value="">All Transmissions</option>
+                            @foreach($filters['transmissions'] as $opt)
+                                <option value="{{$opt}}" @if(Request()->transmission == $opt) selected @endif>{{$opt}}</option>
+                            @endforeach
+                        </select>
+                        <button type="submit" class="text-white w-full bg-[#317256] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded mt-3">
+                            <span class="text-base">Search Now</span>
+                        </button>
+                    </form>
+{{--                     <form method="post" action="{{ route('search_vehicle') }}" enctype="multipart/form-data">
                         @csrf
                         @method('GET')
+                        <input type="text" hidden name="availability" value="1">
                         <div class="container-search mt-2 md:mt-4">
                             <span class="selected-display text-white" id="destination">Choose Vehicle</span>
                             <select class="w-full text-black h-12 rounded-md border-none" name="make" id="make">
+                                <option value="Toyota" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Toyota' ? 'selected' : '' }}>Toyota</option>
+                                <option value="BMW" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'BMW' ? 'selected' : '' }}>BMW</option>
+                                <option value="Benz" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Benz' ? 'selected' : '' }}>Benz</option>
+                                <option value="Audi" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Audi' ? 'selected' : '' }}>Audi</option>
                                 <option value="Sedan" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Sedan' ? 'selected' : '' }}>Sedan</option>
-                                <option value="SUV" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'SUV' ? 'selected' : '' }}>SUV</option>
-                                <option value="Coupe" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Coupe' ? 'selected' : '' }}>Coupe</option>
-                                <option value="Hatchback" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Hatchback' ? 'selected' : '' }}>Hatchback</option>
-                                <option value="Convertible" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Convertible' ? 'selected' : '' }}>Convertible</option>
-                                <option value="Minivan" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Minivan' ? 'selected' : '' }}>Minivan</option>
-                                <option value="Pickup Truck" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Pickup Truck' ? 'selected' : '' }}>Pickup Truck</option>
-                                <option value="Wagon" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Wagon' ? 'selected' : '' }}>Wagon</option>
-                                <option value="Crossover" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Crossover' ? 'selected' : '' }}>Crossover</option>
-                                <option value="Van" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Van' ? 'selected' : '' }}>Van</option>
                                 <option value="Truck" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Truck' ? 'selected' : '' }}>Truck</option>
                                 <!-- Add more body types as needed with the same `old()` check -->
                             </select>
@@ -91,7 +126,7 @@
                             </button>
                         </div>
                     </form>
-
+--}}
                 </div>
             </div>
         </div>
@@ -106,7 +141,7 @@
     <div class="whychoose-section w-full">
         <div class="flex items-center justify-center mt-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <a href="#" class="flex flex-col items-center justify-center md:flex-row md:max-w-xl">
+                <a class="flex flex-col items-center justify-center md:flex-row md:max-w-xl">
                     <div class="bg-white rounded-md border-2 border-[#317256] p-4 hover:border-t-8 ">
                         <img class="object-cover w-14 h-14 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg " src="{{ URL('images/car-insurance.png')}}" alt="">
                     </div>
@@ -115,7 +150,7 @@
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a </p>
                     </div>
                 </a>
-                <a href="#" class="flex flex-col items-center justify-center md:flex-row md:max-w-xl">
+                <a class="flex flex-col items-center justify-center md:flex-row md:max-w-xl">
                     <div class="bg-white rounded-md border-2 border-[#317256] p-4 hover:border-t-8 ">
                         <img class="object-cover w-14 h-14 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ URL('images/offer.png')}}" alt="">
                     </div>
@@ -128,7 +163,7 @@
         </div>
         <div class="flex items-center justify-center mt-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <a href="#" class="flex flex-col items-center justify-center md:flex-row md:max-w-xl">
+                <a class="flex flex-col items-center justify-center md:flex-row md:max-w-xl">
                     <div class="bg-white rounded-md border-2 border-[#317256] p-4 hover:border-t-8 ">
                         <img class="object-cover w-14 h-14 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ URL('images/tap.png')}}" alt="">
                     </div>
@@ -138,7 +173,7 @@
                     </div>
 
                 </a>
-                <a href="#" class="flex flex-col items-center justify-center md:flex-row md:max-w-xl">
+                <a class="flex flex-col items-center justify-center md:flex-row md:max-w-xl">
                     <div class="bg-white rounded-md border-2 border-[#317256] p-4 hover:border-t-8 ">
                         <img class="object-cover w-14 h-14 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ URL('images/tap (1).png')}}" alt="">
                     </div>
@@ -279,7 +314,7 @@
                 @if (isset($vehicles))
                 @foreach ($vehicles as $vehicle)
                 <div class="slide aspect-square rounded-lg h-full flex-shrink-0 snap-center overflow-hidden shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-                    <img class="w-full" src="{{ Storage::url($firstImage->file_path) }}" alt="mountain_image">
+                    <img class="w-full" src="{{ Storage::url($firstImage->file_path ?? null) }}" alt="mountain_image">
                     <div class="grid justify-items-stretch items-center justify-center ">
                         <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">{{ $vehicle['make']}}</h1>
                         <p class="p-2">{{ $vehicle['short_Description']}} </p>

@@ -1,13 +1,13 @@
     <!-- get off section -->
     <div class="flex getoff-section">
-        <div class="max-w-screen-lg mx-auto md:px-8 py-12 transition-all duration-500 ease-linear flex items-center">
+        <div class="max-w-screen-lg mx-auto md:px-28 py-12 transition-all duration-500 ease-linear flex items-center">
             <div>
                 <h1 class="text-white text-4xl font-extrabold inline-block">Get 15% Off Your Rental! Choose Your Model</h1>
             </div>
         </div>
         <div class="max-w-screen-lg mx-auto px-4 md:px-8 py-12 transition-all duration-500 ease-linear flex items-center">
             <div>
-                <button class="bg-white p-2 px-10 rounded mt-3 text-lg font-bold text-[#317256] hover:bg">Book Now</button>
+                <button class="bg-white p-2 px-10 rounded mt-3 text-lg font-bold text-[#317256] hover:bg-gray-400 hover:text-white">Book Now</button>
             </div>
         </div>
     </div>
@@ -28,16 +28,16 @@
                         <h2 class="mb-6 text-lg font-semibold text-[#E0AA87] uppercase dark:text-white">Quick Links</h2>
                         <ul class="text-white dark:text-gray-400 font-medium">
                             <li class="mb-4">
-                                <a href="" class="hover:underline">Home</a>
+                                <a href="{{route('home')}}" class="hover:underline">Home</a>
                             </li>
                             <li>
-                                <a href="" class="hover:underline">Vehicle List</a>
+                                <a href="{{route('carlist')}}" class="hover:underline">Vehicle List</a>
                             </li>
                             <li>
-                                <a href="" class="hover:underline">About Us</a>
+                                <a href="{{route('about')}}" class="hover:underline">About Us</a>
                             </li>
                             <li>
-                                <a href="" class="hover:underline">Contact Us</a>
+                                <a href="{{route('contact')}}" class="hover:underline">Contact Us</a>
                             </li>
                         </ul>
                     </div>

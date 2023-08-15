@@ -10,16 +10,30 @@ use Illuminate\Http\Request;
 
 class VehiclesController extends Controller
 {
+    public static function filters(){
+        $makes = Vehicles::pluck('make')->unique();
+        $models = Vehicles::pluck('model')->unique();
+        $body_types = Vehicles::pluck('body_type')->unique();
+        $transmissions = Vehicles::pluck('transmission')->unique();
+        return compact('makes', 'models', 'body_types', 'transmissions');
+    }
 
     public function search(Request $request)
     {
-        dd($request);
-        $query = Vehicles::query();
+        $make = $request->input('make'); // Get the "make" value from the request
+        $availability = $request->input('availability');
 
-        $vehicles = Vehicles::query()->with(['images' => function ($query) {
+        $vehicles = Vehicles::query()
+        ->when($make, function ($query, $make) {
+            $query->where('make', $make);
+        })
+        ->when($availability, function ($query, $availability) {
+            $query->where('availability', $availability);
+        })
+        ->with(['images' => function ($query) {
             $query->where('attachment_type', 'Vehicle Image');
-        }])->get();
-
+        }])
+        ->get();
 
         return view('pages.carlist', ['vehicles' => $vehicles]);
     }
@@ -28,12 +42,27 @@ class VehiclesController extends Controller
     {
         $query = Vehicles::query();
 
-        $vehicles = Vehicles::query()->with(['images' => function ($query) {
+        if($request->make){
+            $query->where('make', $request->make);
+        }
+
+        if($request->model){
+            $query->where('model', $request->model);
+        }
+
+        if($request->body_type){
+            $query->where('body_type', $request->body_type);
+        }
+
+        if($request->transmission){
+            $query->where('transmission', $request->transmission);
+        }
+
+        $vehicles = $query->with(['images' => function ($query) {
             $query->where('attachment_type', 'Vehicle Image');
         }])->get();
 
-
-        return view('pages.carlist', ['vehicles' => $vehicles]);
+        return view('pages.carlist', ['vehicles' => $vehicles, 'filters' => $this->filters()]);
     }
 
     public function show_all_vehicles(Request $request)
@@ -45,6 +74,7 @@ class VehiclesController extends Controller
 
         return view('pages.admin.vehicles.index', ['vehicles' => $vehicles]);
     }
+
     public function edit_vehicle(Request $request,  $vehicle_id)
     {
         $query = Vehicles::query();

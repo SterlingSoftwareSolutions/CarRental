@@ -9,7 +9,6 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-
         $vehicles = Vehicles::query()->with(['images' => function ($query) {
             $query->where('attachment_type', 'Vehicle Image');
         }])->get();
