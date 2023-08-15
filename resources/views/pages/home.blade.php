@@ -57,9 +57,9 @@
                         <p class="text-white text-sm md:text-lg font-bold mt-2 md:mt-4">Ready to hit the road?</p>
                     </div>
                     @php
-                        $filters = App\Http\Controllers\VehiclesController::filters();
+                    $filters = App\Http\Controllers\VehiclesController::filters();
                     @endphp
-                    <form action="/carlist">                           
+                    <form action="/carlist">
                         <label class="font-bold text-[#707070]" for="">Make</label>
                         <select class="w-full h-12 mt-2 rounded-md border-none" name="make" id="cars">
                             <option value="">All Makes</option>
@@ -86,14 +86,14 @@
                         <select class="w-full h-12 mt-2 rounded-md border-none" name="transmission" id="cars">
                             <option value="">All Transmissions</option>
                             @foreach($filters['transmissions'] as $opt)
-                                <option value="{{$opt}}" @if(Request()->transmission == $opt) selected @endif>{{$opt}}</option>
+                            <option value="{{$opt}}" @if(Request()->transmission == $opt) selected @endif>{{$opt}}</option>
                             @endforeach
                         </select>
                         <button type="submit" class="text-white w-full bg-[#317256] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded mt-3">
                             <span class="text-base">Search Now</span>
                         </button>
                     </form>
-{{--                     <form method="post" action="{{ route('search_vehicle') }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('search_vehicle') }}" enctype="multipart/form-data">
                         @csrf
                         @method('GET')
                         <input type="text" hidden name="availability" value="1">
@@ -126,7 +126,6 @@
                             </button>
                         </div>
                     </form>
---}}
                 </div>
             </div>
         </div>
@@ -365,8 +364,8 @@
             </a>
             <a href="#" class="grid items-center md:flex-row md:max-w-xl">
                 <div class="grid p-2 md:p-8">
-                    <h1 class="text-white font-semibold text-xl md:text-3xl">Car Rental Experts You Trust</h1>
-                    <p class="text-white mt-3 md:mt-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate.</p>
+                    <h1 class="text-white font-semibold -mt-5 text-xl md:text-3xl">Car Rental Experts You Trust</h1>
+                    <p class="text-white mt-4 md:mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate.</p>
                 </div>
                 <div class="container mt-3 md:mt-0">
                     <div class="counter-container grid grid-cols-1 md:grid-cols-3">
