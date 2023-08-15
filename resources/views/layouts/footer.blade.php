@@ -26,7 +26,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-6">
                     <div>
                         <h2 class="mb-6 text-lg font-semibold text-[#E0AA87] uppercase dark:text-white">Quick Links</h2>
                         <ul class="text-white dark:text-gray-400 font-medium">
@@ -48,17 +48,18 @@
                         <h2 class="mb-6 text-lg font-semibold text-[#E0AA87] uppercase dark:text-white">Find Us</h2>
                         <ul class="text-white dark:text-gray-400 font-medium">
                             <li class="mb-4 flex">
-                                <a href="" class="hover:underline flex "><img class="w-5 h-5" src="{{ URL('images/location.png')}}">&nbsp 5Th Floor, AH Building Melbourne, Australia</a>
+                                <a href="" class="hover:underline flex "><img class="w-5 h-5" src="{{ URL('images/location.png')}}">&nbsp; 5Th Floor, AH Building Melbourne, Australia</a>
                             </li>
                             <li class="mb-4 flex">
-                                <a href="https://discord.gg/4eeurUVvTy" class="hover:underline flex"><img class="w-5 h-5" src="{{ URL('images/email.png')}}">&nbsp info@carrental.com</a>
+                                <a href="https://discord.gg/4eeurUVvTy" class="hover:underline flex"><img class="w-5 h-5" src="{{ URL('images/email.png')}}">&nbsp; info@carrental.com</a>
                             </li>
                             <li class="mb-4 flex">
-                                <a href="https://discord.gg/4eeurUVvTy" class="hover:underline flex"><img class="w-5 h-5" src="{{ URL('images/telephone.png')}}">&nbsp + 8801 738 5678 64</a>
+                                <a href="https://discord.gg/4eeurUVvTy" class="hover:underline flex"><img class="w-5 h-5" src="{{ URL('images/telephone.png')}}">&nbsp; + 8801 738 5678 64</a>
                             </li>
                         </ul>
                     </div>
                 </div>
+
             </div>
             <div class="flex items-center justify-center">
                 <div class="flex-1">
