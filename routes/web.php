@@ -30,6 +30,8 @@ Route::get('/about', function () {
 
 Route::get('/carlist', [VehiclesController::class, 'index'])->name('carlist');
 
+Route::get('search-carlist', [VehiclesController::class, 'search'])->name('search_vehicle');
+
 Route::get('/contact', function () {
     return view('pages.contact');
 })->name('contact');

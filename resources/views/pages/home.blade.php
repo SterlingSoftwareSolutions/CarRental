@@ -56,41 +56,46 @@
                     <div class="text-center">
                         <p class="text-white text-sm md:text-lg font-bold mt-2 md:mt-4">Ready to hit the road?</p>
                     </div>
-                    <div class="container-serach mt-2 md:mt-4">
-                        <div class="wrapper-dropdown">
-                            <span class="selected-display" id="destination">Choose Vehicle</span>
-                            <svg class="drop-arrow ml-auto transform transition-transform md:-rotate-180" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7 8.5l3-3 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
-                            <ul class="dropdown">
-                                <li class="item">Option 1</li>
-                                <li class="item">Option 2</li>
-                                <li class="item">Option 3</li>
-                                <li class="item">Option 4</li>
-                            </ul>
+                    <form method="post" action="{{ route('search_vehicle') }}" enctype="multipart/form-data">
+                        @csrf
+                        @method('GET')
+                        <div class="container-search mt-2 md:mt-4">
+                            <div class="wrapper-dropdown">
+                                <span class="selected-display" id="destination">Choose Vehicle</span>
+                                <svg class="drop-arrow ml-auto transform transition-transform md:-rotate-180" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 8.5l3-3 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                                <ul class="dropdown">
+                                    <li class="item">Option 1</li>
+                                    <li class="item">Option 2</li>
+                                    <li class="item">Option 3</li>
+                                    <li class="item">Option 4</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex flex-col gap-2 md:flex-row md:gap-x-4 mt-3 md:mt-5">
-                        <div>
-                            <input type="text" class="bg-transparent date-input text-sm md:text-base" placeholder="Pick Up Date" onfocus="(this.type='date')" onblur="(this.type='text')">
+                        <div class="flex flex-col gap-2 md:flex-row md:gap-x-4 mt-3 md:mt-5">
+                            <div>
+                                <input type="text" class="bg-transparent date-input text-sm md:text-base" placeholder="Pick Up Date" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div>
+                                <input type="text" class="bg-transparent date-input mt-2 md:mt-0 text-sm md:text-base" placeholder="Pick Up Time" onfocus="(this.type='time')" onblur="(this.type='text')">
+                            </div>
                         </div>
-                        <div>
-                            <input type="text" class="bg-transparent date-input mt-2 md:mt-0 text-sm md:text-base" placeholder="Pick Up Time" onfocus="(this.type='time')" onblur="(this.type='text')">
+                        <div class="flex flex-col gap-2 md:flex-row md:gap-x-4 mt-3 md:mt-5">
+                            <div>
+                                <input type="text" class="bg-transparent date-input text-sm md:text-base" placeholder="Return Date" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div>
+                                <input type="text" class="bg-transparent date-input mt-2 md:mt-0 text-sm md:text-base" placeholder="Return Time" onfocus="(this.type='time')" onblur="(this.type='text')">
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex flex-col gap-2 md:flex-row md:gap-x-4 mt-3 md:mt-5">
-                        <div>
-                            <input type="text" class="bg-transparent date-input text-sm md:text-base" placeholder="Return Date" onfocus="(this.type='date')" onblur="(this.type='text')">
+                        <div class="flex justify-center mt-4 md:mt-6">
+                            <button type="submit" class="text-white w-full bg-[#317256] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded">
+                                <span class="text-base">Search Now</span>
+                            </button>
                         </div>
-                        <div>
-                            <input type="text" class="bg-transparent date-input mt-2 md:mt-0 text-sm md:text-base" placeholder="Return Time" onfocus="(this.type='time')" onblur="(this.type='text')">
-                        </div>
-                    </div>
-                    <div class="flex justify-center mt-4 md:mt-6">
-                        <button type="button" class="text-white w-full bg-[#317256] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded">
-                            <a class="text-base">Search Now</a>
-                        </button>
-                    </div>
+                    </form>
+
                 </div>
             </div>
         </div>
@@ -220,7 +225,7 @@
                     <div id="content2">
                         <div class="slider">
                             <div class="slides mt-2">
-                                @if ($vehicles->count() > 0)
+                                @if (isset($vehicles))
                                 @foreach ($vehicles as $vehicle)
                                 <div class="slide">
                                     <div class="inner_content">
