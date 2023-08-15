@@ -20,7 +20,7 @@
     <!-- end navigation -->
 
     <!-- banner section -->
-    <div class="relative -z-1">
+    <div class="relative -z-50">
         <img src="{{ URL('images/Group 180.png')}}" alt="" srcset="">
         <h1 class="absolute top-2/4 left-4/12 pl-0 md:pl-56 text-white font-bold text-2xl md:text-4xl">Find Your Dream Ride</h1>
     </div>
@@ -30,7 +30,7 @@
     <!-- filtering section -->
     <div class="flex justify-center md:grid md:grid-flow-row -mt-2">
         <form>
-            <div class="flex flex-col md:flex-row border-t-8 border-[#398564] bg-[#D3D3D3] md:justify-center w-full" style="z-index: 1;">
+            <div class="flex flex-col md:flex-row border-t-8 border-[#398564] bg-[#D3D3D3] md:justify-center w-full">
                 <div class="dropdown">
                     <label class="font-bold text-[#707070]" for="">Make</label>
                     <select class="w-full h-12 mt-2 rounded-md border-none text-gray-500" name="make" id="cars" onchange="this.form.submit()">
