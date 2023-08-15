@@ -105,7 +105,7 @@
     <div class="whychoose-section w-full">
         <div class="flex items-center justify-center mt-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <a href="#" class="flex flex-col items-center justify-center md:flex-row md:max-w-xl">
+                <a class="flex flex-col items-center justify-center md:flex-row md:max-w-xl">
                     <div class="bg-white rounded-md border-2 border-[#317256] p-4 hover:border-t-8 ">
                         <img class="object-cover w-14 h-14 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg " src="{{ URL('images/car-insurance.png')}}" alt="">
                     </div>
@@ -114,7 +114,7 @@
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a </p>
                     </div>
                 </a>
-                <a href="#" class="flex flex-col items-center justify-center md:flex-row md:max-w-xl">
+                <a class="flex flex-col items-center justify-center md:flex-row md:max-w-xl">
                     <div class="bg-white rounded-md border-2 border-[#317256] p-4 hover:border-t-8 ">
                         <img class="object-cover w-14 h-14 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ URL('images/offer.png')}}" alt="">
                     </div>
@@ -127,7 +127,7 @@
         </div>
         <div class="flex items-center justify-center mt-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <a href="#" class="flex flex-col items-center justify-center md:flex-row md:max-w-xl">
+                <a class="flex flex-col items-center justify-center md:flex-row md:max-w-xl">
                     <div class="bg-white rounded-md border-2 border-[#317256] p-4 hover:border-t-8 ">
                         <img class="object-cover w-14 h-14 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ URL('images/tap.png')}}" alt="">
                     </div>
@@ -137,7 +137,7 @@
                     </div>
 
                 </a>
-                <a href="#" class="flex flex-col items-center justify-center md:flex-row md:max-w-xl">
+                <a class="flex flex-col items-center justify-center md:flex-row md:max-w-xl">
                     <div class="bg-white rounded-md border-2 border-[#317256] p-4 hover:border-t-8 ">
                         <img class="object-cover w-14 h-14 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ URL('images/tap (1).png')}}" alt="">
                     </div>
