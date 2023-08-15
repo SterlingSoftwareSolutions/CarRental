@@ -13,13 +13,21 @@ class VehiclesController extends Controller
 
     public function search(Request $request)
     {
-        dd($request);
-        $query = Vehicles::query();
 
-        $vehicles = Vehicles::query()->with(['images' => function ($query) {
+        $make = $request->input('make'); // Get the "make" value from the request
+        $availability = $request->input('availability');
+
+        $vehicles = Vehicles::query()
+        ->when($make, function ($query, $make) {
+            $query->where('make', $make);
+        })
+        ->when($availability, function ($query, $availability) {
+            $query->where('availability', $availability);
+        })
+        ->with(['images' => function ($query) {
             $query->where('attachment_type', 'Vehicle Image');
-        }])->get();
-
+        }])
+        ->get();
 
         return view('pages.carlist', ['vehicles' => $vehicles]);
     }
