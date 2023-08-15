@@ -15,7 +15,7 @@
 </head>
 
 <body>
-@php
+    @php
     $currentRoute = Route::currentRouteName(); // Get the current route name
     $loggedIn = auth()->check(); // Check if the user is logged in
     @endphp
@@ -60,30 +60,33 @@
                         @csrf
                         @method('GET')
                         <div class="container-search mt-2 md:mt-4">
-                            <span class="selected-display" id="destination">Choose Vehicle</span>
-                            <select class="w-full bg-black text-white h-12 rounded-md border-none" name="cars" id="cars">
-                                <option value="volvo">All Makes</option>
-                                <option value="saab">Saab</option>
-                                <option value="opel">Opel</option>
-                                <option value="audi">Audi</option>
+                            <span class="selected-display text-white" id="destination">Choose Vehicle</span>
+                            <select class="w-full text-black h-12 rounded-md border-none" name="make" id="make">
+                                <option value="Sedan" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Sedan' ? 'selected' : '' }}>Sedan</option>
+                                <option value="SUV" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'SUV' ? 'selected' : '' }}>SUV</option>
+                                <option value="Coupe" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Coupe' ? 'selected' : '' }}>Coupe</option>
+                                <option value="Hatchback" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Hatchback' ? 'selected' : '' }}>Hatchback</option>
+                                <option value="Convertible" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Convertible' ? 'selected' : '' }}>Convertible</option>
+                                <option value="Minivan" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Minivan' ? 'selected' : '' }}>Minivan</option>
+                                <option value="Pickup Truck" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Pickup Truck' ? 'selected' : '' }}>Pickup Truck</option>
+                                <option value="Wagon" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Wagon' ? 'selected' : '' }}>Wagon</option>
+                                <option value="Crossover" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Crossover' ? 'selected' : '' }}>Crossover</option>
+                                <option value="Van" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Van' ? 'selected' : '' }}>Van</option>
+                                <option value="Truck" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Truck' ? 'selected' : '' }}>Truck</option>
+                                <!-- Add more body types as needed with the same `old()` check -->
                             </select>
                         </div>
                         <div class="flex flex-col gap-2 md:flex-row md:gap-x-4 mt-3 md:mt-5">
                             <div>
-                                <input type="text" class="bg-transparent date-input text-sm md:text-base" placeholder="Pick Up Date" onfocus="(this.type='date')" onblur="(this.type='text')">
+                                <p class="mt-2 font-semibold text-[#707070]">Pick-up Date & Time</p>
+                                <input class="date-input text-sm md:text-base" type="datetime-local" id="pickup_time" name="pickup_time">
                             </div>
                             <div>
-                                <input type="text" class="bg-transparent date-input mt-2 md:mt-0 text-sm md:text-base" placeholder="Pick Up Time" onfocus="(this.type='time')" onblur="(this.type='text')">
+                            <p class="mt-2 font-semibold text-[#707070]">Dropp Off Date & Time</p>
+                                <input class="date-input text-sm md:text-base" type="datetime-local" id="dropoff_time" name="dropoff_time">
                             </div>
                         </div>
-                        <div class="flex flex-col gap-2 md:flex-row md:gap-x-4 mt-3 md:mt-5">
-                            <div>
-                                <input type="text" class="bg-transparent date-input text-sm md:text-base" placeholder="Return Date" onfocus="(this.type='date')" onblur="(this.type='text')">
-                            </div>
-                            <div>
-                                <input type="text" class="bg-transparent date-input mt-2 md:mt-0 text-sm md:text-base" placeholder="Return Time" onfocus="(this.type='time')" onblur="(this.type='text')">
-                            </div>
-                        </div>
+
                         <div class="flex justify-center mt-4 md:mt-6">
                             <button type="submit" class="text-white w-full bg-[#317256] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded">
                                 <span class="text-base">Search Now</span>
