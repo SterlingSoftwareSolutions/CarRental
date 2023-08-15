@@ -275,6 +275,7 @@
     <div id="app" class="w-4/6 mx-auto px-4 md:px-8 py-12 transition-all duration-500 ease-linear">
         <div class="relative">
             <div class="slides-container h-72 flex snap-x snap-mandatory overflow-hidden overflow-x-auto space-x-4 rounded scroll-smooth before:w-[45vw] before:shrink-0 after:w-[45vw] after:shrink-0 md:before:w-0 md:after:w-0">
+                @if (isset($vehicles))
                 @foreach ($vehicles as $vehicle)
                 <div class="slide aspect-square border-2 border-[#6DA9D2] h-full flex-shrink-0 snap-center rounded-md overflow-hidden shadow-xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
                     <img src="{{ Storage::url($firstImage->file_path) }}" alt="mountain_image">
@@ -286,6 +287,7 @@
                     </div>
                 </div>
                 @endforeach
+                @endif
                 <!-- Add similar slide elements for the remaining images -->
             </div>
             <div class="absolute top-0 -left-4 h-full items-center">
