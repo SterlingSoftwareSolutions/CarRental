@@ -16,7 +16,7 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Auth\User;
-
+use Illuminate\Support\Facades\Session;
 
 class RegisteredUserController extends Controller
 {
@@ -53,7 +53,7 @@ class RegisteredUserController extends Controller
         //     'email' => ['required', 'string', 'email', 'max:255', 'unique:'.Users::class],
         //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
         // ]);
-        dd($request);
+
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -92,6 +92,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        
 
         $imagePath = $request->file('image')->store('public/user_images');
         Attachments::create([
@@ -126,6 +127,10 @@ class RegisteredUserController extends Controller
         }
         $user->update($validatedData);
 
+        
+        if (Auth::check() && Auth::user()->id === $user['id']) {
+            Session::put('user_data', $user);
+        }
 
         return redirect()->route('users.all')
             ->with('success', 'User details updated successfully.');
