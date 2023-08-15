@@ -1,5 +1,5 @@
 <nav class="nav w-full z-50">
-  <div class="logo w-2/12 flex justify-end items-center p-4">
+  <div class="logo w-2/12 flex justify-end items-center p-4 z-50">
     <img src="{{ URL('images/flg_logo11079.png')}}" alt="Logo Image">
   </div>
   <div class="hamburger p-4 cursor-pointer">

@@ -21,10 +21,11 @@
         <div>
             <img src="{{ URL('images/Group 180.png') }}">
         </div>
-
-        <div class="flex md:flex-wrap items-center justify-center p-10">
-            <img src="{{ URL('images/greencar.png') }}" class="w-2/6">
-            <div class="w-2/6 pl-8">
+        <div class="flex flex-wrap md:flex-wrap items-center justify-center p-10">
+            <div class="w-full md:w-2/6 mb-5 md:mb-0">
+                <img src="{{ URL('images/greencar.png') }}" class="w-full">
+            </div>
+            <div class="w-full md:w-2/6 pl-8">
                 <h1 class="text-[#317256] font-bold text-4xl md:text-5xl text-left pb-5">About Us</h1>
                 <p class="text-gray-500 md:">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate.
@@ -43,37 +44,41 @@
 
         <div class="flex flex-col md:flex-row items-center justify-center mt-8">
             <div class="relative group mx-2 mb-32 md:mb-0">
-                <img src="{{ URL('images/Group 149.png') }}" class="mx-auto mb-4 md:mb-0 md:mx-4 z-10 relative">
-                <div class="absolute top-0 lg:left-0 md:left-4 sm:left-0 w-full bg-[#317256] rounded-2xl flex flex-col justify-end " style="margin-top: 100px; height: 90%; transition: height 0.3s; overflow: hidden; ">
+                <img src="{{ URL('images/Group 149.png') }}" class="mx-auto mb-4 md:mb-0 md:mx-4 relative">
+                <div class="absolute top-0 lg:left-0 md:left-4 sm:left-0 w-full bg-[#317256] rounded-2xl flex flex-col justify-end" style="margin-top: 100px; height: 90%; transition: height 0.3s; overflow: hidden; z-index: -1;">
                     <div class="relative">
                         <h1 class="text-white font-bold text-xl text-center pb-7">Deals for every budget</h1>
                     </div>
                 </div>
             </div>
+            >
             <div class="relative group mx-2 mb-32 md:mb-0">
-                <img src="{{ URL('images/Group 149.png') }}" class="mx-auto mb-4 md:mb-0 md:mx-4 z-10 relative">
-                <div class="absolute top-0 lg:left-0 md:left-4 sm:left-0 w-full bg-[#317256] rounded-2xl flex flex-col justify-end " style="margin-top: 100px; height: 90%; transition: height 0.3s; overflow: hidden; ">
+                <img src="{{ URL('images/Group 149.png') }}" class="mx-auto mb-4 md:mb-0 md:mx-4 relative">
+                <div class="absolute top-0 lg:left-0 md:left-4 sm:left-0 w-full bg-[#317256] rounded-2xl flex flex-col justify-end" style="margin-top: 100px; height: 90%; transition: height 0.3s; overflow: hidden; z-index: -1;">
                     <div class="relative">
                         <h1 class="text-white font-bold text-xl text-center pb-7">Deals for every budget</h1>
                     </div>
                 </div>
             </div>
+
             <div class="relative group mx-2 mb-32 md:mb-0">
-                <img src="{{ URL('images/Group 149.png') }}" class="mx-auto mb-4 md:mb-0 md:mx-4 z-10 relative">
-                <div class="absolute top-0 lg:left-0 md:left-4 sm:left-0 w-full bg-[#317256] rounded-2xl flex flex-col justify-end " style="margin-top: 100px; height: 90%; transition: height 0.3s; overflow: hidden; ">
+                <img src="{{ URL('images/Group 149.png') }}" class="mx-auto mb-4 md:mb-0 md:mx-4 relative">
+                <div class="absolute top-0 lg:left-0 md:left-4 sm:left-0 w-full bg-[#317256] rounded-2xl flex flex-col justify-end" style="margin-top: 100px; height: 90%; transition: height 0.3s; overflow: hidden; z-index: -1;">
                     <div class="relative">
                         <h1 class="text-white font-bold text-xl text-center pb-7">Deals for every budget</h1>
                     </div>
                 </div>
             </div>
+
             <div class="relative group mx-2 mb-32 md:mb-0">
-                <img src="{{ URL('images/Group 149.png') }}" class="mx-auto mb-4 md:mb-0 md:mx-4 z-10 relative">
-                <div class="absolute top-0 lg:left-0 md:left-4 sm:left-0 w-full bg-[#317256] rounded-2xl flex flex-col justify-end " style="margin-top: 100px; height: 90%; transition: height 0.3s; overflow: hidden; ">
+                <img src="{{ URL('images/Group 149.png') }}" class="mx-auto mb-4 md:mb-0 md:mx-4 relative">
+                <div class="absolute top-0 lg:left-0 md:left-4 sm:left-0 w-full bg-[#317256] rounded-2xl flex flex-col justify-end" style="margin-top: 100px; height: 90%; transition: height 0.3s; overflow: hidden; z-index: -1;">
                     <div class="relative">
                         <h1 class="text-white font-bold text-xl text-center pb-7">Deals for every budget</h1>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
