@@ -77,11 +77,11 @@
                         <div class="flex flex-col gap-2 md:flex-row md:gap-x-4 mt-3 md:mt-5">
                             <div>
                                 <p class="mt-2 font-semibold text-[#707070]">Pick-up Date & Time</p>
-                                <input class="date-input text-sm md:text-base" type="datetime-local" id="pickup_time" name="pickup_time">
+                                <input class="date-input rounded-md text-sm w-full md:text-base" type="datetime-local" id="pickup_time" name="pickup_time">
                             </div>
                             <div>
                                 <p class="mt-2 font-semibold text-[#707070]">Dropp Off Date & Time</p>
-                                <input class="date-input text-sm md:text-base" type="datetime-local" id="dropoff_time" name="dropoff_time">
+                                <input class="date-input rounded-md text-sm w-full md:text-base" type="datetime-local" id="dropoff_time" name="dropoff_time">
                             </div>
                         </div>
 

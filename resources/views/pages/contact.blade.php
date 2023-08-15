@@ -62,17 +62,17 @@
             <div class="flex justify-center mt-4 w-12/12">
                 <a href="#" class="flex flex-col h-full items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                     <div>
-                        <img class="object-cover h-96" src="{{ URL('images/roland-denes-EWf48MRVUNE-unsplash.png')}}" alt="">
+                        <img class="object-cover h-96 hidden md:block" src="{{ URL('images/roland-denes-EWf48MRVUNE-unsplash.png')}}" alt="">
                     </div>
                     <div class="pl-5">
-                        <img class="object-cover h-96" src="{{ URL('images/nate-johnston-obOin8-m5sw-unsplash.png')}}" alt="">
+                        <img class="object-cover h-96 hidden md:block" src="{{ URL('images/nate-johnston-obOin8-m5sw-unsplash.png')}}" alt="">
                     </div>
                 </a>
-                <div class="items-center md:flex-row w-full md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <div class="items-center md:flex-row w-4/6 md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                     <div class="grid py-3.5 pl-5">
                         <h1 class="text-white font-semibold text-2xl mb-4">Send us a Message</h1>
                         <div class="w-full mx-auto flex">
-                            <div class="rounded-lg flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10">
+                            <div class="rounded-lg flex flex-col md:ml-auto w-full -mt-5 md:mt-0 relative">
                                 <div class="relative mb-4">
                                     <input type="text" placeholder="Your Name *" id="name" name="name" class="w-full placeholder-[#317256] bg-white border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
