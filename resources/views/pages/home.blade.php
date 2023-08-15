@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    @php
+@php
     $currentRoute = Route::currentRouteName(); // Get the current route name
     $loggedIn = auth()->check(); // Check if the user is logged in
     @endphp
@@ -60,18 +60,13 @@
                         @csrf
                         @method('GET')
                         <div class="container-search mt-2 md:mt-4">
-                            <div class="wrapper-dropdown">
-                                <span class="selected-display" id="destination">Choose Vehicle</span>
-                                <svg class="drop-arrow ml-auto transform transition-transform md:-rotate-180" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7 8.5l3-3 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
-                                <ul class="dropdown">
-                                    <li class="item">Option 1</li>
-                                    <li class="item">Option 2</li>
-                                    <li class="item">Option 3</li>
-                                    <li class="item">Option 4</li>
-                                </ul>
-                            </div>
+                            <span class="selected-display" id="destination">Choose Vehicle</span>
+                            <select class="w-full bg-black text-white h-12 rounded-md border-none" name="cars" id="cars">
+                                <option value="volvo">All Makes</option>
+                                <option value="saab">Saab</option>
+                                <option value="opel">Opel</option>
+                                <option value="audi">Audi</option>
+                            </select>
                         </div>
                         <div class="flex flex-col gap-2 md:flex-row md:gap-x-4 mt-3 md:mt-5">
                             <div>
