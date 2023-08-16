@@ -26,7 +26,7 @@
                 <img src="{{ URL('images/greencar.png') }}" class="w-full">
             </div>
             <div class="w-full md:w-2/6 pl-8">
-                <h1 class="text-[#317256] font-bold text-4xl md:text-5xl text-left pb-5">About Us</h1>
+                <h1 class="text-left pb-5 text-3xl md:text-5xl font-bold text-[#317256]">About Us</h1>
                 <p class="text-gray-500 md:">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate.
                 </p>
@@ -38,7 +38,7 @@
         <!-- care about safety -->
 
         <div class="text-center">
-            <h1 class="text-5xl font-bold text-[#317256]">We Care About Your Safety</h1>
+            <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">We Care About Your Safety</h1>
             <p class="text-lg text-gray-500 mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
         </div>
 
@@ -51,7 +51,6 @@
                     </div>
                 </div>
             </div>
-            >
             <div class="relative group mx-2 mb-32 md:mb-0">
                 <img src="{{ URL('images/Group 149.png') }}" class="mx-auto mb-4 md:mb-0 md:mx-4 relative">
                 <div class="absolute top-0 lg:left-0 md:left-4 sm:left-0 w-full bg-[#317256] rounded-2xl flex flex-col justify-end" style="margin-top: 100px; height: 90%; transition: height 0.3s; overflow: hidden; z-index: -1;">
@@ -85,7 +84,7 @@
     <!-- end care about safety -->
 
     <div class="text-center mt-28">
-        <h1 class="text-5xl font-bold text-[#317256]">Our Trusted Brands</h1>
+        <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Our Trusted Brands</h1>
         <p class="text-lg text-gray-500 mt-6 font-medium mb-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
     <div class="flex flex-col md:flex-row justify-center w-full mt-12">

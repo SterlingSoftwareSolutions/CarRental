@@ -21,9 +21,9 @@
     @endphp
 
 
-@if ($currentRoute === 'login' && !$loggedIn)
+    @if ($currentRoute === 'login' && !$loggedIn)
 
-<x-modal :name="true" :show="true" :maxWidth="'3xl'">
+    <x-modal :name="true" :show="true" :maxWidth="'3xl'">
         <div class="h-full">
             @include('auth.login')
         </div>
@@ -279,8 +279,8 @@
             <div class="slides-container h-80 flex snap-x snap-mandatory overflow-hidden overflow-x-auto space-x-4 rounded scroll-smooth before:w-[45vw] before:shrink-0 after:w-[45vw] after:shrink-0 md:before:w-0 md:after:w-0">
                 @if (isset($vehicles))
                 @foreach ($vehicles as $vehicle)
-                <div class="slide aspect-square rounded-lg h-full flex-shrink-0 snap-center overflow-hidden shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-                    <img class="w-full" src="{{ Storage::url($firstImage->file_path ?? null) }}" alt="mountain_image">
+                <div class="lide overflow-hidden slide aspect-square rounded-lg h-full flex-shrink-0 snap-center shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
+                    <img class="w-full rounded-lg" src="{{ Storage::url($firstImage->file_path ?? null) }}" alt="mountain_image">
                     <div class="grid justify-items-stretch items-center justify-center ">
                         <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">{{ $vehicle['make']}}</h1>
                         <p class="p-2">{{ $vehicle['short_Description']}} </p>
@@ -290,7 +290,6 @@
                 @else
                 <p>No vehicles available.</p>
                 @endif
-                <!-- Add similar slide elements for the remaining images -->
             </div>
             <div class="absolute top-0 -left-4 h-full items-center">
                 <button role="button" class="prev px-2 py-2 rounded-full bg-[#317256] text-neutral-900 group" aria-label="prev">
@@ -399,7 +398,7 @@
     <!-- happy customert section -->
 
     <!-- start navigation -->
-    <div class="-mt-40">
+    <div class="m md:-mt-50">
         @include('layouts.footer')
     </div>
     <!-- end navigation -->
