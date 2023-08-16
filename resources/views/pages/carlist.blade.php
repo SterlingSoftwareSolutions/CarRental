@@ -31,7 +31,7 @@
     <div class="flex justify-center md:grid md:grid-flow-row -mt-2">
         <form>
             <div class="flex flex-col md:flex-row border-t-8 border-[#398564] bg-[#D3D3D3] md:justify-center w-full">
-                <div class="dropdown">
+                <div class="dropdown p-0 md:p-8">
                     <label class="font-bold text-[#707070]" for="">Make</label>
                     <select class="w-full h-12 mt-2 rounded-md border-none text-gray-500" name="make" id="cars" onchange="this.form.submit()">
                         <option value="">All Makes</option>
@@ -63,7 +63,7 @@
                     <select class="w-full h-12 mt-2 rounded-md border-none text-gray-500" name="transmission" id="cars" onchange="this.form.submit()">
                         <option value="">All Transmissions</option>
                         @foreach($filters['transmissions'] as $opt)
-                            <option value="{{$opt}}" @if(Request()->transmission == $opt) selected @endif>{{$opt}}</option>
+                        <option value="{{$opt}}" @if(Request()->transmission == $opt) selected @endif>{{$opt}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -79,11 +79,11 @@
             @foreach ($vehicles as $vehicle)
             <!-- Repeat this section for each car item -->
             <div class="bg-[#F8FFF2] grid p-4">
-                <img class="rounded h-56 w-full object-cover" src="@if($vehicle->images[0] ?? null) Storage::url($vehicle->images[0]->file_path) @else images/default.png @endif">
+                <img class="rounded h-56 w-full md:w-full object-cover" src="@if($vehicle->images[0] ?? null) Storage::url($vehicle->images[0]->file_path) @else images/default.png @endif">
                 <div class="flex justify-between items-center p-4">
                     <div class="flex w-4/6">
                         <div class="bg-[#F8FFF2] grid">
-                            <h1>{{ $vehicle['make']}} {{ $vehicle['model']}}</h1>
+                            <h1 class="text-sm md:text-lg">{{ $vehicle['make']}} {{ $vehicle['model']}}</h1>
                             <div class="flex items-center space-x-1">
                                 @php
                                 $rating = $vehicle['rating'];
@@ -99,22 +99,22 @@
                         </div>
                     </div>
                     <div class="bg-[#317256] px-1 rounded">
-                        <h1 class="text-white">$ {{ $vehicle['price']}} /hour</h1>
+                        <h1 class="text-white text-sm md:text-lg">$ {{ $vehicle['price']}} /hour</h1>
                     </div>
                 </div>
                 <div class="flex justify-between items-center p-4">
                     <div class="grid w-6/6 text-center">
                         <img src="{{ URL('images/seat-belt.png') }}" class="mx-auto">
-                        <h1 class="text-center text-[#317256] font-semibold mt-2">{{ $vehicle['passengers']}} Passengers</h1>
+                        <h1 class="text-center text-sm md:text-lg text-[#317256] font-semibold mt-2">{{ $vehicle['passengers']}} Passengers</h1>
                     </div>
 
                     <div class="grid w-6/6 text-center">
                         <img src="{{ URL('images/luggage.png')}}" class="mx-auto">
-                        <h1 class="text-center text-[#317256] font-semibold mt-2">{{ $vehicle['luggage']}} Luggages</h1>
+                        <h1 class="text-center text-sm md:text-lg text-[#317256] font-semibold mt-2">{{ $vehicle['luggage']}} Luggages</h1>
                     </div>
                     <div class="grid w-6/6 text-center">
                         <img src="{{ URL('images/manual-transmission.png')}}" class="mx-auto">
-                        <h1 class="text-center text-[#317256] font-semibold mt-2">{{ $vehicle['transmission']}}</h1>
+                        <h1 class="text-center text-sm md:text-lg text-[#317256] font-semibold mt-2">{{ $vehicle['transmission']}}</h1>
                     </div>
                 </div>
                 <div class="flex justify-center items-center p-4">
