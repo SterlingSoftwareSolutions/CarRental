@@ -22,7 +22,7 @@
                     </svg>
                 </div>
             </div>
-           
+
         </div>
 
         <div class="mt-10">
@@ -76,9 +76,9 @@
                                 <th scope="col" class="px-6 py-3">
                                     Availability
                                 </th>
-                                <th scope="col" class="px-6 py-3">
-                                    <span class="sr-only">Edit</span>
 
+                                <th scope="col" class="px-6 py-3">
+                                    <span class="items-center text-center">Action</span>
                                 </th>
                             </tr>
                         </thead>
@@ -117,14 +117,13 @@
                                     {{ $vehicle['availability'] ? 'Available' : 'Not Available' }}
 
                                 </td>
-                                <td class="px-6 py-4 text-right">
-                                    <a href="/admin/vehicles/{{ $vehicle['id']}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                    /
-
+                                <td class="flex px-6 py-4">
+                                    <a href="/admin/vehicles/{{ $vehicle['id']}}" class="bg-[#2563ea] hover:bg-[#77c6fc] p-1 rounded-lg"><img class="w-5 h-5" src="{{ URL('images/editing.png')}}" alt=""></a>
+                                    <span class="text-xl">&nbsp/&nbsp</span>
                                     <form action="/admin/vehicle/{{ $vehicle['id'] }}" method="POST" class="inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline" onclick="return confirm('Are you sure you want to delete this Vehicle?')">Delete</button>
+                                        <button type="submit" class="bg-[#c81e1e] hover:bg-[#e28c8b] p-1 rounded-lg" onclick="return confirm('Are you sure you want to delete this Vehicle?')"><img class="w-5 h-5" src="{{ URL('images/delete.png')}}" alt=""></button>
                                     </form>
                                 </td>
                             </tr>
