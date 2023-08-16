@@ -185,10 +185,10 @@ class VehiclesController extends Controller
             'price' => 'required|numeric|min:0',
             'description' => 'required|string|max:255',
             'short_Description' => 'required|string|max:255',
-            'image_1' => 'required|image|max:2048', // Max file size of 2MB
-            'image_2' => 'required|image|max:2048',
-            'image_3' => 'required|image|max:2048',
-            'image_4' => 'required|image|max:2048',
+            'image_1' => 'sometimes|required|image|max:2048', // Max file size of 2MB
+            'image_2' => 'sometimes|required|image|max:2048',
+            'image_3' => 'sometimes|required|image|max:2048',
+            'image_4' => 'sometimes|required|image|max:2048',
         ]);
 
         for ($i = 1; $i <= 4; $i++) {
@@ -203,12 +203,8 @@ class VehiclesController extends Controller
             }
         }
 
-            $vehicle->update($validatedData);
-
-
-            return redirect()->route('vehicles.all')
-                ->with('success', 'User details updated successfully.');
-        
+        $vehicle->update($validatedData);
+        return redirect()->route('vehicles.all')->with('success', 'User details updated successfully.');
     }
 
     public function destroy($id)
