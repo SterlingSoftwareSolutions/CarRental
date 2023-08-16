@@ -17,8 +17,9 @@
 			<div x-data="{dropdownMenu: false}" class="relative">
 			    <!-- Dropdown toggle button -->
 			    <img
-					src="{{ Storage::url($user->images[0]->file_path ?? 'user_images/sample_image.jpg') }}"
-					class="rounded-full w-14 h-14 object-cover cursor-pointer"
+			    	
+					src="@if(isset(Auth::user()->images[0])) {{Storage::url(Auth::user()->images[0]->file_path)}} @else /images/avatar.png @endif"
+					class="rounded-full w-12 h-12 object-cover cursor-pointer"
 					alt="Avatar"
 					@click="dropdownMenu = ! dropdownMenu"
 				/>
