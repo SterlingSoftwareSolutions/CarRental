@@ -78,7 +78,7 @@
 
             @foreach ($vehicles as $vehicle)
             <!-- Repeat this section for each car item -->
-            <div class="bg-[#F8FFF2] grid p-4">
+            <div class="bg-[#F8FFF2] grid p-4 rounded-lg shadow-lg transform hover:-translate-y-1 hover:rotate-x-2 hover:shadow-xl transition-transform duration-300">
                 <img class="rounded h-56 w-full md:w-full object-cover" src="@if($vehicle->images[0] ?? null) Storage::url($vehicle->images[0]->file_path) @else images/default.png @endif">
                 <div class="flex justify-between items-center p-4">
                     <div class="flex w-4/6">
@@ -102,6 +102,7 @@
                         <h1 class="text-white text-sm md:text-lg">$ {{ $vehicle['price']}} /hour</h1>
                     </div>
                 </div>
+                <hr class="bg-[#317256] h-0.5">
                 <div class="flex justify-between items-center p-4">
                     <div class="grid w-6/6 text-center">
                         <img src="{{ URL('images/seat-belt.png') }}" class="mx-auto">
@@ -120,9 +121,8 @@
                 <div class="flex justify-center items-center p-4">
                     <a href="{{ route('booknow', ['id' => $vehicle['id']]) }}" class="text-white bg-[#317256] border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Book Now</a>
                 </div>
-
-
             </div>
+
             <!-- End of repeating section -->
 
             @endforeach
