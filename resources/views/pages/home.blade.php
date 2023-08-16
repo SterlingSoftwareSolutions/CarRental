@@ -399,7 +399,7 @@
     <!-- happy customert section -->
 
     <!-- start navigation -->
-    <div class="-mt-40">
+    <div class="mt-0 md:-mt-50">
         @include('layouts.footer')
     </div>
     <!-- end navigation -->

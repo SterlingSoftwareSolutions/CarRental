@@ -1,9 +1,9 @@
 <div class="grid sm:grid-cols-2 h-full">
     <!-- First Column -->
-    <div class="p-16 grid  place-items-center">
+    <div class="py-8 px-4  md:p-16 grid  place-items-center">
 
         <div class="flex items-center justify-center">
-            <h2 class="text-main-green font-extrabold text-3xl">{{ __("Sign Into Automobex Car Rental") }}</h2>
+            <h2 class="text-main-green font-extrabold text-lg md:text-3xl">{{ __("Sign Into Automobex Car Rental") }}</h2>
         </div>
 
         <div class="h-full sm:p-10 mx-auto">
@@ -14,7 +14,7 @@
                 <!-- Email Address -->
                 <div>
                     <label for="email" class="font-bold text-gray-500 pl-4 pb-5 ">Email</label>
-                    <x-text-input id="email" class="block w-full bg-neutral-300" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                    <x-text-input id="email" class="block w-5/6 md:w-full bg-neutral-300 " type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
@@ -22,7 +22,7 @@
                 <div class="mt-4">
                     <label for="password" class="font-bold text-gray-500 pl-4 pb-5 ">Password</label>
 
-                    <x-text-input id="password" class="block w-full bg-neutral-300" type="password" name="password" required autocomplete="current-password" />
+                    <x-text-input id="password" class="block w-5/6 md:w-full bg-neutral-300" type="password" name="password" required autocomplete="current-password" />
 
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
@@ -31,7 +31,7 @@
                 <div class="block mt-4">
                     <label for="remember_me" class="inline-flex items-center">
                         <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-green-600 shadow-sm focus:ring-green-500" name="remember">
-                        <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                        <span class="ml-10 md:ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                     </label>
                 </div>
 
@@ -42,15 +42,15 @@
 
                 <!-- forget password and new Account links  -->
                 <div class="flex items-center justify-center mt-12">
-                  
-                    <a class=" text-base text-main-green hover:text-gray-900 font-bold" href="{{ route('register') }}">
-                        {{ __('Create an Account ?') }}
+
+                    <a class="md:text-base text-sm text-main-green hover:text-gray-900 font-bold" href="{{ route('register') }}">
+                        {{ __('Create an Account') }}
                     </a>
-                
 
-                    <a class="text-2xl mx-10">|</a>
 
-                    <a class="text-base text-main-green hover:text-gray-900 font-bold" href="{{ route('password.request') }}">
+                    <a class=" md:text-2xl mx-10">|</a>
+
+                    <a class="md:text-base text-sm text-main-green hover:text-gray-900 font-bold" href="{{ route('password.request') }}">
                         {{ __('Forgot password') }}
                     </a>
                 </div>
@@ -59,7 +59,7 @@
     </div>
 
     <!-- Second Column -->
-    <div class="bg-blue-500 p-0 m-0">
+    <div class="p-0 m-0 hidden md:block">
         <img src="{{ URL('images/login_car.jpg')}}" alt="" class="w-full h-full object-cover">
     </div>
 </div>
