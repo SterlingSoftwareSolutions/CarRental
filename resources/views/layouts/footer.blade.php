@@ -1,6 +1,6 @@
     <!-- get off section -->
-    <div class="flex getoff-section">
-        <div class="max-w-screen-lg mx-auto md:px-32 py-12 transition-all duration-500 ease-linear flex items-center">
+    <div class="flex getoff-section top-3">
+        <div class="max-w-screen-lg mx-auto md:px-12 py-12 transition-all duration-500 ease-linear flex items-center">
             <div>
                 <h1 class="text-white pl-5 md:pl-0 text-xl md:text-3xl font-extrabold inline-block">Get 15% Off Your Rental ! Choose Your Model</h1>
             </div>
