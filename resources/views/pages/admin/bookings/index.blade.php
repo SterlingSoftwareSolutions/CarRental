@@ -92,6 +92,7 @@
 
                             @foreach ($bookings as $booking)
                             <tr class="bg-white border-b">
+                                @if(isset($booking->vehicle))
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
                                     <div class="flex items-center">
                                         <div class="me-3">
@@ -102,6 +103,11 @@
                                         </div>
                                     </div>
                                 </th>
+                                @else
+                                <th scope="row" class="px-6 py-4 font-medium text-red-500 whitespace-nowrap">
+                                    This vehicle is no longer in the system.
+                                </th>
+                                @endif
                                 <td class="px-6 py-4">
                                     {{ $booking->user['first_name']}} {{ $booking->user['last_name']}}
                                 </td>
@@ -123,7 +129,7 @@
                                 </td>
 
                                 <td class="px-6 py-4">
-                                    $ {{ $booking['bookingDaysCount'] * $booking->vehicle['price']}}
+                                    $ {{ $booking->amount() }}
                                 </td>
 
                                 <td class="px-6 py-4">
