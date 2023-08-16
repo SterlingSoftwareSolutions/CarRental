@@ -276,7 +276,6 @@
                         <x-input-label for="description" :value="__('Description')" />
                         <textarea id="editor" name="description" rows="8" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">{{$vehicle_one['description'] ?? old('description')}}</textarea>
                         <x-input-error :messages="$errors->get('description')" class="mt-2" />
-
                     </div>
 
                     <!-- Images -->
@@ -294,12 +293,9 @@
                             <label for="image_{{$i}}" class="block text-gray-700 font-semibold mb-2">{{ __('Image ' . $i) }}</label>
                             <div class="relative rounded-lg border-dashed border-2 border-gray-300 p-6 bg-white">
                                 <div class="overflow-hidden bg-cover  p-4 bg-white text-center flex flex-col items-center justify-center">
-
                                     <h2 class="mb-2">Preview:</h2>
-                                    {{-- src="{{ Storage::url($vehicle->images[0]->file_path) }}" --}}
-                                    <img id="preview_{{$i}}" class="object-cover min-w-[300px] max-w-[300px] min-h-[200px] max-h-[200px]" style="display: none;">
+                                    <img id="preview_{{$i}}" class="object-cover min-w-[300px] max-w-[300px] min-h-[200px] max-h-[200px]" @if(isset($vehicle_one->images[$i-1])) src="{{ Storage::url($vehicle_one->images[$i-1]->file_path) }}" @else style="display:none" @endif>
                                 </div>
-
                                 <label for="image_{{$i}}" class="cursor-pointer text-center">
                                     <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 48 48">
                                         <path d="M19.406 4L16 7.406l5.297 5.297H8v7.828h5.297L16 25.594 19.406 29l6-6-6-6zm9.188 27.172a6.95 6.95 0 0 0 0-9.84l-2.48-2.48 1.416-1.414 2.478 2.478a4.95 4.95 0 0 1 0 7.007 4.95 4.95 0 0 1-7.008 0l-2.478-2.478-1.414 1.414 2.48 2.48a6.95 6.95 0 0 0 9.838 0z" />
@@ -320,9 +316,6 @@
                     </div>
                 </form>
             </div>
-
-
-
         </div>
     </div>
 
