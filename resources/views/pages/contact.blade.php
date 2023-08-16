@@ -27,7 +27,7 @@
 
         <!-- map section -->
         <div class="text-center mt-10">
-            <h1 class="text-5xl font-bold text-[#317256]">Feel Free to Contact Us</h1>
+            <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Feel Free to Contact Us</h1>
         </div>
         <div class="relative w-5/6 mx-auto mt-10 px-4 sm:px-8 -z-40">
             <div class="overflow-hidden rounded-lg shadow-md">
@@ -70,9 +70,9 @@
                 </a>
                 <div class="items-center md:flex-row w-4/6 md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                     <div class="grid py-3.5 pl-5">
-                        <h1 class="text-white font-semibold text-2xl mb-4">Send us a Message</h1>
+                        <h1 class="text-white font-semibold text-lg md:text-2xl mb-4">Send us a Message</h1>
                         <div class="w-full mx-auto flex">
-                            <div class="rounded-lg flex flex-col md:ml-auto w-full -mt-5 md:mt-0 relative">
+                            <div class="flex flex-col md:ml-auto w-full  relative send_message">
                                 <div class="relative mb-4">
                                     <input type="text" placeholder="Your Name *" id="name" name="name" class="w-full placeholder-[#317256] bg-white border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
@@ -88,7 +88,7 @@
                                 <button type="submit" class="text-[#317256] w-2/6 font-bold bg-white border-0 py-2 px-6 focus:outline-none hover:bg-[#e0aa87] hover:text-white rounded text-lg">Submit</button>
                             </div>
                         </div>
-                    </div>
+                    </div>`
 
                 </div>
             </div>

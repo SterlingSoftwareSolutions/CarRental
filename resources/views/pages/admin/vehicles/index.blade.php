@@ -22,51 +22,7 @@
                     </svg>
                 </div>
             </div>
-
-            <!-- Active Vehicles  -->
-            <div class="grid grid-cols-2 bg-white p-4 rounded-lg">
-                <div class="">
-                    <p class="text-gray-500">Active Vehicles</p>
-                    <p class="text-gray-600 text-2xl font-bold">457</p>
-                    <p class="text-gray-400 text-sm ">Active for today</p>
-                </div>
-
-                <div class="flex justify-end">
-                    <svg class="w-11 h-11 p-3 rounded-md text-main-green bg-main-green dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z" />
-                    </svg>
-                </div>
-            </div>
-
-            <!-- Booked Vehicles  -->
-            <div class="grid grid-cols-2 bg-white p-4 rounded-lg">
-                <div class="">
-                    <p class="text-gray-500">Booked Vehicles</p>
-                    <p class="text-gray-600 text-2xl font-bold">1,058</p>
-                    <p class="text-gray-400 text-sm ">Booked for this month</p>
-                </div>
-
-                <div class="flex justify-end">
-                    <svg class="w-11 h-11 p-3 rounded-md text-main-green bg-main-green dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z" />
-                    </svg>
-                </div>
-            </div>
-
-            <!-- Type of Vehicles  -->
-            <div class="grid grid-cols-2 bg-white p-4 rounded-lg">
-                <div class="">
-                    <p class="text-gray-500">Vehicle Types</p>
-                    <p class="text-gray-600 text-2xl font-bold">8</p>
-                    <p class="text-gray-400 text-sm ">Total Vehicle Types</p>
-                </div>
-
-                <div class="flex justify-end">
-                    <svg class="w-11 h-11 p-3 rounded-md text-main-green bg-main-green dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z" />
-                    </svg>
-                </div>
-            </div>
+           
         </div>
 
         <div class="mt-10">
@@ -133,7 +89,11 @@
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
                                     <div class="flex items-center">
                                         <div class="me-3">
-                                            <img src="{{ Storage::url($vehicle->images[0]->file_path) }}" class="rounded-full w-10 h-10" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
+                                            @if(isset($vehicle) && isset($vehicle->images) && $vehicle->images->count() > 0)
+                                            <img src="{{ Storage::url($vehicle->images[0]->file_path) }}" alt="vehicle Image" class="rounded-full w-10 h-10">
+                                            @else
+                                            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80" alt="User Image" class="rounded-full w-10 h-10">
+                                            @endif
                                         </div>
                                         <div>
                                             <p>{{ $vehicle['make']}} {{ $vehicle['model']}}</p>
@@ -154,7 +114,7 @@
                                 </td>
 
                                 <td class="px-6 py-4">
-                                {{ $vehicle['availability'] ? 'Available' : 'Not Available' }}
+                                    {{ $vehicle['availability'] ? 'Available' : 'Not Available' }}
 
                                 </td>
                                 <td class="px-6 py-4 text-right">
@@ -308,7 +268,7 @@
                     <!-- short_Description -->
                     <div>
                         <x-input-label for="short_Description" :value="__('Short Description')" />
-                        <textarea id="editor" name="short_Description" rows="8" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" >{{$vehicle_one['short_Description'] ?? old('short_Description')}}</textarea>
+                        <textarea id="editor" name="short_Description" rows="8" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">{{$vehicle_one['short_Description'] ?? old('short_Description')}}</textarea>
                         <x-input-error :messages="$errors->get('short_Description')" class="mt-2" />
                     </div>
 

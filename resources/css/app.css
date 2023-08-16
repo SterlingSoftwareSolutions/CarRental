@@ -383,7 +383,7 @@ ul > li {
     padding: 5rem 0;
 }
 .counter-container {
-    margin-top: -48px;
+    margin-top: -43px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -404,10 +404,10 @@ ul > li {
 /* end counter css */
 .content-wrapper {
     height: 80%;
-    width: 100%;
+    width: 100% !important;
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: center;
 }
 
 .blue-line {
@@ -581,7 +581,12 @@ ul > li {
 
 @media screen and (max-width: 600px) {
     .content-wrapper {
-        width: 80%;
+        width: 150%;
+        height: 60%;
+    }
+
+    #reviewWrap {
+        width: 100%;
     }
 }
 
@@ -919,5 +924,29 @@ fieldset {
 
     .wrapper-dropdown {
         width: 100% !important;
+    }
+
+    .tab label,
+    input {
+        position: relative;
+        left: 30px;
+    }
+
+    #content1,
+    #content2 {
+        display: none;
+        padding: 0px;
+        overflow: hidden;
+    }
+
+    .counter h3 {
+        font-size: 2.5rem;
+    }
+    .dropdown {
+        padding: 0px !important;
+    }
+
+    .send_message input{
+        margin-left: -30px;
     }
 }
