@@ -34,7 +34,7 @@ $user = Auth::user();
                 </div>
                 <div class="w-1/5">
                     <!-- Profile imgage  -->
-                    <img src="{{ Storage::url($user->images[0]->file_path) }}" class="rounded-full w-14 h-14 object-cover cursor-pointer" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
+                    <img src="{{ Storage::url($user->images[0]->file_path ?? null) }}" class="rounded-full w-14 h-14 object-cover cursor-pointer" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
                     <!-- Dropdown menu -->
                     <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
