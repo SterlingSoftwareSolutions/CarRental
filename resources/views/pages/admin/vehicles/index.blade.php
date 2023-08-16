@@ -282,26 +282,8 @@
 
                     <div class="grid sm:grid-cols-4 gap-10 mt-10">
                         <script>
-                            function previewImage(event) {
-                                var image = document.getElementById('preview');
-                                image.src = URL.createObjectURL(event.target.files[0]);
-                                image.style.display = 'block';
-                            }
-
-                            function previewImage2(event) {
-                                var image = document.getElementById('preview_2');
-                                image.src = URL.createObjectURL(event.target.files[0]);
-                                image.style.display = 'block';
-                            }
-
-                            function previewImage3(event) {
-                                var image = document.getElementById('preview_3');
-                                image.src = URL.createObjectURL(event.target.files[0]);
-                                image.style.display = 'block';
-                            }
-
-                            function previewImage4(event) {
-                                var image = document.getElementById('preview_4');
+                            function previewImage(index) {
+                                var image = document.getElementById('preview_' + index);
                                 image.src = URL.createObjectURL(event.target.files[0]);
                                 image.style.display = 'block';
                             }
@@ -314,7 +296,7 @@
                                 <div class="overflow-hidden bg-cover  p-4 bg-white text-center flex flex-col items-center justify-center">
 
                                     <h2 class="mb-2">Preview:</h2>
-                                    <img id="preview" class="object-cover min-w-[300px] max-w-[300px] min-h-[200px] max-h-[200px]" style="display: none;">
+                                    <img id="preview_1" class="object-cover min-w-[300px] max-w-[300px] min-h-[200px] max-h-[200px]" style="display: none;">
                                 </div>
 
                                 <label for="image_1" class="cursor-pointer text-center">
@@ -324,7 +306,7 @@
                                     </svg>
                                     <p class="mt-1 text-sm text-gray-600">{{ __('Drag and drop an image here or click to browse.') }}</p>
                                 </label>
-                                <input id="image_1" class="hidden" type="file" name="image_1" onchange="previewImage(event)" />
+                                <input id="image_1" class="hidden" type="file" name="image_1" onchange="previewImage(1)" />
                             </div>
                             <x-input-error :messages="$errors->get('image_1')" class="mt-2" />
                         </div>
@@ -345,7 +327,7 @@
                                     </svg>
                                     <p class="mt-1 text-sm text-gray-600">{{ __('Drag and drop an image here or click to browse.') }}</p>
                                 </label>
-                                <input id="image_2" class="hidden" type="file" name="image_2" onchange="previewImage2(event)" />
+                                <input id="image_2" class="hidden" type="file" name="image_2" onchange="previewImage(2)" />
                             </div>
                             <x-input-error :messages="$errors->get('image_2')" class="mt-2" />
                         </div>
@@ -365,7 +347,7 @@
                                     </svg>
                                     <p class="mt-1 text-sm text-gray-600">{{ __('Drag and drop an image here or click to browse.') }}</p>
                                 </label>
-                                <input id="image_3" class="hidden" type="file" name="image_3" onchange="previewImage3(event)" />
+                                <input id="image_3" class="hidden" type="file" name="image_3" onchange="previewImage(3)" />
                             </div>
                             <x-input-error :messages="$errors->get('image_3')" class="mt-2" />
                         </div>
@@ -386,7 +368,7 @@
                                     </svg>
                                     <p class="mt-1 text-sm text-gray-600">{{ __('Drag and drop an image here or click to browse.') }}</p>
                                 </label>
-                                <input id="image_4" class="hidden" type="file" name="image_4" onchange="previewImage4(event)" />
+                                <input id="image_4" class="hidden" type="file" name="image_4" onchange="previewImage(4)" />
                             </div>
                             <x-input-error :messages="$errors->get('image_4')" class="mt-2" />
                         </div>
