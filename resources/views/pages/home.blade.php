@@ -89,7 +89,7 @@
                                 <option value="{{$opt}}" @if(Request()->transmission == $opt) selected @endif>{{$opt}}</option>
                             @endforeach
                         </select>
-                        <button type="submit" class="text-white w-full bg-[#317256] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded mt-3">
+                        <button type="submit" class="text-white w-full bg-[#317256] hover:bg-[#e0aa87] focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded mt-3">
                             <span class="text-base">Search Now</span>
                         </button>
                     </form>
@@ -121,7 +121,7 @@
                         </div>
 
                         <div class="flex justify-center mt-4 md:mt-6">
-                            <button type="submit" class="text-white w-full bg-[#317256] hover:bg-blue-800 font-bold text-sm md:text-base py-2 rounded">
+                            <button type="submit" class="text-white w-full bg-[#317256] hover:bg-[#e0aa87] font-bold text-sm md:text-base py-2 rounded">
                                 <span class="text-base">Search Now</span>
                             </button>
                         </div>
@@ -344,7 +344,7 @@
         </div>
     </div>
     <div class="text-center">
-        <button type="button" class="text-white bg-[#317256] font-bold hover:bg-blue-800 px-6 py-3 text-center mr-3 md:mr-0 rounded" onclick="window.location.href='{{ route('carlist') }}';">
+        <button type="button" class="text-white bg-[#317256] font-bold hover:bg-[#e0aa87] px-6 py-3 text-center mr-3 md:mr-0 rounded" onclick="window.location.href='{{ route('carlist') }}';">
             View All
         </button>
     </div>

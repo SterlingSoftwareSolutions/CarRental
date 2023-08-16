@@ -60,7 +60,7 @@
         <!-- send message section -->
         <div class="bg-[#317256] mt-20 mb-20 h-96">
             <div class="flex justify-center mt-4 w-12/12">
-                <a href="#" class="flex flex-col h-full items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <a class="flex flex-col h-full items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                     <div>
                         <img class="object-cover h-96 hidden md:block" src="{{ URL('images/roland-denes-EWf48MRVUNE-unsplash.png')}}" alt="">
                     </div>
@@ -85,7 +85,7 @@
                                 <div class="relative mb-4">
                                     <textarea id="message" placeholder="Message" name="message" class="w-full h-16 bg-white placeholder-[#317256] border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                                 </div>
-                                <button class="text-[#317256] w-2/6 font-bold bg-white border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 hover:text-white rounded text-lg">Submit</button>
+                                <button type="submit" class="text-[#317256] w-2/6 font-bold bg-white border-0 py-2 px-6 focus:outline-none hover:bg-[#e0aa87] hover:text-white rounded text-lg">Submit</button>
                             </div>
                         </div>
                     </div>
