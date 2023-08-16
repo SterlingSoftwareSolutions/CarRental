@@ -30,6 +30,11 @@ class RegisteredUserController extends Controller
 
     public function new_register(Request $request)
     {
+        $request->validate([
+            'first_name' => ['required', 'string', 'min:3' ,'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.Users::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
 
         $user = Users::create([
             'first_name' => $request->first_name,
