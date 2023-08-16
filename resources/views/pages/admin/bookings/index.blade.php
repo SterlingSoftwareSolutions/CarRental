@@ -105,15 +105,28 @@
                                 </th>
                                 @else
                                 <th scope="row" class="px-6 py-4 font-medium text-red-500 whitespace-nowrap">
-                                    This vehicle is no longer in the system.
+                                    Vehicle no longer in the system.
                                 </th>
                                 @endif
+
+                                @if(isset($booking->user))
                                 <td class="px-6 py-4">
                                     {{ $booking->user['first_name']}} {{ $booking->user['last_name']}}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $booking->user['driving_license']}}
                                 </td>
+                                @else
+                                <th scope="row" class="px-6 py-4 font-medium text-red-500 whitespace-nowrap">
+                                    User no longer in the system.
+                                </th>
+                                <td class="px-6 py-4">
+                                    -
+                                </td>
+                                @endif
+
+
+     
 
                                 <td class="px-6 py-4">
                                     {{ $booking['pickup']}}
