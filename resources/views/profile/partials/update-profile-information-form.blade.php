@@ -13,9 +13,31 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
-        @method('patch')
+        @method('put')
+
+        <div>
+            <label for="avatar">
+                <x-input-label for="avatar" :value="__('Avatar')" />
+                <img
+                    src="@if(isset(Auth::user()->images[0])) {{Storage::url(Auth::user()->images[0]->file_path)}} @else /images/avatar.png @endif"
+                    class="rounded-full w-24 h-24 object-cover"
+                    alt="Avatar"
+                    for="avatar"
+                    id="avatar-preview"
+                />
+            </label>
+            <input type="file" id="avatar" name="avatar"  class="mt-1 hidden" autofocus autocomplete="avatar" onchange="previewImage()" />
+            <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
+
+            <script>
+                function previewImage() {
+                    var image = document.getElementById('avatar-preview');
+                    image.src = URL.createObjectURL(event.target.files[0]);
+                }
+            </script>
+        </div>
 
         <div>
             <x-input-label for="first_name" :value="__('First Name')" />
