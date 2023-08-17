@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Attachments;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,6 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $user = $request->user();
-
         $values = $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
@@ -40,6 +40,10 @@ class ProfileController extends Controller
                 Rule::unique('users')->ignore($user->id),
             ],
         ]);
+        if ($request->hasFile('avatar')) {
+            $imagePath = $request->file('avatar')->store('public/user_images');
+            Attachments::updateOrCreate(['referenceId' => $user->id,], ['file_path' => $imagePath,], ['attachment_type' => "User Image"]);
+        }
         $user->update($values);
         return back()->with('status', 'profile-updated');
     }
