@@ -24,9 +24,7 @@ class UsersController extends Controller
                 ->orWhere('zip', 'like', '%' . $term . '%');
         }
 
-        $users = $query->with(['images' => function ($q) {
-            $q->where('attachment_type', 'User Image');
-        }])->get();
+        $users = $query->get();
 
         return view('pages.admin.users.index', ['users' => $users]);
     }
