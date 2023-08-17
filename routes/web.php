@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
     // Admin Only Routes 
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
         Route::get('/dashboard', [DashboardController::class, 'admin'])->name('dashboard');
-        Route::get('/users', [UsersController::class, 'show_all_users'])->name('users.all');
+        Route::get('/users', [UsersController::class, 'index'])->name('users.all');
         Route::get('/users/{user}/edit', [UsersController::class, 'edit_user'])->name('user.edit');
         Route::get('/users/{user}', [UsersController::class, 'show'])->name('user.show');
         Route::put('/user', [RegisteredUserController::class, 'update'])->name('update_user');
