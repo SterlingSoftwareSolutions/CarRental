@@ -18,15 +18,15 @@
         @method('put')
 
         <div>
-            <label for="avatar">
-                <x-input-label for="avatar" :value="__('Avatar')" />
+            <label for="avatar" class="w-full">
                 <img
                     src="@if(isset(Auth::user()->images[0])) {{Storage::url(Auth::user()->images[0]->file_path)}} @else /images/avatar.png @endif"
-                    class="rounded-full w-24 h-24 object-cover"
+                    class="rounded-full w-32 h-32 mx-auto object-cover cursor-pointer"
                     alt="Avatar"
                     for="avatar"
                     id="avatar-preview"
                 />
+                <div class="mx-auto w-32 mt-3 bg-gray-800 text-white rounded text-center p-1 cursor-pointer">Change Avatar</div>
             </label>
             <input type="file" id="avatar" name="avatar"  class="mt-1 hidden" autofocus autocomplete="avatar" onchange="previewImage()" />
             <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
