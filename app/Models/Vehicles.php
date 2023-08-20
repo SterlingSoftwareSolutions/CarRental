@@ -33,6 +33,9 @@ class Vehicles extends Model
         return $this->hasMany(Attachments::class, 'referenceId')
             ->where('attachment_type', 'Vehicle Image'); // Add the condition to filter by attachment type
     }
-    
 
+    public function bookings()
+    {
+        return $this->hasMany(Bookings::class, 'vehicle_id');
+    }
 }
