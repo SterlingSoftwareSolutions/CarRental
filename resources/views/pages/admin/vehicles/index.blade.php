@@ -136,12 +136,11 @@
                 </div>
 
 
-
             </div>
 
             <div class="w-5/10 mx-auto p-6 m-10 relative shadow-md sm:rounded-lg bg-white ">
                 <div>
-                    <h1 class="flex text-gray-500 font-bold text-2xl justify-center py-6">Add a New Vehicle</h1>
+                    <h1 class="flex text-gray-500 font-bold text-2xl justify-center py-6" id="addcar">Add a New Vehicle</h1>
                 </div>
                 <form method="POST" action="{{ isset($vehicle_one) ? route('vehicle_update', ['vehicle_id' => $vehicle_one->id]) : route('vehicles.all') }}" enctype="multipart/form-data">
                     @csrf
