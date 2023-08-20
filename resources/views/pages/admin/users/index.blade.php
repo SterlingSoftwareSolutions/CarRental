@@ -157,7 +157,7 @@
 
             <div class="w-5/10 mx-auto p-6 m-10 relative shadow-md sm:rounded-lg bg-white  ">
                 <div>
-                    <h1 class="flex text-gray-500 font-bold text-2xl justify-center py-6">Add a New User</h1>
+                    <h1 class="flex text-gray-500 font-bold text-2xl justify-center py-6" id="adduser">Add a New User</h1>
                 </div>
                 <form method="POST" action="{{ isset($user_one) ? route('update_user', ['userid' => $user_one->id]) : route('register') }}" enctype="multipart/form-data">
                     @csrf
