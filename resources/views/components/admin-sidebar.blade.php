@@ -40,7 +40,10 @@
             </button>
             <ul id="dropdown-example" class="hidden py-2 space-y-2">
                   <li>
-                     <a href="#" class="flex items-center w-full p-2 text-gray-500 rounded-lg text-ma hover:bg-main-green group hover:text-white">Add Vehicle</a>
+                     <a href="/admin/vehicles" class="flex items-center w-full p-2 text-gray-500 rounded-lg text-ma hover:bg-main-green group hover:text-white">Vehicles</a>
+                  </li>
+                  <li>
+                     <a href="/admin/vehicles#addcar" class="flex items-center w-full p-2 text-gray-500 rounded-lg text-ma hover:bg-main-green group hover:text-white">Add Vehicle</a>
                   </li>
                   <!-- <li>
                      <a href="#" class="flex items-center w-full p-2 text-gray-500 rounded-lg text-ma hover:bg-main-green group hover:text-white">Billing</a>
@@ -63,15 +66,18 @@
                   </svg>
             </button>
             <ul id="dropdown-example2" class="hidden py-2 space-y-2">
-                  <li>
-                     <a href="#" class="flex items-center w-full p-2 text-gray-500 rounded-lg text-ma hover:bg-main-green group hover:text-white">Add Users</a>
-                  </li>
-                  <!-- <li>
-                     <a href="#" class="flex items-center w-full p-2 text-gray-500 rounded-lg text-ma hover:bg-main-green group hover:text-white">Billing</a>
-                  </li>
-                  <li>
-                     <a href="#" class="flex items-center w-full p-2 text-gray-500 rounded-lg text-ma hover:bg-main-green group hover:text-white">Invoice</a>
-                  </li> -->
+                <li>
+                 <a href="/admin/users/" class="flex items-center w-full p-2 text-gray-500 rounded-lg text-ma hover:bg-main-green group hover:text-white">Users</a>
+                </li>
+                <li>
+                 <a href="/admin/users#adduser" class="flex items-center w-full p-2 text-gray-500 rounded-lg text-ma hover:bg-main-green group hover:text-white">Add User</a>
+                </li>
+                <!-- <li>
+                 <a href="#" class="flex items-center w-full p-2 text-gray-500 rounded-lg text-ma hover:bg-main-green group hover:text-white">Billing</a>
+                </li>
+                <li>
+                 <a href="#" class="flex items-center w-full p-2 text-gray-500 rounded-lg text-ma hover:bg-main-green group hover:text-white">Invoice</a>
+                </li> -->
             </ul>
          </li>
 
