@@ -87,18 +87,20 @@
                             @foreach ($vehicles as $vehicle)
                             <tr class="bg-white border-b">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <div class="me-3">
-                                            @if(isset($vehicle) && isset($vehicle->images) && $vehicle->images->count() > 0)
-                                            <img src="{{ Storage::url($vehicle->images[0]->file_path) }}" alt="vehicle Image" class="rounded-full w-10 h-10">
-                                            @else
-                                            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80" alt="User Image" class="rounded-full w-10 h-10">
-                                            @endif
+                                    <a href="/admin/vehicles/{{ $vehicle['id']}}">
+                                        <div class="flex items-center">
+                                            <div class="me-3">
+                                                @if(isset($vehicle) && isset($vehicle->images) && $vehicle->images->count() > 0)
+                                                <img src="{{ Storage::url($vehicle->images[0]->file_path) }}" alt="vehicle Image" class="rounded-full w-10 h-10">
+                                                @else
+                                                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80" alt="User Image" class="rounded-full w-10 h-10">
+                                                @endif
+                                            </div>
+                                            <div>
+                                                <p>{{ $vehicle['make']}} {{ $vehicle['model']}}</p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <p>{{ $vehicle['make']}} {{ $vehicle['model']}}</p>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </th>
                                 <td class="px-6 py-4">
                                     {{ $vehicle['vin']}}
@@ -118,7 +120,7 @@
 
                                 </td>
                                 <td class="flex px-6 py-4">
-                                    <a href="/admin/vehicles/{{ $vehicle['id']}}" class="bg-[#2563ea] hover:bg-[#77c6fc] p-1 rounded-lg"><img class="w-5 h-5" src="{{ URL('images/editing.png')}}" alt=""></a>
+                                    <a href="/admin/vehicles/{{ $vehicle['id']}}/edit" class="bg-[#2563ea] hover:bg-[#77c6fc] p-1 rounded-lg"><img class="w-5 h-5" src="{{ URL('images/editing.png')}}" alt=""></a>
                                     <span class="text-xl">&nbsp/&nbsp</span>
                                     <form action="/admin/vehicle/{{ $vehicle['id'] }}" method="POST" class="inline">
                                         @csrf

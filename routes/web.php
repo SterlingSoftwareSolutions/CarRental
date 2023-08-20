@@ -56,7 +56,8 @@ Route::middleware('auth')->group(function () {
         Route::delete('/vehicle/{user_id}', [VehiclesController::class, 'destroy'])->name('delete_vehicle');
         Route::put('/vehicle', [VehiclesController::class, 'update'])->name('vehicle_update');
         Route::get('/vehicles', [VehiclesController::class, 'show_all_vehicles'])->name('vehicles.all');
-        Route::get('/vehicles/{vehicle_id}', [VehiclesController::class, 'edit_vehicle'])->name('vehicle.edit');
+        Route::get('/vehicles/{vehicle}/edit', [VehiclesController::class, 'edit_vehicle'])->name('vehicle.edit');
+        Route::get('/vehicles/{vehicle}', [VehiclesController::class, 'show'])->name('vehicle.show');
         Route::post('/vehicles', [VehiclesController::class, 'store'])->name('vehicles.store');
         Route::get('/bookings', [BookingsController::class, 'index'])->name('bookings.all');
         Route::delete('/booking/{bookingId}', [BookingsController::class, 'destroy'])->name('delete_booking');
