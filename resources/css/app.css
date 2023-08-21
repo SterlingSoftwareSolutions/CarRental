@@ -11,7 +11,6 @@ body {
 /* end general CSS */
 
 /* nav CSS */
-
 .nav {
     height: 6rem;
     width: 100vw;
@@ -949,4 +948,11 @@ fieldset {
     .send_message input {
         margin-left: -30px;
     }
+}
+
+@media (min-width: 1024px) and (max-width: 1366px) {
+.dropdown {
+    margin: 0;
+    width: 50%;
+}
 }

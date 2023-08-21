@@ -125,7 +125,7 @@
                                     <form action="/admin/vehicle/{{ $vehicle['id'] }}" method="POST" class="inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="bg-[#c81e1e] hover:bg-[#e28c8b] p-1 rounded-lg" onclick="return confirm('Are you sure you want to delete this Vehicle?')"><img class="w-5 h-5" src="{{ URL('images/delete.png')}}" alt=""></button>
+                                        <button type="submit" class="bg-[#c81e1e] hover:bg-[#e28c8b] p-2 rounded-lg" onclick="return confirm('Are you sure you want to delete this Vehicle?')"><i class="fa-solid fa-trash-can fa-xl" style="color: #ffffff;"></i></button>
                                     </form>
                                 </td>
                             </tr>

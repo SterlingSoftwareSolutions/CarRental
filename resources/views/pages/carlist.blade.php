@@ -28,9 +28,9 @@
     <!-- end banner section -->
 
     <!-- filtering section -->
-    <div class="flex justify-center md:grid md:grid-flow-row -mt-2">
+    <div class="flex flex-row md:grid md:grid-flow-row justify-center items-center -mt-2">
         <form>
-            <div class="flex flex-col md:flex-row border-t-8 border-[#398564] bg-[#D3D3D3] md:justify-center w-full">
+            <div class="flex flex-col md:flex-row border-t-8 border-[#398564] bg-[#D3D3D3] w-full mx-auto">
                 <div class="dropdown p-0 md:p-8">
                     <label class="font-bold text-[#707070]" for="">Make</label>
                     <select class="w-full h-12 mt-2 rounded-md border-none text-gray-500" name="make" id="cars" onchange="this.form.submit()">
@@ -73,7 +73,7 @@
     <!-- end filtering section -->
 
     <!-- car list -->
-    <div class="grid justify-center items-center p-4">
+    <div class="grid justify-center  items-center p-4">
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 
             @foreach ($vehicles as $vehicle)
@@ -99,7 +99,7 @@
                         </div>
                     </div>
                     <div class="bg-[#317256] px-1 rounded">
-                        <h1 class="text-white text-sm md:text-lg">$ {{ $vehicle['price']}} /hour</h1>
+                        <h1 class="text-white text-sm md:text-base">$ {{ $vehicle['price']}} /hour</h1>
                     </div>
                 </div>
                 <hr class="bg-[#317256] h-0.5">
