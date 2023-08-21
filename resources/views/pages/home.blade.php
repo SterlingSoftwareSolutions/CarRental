@@ -20,9 +20,7 @@
     $loggedIn = auth()->check(); // Check if the user is logged in
     @endphp
 
-
     @if ($currentRoute === 'login' && !$loggedIn)
-
     <x-modal :name="true" :show="true" :maxWidth="'3xl'">
         <div class="h-full">
             @include('auth.login')
@@ -40,7 +38,7 @@
             @include('auth.login')
         </div>
     </x-modal>
-    @endif
+        @endif
 
     <!-- start navigation -->
     @include('layouts.navigation')
@@ -48,45 +46,45 @@
 
     <!-- main home banner  -->
     <div class="main-banner flex justify-right items-center px-4 py-8 md:py-22">
-        <div class="grid justify-center items-center align-middle md:pl-32 pl-1 mt-60 md:mt-0">
+        <div class="grid justify-center items-center align-middle md:pl-32 pl-1 mt-60 md:mt-20">
             <h1 class="text-white text-3xl md:text-5xl font-bold mb-2 md:mb-4">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
             <p class="text-white text-sm md:text-lg font-bold ">Rent a Car for Your Next Adventure with Our Convenient <br class="hidden md:inline"> and Reliable Services</p>
-            <div class="flex flex-col md:flex-row gap-4 mt-12 md:mt-10 md:w-1/2">
-                <div class="grid bg-black rounded-lg search-foam w-full lg:w-auto">
+            <div class="flex flex-col md:flex-row gap-5 mt-12 md:mt-4 md:w-1/2">
+                <div class="grid bg-black rounded-lg search-foam md:w-10 lg:w-auto">
                     <div class="text-center">
-                        <p class="text-white text-sm md:text-lg font-bold mt-2 md:mt-4">Ready to hit the road?</p>
+                        <p class="text-white text-sm md:text-lg font-bold mt-2 md:mt-2">Ready to hit the road?</p>
                     </div>
                     @php
                     $filters = App\Http\Controllers\VehiclesController::filters();
                     @endphp
-                    <form action="/carlist">
+                    <form class=" w-4/6 lg:w-full" action="/carlist">
                         <label class="font-bold text-[#707070]" for="">Make</label>
-                        <select class="w-full h-12 mt-2 rounded-md border-none" name="make" id="cars">
-                            <option value="">All Makes</option>
+                        <select class="w-full h-12 md:h-9 mt-2 rounded-md border-none" name="make" id="cars">
+                            <option class="text-sm" value="">All Makes</option>
                             @foreach($filters['makes'] as $opt)
-                            <option value="{{$opt}}" @if(Request()->make == $opt) selected @endif>{{$opt}}</option>
+                            <option class="text-sm" value="{{$opt}}" @if(Request()->make == $opt) selected @endif>{{$opt}}</option>
                             @endforeach
                         </select>
                         <label class="font-bold text-[#707070]" for="">Model</label>
-                        <select class="w-full h-12 mt-2 rounded-md border-none" name="model" id="cars">
-                            <option value="">All Models</option>
+                        <select class="w-full h-12 md:h-9 mt-2 rounded-md border-none" name="model" id="cars">
+                            <option class="text-sm" value="">All Models</option>
                             @foreach($filters['models'] as $opt)
-                            <option value="{{$opt}}" @if(Request()->model == $opt) selected @endif>{{$opt}}</option>
+                            <option class="text-sm" value="{{$opt}}" @if(Request()->model == $opt) selected @endif>{{$opt}}</option>
                             @endforeach
                         </select>
 
                         <label class="font-bold text-[#707070]" for="">Body Type</label>
-                        <select class="w-full h-12 mt-2 rounded-md border-none" name="body_type" id="cars">
-                            <option value="">All Body Types</option>
+                        <select class="w-full h-12 md:h-9 mt-2 rounded-md border-none" name="body_type" id="cars">
+                            <option class="text-sm" value="">All Body Types</option>
                             @foreach($filters['body_types'] as $opt)
-                            <option value="{{$opt}}" @if(Request()->body_type == $opt) selected @endif>{{$opt}}</option>
+                            <option class="text-sm" value="{{$opt}}" @if(Request()->body_type == $opt) selected @endif>{{$opt}}</option>
                             @endforeach
                         </select>
                         <label class="font-bold text-[#707070]" for="">Transmission</label>
-                        <select class="w-full h-12 mt-2 rounded-md border-none" name="transmission" id="cars">
-                            <option value="">All Transmissions</option>
+                        <select class="w-full h-12 md:h-9 mt-2 rounded-md border-none" name="transmission" id="cars">
+                            <option class="text-sm" value="">All Transmissions</option>
                             @foreach($filters['transmissions'] as $opt)
-                            <option value="{{$opt}}" @if(Request()->transmission == $opt) selected @endif>{{$opt}}</option>
+                            <option class="text-sm" value="{{$opt}}" @if(Request()->transmission == $opt) selected @endif>{{$opt}}</option>
                             @endforeach
                         </select>
                         <button type="submit" class="text-white w-full bg-[#317256] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded mt-3">
@@ -161,7 +159,7 @@
     <div class="discover-section">
         <div class="flex items-center justify-center">
             <div class=" mb-4 md:mb-0 ">
-                <a href="" class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <a href="" class="flex flex-col items-center md:flex-row md:max-w-xl">
                     <div>
                         <img class="hidden md:block object-cover md:h-96 md:w-50 w-full h-full md:rounded-none md:rounded-l-lg mt-12" src="{{ URL('images/Rectangle 27.png')}}" alt="">
                     </div>
@@ -181,7 +179,7 @@
                                 @foreach ($vehicles as $vehicle)
                                 <div class="slide mb-4">
                                     <div class="inner_content">
-                                        <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                        <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl">
                                             <div>
                                                 @if ($vehicle->images->count() > 0)
                                                 @php
@@ -226,7 +224,7 @@
                                 @foreach ($vehicles as $vehicle)
                                 <div class="slide mb-4">
                                     <div class="inner_content">
-                                        <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                        <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl">
                                             <div>
                                                 @if ($vehicle->images->count() > 0)
                                                 @php

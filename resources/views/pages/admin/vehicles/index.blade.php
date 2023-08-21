@@ -118,12 +118,12 @@
 
                                 </td>
                                 <td class="flex px-6 py-4">
-                                    <a href="/admin/vehicles/{{ $vehicle['id']}}" class="bg-[#2563ea] hover:bg-[#77c6fc] p-1 rounded-lg"><img class="w-5 h-5" src="{{ URL('images/editing.png')}}" alt=""></a>
+                                    <a href="/admin/vehicles/{{ $vehicle['id']}}" class="bg-[#2563ea] hover:bg-[#77c6fc] p-2 rounded-lg"><i class="fa-solid fa-pen-to-square fa-xl" style="color: #ffffff;"></i></a>
                                     <span class="text-xl">&nbsp/&nbsp</span>
                                     <form action="/admin/vehicle/{{ $vehicle['id'] }}" method="POST" class="inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="bg-[#c81e1e] hover:bg-[#e28c8b] p-1 rounded-lg" onclick="return confirm('Are you sure you want to delete this Vehicle?')"><img class="w-5 h-5" src="{{ URL('images/delete.png')}}" alt=""></button>
+                                        <button type="submit" class="bg-[#c81e1e] hover:bg-[#e28c8b] p-2 rounded-lg" onclick="return confirm('Are you sure you want to delete this Vehicle?')"><i class="fa-solid fa-trash-can fa-xl" style="color: #ffffff;"></i></button>
                                     </form>
                                 </td>
                             </tr>

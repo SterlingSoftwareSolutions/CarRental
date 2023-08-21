@@ -10,6 +10,7 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css" rel="stylesheet" />
@@ -23,12 +24,12 @@
         // $excludeUrls = ['/admin/', '/user/'];
         $excludeUrls = ['/admin/'];
         $shouldShowNavigation = !collect($excludeUrls)->contains(function ($url) use ($currentUrl) {
-            return strpos($currentUrl, $url) !== false;
+        return strpos($currentUrl, $url) !== false;
         });
         @endphp
 
         @if ($shouldShowNavigation)
-            @include('layouts.navigation')
+        @include('layouts.navigation')
         @endif
 
 
