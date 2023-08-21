@@ -5,97 +5,94 @@
 
     <div class="sm:ml-64 p-6">
 
-        <!-- USER INFO -->
-        <div class="">
-            <h1 class="p-4 font-semibold text-lg text-[#707070] mt-7">{{$user->first_name}} {{$user->last_name}}'s
-                Profile</h1>
-            <div class="overflow-auto">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
+        <!-- Vehicle INFO -->
+        <div class="overflow-auto max-h-[600px] ">
+            <h1 class="p-4 font-semibold text-lg text-[#707070] mt-7">Vehicle</h1>
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
+                <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Vehicle
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            VIN
+                        </th>
 
-                    <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">
-                                #
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Mobile
-                            </th>
+                        <th scope="col" class="px-6 py-3">
+                            Body Type
+                        </th>
 
-                            <th scope="col" class="px-6 py-3">
-                                Address
-                            </th>
+                        <th scope="col" class="px-6 py-3">
+                            Color
+                        </th>
 
-                            <th scope="col" class="px-6 py-3">
-                                City
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Zip
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Email
-                            </th>
+                        <th scope="col" class="px-6 py-3">
+                            <div class="flex items-center">
+                                Price
+                                <a href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
+                                    </svg></a>
+                            </div>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Availability
+                        </th>
 
-                            <th scope="col" class="px-6 py-3">
-                                Created Date
-                            </th>
+                        <th scope="col" class="px-6 py-3">
+                            <span class="items-center text-center">Action</span>
+                        </th>
+                    </tr>
+                </thead>
 
-                            <th scope="col" class="px-6 py-3">
-                                <span>Actions</span>
-                            </th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr class="bg-white border-b">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
-                                <div class="flex items-center">
-                                    <div class="me-3">
-                                        @if(isset($user) && isset($user->images) && $user->images->count() > 0)
-                                        <img src="{{ Storage::url($user->images[0]->file_path) }}" alt="User Image" class="rounded-full w-10 h-10 object-cover">
-                                        @else
-                                        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" alt="User Image" class="rounded-full w-10 h-10 object-cover">
-                                        @endif
-                                    </div>
-                                    <div>
-                                        <p> {{ $user['first_name'] }} {{ $user['last_name'] }}</p>
-                                    </div>
+                <tbody>
+                    <tr class="bg-white border-b">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
+                            <div class="flex items-center">
+                                <div class="me-3">
+                                    @if(isset($vehicle) && isset($vehicle->images) && $vehicle->images->count() > 0)
+                                    <img src="{{ Storage::url($vehicle->images[0]->file_path) }}" alt="vehicle Image" class="rounded-full w-10 h-10">
+                                    @else
+                                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80" alt="User Image" class="rounded-full w-10 h-10">
+                                    @endif
                                 </div>
-                            </th>
-                            <td class="px-6 py-4">
-                                {{ $user['mobile'] }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $user['Address_1'] }} {{ $user['Address_2'] }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $user['city'] }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $user['zip'] }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $user['email'] }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $user['created_at'] }}
-                            </td>
-                            <td class="px-6 py-4">
-                                <a href="/admin/users/{{ $user['id']}}/edit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                /
-                                <form action="/admin/user/{{ $user['id'] }}" method="POST" class="inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                                <div>
+                                    <p>{{ $vehicle['make']}} {{ $vehicle['model']}}</p>
+                                </div>
+                            </div>
+                        </th>
+                        <td class="px-6 py-4">
+                            {{ $vehicle['vin']}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $vehicle['body_type']}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $vehicle['color']}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $vehicle['price']}}
+                        </td>
+
+                        <td class="px-6 py-4">
+                            {{ $vehicle['availability'] ? 'Available' : 'Not Available' }}
+
+                        </td>
+                        <td class="flex px-6 py-4">
+                            <a href="/admin/vehicles/{{ $vehicle['id']}}/edit" class="bg-[#2563ea] hover:bg-[#77c6fc] p-1 rounded-lg"><img class="w-5 h-5" src="{{ URL('images/editing.png')}}" alt=""></a>
+                            <span class="text-xl">&nbsp/&nbsp</span>
+                            <form action="/admin/vehicle/{{ $vehicle['id'] }}" method="POST" class="inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-[#c81e1e] hover:bg-[#e28c8b] p-1 rounded-lg" onclick="return confirm('Are you sure you want to delete this Vehicle?')"><img class="w-5 h-5" src="{{ URL('images/delete.png')}}" alt=""></button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <!-- FINES & TOLLS -->
-        <!-- <div class="">
+        <div class="">
             <h1 class="p-4 font-semibold text-lg text-[#707070] mt-7">Fines & Tolls</h1>
             <div class="overflow-auto">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
@@ -162,13 +159,13 @@
                     </tbody>
                 </table>
             </div>
-        </div> -->
+        </div>
 
         <!-- BOOKING HISTORY -->
         <div class="">
             <h1 class="p-4 font-semibold text-lg text-[#707070] mt-7">Booking History</h1>
             <div class="overflow-auto">
-                @if($bookings)
+                @if(count($vehicle->bookings))
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
                     <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                         <tr>
@@ -209,7 +206,7 @@
 
                     <tbody>
 
-                        @foreach ($bookings as $booking)
+                        @foreach ($vehicle->bookings as $booking)
                         <tr class="bg-white border-b">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
                                 <div class="flex items-center">

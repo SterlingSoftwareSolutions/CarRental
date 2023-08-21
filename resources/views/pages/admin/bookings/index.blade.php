@@ -92,22 +92,41 @@
 
                             @foreach ($bookings as $booking)
                             <tr class="bg-white border-b">
+                                @if(isset($booking->vehicle))
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
                                     <div class="flex items-center">
                                         <div class="me-3">
-                                            <img src="{{ Storage::url($booking->vehicle->images[0]->file_path) }}" class="rounded-full w-10 h-10" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
+                                            <img src="{{ Storage::url($booking->vehicle->images[0]->file_path ?? null) }}" class="rounded-full w-10 h-10" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
                                         </div>
                                         <div>
                                             <p>{{ $booking->vehicle['make']}} {{ $booking->vehicle['model']}} #{{ $booking->vehicle['vin']}}</p>
                                         </div>
                                     </div>
                                 </th>
+                                @else
+                                <th scope="row" class="px-6 py-4 font-medium text-red-500 whitespace-nowrap">
+                                    Vehicle no longer in the system.
+                                </th>
+                                @endif
+
+                                @if(isset($booking->user))
                                 <td class="px-6 py-4">
                                     {{ $booking->user['first_name']}} {{ $booking->user['last_name']}}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $booking->user['driving_license']}}
                                 </td>
+                                @else
+                                <th scope="row" class="px-6 py-4 font-medium text-red-500 whitespace-nowrap">
+                                    User no longer in the system.
+                                </th>
+                                <td class="px-6 py-4">
+                                    -
+                                </td>
+                                @endif
+
+
+     
 
                                 <td class="px-6 py-4">
                                     {{ $booking['pickup']}}
@@ -123,7 +142,7 @@
                                 </td>
 
                                 <td class="px-6 py-4">
-                                    $ {{ $booking['bookingDaysCount'] * $booking->vehicle['price']}}
+                                    $ {{ $booking->amount() }}
                                 </td>
 
                                 <td class="px-6 py-4">

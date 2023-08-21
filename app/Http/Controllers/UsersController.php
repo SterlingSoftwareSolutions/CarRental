@@ -7,17 +7,26 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-    public function show_all_users(Request $request)
-    {
-        $users = Users::query()->with(['images' => function ($query) {
-            $query->where('attachment_type', 'User Image');
-        }])->get();
-        return view('pages.admin.users.index', ['users' => $users]);
-    }
-
     public function index(Request $request)
     {
+        $query = Users::query();
 
+        if($request->search){
+            $term = $request->search;
+            $query->where('first_name', $term)
+                ->orWhere('last_name', 'like', '%' . $term . '%')
+                ->orWhere('mobile', 'like', '%' . $term . '%')
+                ->orWhere('email', 'like', '%' . $term . '%')
+                ->orWhere('Address_1', 'like', '%' . $term . '%')
+                ->orWhere('Address_2', 'like', '%' . $term . '%')
+                ->orWhere('city', 'like', '%' . $term . '%')
+                ->orWhere('country', 'like', '%' . $term . '%')
+                ->orWhere('zip', 'like', '%' . $term . '%');
+        }
+
+        $users = $query->get();
+
+        return view('pages.admin.users.index', ['users' => $users]);
     }
 
     public function edit_user(Request $request,  $userid)

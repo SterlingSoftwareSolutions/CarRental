@@ -5,113 +5,122 @@
     <div class="sm:ml-64">
         <div>
             <div class="p-6">
-                <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-                    <p class="text-2xl text-gray-500 dark:text-gray-500">
-                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                        </svg>
-                    </p>
-                </div>
                 <div class="grid grid-cols-2 gap-4 mb-4">
-                    <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-500 dark:text-gray-500">
-                            <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                            </svg>
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-500 dark:text-gray-500">
-                            <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                            </svg>
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-500 dark:text-gray-500">
-                            <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                            </svg>
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-500 dark:text-gray-500">
-                            <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                            </svg>
-                        </p>
-                    </div>
+                <div class="bg-gradient-to-b from-green-200 to-green-100 border-b-4 border-green-600 rounded-lg shadow-xl p-5">
+                            <div class="flex flex-row items-center">
+                                <div class="flex-shrink pr-4">
+                                    <div class="rounded-full p-5 bg-green-600"><i class="fa fa-wallet fa-2x fa-inverse"></i></div>
+                                </div>
+                                <div class="flex-1 text-right md:text-center">
+                                    <h2 class="font-bold uppercase text-gray-600">Total Revenue</h2>
+                                   <p class="font-bold text-3xl">$3249 <span class="text-green-500"><i class="fas fa-caret-up"></i></span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gradient-to-b from-pink-200 to-pink-100 border-b-4 border-pink-500 rounded-lg shadow-xl p-5">
+                            <div class="flex flex-row items-center">
+                                <div class="flex-shrink pr-4">
+                                    <div class="rounded-full p-5 bg-pink-600"><i class="fas fa-users fa-2x fa-inverse"></i></div>
+                                </div>
+                                <div class="flex-1 text-right md:text-center">
+                                    <h2 class="font-bold uppercase text-gray-600">Total Users</h2>
+                                    <p class="font-bold text-3xl">249 <span class="text-pink-500"><i class="fas fa-exchange-alt"></i></span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gradient-to-b from-yellow-200 to-yellow-100 border-b-4 border-yellow-600 rounded-lg shadow-xl p-5">
+                            <div class="flex flex-row items-center">
+                                <div class="flex-shrink pr-4">
+                                    <div class="rounded-full p-5 bg-yellow-600"><i class="fas fa-user-plus fa-2x fa-inverse"></i></div>
+                                </div>
+                                <div class="flex-1 text-right md:text-center">
+                                    <h2 class="font-bold uppercase text-gray-600">New Users</h2>
+                                    <p class="font-bold text-3xl">2 <span class="text-yellow-600"><i class="fas fa-caret-up"></i></span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gradient-to-b from-blue-200 to-blue-100 border-b-4 border-blue-500 rounded-lg shadow-xl p-5">
+                            <div class="flex flex-row items-center">
+                                <div class="flex-shrink pr-4">
+                                    <div class="rounded-full p-5 bg-blue-600"><i class="fas fa-server fa-2x fa-inverse"></i></div>
+                                </div>
+                                <div class="flex-1 text-right md:text-center">
+                                    <h2 class="font-bold uppercase text-gray-600">Server Uptime</h2>
+                                    <p class="font-bold text-3xl">152 days</p>
+                                </div>
+                            </div>
+                        </div>
                 </div>
-                <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-                    <p class="text-2xl text-gray-500 dark:text-gray-500">
-                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                        </svg>
+                <div class="w-full mt-12">
+                    <p class="text-xl pb-3 flex items-center">
+                        <i class="fas fa-list mr-3"></i> Latest Reports
                     </p>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-500 dark:text-gray-500">
-                            <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                            </svg>
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-400 dark:text-gray-500">
-                            <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                            </svg>
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-400 dark:text-gray-500">
-                            <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                            </svg>
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-400 dark:text-gray-500">
-                            <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                            </svg>
-                        </p>
+                    <div class="bg-white overflow-auto">
+                        <table class="min-w-full bg-white">
+                            <thead class="bg-gray-800 text-white">
+                                <tr>
+                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
+                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Last name</th>
+                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Phone</th>
+                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Email</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-700">
+                                <tr>
+                                    <td class="w-1/3 text-left py-3 px-4">Lian</td>
+                                    <td class="w-1/3 text-left py-3 px-4">Smith</td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
+                                </tr>
+                                <tr class="bg-gray-200">
+                                    <td class="w-1/3 text-left py-3 px-4">Emma</td>
+                                    <td class="w-1/3 text-left py-3 px-4">Johnson</td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="w-1/3 text-left py-3 px-4">Oliver</td>
+                                    <td class="w-1/3 text-left py-3 px-4">Williams</td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
+                                </tr>
+                                <tr class="bg-gray-200">
+                                    <td class="w-1/3 text-left py-3 px-4">Isabella</td>
+                                    <td class="w-1/3 text-left py-3 px-4">Brown</td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="w-1/3 text-left py-3 px-4">Lian</td>
+                                    <td class="w-1/3 text-left py-3 px-4">Smith</td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
+                                </tr>
+                                <tr class="bg-gray-200">
+                                    <td class="w-1/3 text-left py-3 px-4">Emma</td>
+                                    <td class="w-1/3 text-left py-3 px-4">Johnson</td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="w-1/3 text-left py-3 px-4">Oliver</td>
+                                    <td class="w-1/3 text-left py-3 px-4">Williams</td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
+                                </tr>
+                                <tr class="bg-gray-200">
+                                    <td class="w-1/3 text-left py-3 px-4">Isabella</td>
+                                    <td class="w-1/3 text-left py-3 px-4">Brown</td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
 
 </x-app-layout>
-
-
-
-
-
-<!-- Drop Down   -->
-<!-- <li>
-                    <button type="button" class="flex items-center w-full p-2 text-base  transition duration-75 rounded-lg group  text-gray-500 hover:bg-main-green" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 hover:bg-main-green dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                            <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
-                        </svg>
-                        <span class="flex-1 ml-3 text-left whitespace-nowrap">Customers</span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                        </svg>
-                    </button>
-
-                    <ul id="dropdown-example" class="hidden py-2 space-y-2">
-                        <li>
-                            <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group  hover:bg-main-green">All Customers</a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group  hover:bg-main-green">Add Customer</a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-main-green"></a>
-                        </li>
-                    </ul>
-                </li> -->

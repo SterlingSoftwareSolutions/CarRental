@@ -41,14 +41,14 @@ Route::get('/carlist/single-car-view/{id}', [VehiclesController::class, 'view_ve
 Route::middleware('auth')->group(function () {
     Route::get('/user/dashboard', [DashboardController::class, 'client']);
     Route::get('/user/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/user/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::put('/user/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/user/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/car_rent/payment', [PaymentsController::class, 'index'])->name('payment');
 
     // Admin Only Routes 
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
         Route::get('/dashboard', [DashboardController::class, 'admin'])->name('dashboard');
-        Route::get('/users', [UsersController::class, 'show_all_users'])->name('users.all');
+        Route::get('/users', [UsersController::class, 'index'])->name('users.all');
         Route::get('/users/{user}/edit', [UsersController::class, 'edit_user'])->name('user.edit');
         Route::get('/users/{user}', [UsersController::class, 'show'])->name('user.show');
         Route::put('/user', [RegisteredUserController::class, 'update'])->name('update_user');
@@ -56,7 +56,8 @@ Route::middleware('auth')->group(function () {
         Route::delete('/vehicle/{user_id}', [VehiclesController::class, 'destroy'])->name('delete_vehicle');
         Route::put('/vehicle', [VehiclesController::class, 'update'])->name('vehicle_update');
         Route::get('/vehicles', [VehiclesController::class, 'show_all_vehicles'])->name('vehicles.all');
-        Route::get('/vehicles/{vehicle_id}', [VehiclesController::class, 'edit_vehicle'])->name('vehicle.edit');
+        Route::get('/vehicles/{vehicle}/edit', [VehiclesController::class, 'edit_vehicle'])->name('vehicle.edit');
+        Route::get('/vehicles/{vehicle}', [VehiclesController::class, 'show'])->name('vehicle.show');
         Route::post('/vehicles', [VehiclesController::class, 'store'])->name('vehicles.store');
         Route::get('/bookings', [BookingsController::class, 'index'])->name('bookings.all');
         Route::delete('/booking/{bookingId}', [BookingsController::class, 'destroy'])->name('delete_booking');

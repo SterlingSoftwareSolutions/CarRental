@@ -13,14 +13,42 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
-        @method('patch')
+        @method('put')
 
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+            <label for="avatar" class="w-full">
+                <img
+                    src="@if(isset(Auth::user()->images[0])) {{Storage::url(Auth::user()->images[0]->file_path)}} @else /images/avatar.png @endif"
+                    class="rounded-full w-32 h-32 mx-auto object-cover cursor-pointer"
+                    alt="Avatar"
+                    for="avatar"
+                    id="avatar-preview"
+                />
+                <div class="mx-auto w-32 mt-3 bg-gray-800 text-white rounded text-center p-1 cursor-pointer">Change Avatar</div>
+            </label>
+            <input type="file" id="avatar" name="avatar"  class="mt-1 hidden" autofocus autocomplete="avatar" onchange="previewImage()" />
+            <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
+
+            <script>
+                function previewImage() {
+                    var image = document.getElementById('avatar-preview');
+                    image.src = URL.createObjectURL(event.target.files[0]);
+                }
+            </script>
+        </div>
+
+        <div>
+            <x-input-label for="first_name" :value="__('First Name')" />
+            <x-text-input id="first_name" name="first_name" type="text" class="mt-1 block w-full" :value="old('first_name', $user->first_name)" required autofocus autocomplete="name" />
+            <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
+        </div>
+
+        <div>
+            <x-input-label for="last_name" :value="__('Last Name')" />
+            <x-text-input id="last_name" name="last_name" type="text" class="mt-1 block w-full" :value="old('last_name', $user->last_name)" required autofocus autocomplete="name" />
+            <x-input-error class="mt-2" :messages="$errors->get('last_name')" />
         </div>
 
         <div>
@@ -55,7 +83,7 @@
                     x-data="{ show: true }"
                     x-show="show"
                     x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
+                    x-init="setTimeout(() => show = false, 5000)"
                     class="text-sm text-gray-600"
                 >{{ __('Saved.') }}</p>
             @endif

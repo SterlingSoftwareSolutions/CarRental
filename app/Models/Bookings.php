@@ -27,7 +27,7 @@ class Bookings extends Model
     }
 
     public function amount(){
-        return $this->duration() * $this->vehicle->price;
+        return $this->duration() * ($this->vehicle->price ?? null);
     }
 
     // Define the relationship with the Vehicle model
