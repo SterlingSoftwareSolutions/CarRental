@@ -8,6 +8,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\VehiclesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/view/{view}', function ($view) {
+    return view($view);
+});
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -48,11 +53,7 @@ Route::middleware('auth')->group(function () {
     // Admin Only Routes 
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
         Route::get('/dashboard', [DashboardController::class, 'admin'])->name('dashboard');
-        Route::get('/users', [UsersController::class, 'index'])->name('users.all');
-        Route::get('/users/{user}/edit', [UsersController::class, 'edit_user'])->name('user.edit');
-        Route::get('/users/{user}', [UsersController::class, 'show'])->name('user.show');
-        Route::put('/user', [RegisteredUserController::class, 'update'])->name('update_user');
-        Route::delete('/user/{user_id}', [RegisteredUserController::class, 'destroy'])->name('delete_user');
+        Route::resource('users', UsersController::class);
         Route::delete('/vehicle/{user_id}', [VehiclesController::class, 'destroy'])->name('delete_vehicle');
         Route::put('/vehicle', [VehiclesController::class, 'update'])->name('vehicle_update');
         Route::get('/vehicles', [VehiclesController::class, 'show_all_vehicles'])->name('vehicles.all');
