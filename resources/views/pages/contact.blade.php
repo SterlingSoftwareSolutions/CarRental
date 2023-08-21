@@ -68,7 +68,7 @@
                         <img class="object-cover h-96 hidden md:block" src="{{ URL('images/nate-johnston-obOin8-m5sw-unsplash.png')}}" alt="">
                     </div>
                 </a>
-                <div class="items-center md:flex-row w-4/6 md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <div class="items-center md:flex-row w-4/6 md:max-w-xl">
                     <div class="grid py-3.5 pl-0 md:pl-5">
                         <h1 class="text-white font-semibold text-lg md:text-2xl mb-4">Send us a Message</h1>
                         <div class="w-full mx-auto flex">

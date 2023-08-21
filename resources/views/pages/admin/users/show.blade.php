@@ -95,7 +95,7 @@
         </div>
 
         <!-- FINES & TOLLS -->
-        <div class="">
+        <!-- <div class="">
             <h1 class="p-4 font-semibold text-lg text-[#707070] mt-7">Fines & Tolls</h1>
             <div class="overflow-auto">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
@@ -162,7 +162,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div> -->
 
         <!-- BOOKING HISTORY -->
         <div class="">

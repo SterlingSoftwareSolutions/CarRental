@@ -24,7 +24,7 @@
         <div class="md:w-full lg:w-2/6">
 
             <!-- image carosol -->
-            <div class="container border-2 ">
+            <div class="container border-2 md:mt-[100px] mt-0 ">
                 <div class="mySlides">
                     <img src="{{ Storage::url($vehicle->images[0]->file_path ?? null) }}" style="width:100%">
                 </div>
@@ -87,43 +87,46 @@
                     <h1 class="text-gray-500 font-semibold text-lg">Vehicle Details</h1>
                 </div>
                 <hr class="border-1 border-gary-600">
-                <div class="w-full">
-                    <div class="flex flex-wrap justify-between w-full">
-                        <div class="flex space-x-16 mt-5">
-                            <ul>
-                                <li>Make:</li>
-                                <li>Model:</li>
-                                <li>Body Type:</li>
-                                <li>Year:</li>
-                                <li>Fuel:</li>
-                            </ul>
-                            <ul>
-                                <li>{{ $vehicle['make']}}</li>
-                                <li>{{ $vehicle['model']}}</li>
-                                <li>{{ $vehicle['body_type']}}</li>
-                                <li>{{ $vehicle['year']}}</li>
-                                <li>{{ $vehicle['fuel_type']}}</li>
-                            </ul>
+                <div class="w-full flex">
+                    <div class="flex justify-between w-full">
+                        <div class="flex flex-col md:flex-row md:flex-wrap w-full">
+                            <div class="flex mt-5 space-y-2 md:space-y-0 md:space-x-12">
+                                <ul>
+                                    <li>Make:</li>
+                                    <li>Model:</li>
+                                    <li>Body Type:</li>
+                                    <li>Year:</li>
+                                    <li>Fuel:</li>
+                                </ul>
+                                <ul class="md:pl-0 pl-16">
+                                    <li>{{ $vehicle['make']}}</li>
+                                    <li>{{ $vehicle['model']}}</li>
+                                    <li>{{ $vehicle['body_type']}}</li>
+                                    <li>{{ $vehicle['year']}}</li>
+                                    <li>{{ $vehicle['fuel_type']}}</li>
+                                </ul>
+                            </div>
+                            <div class="flex space-y-2 md:space-y-0 md:space-x-12 mt-5 pl-0 md:pl-5">
+                                <ul>
+                                    <li>VIN:</li>
+                                    <li>Mileage:</li>
+                                    <li>Transmission:</li>
+                                    <li>Color:</li>
+                                    <li>Doors:</li>
+                                </ul>
+                                <ul class="md:pl-0 pl-16">
+                                    <li>{{ $vehicle['vin']}}</li>
+                                    <li>{{ $vehicle['mileage']}}</li>
+                                    <li>{{ $vehicle['transmission']}}</li>
+                                    <li>{{ $vehicle['color']}}</li>
+                                    <li>{{ $vehicle['doors']}}</li>
+                                </ul>
+                            </div>
                         </div>
 
-                        <div class="flex space-x-16 mt-5">
-                            <ul>
-                                <li>VIN:</li>
-                                <li>Mileage:</li>
-                                <li>Transmission:</li>
-                                <li>Color:</li>
-                                <li>Doors:</li>
-                            </ul>
-                            <ul>
-                                <li>{{ $vehicle['vin']}}</li>
-                                <li>{{ $vehicle['mileage']}}</li>
-                                <li>{{ $vehicle['transmission']}}</li>
-                                <li>{{ $vehicle['color']}}</li>
-                                <li>{{ $vehicle['doors']}}</li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
+
             </div>
             <!-- end vehicle spesification section -->
 
@@ -152,12 +155,12 @@
                         <h1 class="text-white">$ {{ $vehicle['price']}} /hour</h1>
                     </div>
                 </div>
-                <form method="post" action="{{ route('bookvehicle') }}" >
+                <form method="post" action="{{ route('bookvehicle') }}">
                     @csrf
                     @if($errors->any())
-                        <div class="alert alert-danger" role="alert">
-                            {!! implode('', $errors->all('<div class="text-red-500">:message</div>')) !!}
-                        </div>
+                    <div class="alert alert-danger" role="alert">
+                        {!! implode('', $errors->all('<div class="text-red-500">:message</div>')) !!}
+                    </div>
                     @endif
                     <input class="hidden" type="text" id="vehicle_id" name="vehicle_id" value="{{$vehicle['id']}}">
                     <!-- Pickup Location  -->
@@ -225,7 +228,7 @@
             </div>
             <!-- end conatct number section -->
 
-        {{-- COMMENTS SECTION 
+            {{-- COMMENTS SECTION 
             <!-- review section -->
             <div class="p-8">
                 <h1>1 Comment</h1>
@@ -289,13 +292,13 @@
             <!-- end rating foam -->
         COMMENTS SECTION --}}
 
-       </div>
+        </div>
     </div>
     <!-- end section one -->
     <!-- end vehicle details section -->
 
     <!-- start navigation -->
-    <div class="mt-96">
+    <div class="mt-40">
         @include('layouts.footer')
     </div>
     <!-- end navigation -->
