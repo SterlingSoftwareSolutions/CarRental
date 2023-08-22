@@ -14,6 +14,7 @@ class Bookings extends Model
         'dropoff',
         'pickup_time',
         'dropoff_time',
+        'returned_on',
         'vehicle_id',
         'status',
         'user_id'
