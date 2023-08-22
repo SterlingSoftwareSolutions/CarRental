@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('dropoff'); // Change this to the appropriate data type if needed
             $table->dateTime('pickup_time'); // Change this to the appropriate data type if needed
             $table->dateTime('dropoff_time'); // Change this to the appropriate data type if needed
+            $table->date('returned_on')->nullable();
             $table->unsignedBigInteger('vehicle_id'); // Assuming vehicle_id is a foreign key
             $table->foreign('vehicle_id')->references('id')->on('vehicles'); // Replace 'vehicles' with the actual table name
             $table->unsignedBigInteger('user_id'); // Assuming user_id is a foreign key
