@@ -44,8 +44,12 @@
                             <option value="Example">Example</option>
                         </select>
                     </td>
-                    <td class="px-6 py-4">1-1-23</td>
-                    <td class="px-6 py-4">10-1-23</td>
+                    <td class="px-6 py-4">
+                        <input class="w-full rounded-md border-none shadow-md" type="datetime-local" name="rental_time" id="rental_time">
+                    </td>
+                    <td class="px-6 py-4">
+                        <input class="w-full rounded-md border-none shadow-md" type="datetime-local" name="return_time" id="return_time">
+                    </td>
                     <td class="px-6 py-4">
                         {{-- <button type="submit" class="bg-gray-500 text-white px-2 py-1 rounded">Edit</button> --}}
                         <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
