@@ -34,6 +34,10 @@
                 Status
             </th>
 
+            <th scope="col" class="px-3 py-3 text-center">
+                Action
+            </th>
+
             <th scope="col" class="px-6 py-3">
                 <span class="sr-only">Edit</span>
 
@@ -90,8 +94,13 @@
             </td>
 
             <td class="px-6 py-4">
-                <span class="bg-gray-600 py-2 px-3 rounded-full text-white">{{$booking->status}}</span>
+                <span class="bg-gray-600 py-2 px-2 rounded-full text-white">{{$booking->status}}</span>
             </td>
+
+            <td class="px-2 py-1">
+                <button class="bg-gray-600 py-1 px-2 rounded-full text-white" onclick="window.location.href='{{ route('carreturn') }}';">Return</button>
+            </td>                        
+
 
             @if(Auth::user()->role == 'admin')
             <td class="px-6 py-4 text-right">

@@ -43,6 +43,10 @@ Route::get('/contact', function () {
 
 Route::get('/carlist/single-car-view/{id}', [VehiclesController::class, 'view_vehicle'])->name('booknow');
 
+Route::get('/carlist-return', function () {
+    return view('pages.carreturn');
+})->name('carreturn');
+
 Route::middleware('auth')->group(function () {
     Route::get('/user/dashboard', [DashboardController::class, 'client']);
     Route::get('/user/profile', [ProfileController::class, 'edit'])->name('profile.edit');
