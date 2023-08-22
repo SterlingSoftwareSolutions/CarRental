@@ -137,4 +137,13 @@ class BookingsController extends Controller
         return redirect()->route('vehicles.all')
             ->with('success', 'vehicle deleted successfully.');
     }
+
+    public function return(Bookings $booking, Request $request)
+    {
+        $booking->update([
+            'status' => 'returned',
+            'returned_on' => $request->returned_on
+        ]);
+        return redirect()->back();
+    }
 }
