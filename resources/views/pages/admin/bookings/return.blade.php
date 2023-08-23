@@ -23,7 +23,7 @@
 
                 <!-- booking List  -->
                 <div class="overflow-auto">
-                    <x-bookings :bookings="$bookings"/>
+                    <x-bookings :bookings="[$booking]"/>
                 </div>
             </div>
         </div>
