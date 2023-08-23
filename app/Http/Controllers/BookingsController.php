@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreBookingsRequest;
 use App\Http\Requests\UpdateBookingsRequest;
 use App\Models\Bookings;
 use Carbon\Carbon;
@@ -63,15 +62,15 @@ class BookingsController extends Controller
         ]);
 
 
-        
-            $pickupTime = Carbon::parse($Booking['pickup_time']);
-            $dropoffTime = Carbon::parse($Booking['dropoff_time']);
-            // Calculate the difference in days
-            $daysCount = $dropoffTime->diffInDays($pickupTime);
-            $Booking['bookingDaysCount'] = $daysCount;
-        
+
+        $pickupTime = Carbon::parse($Booking['pickup_time']);
+        $dropoffTime = Carbon::parse($Booking['dropoff_time']);
+        // Calculate the difference in days
+        $daysCount = $dropoffTime->diffInDays($pickupTime);
+        $Booking['bookingDaysCount'] = $daysCount;
+
         session(['BookingData' => $Booking]);
-       
+
         return redirect()->route('payment')->with('success', 'Vehicle booked successfully.');
     }
 
@@ -140,10 +139,32 @@ class BookingsController extends Controller
 
     public function return(Bookings $booking, Request $request)
     {
+        $dropoff_time = Carbon::parse($booking->dropoff_time)->startOfDay();
+        $returned_on = Carbon::parse($request->returned_on)->startOfDay();
+        $diff_days = $dropoff_time->diffInDays($returned_on);
+        $diff_amount = $booking->vehicle->price * $diff_days;
+        $case = $diff_days == 0 ? 'ontime' : ($returned_on->isBefore($dropoff_time) ? 'early' : 'late');
+
+        return view('pages.admin.bookings.return', compact('booking', 'case', 'diff_days', 'diff_amount', 'returned_on'));
+    }
+
+    public function return_post(Bookings $booking, Request $request)
+    {
+        $returned_on = $request->returned_on;
+
+        if ($request->action == 'refund') {
+            $refund_amount = $request->refund_amount;
+            // refund the amount
+        }
+
+        if ($request->action == 'charge') {
+            $charge_amount = $request->charge_amount;
+            // bill the user
+        }
+
         $booking->update([
             'status' => 'returned',
-            'returned_on' => $request->returned_on
+            'returned_on' => $returned_on
         ]);
-        return redirect()->back();
     }
 }
