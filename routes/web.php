@@ -62,6 +62,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/vehicles', [VehiclesController::class, 'store'])->name('vehicles.store');
         Route::get('/bookings', [BookingsController::class, 'index'])->name('bookings.all');
         Route::post('/bookings/{booking}/return', [BookingsController::class, 'return'])->name('bookings.return');
+        Route::post('/bookings/{booking}/return_confirm', [BookingsController::class, 'return_confirm'])->name('bookings.return');
         Route::delete('/booking/{bookingId}', [BookingsController::class, 'destroy'])->name('delete_booking');
     });
 

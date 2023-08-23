@@ -1,32 +1,33 @@
 @props([
 'bookings' => null,
+'return' => true
 ])
 
 @if(count($bookings))
 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
         <tr>
-            <th scope="col" class="px-6">
+            <th scope="col" class="px-6 py-2">
                 #
             </th>
 
-            <th scope="col" class="px-6">
+            <th scope="col" class="px-6 py-2">
                 Pickup
             </th>
 
-            <th scope="col" class="px-6">
+            <th scope="col" class="px-6 py-2">
                 Drop Off
             </th>
 
-            <th scope="col" class="px-6">
+            <th scope="col" class="px-6 py-2">
                 Amount
             </th>
 
-            <th scope="col" class="px-6">
+            <th scope="col" class="px-6 py-2">
                 Status
             </th>
 
-            <th scope="col" class="px-6">
+            <th scope="col" class="px-6 py-2">
                 Actions
             </th>
         </tr>
@@ -77,7 +78,7 @@
             </td>
 
             <td class="px-6 py-4">
-                $ {{ $booking->amount()}}
+                ${{ $booking->amount()}}
             </td>
 
             <td class="px-6 py-4">
@@ -90,11 +91,11 @@
             </td>
 
             @if(Auth::user()->role == 'admin')
-            <td>
+            <td class="px-6 py-4">
                 <div class="flex flex-wrap items-center gap-1">
 
                     {{-- RETURN BUTTON --}}
-                    @if(!$booking['returned_on'])
+                    @if(!$booking['returned_on'] && $return)
                     <button class="bg-blue-600 rounded-full py-2 px-3 text-white text-center" onclick="show_return_modal({{$booking->id}})">Return</button>
                     @endif
 
@@ -149,7 +150,6 @@
         return_form.setAttribute('action', '/admin/bookings/' + booking + '/return');
         return_modal.classList.remove('hidden');
     }
-
 </script>
 
 @else
