@@ -1,5 +1,6 @@
 @props([
 'bookings' => null,
+'return' => true
 ])
 
 @if(count($bookings))
@@ -94,7 +95,7 @@
                 <div class="flex flex-wrap items-center gap-1">
 
                     {{-- RETURN BUTTON --}}
-                    @if(!$booking['returned_on'])
+                    @if(!$booking['returned_on'] && $return)
                     <button class="bg-blue-600 rounded-full py-2 px-3 text-white text-center" onclick="show_return_modal({{$booking->id}})">Return</button>
                     @endif
 
@@ -149,7 +150,6 @@
         return_form.setAttribute('action', '/admin/bookings/' + booking + '/return');
         return_modal.classList.remove('hidden');
     }
-
 </script>
 
 @else
