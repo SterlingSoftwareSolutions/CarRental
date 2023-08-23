@@ -6,6 +6,7 @@ use App\Http\Requests\UpdatePaymentsRequest;
 use App\Models\Bookings;
 use App\Models\Country;
 use App\Models\Payments;
+use App\Models\Transaction;
 use DateTime;
 use Illuminate\Http\Request;
 use Stripe\PaymentMethod;
@@ -104,12 +105,16 @@ class PaymentsController extends Controller
                 $booking->update([
                     'status' => 'booked'
                 ]);
+                $transaction = Transaction::create([
+                    'booking_id' => $booking->id,
+                    'amount' => $amount,
+                    'stripe_payment_id' => $charge->id
+                ]);
             } else {
                 return back()->withErrors(['payment' => 'Payment failed']);
             }
-
         }
-        dd($user, $booking);
+        dd($user, $booking, $transaction);
     }
 
     /**

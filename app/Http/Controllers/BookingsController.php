@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreBookingsRequest;
 use App\Http\Requests\UpdateBookingsRequest;
 use App\Models\Bookings;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Stripe\Refund;
+use Stripe\Stripe;
 
 class BookingsController extends Controller
 {
@@ -63,15 +64,15 @@ class BookingsController extends Controller
         ]);
 
 
-        
-            $pickupTime = Carbon::parse($Booking['pickup_time']);
-            $dropoffTime = Carbon::parse($Booking['dropoff_time']);
-            // Calculate the difference in days
-            $daysCount = $dropoffTime->diffInDays($pickupTime);
-            $Booking['bookingDaysCount'] = $daysCount;
-        
+
+        $pickupTime = Carbon::parse($Booking['pickup_time']);
+        $dropoffTime = Carbon::parse($Booking['dropoff_time']);
+        // Calculate the difference in days
+        $daysCount = $dropoffTime->diffInDays($pickupTime);
+        $Booking['bookingDaysCount'] = $daysCount;
+
         session(['BookingData' => $Booking]);
-       
+
         return redirect()->route('payment')->with('success', 'Vehicle booked successfully.');
     }
 
@@ -140,10 +141,48 @@ class BookingsController extends Controller
 
     public function return(Bookings $booking, Request $request)
     {
+        $pickup_time = Carbon::parse($booking->pickup_time)->startOfDay();
+        $dropoff_time = Carbon::parse($booking->dropoff_time)->startOfDay();
+        $returned_on = Carbon::parse($request->returned_on)->startOfDay();
+        $actual_duration = $pickup_time->diffInDays($returned_on);
+        $actual_amount = $actual_duration * $booking->vehicle->price;
+        $paid_amount = $booking->transactions->sum('amount');
+        $due_amount = $actual_amount - $paid_amount;
+        $case = $returned_on->isSameDay($dropoff_time) ? 'ontime' : ($returned_on->isBefore($dropoff_time) ? 'early' : 'late');
+
+        return view('pages.admin.bookings.return', compact(
+            'booking',
+            'pickup_time',
+            'dropoff_time',
+            'returned_on',
+            'actual_duration',
+            'actual_amount',
+            'paid_amount',
+            'due_amount',
+            'case',
+        ));
+    }
+
+    public function return_confirm(Bookings $booking, Request $request)
+    {
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+        if ($request->action == 'refund') {
+            $refund = Refund::create([
+                'payment_intent' => $booking->transactions[0]->stripe_payment_id,
+                'amount' => $request->amount * 100,
+            ]);
+        } else if ($request->action == 'charge') {
+            dd("A charge cannot be made");
+        } else {
+
+        }
+
         $booking->update([
             'status' => 'returned',
             'returned_on' => $request->returned_on
         ]);
-        return redirect()->back();
+
+        return redirect()->route('bookings.all');
+
     }
 }
