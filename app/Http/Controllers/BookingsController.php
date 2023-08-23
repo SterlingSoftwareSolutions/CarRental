@@ -6,6 +6,8 @@ use App\Http\Requests\UpdateBookingsRequest;
 use App\Models\Bookings;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Stripe\Refund;
+use Stripe\Stripe;
 
 class BookingsController extends Controller
 {
@@ -139,32 +141,48 @@ class BookingsController extends Controller
 
     public function return(Bookings $booking, Request $request)
     {
+        $pickup_time = Carbon::parse($booking->pickup_time)->startOfDay();
         $dropoff_time = Carbon::parse($booking->dropoff_time)->startOfDay();
         $returned_on = Carbon::parse($request->returned_on)->startOfDay();
-        $diff_days = $dropoff_time->diffInDays($returned_on);
-        $diff_amount = $booking->vehicle->price * $diff_days;
-        $case = $diff_days == 0 ? 'ontime' : ($returned_on->isBefore($dropoff_time) ? 'early' : 'late');
+        $actual_duration = $pickup_time->diffInDays($returned_on);
+        $actual_amount = $actual_duration * $booking->vehicle->price;
+        $paid_amount = $booking->transactions->sum('amount');
+        $due_amount = $actual_amount - $paid_amount;
+        $case = $returned_on->isSameDay($dropoff_time) ? 'ontime' : ($returned_on->isBefore($dropoff_time) ? 'early' : 'late');
 
-        return view('pages.admin.bookings.return', compact('booking', 'case', 'diff_days', 'diff_amount', 'returned_on'));
+        return view('pages.admin.bookings.return', compact(
+            'booking',
+            'pickup_time',
+            'dropoff_time',
+            'returned_on',
+            'actual_duration',
+            'actual_amount',
+            'paid_amount',
+            'due_amount',
+            'case',
+        ));
     }
 
-    public function return_post(Bookings $booking, Request $request)
+    public function return_confirm(Bookings $booking, Request $request)
     {
-        $returned_on = $request->returned_on;
-
+        Stripe::setApiKey(env('STRIPE_SECRET'));
         if ($request->action == 'refund') {
-            $refund_amount = $request->refund_amount;
-            // refund the amount
-        }
+            $refund = Refund::create([
+                'payment_intent' => $booking->transactions[0]->stripe_payment_id,
+                'amount' => $request->amount * 100,
+            ]);
+        } else if ($request->action == 'charge') {
+            dd("A charge cannot be made");
+        } else {
 
-        if ($request->action == 'charge') {
-            $charge_amount = $request->charge_amount;
-            // bill the user
         }
 
         $booking->update([
             'status' => 'returned',
-            'returned_on' => $returned_on
+            'returned_on' => $request->returned_on
         ]);
+
+        return redirect()->route('bookings.all');
+
     }
 }

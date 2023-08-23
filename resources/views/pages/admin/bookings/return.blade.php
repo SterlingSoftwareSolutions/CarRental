@@ -12,39 +12,63 @@
             </div>
 
 
-            <h1 class="p-4 font-semibold text-lg text-[#707070] mt-7">Return</h1>
 
-            <div class="p-4 bg-white border-b flex gap-2">
-                <form class="flex flex-col gap-2 w-1/2" id="return_form" method="post" action="/admin/bookings/{{$booking->id}}/return">
+            <div class="p-4 bg-white border-b mt-7 gap-2 mb-3">
+                <h1 class="font-semibold text-lg text-[#707070] mb-3">Return Vehicle</h1>
+                <form class="flex flex-col gap-2 w-full" id="return_form" method="post" action="/admin/bookings/{{$booking->id}}/return">
                     @csrf
                     @php
                         $returned_on_date = new DateTime($returned_on);
                     @endphp
-                    <h1>Booked for {{$booking->duration()}} days</h1>
-                    <h1>Returned after {{$booking->duration() - $diff_days}} days</h1>
-                    <h1>Difference {{$diff_days}} days</h1>
-                    <h1>Original Amount ${{$booking->amount() }}</h1>
-                    <h1>Total Amount ${{$booking->vehicle->price * ($booking->duration() - $diff_days) }}</h1>
-                    <h1>Paid ${{$booking->transactions->sum('amount')}}</h1>
-                    <h1>Remaining ${{($booking->vehicle->price * ($booking->duration() - $diff_days)) - ($booking->vehicle->price * ($booking->duration() - $diff_days))}}</h1>
                     <h1>Vehicle Return Date:</h1>
                     <input class="rounded-full w-full" type="date" name="returned_on" value="{{$returned_on->format('Y-m-d')}}" id="return_form_date">
                     <div class="flex justify-end gap-1">
-                        <button type="button" class="border border-gray-600 text-gray-500 py-2 px-3 rounded-full" onclick="hide_return_modal()">Cancel</button>
                         <button class="bg-blue-600 text-white py-2 px-3 rounded-full">Update</button>
                     </div>
                 </form>
-                @if($case != 'ontime')
-                <form class="flex flex-col gap-2 w-1/2" id="return_form" method="post">
+            </div>
+            
+            <div class="p-4 bg-white border-b gap-2 mt-7">
+                <h1 class="font-semibold text-lg text-[#707070] mb-3">Confirmation</h1>
+                <form class="flex flex-col gap-2 w-full" id="return_form" method="post" action="/admin/bookings/{{$booking->id}}/return_confirm">
                     @csrf
-                    <h1>Charge Amount:</h1>
-                    <input class="rounded-full w-full" type="number" name="returned_on" value="{{$diff_amount}}" id="return_form_date" disabled>
+
+                    {{-- CASE --}}
+                    @if($case == 'early')
+                        <p>Case: <span class="text-blue-600">Vehicle Returned Early</span></p>
+                    @elseif($case == 'late')
+                        <p>Case: <span class="text-red-600">Vehicle Returned Late</span></p>
+                    @elseif($case == 'ontime')
+                        <p>Case: <span class="text-green-600">Vehicle Returned On Time</span></p>
+                    @endif
+
+                    {{-- Info --}}
+                    <p>Duration: <span class="text-gray-600">{{$actual_duration}} Days</span></p>
+                    <p>Amount: <span class="text-gray-600">${{$actual_amount}}</span></p>
+                    <p>Paid: <span class="text-gray-600">${{$paid_amount}}</span></p>
+                    <p>Due: <span class="text-gray-600">${{$due_amount}}</span></p>
+                    <input type="hidden" name="returned_on" value="{{$returned_on->format('Y-m-d')}}">
+
+                    {{-- Charge --}}
+                    @if($due_amount > 0)
+                        <h1>Charge Amount:</h1>
+                        <input type="hidden" name="action" value="charge">
+                        <input class="rounded-full w-full" type="number" name="amount" value="{{$due_amount}}">
+                    {{-- Refund --}}
+                    @elseif($due_amount < 0)
+                        <input type="hidden" name="action" value="refund">
+                        <h1>Refund Amount:</h1>
+                        <input class="rounded-full w-full" type="number" name="amount" value="{{-$due_amount}}">
+                    {{-- None --}}
+                    @elseif($due_amount == 0)
+                        <input type="hidden" name="action" value="none">
+                        <input class="rounded-full w-full" type="hidden" name="amount" value="0">
+                        <h1 class="text-center">No Amount Due</h1>
+                    @endif
                     <div class="flex justify-end gap-1">
-                        <button type="button" class="border border-gray-600 text-gray-500 py-2 px-3 rounded-full" onclick="hide_return_modal()">Cancel</button>
-                        <button class="bg-blue-600 text-white py-2 px-3 rounded-full">Return</button>
+                        <button class="bg-red-600 text-white py-2 px-3 rounded-full">Confirm</button>
                     </div>
                 </form>
-                @endif
             </div>
 
         </div>
