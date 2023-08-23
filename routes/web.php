@@ -43,9 +43,6 @@ Route::get('/contact', function () {
 
 Route::get('/carlist/single-car-view/{id}', [VehiclesController::class, 'view_vehicle'])->name('booknow');
 
-Route::get('/carlist-return', function () {
-    return view('pages.carreturn');
-})->name('carreturn');
 
 Route::middleware('auth')->group(function () {
     Route::get('/user/dashboard', [DashboardController::class, 'client']);
@@ -66,6 +63,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/vehicles', [VehiclesController::class, 'store'])->name('vehicles.store');
         Route::get('/bookings', [BookingsController::class, 'index'])->name('bookings.all');
         Route::delete('/booking/{bookingId}', [BookingsController::class, 'destroy'])->name('delete_booking');
+        Route::get('/carlist-return', [VehiclesController::class, 'car_return'])->name('carreturn');
     });
 
 });

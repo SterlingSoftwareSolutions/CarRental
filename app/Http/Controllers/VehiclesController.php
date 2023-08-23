@@ -230,4 +230,8 @@ class VehiclesController extends Controller
         return redirect()->route('vehicles.all')
             ->with('success', 'vehicle deleted successfully.');
     }
+
+    public function car_return(){
+        return view('pages.carreturn');
+    }
 }
