@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateBookingsRequest;
 use App\Models\Bookings;
+use App\Models\Invoice;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Stripe\Refund;
@@ -172,9 +173,12 @@ class BookingsController extends Controller
                 'amount' => $request->amount * 100,
             ]);
         } else if ($request->action == 'charge') {
-            dd("A charge cannot be made");
-        } else {
-
+            $invoice = Invoice::create([
+                'booking_id' => $booking->id,
+                'amount' => $request->amount,
+                'reason' => 'rental_payment'
+            ]);
+            // Notify user
         }
 
         $booking->update([
@@ -183,6 +187,5 @@ class BookingsController extends Controller
         ]);
 
         return redirect()->route('bookings.all');
-
     }
 }

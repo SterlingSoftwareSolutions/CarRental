@@ -8,6 +8,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\VehiclesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvoiceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +50,8 @@ Route::middleware('auth')->group(function () {
     Route::put('/user/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/user/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/car_rent/payment', [PaymentsController::class, 'index'])->name('payment');
+    Route::get('/invoices/{invoice}/pay', [InvoiceController::class, 'payment']);
+    Route::post('/invoices/{invoice}/pay', [InvoiceController::class, 'payment_post']);
 
     // Admin Only Routes 
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
