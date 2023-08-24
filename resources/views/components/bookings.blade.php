@@ -35,9 +35,11 @@
                 Status
             </th>
 
+            @if(Auth::user()->role == 'admin')
             <th scope="col" class="px-6 py-2">
                 Actions
             </th>
+            @endif
         </tr>
     </thead>
 
@@ -93,8 +95,13 @@
                 ${{ $booking->amount_paid()}}
             </td>
 
-            <td class="px-6 py-4 text-red-600">
-                ${{ $booking['returned_on'] ? $booking->invoices->where('paid', '0')->sum('amount') : $booking->amount() - $booking->amount_paid()}}
+            <td class="px-6 py-4">
+                @php $due = $booking['returned_on'] ? $booking->invoices->where('paid', '0')->sum('amount') : $booking->amount() - $booking->amount_paid() @endphp
+                @if($due == 0)
+                    <p class="text-green-600">Paid</p>
+                @else
+                    <p class="text-red-600">${{$due}}</p>
+                @endif
             </td>
 
             <td class="px-6 py-4">

@@ -14,4 +14,9 @@ class Invoice extends Model
         'reason',
         'paid'
     ];
+
+    public function booking()
+    {
+        return $this->belongsTo(Bookings::class);
+    }
 }
