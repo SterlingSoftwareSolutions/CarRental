@@ -95,7 +95,7 @@ class PaymentsController extends Controller
         $days = $dropoff_time->diff($pickup_time)->days;
 
         // Charge for 2 weeks if the vehicle is booked for more than 2 weeks
-        if($days > 14){
+        if($days >= 14){
             $amount = $booking->vehicle->price * 14;
             $charge = $user->charge(
                 $amount * 100,
