@@ -114,7 +114,8 @@ class PaymentsController extends Controller
                 return back()->withErrors(['payment' => 'Payment failed']);
             }
         }
-        dd($user, $booking, $transaction);
+
+        return redirect()->route('user.dashboard');
     }
 
     /**
