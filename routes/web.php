@@ -44,7 +44,7 @@ Route::get('/contact', function () {
 Route::get('/carlist/single-car-view/{id}', [VehiclesController::class, 'view_vehicle'])->name('booknow');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/user/dashboard', [DashboardController::class, 'client']);
+    Route::get('/user/dashboard', [DashboardController::class, 'client'])->name('user.dashboard');
     Route::get('/user/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/user/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/user/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
