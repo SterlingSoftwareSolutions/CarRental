@@ -22,13 +22,21 @@ class Bookings extends Model
 
     public function duration(){
         $pickup_time = new DateTime($this->pickup_time);
-        $dropoff_time = new DateTime($this->dropoff_time);
+        if($this->returned_on){
+            $dropoff_time = new DateTime($this->returned_on);
+        } else{
+            $dropoff_time = new DateTime($this->dropoff_time);
+        }
         $days = $dropoff_time->diff($pickup_time)->days;
         return $days;
     }
 
     public function amount(){
         return $this->duration() * ($this->vehicle->price ?? null);
+    }
+
+    public function amount_paid(){
+        return $this->transactions->sum('amount');
     }
 
     // Define the relationship with the Vehicle model
@@ -47,5 +55,11 @@ class Bookings extends Model
     public function transactions()
     {
         return $this->hasMany(Transaction::class, 'booking_id');
+    }
+
+    // Define the relationship with the User model
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class, 'booking_id');
     }
 }
