@@ -20,16 +20,26 @@
             </th>
 
             <th scope="col" class="px-6 py-2">
-                Amount
+                Returned On
+            </th>
+
+            <th scope="col" class="px-6 py-2">
+                Paid
+            </th>
+
+            <th scope="col" class="px-6 py-2">
+                Due
             </th>
 
             <th scope="col" class="px-6 py-2">
                 Status
             </th>
 
+            @if(Auth::user()->role == 'admin')
             <th scope="col" class="px-6 py-2">
                 Actions
             </th>
+            @endif
         </tr>
     </thead>
 
@@ -64,7 +74,7 @@
                     {{ $booking['pickup']}}
                 </p>
                 <p>
-                {{ explode( ' ', $booking['pickup_time'])[0] }}
+                    {{ explode( ' ', $booking['pickup_time'])[0] }}
                 </p>
             </td>
 
@@ -73,21 +83,29 @@
                     {{ $booking['dropoff']}}
                 </p>
                 <p>
-                {{ explode( ' ', $booking['dropoff_time'])[0] }}
+                    {{ explode( ' ', $booking['dropoff_time'])[0] }}
                 </p>
+            </td>
+            
+            <td class="px-6 py-4">
+                {{$booking['returned_on'] ?? '-'}}
             </td>
 
             <td class="px-6 py-4">
-                ${{ $booking->amount()}}
+                ${{ $booking->amount_paid()}}
+            </td>
+
+            <td class="px-6 py-4">
+                @php $due = $booking['returned_on'] ? $booking->invoices->where('paid', '0')->sum('amount') : $booking->amount() - $booking->amount_paid() @endphp
+                @if($due == 0)
+                    <p class="text-green-600">Paid</p>
+                @else
+                    <p class="text-red-600">${{$due}}</p>
+                @endif
             </td>
 
             <td class="px-6 py-4">
                 <span class="bg-gray-600 py-2 px-3 rounded-full text-white">{{$booking->status}}</span>
-                @if($booking->status == 'returned')
-                <p class="py-2">
-                    On: {{ $booking['returned_on']}}
-                </p>
-                @endif
             </td>
 
             @if(Auth::user()->role == 'admin')

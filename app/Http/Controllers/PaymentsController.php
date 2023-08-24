@@ -26,12 +26,20 @@ class PaymentsController extends Controller
 
         $booking = Bookings::with(['user', 'vehicle'])->find($bookingData->id);
 
+        $pickup_time = new DateTime($booking->pickup_time);
+        $dropoff_time = new DateTime($booking->dropoff_time);
+        $days = $dropoff_time->diff($pickup_time)->days;
+        if($days >= 14){
+            $amount = $booking->vehicle->price * 14;
+        }
+
         $booking['pickup'] = $bookingData['pickup'];
         $booking['pickup_time'] = $bookingData['pickup_time'];
         $booking['dropoff_time'] = $bookingData['dropoff_time'];
         $booking['dropoff'] = $bookingData['dropoff'];
         $booking['bookingDaysCount'] = $bookingData['bookingDaysCount'];
-        return view('pages.client.payment', ['bookingData' => $booking , 'countries' => $countries]);
+
+        return view('pages.client.payment', ['bookingData' => $booking , 'countries' => $countries, 'days' => $days, 'amount' => $amount ?? 0]);
     }
 
     /**
