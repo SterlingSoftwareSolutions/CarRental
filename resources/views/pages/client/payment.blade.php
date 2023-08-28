@@ -24,7 +24,7 @@
     <!-- end navigation -->
     <!-- section one -->
     <div class="flex md:flex-wrap md:justify-center md:items-start">
-        <div class=" p-4 md:w-full lg:w-4/12 grid grid-flow-row mt-24 sm:mt-18">
+        <div class="grid grid-flow-row p-4 mt-24 md:w-full lg:w-4/12 sm:mt-18">
 
             <div class="bg-[#F8FFF2] p-8">
 
@@ -34,34 +34,34 @@
                 </div>
 
                 <!-- pickup details -->
-                <table class="w-full table-fixed mt-5">
+                <table class="w-full mt-5 table-fixed">
                     <tbody>
                         <tr>
-                            <td class="border-b-2 border-dotted p-2">Title</td>
-                            <td class="border-b-2 border-dotted text-right p-2">{{ $bookingData->vehicle['year']}} {{
+                            <td class="p-2 border-b-2 border-dotted">Title</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">{{ $bookingData->vehicle['year']}} {{
                                 $bookingData->vehicle['make']}} {{ $bookingData->vehicle['model']}} {{
                                 $bookingData->vehicle['body_type']}}</td>
                         </tr>
                         <tr>
-                            <td class="border-b-2 border-dotted p-2">Pick-up Date & Time</td>
-                            <td class="border-b-2 border-dotted text-right p-2"> {{ $bookingData['pickup_time']}}</td>
+                            <td class="p-2 border-b-2 border-dotted">Pick-up Date & Time</td>
+                            <td class="p-2 text-right border-b-2 border-dotted"> {{ $bookingData['pickup_time']}}</td>
                         </tr>
                         <tr>
-                            <td class="border-b-2 border-dotted p-2">Drop-off Date & Time</td>
-                            <td class="border-b-2 border-dotted text-right p-2">{{ $bookingData['dropoff_time']}}</td>
+                            <td class="p-2 border-b-2 border-dotted">Drop-off Date & Time</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">{{ $bookingData['dropoff_time']}}</td>
                         </tr>
                         <tr>
-                            <td class="border-b-2 border-dotted p-2">Total Days</td>
-                            <td class="border-b-2 border-dotted text-right p-2">{{ $bookingData['bookingDaysCount']}}
+                            <td class="p-2 border-b-2 border-dotted">Total Days</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">{{ $bookingData['bookingDaysCount']}}
                             </td>
                         </tr>
                         <tr>
-                            <td class="border-b-2 border-dotted p-2">Pick-up Location</td>
-                            <td class="border-b-2 border-dotted text-right p-2">{{ $bookingData['pickup']}}</td>
+                            <td class="p-2 border-b-2 border-dotted">Pick-up Location</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">{{ $bookingData['pickup']}}</td>
                         </tr>
                         <tr>
                             <td class="p-2">Drop-off Location</td>
-                            <td class="text-right p-2">{{ $bookingData['dropoff']}}</td>
+                            <td class="p-2 text-right">{{ $bookingData['dropoff']}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -72,30 +72,30 @@
 
                 <h1 class="text-center text-[#398564] font-semibold text-lg">Order Summary</h1>
                 <!-- order summery -->
-                <table class="w-full table-fixed mt-5">
+                <table class="w-full mt-5 table-fixed">
                     <tbody>
                         <tr>
-                            <td class="border-b-2 border-dotted p-2">SUBTOTAL</td>
-                            <td class="border-b-2 border-dotted text-right p-2">AUD {{ $bookingData['bookingDaysCount'] * $bookingData->vehicle['price']}}.00</td>
+                            <td class="p-2 border-b-2 border-dotted">SUBTOTAL</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">AUD {{ $bookingData['bookingDaysCount'] * $bookingData->vehicle['price']}}.00</td>
                         </tr>
                         <tr>
-                            <td class="border-b-2 border-dotted p-2">FINES</td>
-                            <td class="border-b-2 border-dotted text-right p-2">AUD 0.00</td>
+                            <td class="p-2 border-b-2 border-dotted">FINES</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">AUD 0.00</td>
                         </tr>
                         <tr>
-                            <td class="border-b-2 border-dotted p-2">INSURANCE</td>
-                            <td class="border-b-2 border-dotted text-right p-2">AUD 0.00</td>
+                            <td class="p-2 border-b-2 border-dotted">INSURANCE</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">AUD 0.00</td>
                         </tr>
                         <tr>
                             <td class="p-2 mt-2 font-bold">TOTAL</td>
-                            <td class="text-right p-2 font-bold">AUD {{ $bookingData['bookingDaysCount'] * $bookingData->vehicle['price']}}.00</td>
+                            <td class="p-2 font-bold text-right">AUD {{ $bookingData['bookingDaysCount'] * $bookingData->vehicle['price']}}.00</td>
                         </tr>
                     </tbody>
                 </table>
 
             </div>
         </div>
-        <div class="md:w-full lg:w-4/12 grid grid-flow-row h-screen mt-24 sm:mt-18">
+        <div class="grid grid-flow-row mt-24 h-55 md:w-full lg:w-4/12 sm:mt-18">
             <form action="{{route('payment.saving')}}" method="post" id="payment-form">
                 @csrf
                 <div class="bg-[#F8FFF2] grid md:p-8 md:mt-0">
@@ -110,8 +110,8 @@
 
                     <div class>
                         <div class="flex items-center space-x-1">
-                            <h1 class="text-black text-sm">Country <span class="text-red-500">*</span></h1>
-                            <select class="w-3/6 rounded-md border-none shadow-md" name="country" id="country">
+                            <h1 class="text-sm text-black">Country <span class="text-red-500">*</span></h1>
+                            <select class="w-3/6 border-none rounded-md shadow-md" name="country" id="country">
                                 @foreach ($countries as $country)
                                 <option value="{{$country->name}}" @if((old('country') ?? $user->country) == $country->name) selected @endif>{{$country->name}} - {{$country->code}}</option>
                                 @endforeach
@@ -124,45 +124,45 @@
 
                     <div class="flex w-full gap-4 mt-5">
                         <div class="flex-1">
-                            <h1 class="text-black text-sm">First Name <span class="text-red-500">*</span></h1>
-                            <input class="w-full rounded-md border-none shadow-md" type="text" name="first_name" id="" value="{{old('first_name') ?? $user->first_name ?? ''}}">
+                            <h1 class="text-sm text-black">First Name <span class="text-red-500">*</span></h1>
+                            <input class="w-full border-none rounded-md shadow-md" type="text" name="first_name" id="" value="{{old('first_name') ?? $user->first_name ?? ''}}">
                         </div>
                         <div class="flex-1">
-                            <h1 class="text-black text-sm">Last Name <span class="text-red-500">*</span></h1>
-                            <input class="w-full rounded-md border-none shadow-md" type="text" name="last_name" id="" value="{{old('last_name') ?? $user->last_name ?? ''}}">
-                        </div>
-                    </div>
-
-                    <div class="flex w-full gap-4">
-                        <div class="flex-1">
-                            <h1 class="text-black text-sm">Mobile Number <span class="text-red-500">*</span></h1>
-                            <input class="w-full rounded-md border-none shadow-md" type="text" name="mobile" id="" value="{{old('mobile') ?? $user->mobile ?? ''}}">
-                        </div>
-                        <div class="flex-1">
-                            <h1 class="text-black text-sm">Email <span class="text-red-500">*</span></h1>
-                            <input class="w-full rounded-md border-none shadow-md" type="text" name="email" id="" value="{{old('email') ?? $user->email ?? ''}}">
+                            <h1 class="text-sm text-black">Last Name <span class="text-red-500">*</span></h1>
+                            <input class="w-full border-none rounded-md shadow-md" type="text" name="last_name" id="" value="{{old('last_name') ?? $user->last_name ?? ''}}">
                         </div>
                     </div>
 
                     <div class="flex w-full gap-4">
                         <div class="flex-1">
-                            <h1 class="text-black text-sm">Address 1 <span class="text-red-500">*</span></h1>
-                            <input class="w-full rounded-md border-none shadow-md" type="text" name="Address_1" id="" value="{{old('Address_1') ?? $user->Address_1 ?? ''}}">
+                            <h1 class="text-sm text-black">Mobile Number <span class="text-red-500">*</span></h1>
+                            <input class="w-full border-none rounded-md shadow-md" type="text" name="mobile" id="" value="{{old('mobile') ?? $user->mobile ?? ''}}">
                         </div>
                         <div class="flex-1">
-                            <h1 class="text-black text-sm">Address 2 <span class="text-red-500">*</span></h1>
-                            <input class="w-full rounded-md border-none shadow-md" type="text" name="Address_2" id="" value="{{old('Address_2') ?? $user->Address_2 ?? ''}}">
+                            <h1 class="text-sm text-black">Email <span class="text-red-500">*</span></h1>
+                            <input class="w-full border-none rounded-md shadow-md" type="text" name="email" id="" value="{{old('email') ?? $user->email ?? ''}}">
                         </div>
                     </div>
 
                     <div class="flex w-full gap-4">
                         <div class="flex-1">
-                            <h1 class="text-black text-sm">City <span class="text-red-500">*</span></h1>
-                            <input class="w-full rounded-md border-none shadow-md" type="text" name="city" id="" value="{{old('city') ?? $user->city ?? ''}}">
+                            <h1 class="text-sm text-black">Address 1 <span class="text-red-500">*</span></h1>
+                            <input class="w-full border-none rounded-md shadow-md" type="text" name="Address_1" id="" value="{{old('Address_1') ?? $user->Address_1 ?? ''}}">
                         </div>
                         <div class="flex-1">
-                            <h1 class="text-black text-sm">Zip/Postal Code <span class="text-red-500">*</span></h1>
-                            <input class="w-full rounded-md border-none shadow-md" type="text" name="zip" id="" value="{{old('zip') ?? $user->zip ?? ''}}">
+                            <h1 class="text-sm text-black">Address 2 <span class="text-red-500">*</span></h1>
+                            <input class="w-full border-none rounded-md shadow-md" type="text" name="Address_2" id="" value="{{old('Address_2') ?? $user->Address_2 ?? ''}}">
+                        </div>
+                    </div>
+
+                    <div class="flex w-full gap-4">
+                        <div class="flex-1">
+                            <h1 class="text-sm text-black">City <span class="text-red-500">*</span></h1>
+                            <input class="w-full border-none rounded-md shadow-md" type="text" name="city" id="" value="{{old('city') ?? $user->city ?? ''}}">
+                        </div>
+                        <div class="flex-1">
+                            <h1 class="text-sm text-black">Zip/Postal Code <span class="text-red-500">*</span></h1>
+                            <input class="w-full border-none rounded-md shadow-md" type="text" name="zip" id="" value="{{old('zip') ?? $user->zip ?? ''}}">
                         </div>
                     </div>
 
@@ -175,26 +175,26 @@
                     <hr class="">
                     <div class="flex w-full gap-4 mt-5">
                         <div class="flex-1">
-                            <h1 class="text-black text-sm">Driver's License Number <span class="text-red-500">*</span>
+                            <h1 class="text-sm text-black">Driver's License Number <span class="text-red-500">*</span>
                             </h1>
-                            <input class="w-full rounded-md border-none shadow-md" type="text" name="driving_license" value="{{old('driving_license') ?? $user->driving_license ?? ''}}"
+                            <input class="w-full border-none rounded-md shadow-md" type="text" name="driving_license" value="{{old('driving_license') ?? $user->driving_license ?? ''}}"
                                 id="">
                         </div>
                         <div class="flex-1">
-                            <h1 class="text-black text-sm">Expired Year (YYYY) <span class="text-red-500">*</span></h1>
-                            <input class="w-full rounded-md border-none shadow-md" type="number" value="{{old('driving_license_expire_year') ?? $user->driving_license_expire_year ?? ''}}"
+                            <h1 class="text-sm text-black">Expired Year (YYYY) <span class="text-red-500">*</span></h1>
+                            <input class="w-full border-none rounded-md shadow-md" type="number" value="{{old('driving_license_expire_year') ?? $user->driving_license_expire_year ?? ''}}"
                                 name="driving_license_expire_year" id="">
                         </div>
                     </div>
                     <div class="flex w-full gap-4">
                         <div class="flex-1">
-                            <h1 class="text-black text-sm">Expired Month <span class="text-red-500">*</span></h1>
-                            <input class="w-full rounded-md border-none shadow-md" type="number" min="1" max="12" value="{{old('driving_license_expire_month') ?? $user->driving_license_expire_month ?? ''}}"
+                            <h1 class="text-sm text-black">Expired Month <span class="text-red-500">*</span></h1>
+                            <input class="w-full border-none rounded-md shadow-md" type="number" min="1" max="12" value="{{old('driving_license_expire_month') ?? $user->driving_license_expire_month ?? ''}}"
                                 name="driving_license_expire_month" id="">
                         </div>
                         <div class="flex-1">
-                            <h1 class="text-black text-sm">Expired Date (DD) <span class="text-red-500">*</span></h1>
-                            <input class="w-full rounded-md border-none shadow-md" type="number" min="1" max="31" value="{{old('driving_license_expire_date') ?? $user->driving_license_expire_date ?? ''}}"
+                            <h1 class="text-sm text-black">Expired Date (DD) <span class="text-red-500">*</span></h1>
+                            <input class="w-full border-none rounded-md shadow-md" type="number" min="1" max="31" value="{{old('driving_license_expire_date') ?? $user->driving_license_expire_date ?? ''}}"
                                 name="driving_license_expire_date" id="">
                         </div>
                     </div>
@@ -208,28 +208,21 @@
 
                     <div class="w-full">
                         <form action="" id="payment-form">
-                            <div id="card_details" class="mt-5 flex flex-col gap-5 relative">
-                                <input type="text" name="card_holder_name" id="card-holder-name"
-                                    class="w-full rounded-md border-none bg-white shadow-md p-3" placeholder="Name on card">
+                            <div id="card_details" class="relative flex flex-col gap-2 mt-5">
+                                <input type="text" name="card_holder_name" id="card-holder-name" class="w-full p-3 bg-white border-none rounded-md shadow-md" placeholder="Name on card">
 
-                                <div class="w-full rounded-md border-none bg-white shadow-md px-3">
-                                    <div id="card-number" class="form-control my-auto py-3"></div>
-                                </div>
+                                <input type="text" name="card_number" id="card_number" class="w-full p-3 bg-white border-none rounded-md shadow-md" placeholder="Card Number">
+                                
+                                <input type="text" name="card-cvc" id="card-cvc" class="w-full p-3 bg-white border-none rounded-md shadow-md" placeholder="CVC">
 
-                                <div class="w-full rounded-md border-none bg-white shadow-md px-3">
-                                    <div id="card-cvc" class="form-control py-3"></div>
-                                </div>
+                                <input type="text" name="card-expiry" id="card-expiry" class="w-full p-3 bg-white border-none rounded-md shadow-md" placeholder="Expiry Date">
 
-                                <div class="w-full rounded-md border-none bg-white shadow-md px-3">
-                                    <div id="card-expiry" class="form-control py-3"></div>
-                                </div>
-
-                                <div id="card-errors" class="form-control py-3 absolute bottom-0"></div>
+                                <div id="card-errors" class="absolute bottom-0 py-3 form-control"></div>
 
                                 <button 
                                     type="button"
                                     id="card-button"
-                                    class="rounded-md border-none bg-green-900 text-white shadow-md p-3 w-1/2 ms-auto"
+                                    class="w-1/2 p-3 text-white bg-green-900 border-none rounded-md shadow-md ms-auto"
                                 >
                                 Process Payment
                                 </button>
