@@ -31,7 +31,7 @@ $bookings = $user->bookings;
     </div>
     <!-- end banner section -->
 
-    <div class="grid justify-center items-center p-4">
+    <div>
         @yield('content')
     </div>
 

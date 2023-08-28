@@ -8,6 +8,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\VehiclesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvoiceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -44,11 +45,13 @@ Route::get('/contact', function () {
 Route::get('/carlist/single-car-view/{id}', [VehiclesController::class, 'view_vehicle'])->name('booknow');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/user/dashboard', [DashboardController::class, 'client']);
+    Route::get('/user/dashboard', [DashboardController::class, 'client'])->name('user.dashboard');
     Route::get('/user/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/user/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/user/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/car_rent/payment', [PaymentsController::class, 'index'])->name('payment');
+    Route::get('/invoices/{invoice}/pay', [InvoiceController::class, 'payment']);
+    Route::post('/invoices/{invoice}/pay', [InvoiceController::class, 'payment_post']);
 
     // Admin Only Routes 
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
@@ -62,6 +65,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/vehicles', [VehiclesController::class, 'store'])->name('vehicles.store');
         Route::get('/bookings', [BookingsController::class, 'index'])->name('bookings.all');
         Route::post('/bookings/{booking}/return', [BookingsController::class, 'return'])->name('bookings.return');
+        Route::post('/bookings/{booking}/return_confirm', [BookingsController::class, 'return_confirm'])->name('bookings.return');
         Route::delete('/booking/{bookingId}', [BookingsController::class, 'destroy'])->name('delete_booking');
     });
 

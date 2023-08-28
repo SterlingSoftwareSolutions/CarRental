@@ -1,34 +1,45 @@
 @props([
 'bookings' => null,
+'return' => true
 ])
 
 @if(count($bookings))
 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
         <tr>
-            <th scope="col" class="px-6">
+            <th scope="col" class="px-6 py-2">
                 #
             </th>
 
-            <th scope="col" class="px-6">
+            <th scope="col" class="px-6 py-2">
                 Pickup
             </th>
 
-            <th scope="col" class="px-6">
+            <th scope="col" class="px-6 py-2">
                 Drop Off
             </th>
 
-            <th scope="col" class="px-6">
-                Amount
+            <th scope="col" class="px-6 py-2">
+                Returned On
             </th>
 
-            <th scope="col" class="px-6">
+            <th scope="col" class="px-6 py-2">
+                Paid
+            </th>
+
+            <th scope="col" class="px-6 py-2">
+                Due
+            </th>
+
+            <th scope="col" class="px-6 py-2">
                 Status
             </th>
 
-            <th scope="col" class="px-6">
+            @if(Auth::user()->role == 'admin')
+            <th scope="col" class="px-6 py-2">
                 Actions
             </th>
+            @endif
         </tr>
     </thead>
 
@@ -63,7 +74,7 @@
                     {{ $booking['pickup']}}
                 </p>
                 <p>
-                {{ explode( ' ', $booking['pickup_time'])[0] }}
+                    {{ explode( ' ', $booking['pickup_time'])[0] }}
                 </p>
             </td>
 
@@ -72,29 +83,37 @@
                     {{ $booking['dropoff']}}
                 </p>
                 <p>
-                {{ explode( ' ', $booking['dropoff_time'])[0] }}
+                    {{ explode( ' ', $booking['dropoff_time'])[0] }}
                 </p>
+            </td>
+            
+            <td class="px-6 py-4">
+                {{$booking['returned_on'] ?? '-'}}
             </td>
 
             <td class="px-6 py-4">
-                $ {{ $booking->amount()}}
+                ${{ $booking->amount_paid()}}
+            </td>
+
+            <td class="px-6 py-4">
+                @php $due = $booking['returned_on'] ? $booking->invoices->where('paid', '0')->sum('amount') : $booking->amount() - $booking->amount_paid() @endphp
+                @if($due == 0)
+                    <p class="text-green-600">Paid</p>
+                @else
+                    <p class="text-red-600">${{$due}}</p>
+                @endif
             </td>
 
             <td class="px-6 py-4">
                 <span class="bg-gray-600 py-2 px-3 rounded-full text-white">{{$booking->status}}</span>
-                @if($booking->status == 'returned')
-                <p class="py-2">
-                    On: {{ $booking['returned_on']}}
-                </p>
-                @endif
             </td>
 
             @if(Auth::user()->role == 'admin')
-            <td>
+            <td class="px-6 py-4">
                 <div class="flex flex-wrap items-center gap-1">
 
                     {{-- RETURN BUTTON --}}
-                    @if(!$booking['returned_on'])
+                    @if(!$booking['returned_on'] && $return)
                     <button class="bg-blue-600 rounded-full py-2 px-3 text-white text-center" onclick="show_return_modal({{$booking->id}})">Return</button>
                     @endif
 
@@ -149,7 +168,6 @@
         return_form.setAttribute('action', '/admin/bookings/' + booking + '/return');
         return_modal.classList.remove('hidden');
     }
-
 </script>
 
 @else

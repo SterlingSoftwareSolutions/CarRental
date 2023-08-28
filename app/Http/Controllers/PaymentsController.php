@@ -6,6 +6,7 @@ use App\Http\Requests\UpdatePaymentsRequest;
 use App\Models\Bookings;
 use App\Models\Country;
 use App\Models\Payments;
+use App\Models\Transaction;
 use DateTime;
 use Illuminate\Http\Request;
 use Stripe\PaymentMethod;
@@ -25,12 +26,20 @@ class PaymentsController extends Controller
 
         $booking = Bookings::with(['user', 'vehicle'])->find($bookingData->id);
 
+        $pickup_time = new DateTime($booking->pickup_time);
+        $dropoff_time = new DateTime($booking->dropoff_time);
+        $days = $dropoff_time->diff($pickup_time)->days;
+        if($days >= 14){
+            $amount = $booking->vehicle->price * 14;
+        }
+
         $booking['pickup'] = $bookingData['pickup'];
         $booking['pickup_time'] = $bookingData['pickup_time'];
         $booking['dropoff_time'] = $bookingData['dropoff_time'];
         $booking['dropoff'] = $bookingData['dropoff'];
         $booking['bookingDaysCount'] = $bookingData['bookingDaysCount'];
-        return view('pages.client.payment', ['bookingData' => $booking , 'countries' => $countries]);
+
+        return view('pages.client.payment', ['bookingData' => $booking , 'countries' => $countries, 'days' => $days, 'amount' => $amount ?? 0]);
     }
 
     /**
@@ -94,7 +103,7 @@ class PaymentsController extends Controller
         $days = $dropoff_time->diff($pickup_time)->days;
 
         // Charge for 2 weeks if the vehicle is booked for more than 2 weeks
-        if($days > 14){
+        if($days >= 14){
             $amount = $booking->vehicle->price * 14;
             $charge = $user->charge(
                 $amount * 100,
@@ -104,12 +113,17 @@ class PaymentsController extends Controller
                 $booking->update([
                     'status' => 'booked'
                 ]);
+                $transaction = Transaction::create([
+                    'booking_id' => $booking->id,
+                    'amount' => $amount,
+                    'stripe_payment_id' => $charge->id
+                ]);
             } else {
                 return back()->withErrors(['payment' => 'Payment failed']);
             }
-
         }
-        dd($user, $booking);
+
+        return redirect()->route('user.dashboard');
     }
 
     /**
