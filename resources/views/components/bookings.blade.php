@@ -56,7 +56,7 @@
                                 @else
                                     /images/blank.png
                                 @endif
-                            " class="rounded-full w-10 h-10" alt="Vehicle Image">
+                            " class="w-10 h-10 rounded-full" alt="Vehicle Image">
                     </div>
                     <div>
                         <p>{{ $booking->vehicle['make']}} {{ $booking->vehicle['model']}} #{{ $booking->vehicle['vin']}}</p>
@@ -105,8 +105,14 @@
             </td>
 
             <td class="px-6 py-4">
-                <span class="bg-gray-600 py-2 px-3 rounded-full text-white">{{$booking->status}}</span>
-            </td>
+                @if($booking->status == 'Unpaid')
+                    <span class="px-3 py-2 text-white bg-red-500 rounded-full">{{$booking->status}}</span>
+                @elseif($booking->status == 'Returned')
+                    <span class="px-3 py-2 text-black bg-yellow-500 rounded-full">{{$booking->status}}</span>
+                @else
+                    <span class="px-3 py-2 text-white bg-gray-600 rounded-full">{{$booking->status}}</span>
+                @endif
+            </td>            
 
             @if(Auth::user()->role == 'admin')
             <td class="px-6 py-4">
@@ -114,17 +120,17 @@
 
                     {{-- RETURN BUTTON --}}
                     @if(!$booking['returned_on'] && $return)
-                    <button class="bg-blue-600 rounded-full py-2 px-3 text-white text-center" onclick="show_return_modal({{$booking->id}})">Return</button>
+                    <button class="px-3 py-2 text-center text-white bg-blue-600 rounded-full" onclick="show_return_modal({{$booking->id}})">Return</button>
                     @endif
 
                     {{-- EDIT BUTTON --}}
-                    <a href="/admin/bookings/{{ $booking['id']}}/edit" class="bg-green-600 rounded-full py-2 px-3 text-white text-center">Edit</a>
+                    <a href="/admin/bookings/{{ $booking['id']}}/edit" class="px-3 py-2 text-center text-white bg-green-600 rounded-full">Edit</a>
 
                     {{-- DELETE BUTTON --}}
                     <form action="/admin/booking/{{ $booking['id'] }}" method="POST" class="inline">
                         @csrf
                         @method('DELETE')
-                        <button class="bg-red-600 rounded-full py-2 px-3 text-white text-center" onclick="return confirm('Are you sure you want to delete this booking?')">Delete</button>
+                        <button class="px-3 py-2 text-center text-white bg-red-600 rounded-full" onclick="return confirm('Are you sure you want to delete this booking?')">Delete</button>
                     </form>
 
                 </div>
@@ -136,17 +142,17 @@
 </table>
 
 <div class="relative z-40 hidden" id="return_modal">
-    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+    <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"></div>
     <div class="fixed inset-0 z-10 overflow-y-auto">
-        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-            <div class="relative transform overflow-hidden rounded-lg p-5 bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+        <div class="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
+            <div class="relative p-5 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:w-full sm:max-w-lg">
                 <form class="flex flex-col gap-2" id="return_form" method="post">
                     @csrf
                     <h1>Vehicle Return Date:</h1>
-                    <input class="rounded-full w-full" type="date" name="returned_on" id="return_form_date">
+                    <input class="w-full rounded-full" type="date" name="returned_on" id="return_form_date">
                     <div class="flex justify-end gap-1">
-                        <button type="button" class="border border-gray-600 text-gray-500 py-2 px-3 rounded-full" onclick="hide_return_modal()">Cancel</button>
-                        <button class="bg-blue-600 text-white py-2 px-3 rounded-full">Return</button>
+                        <button type="button" class="px-3 py-2 text-gray-500 border border-gray-600 rounded-full" onclick="hide_return_modal()">Cancel</button>
+                        <button class="px-3 py-2 text-white bg-blue-600 rounded-full">Return</button>
                     </div>
                 </form>
             </div>
