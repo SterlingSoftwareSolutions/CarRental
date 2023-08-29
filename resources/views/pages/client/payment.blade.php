@@ -225,7 +225,7 @@
                             <button 
                                 type="button"
                                 id="card-button"
-                                class="w-1/2 p-3 text-white bg-green-900 border-none rounded-md shadow-md ms-auto"
+                                class="w-1/2 p-3 text-white bg-green-900 border-none rounded-md shadow-md ms-auto hover:bg-[#e0aa87]"
                             >
                             @if($amount)
                                 Pay ${{$amount}}
