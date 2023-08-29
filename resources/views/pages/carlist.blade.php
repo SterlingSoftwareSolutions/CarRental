@@ -22,18 +22,18 @@
     <!-- banner section -->
     <div class="relative -z-50">
         <img src="{{ URL('images/Group 180.png')}}" alt="" srcset="">
-        <h1 class="absolute top-2/4 left-4/12 pl-0 md:pl-56 text-white font-bold text-2xl md:text-4xl">Find Your Dream Ride</h1>
+        <h1 class="absolute pl-0 text-2xl font-bold text-white top-2/4 left-4/12 md:pl-56 md:text-4xl">Find Your Dream Ride</h1>
     </div>
 
     <!-- end banner section -->
 
     <!-- filtering section -->
-    <div class="flex flex-row md:grid md:grid-flow-row justify-center items-center -mt-2">
+    <div class="flex flex-row items-center justify-center -mt-2 md:grid md:grid-flow-row">
         <form>
             <div class="flex flex-col md:flex-row border-t-8 border-[#398564] bg-[#D3D3D3] w-full mx-auto">
-                <div class="dropdown p-0 md:p-8">
+                <div class="p-0 dropdown md:p-8">
                     <label class="font-bold text-[#707070]" for="">Make</label>
-                    <select class="w-full h-12 mt-2 rounded-md border-none text-gray-500" name="make" id="cars" onchange="this.form.submit()">
+                    <select class="w-full h-12 mt-2 text-gray-500 border-none rounded-md" name="make" id="cars" onchange="this.form.submit()">
                         <option value="">All Makes</option>
                         @foreach($filters['makes'] as $opt)
                         <option value="{{$opt}}" @if(Request()->make == $opt) selected @endif>{{$opt}}</option>
@@ -42,7 +42,7 @@
                 </div>
                 <div class="dropdown">
                     <label class="font-bold text-[#707070]" for="">Model</label>
-                    <select class="w-full h-12 mt-2 rounded-md border-none text-gray-500" name="model" id="cars" onchange="this.form.submit()">
+                    <select class="w-full h-12 mt-2 text-gray-500 border-none rounded-md" name="model" id="cars" onchange="this.form.submit()">
                         <option value="">All Models</option>
                         @foreach($filters['models'] as $opt)
                         <option value="{{$opt}}" @if(Request()->model == $opt) selected @endif>{{$opt}}</option>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="dropdown">
                     <label class="font-bold text-[#707070]" for="">Body Type</label>
-                    <select class="w-full h-12 mt-2 rounded-md border-none text-gray-500" name="body_type" id="cars" onchange="this.form.submit()">
+                    <select class="w-full h-12 mt-2 text-gray-500 border-none rounded-md" name="body_type" id="cars" onchange="this.form.submit()">
                         <option value="">All Body Types</option>
                         @foreach($filters['body_types'] as $opt)
                         <option value="{{$opt}}" @if(Request()->body_type == $opt) selected @endif>{{$opt}}</option>
@@ -60,7 +60,7 @@
                 </div>
                 <div class="dropdown">
                     <label class="font-bold text-[#707070]" for="">Transmission</label>
-                    <select class="w-full h-12 mt-2 rounded-md border-none text-gray-500" name="transmission" id="cars" onchange="this.form.submit()">
+                    <select class="w-full h-12 mt-2 text-gray-500 border-none rounded-md" name="transmission" id="cars" onchange="this.form.submit()">
                         <option value="">All Transmissions</option>
                         @foreach($filters['transmissions'] as $opt)
                         <option value="{{$opt}}" @if(Request()->transmission == $opt) selected @endif>{{$opt}}</option>
@@ -73,14 +73,14 @@
     <!-- end filtering section -->
 
     <!-- car list -->
-    <div class="grid justify-center  items-center p-4">
+    <div class="grid items-center justify-center p-4">
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 
             @foreach ($vehicles as $vehicle)
             <!-- Repeat this section for each car item -->
             <div class="bg-[#F8FFF2] grid p-4 rounded-lg shadow-lg transform hover:-translate-y-1 hover:rotate-x-2 hover:shadow-xl transition-transform duration-300">
-                <img class="rounded h-56 w-full md:w-full object-cover" src="@if($vehicle->images[0] ?? null) {{Storage::url($vehicle->images[0]->file_path)}} @else images/default.png @endif">
-                <div class="flex justify-between items-center p-4">
+                <img class="object-cover w-full h-56 rounded md:w-full" src="@if($vehicle->images[0] ?? null) {{Storage::url($vehicle->images[0]->file_path)}} @else images/default.png @endif">
+                <div class="flex items-center justify-between p-4">
                     <div class="flex w-4/6">
                         <div class="bg-[#F8FFF2] grid">
                             <h1 class="text-sm md:text-lg">{{ $vehicle['make']}} {{ $vehicle['model']}}</h1>
@@ -99,27 +99,27 @@
                         </div>
                     </div>
                     <div class="bg-[#317256] px-1 rounded">
-                        <h1 class="text-white text-sm md:text-base">$ {{ $vehicle['price']}} /hour</h1>
+                        <h1 class="text-sm text-white md:text-base">$ {{ $vehicle['price']}} /hour</h1>
                     </div>
                 </div>
                 <hr class="bg-[#317256] h-0.5">
-                <div class="flex justify-between items-center p-4">
-                    <div class="grid w-6/6 text-center">
+                <div class="flex items-center justify-between p-4">
+                    <div class="grid text-center w-6/6">
                         <img src="{{ URL('images/seat-belt.png') }}" class="mx-auto">
                         <h1 class="text-center text-sm md:text-lg text-[#317256] font-semibold mt-2">{{ $vehicle['passengers']}} Passengers</h1>
                     </div>
 
-                    <div class="grid w-6/6 text-center">
+                    <div class="grid text-center w-6/6">
                         <img src="{{ URL('images/luggage.png')}}" class="mx-auto">
                         <h1 class="text-center text-sm md:text-lg text-[#317256] font-semibold mt-2">{{ $vehicle['luggage']}} Luggages</h1>
                     </div>
-                    <div class="grid w-6/6 text-center">
+                    <div class="grid text-center w-6/6">
                         <img src="{{ URL('images/manual-transmission.png')}}" class="mx-auto">
                         <h1 class="text-center text-sm md:text-lg text-[#317256] font-semibold mt-2">{{ $vehicle['transmission']}}</h1>
                     </div>
                 </div>
-                <div class="flex justify-center items-center p-4">
-                    <a href="{{ route('booknow', ['id' => $vehicle['id']]) }}" class="text-white bg-[#317256] border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Book Now</a>
+                <div class="flex items-center justify-center p-4">
+                    <a href="{{ route('booknow', ['id' => $vehicle['id']]) }}" class="text-white bg-[#317256] border-0 py-2 px-6 focus:outline-none hover:bg-[#e0aa87] rounded text-lg">Book Now</a>
                 </div>
             </div>
 
