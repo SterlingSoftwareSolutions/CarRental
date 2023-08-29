@@ -210,35 +210,15 @@
                         <div id="card_details" class="relative flex flex-col gap-5 mt-5">
                             <input type="text" name="card_holder_name" id="card-holder-name"
                                 class="w-full p-3 bg-white border-none rounded-md shadow-md" placeholder="Name on card">
-                    <div class="w-full">
-                        <form action="" id="payment-form">
-                            <div id="card_details" class="relative flex flex-col gap-2 mt-5">
-                                <input type="text" name="card_holder_name" id="card-holder-name" class="w-full p-3 bg-white border-none rounded-md shadow-md" placeholder="Name on card">
 
-                                <input type="text" name="card_number" id="card_number" class="w-full p-3 bg-white border-none rounded-md shadow-md" placeholder="Card Number">
-                                
-                                <input type="text" name="card-cvc" id="card-cvc" class="w-full p-3 bg-white border-none rounded-md shadow-md" placeholder="CVC">
+                            <input type="text" name="card_number" id="card-number"
+                                class="w-full p-3 bg-white border-none rounded-md shadow-md" placeholder="Card Number">
 
-                                <input type="text" name="card-expiry" id="card-expiry" class="w-full p-3 bg-white border-none rounded-md shadow-md" placeholder="Expiry Date">
+                            <input type="text" name="card_cvc" id="card-cvc"
+                                class="w-full p-3 bg-white border-none rounded-md shadow-md" placeholder="CVC">
 
-                                <div id="card-errors" class="absolute bottom-0 py-3 form-control"></div>
-
-                                <button 
-                                    type="button"
-                                    id="card-button"
-                                    class="w-1/2 p-3 text-white bg-green-900 border-none rounded-md shadow-md ms-auto"
-                                >
-                                Process Payment
-                                </button>
-                            </div>
-
-                            <div class="w-full px-3 bg-white border-none rounded-md shadow-md">
-                                <div id="card-cvc" class="py-3 form-control"></div>
-                            </div>
-
-                            <div class="w-full px-3 bg-white border-none rounded-md shadow-md">
-                                <div id="card-expiry" class="py-3 form-control"></div>
-                            </div>
+                            <input type="text" name="card_expiry" id="card-expiry"
+                                class="w-full p-3 bg-white border-none rounded-md shadow-md" placeholder="Expiry Date">
 
                             <div id="card-errors" class="absolute bottom-0 py-3 form-control"></div>
 
