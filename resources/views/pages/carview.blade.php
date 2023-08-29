@@ -64,17 +64,17 @@
             <!-- end image carosol -->
 
             <!-- vehicle details section -->
-            <div class="flex justify-between items-center p-4">
-                <div class="grid w-6/6 text-center">
+            <div class="flex items-center justify-between p-4">
+                <div class="grid text-center w-6/6">
                     <img src="{{ URL('images/seat-belt.png') }}" class="mx-auto">
                     <h1 class="text-center text-[#317256] font-semibold mt-2">{{ $vehicle['passengers']}} Passengers</h1>
                 </div>
 
-                <div class="grid w-6/6 text-center">
+                <div class="grid text-center w-6/6">
                     <img src="{{ URL('images/luggage.png')}}" class="mx-auto">
                     <h1 class="text-center text-[#317256] font-semibold mt-2">{{ $vehicle['luggage']}} Luggages</h1>
                 </div>
-                <div class="grid w-6/6 text-center">
+                <div class="grid text-center w-6/6">
                     <img src="{{ URL('images/manual-transmission.png')}}" class="mx-auto">
                     <h1 class="text-center text-[#317256] font-semibold mt-2">{{ $vehicle['transmission']}}</h1>
                 </div>
@@ -84,12 +84,12 @@
             <!-- vehicle spesification section -->
             <div>
                 <div>
-                    <h1 class="text-gray-500 font-semibold text-lg">Vehicle Details</h1>
+                    <h1 class="text-lg font-semibold text-gray-500">Vehicle Details</h1>
                 </div>
                 <hr class="border-1 border-gary-600">
-                <div class="w-full flex">
+                <div class="flex w-full">
                     <div class="flex justify-between w-full">
-                        <div class="flex flex-col md:flex-row md:flex-wrap w-full">
+                        <div class="flex flex-col w-full md:flex-row md:flex-wrap">
                             <div class="flex mt-5 space-y-2 md:space-y-0 md:space-x-12">
                                 <ul>
                                     <li>Make:</li>
@@ -98,7 +98,7 @@
                                     <li>Year:</li>
                                     <li>Fuel:</li>
                                 </ul>
-                                <ul class="md:pl-0 pl-16">
+                                <ul class="pl-16 md:pl-0">
                                     <li>{{ $vehicle['make']}}</li>
                                     <li>{{ $vehicle['model']}}</li>
                                     <li>{{ $vehicle['body_type']}}</li>
@@ -106,7 +106,7 @@
                                     <li>{{ $vehicle['fuel_type']}}</li>
                                 </ul>
                             </div>
-                            <div class="flex space-y-2 md:space-y-0 md:space-x-12 mt-5 pl-0 md:pl-5">
+                            <div class="flex pl-0 mt-5 space-y-2 md:space-y-0 md:space-x-12 md:pl-5">
                                 <ul>
                                     <li>VIN:</li>
                                     <li>Mileage:</li>
@@ -114,7 +114,7 @@
                                     <li>Color:</li>
                                     <li>Doors:</li>
                                 </ul>
-                                <ul class="md:pl-0 pl-16">
+                                <ul class="pl-16 md:pl-0">
                                     <li>{{ $vehicle['vin']}}</li>
                                     <li>{{ $vehicle['mileage']}}</li>
                                     <li>{{ $vehicle['transmission']}}</li>
@@ -133,7 +133,7 @@
             <!-- vehicle description section -->
             <div class="mt-8">
                 <div>
-                    <h1 class="text-gray-500 font-semibold text-lg">Vehicle Details</h1>
+                    <h1 class="text-lg font-semibold text-gray-500">Vehicle Details</h1>
                 </div>
                 <hr class="border-1 border-gary-600">
                 <div class="mt-4 whitespace-normal">
@@ -144,10 +144,10 @@
 
         </div>
 
-        <div class="md:w-full lg:w-2/6 grid grid-flow-row mt-24">
+        <div class="grid grid-flow-row mt-24 md:w-full lg:w-2/6">
 
             <!-- pickup foam -->
-            <div class="bg-[#F8FFF2] grid md:p-8 md:mt-0">
+            <div class="bg-[#F8FFF2] grid md:p-8 md:mt-0 p-4">
                 <h1 class="text-[#317256] font-semibold text-xl">{{ $vehicle['year']}} {{ $vehicle['make']}} {{ $vehicle['model']}} {{ $vehicle['body_type']}}</h1>
                 <p class="mt-2 font-semibold text-[#707070] whitespace-normal">{{ $vehicle['short_Description']}}</p>
                 <div class="flex items-center justify-right">
@@ -166,7 +166,7 @@
                     <!-- Pickup Location  -->
                     <div>
                         <p class="mt-2 font-semibold text-[#707070]">Pick-up Location</p>
-                        <select class="w-full rounded-md border-none shadow-md" name="pickup" id="pickup">
+                        <select class="w-full border-none rounded-md shadow-md" name="pickup" id="pickup">
                             <option value="LocationOne">Location One</option>
                             <option value="LocationTwo">Location two</option>
                             <option value="LocationThree">Location Three</option>
@@ -178,7 +178,7 @@
                     <!-- Drop Off Location  -->
                     <div>
                         <p class="mt-2 font-semibold text-[#707070]">Drop-off Location</p>
-                        <select class="w-full rounded-md border-none shadow-md" name="dropoff" id="dropoff">
+                        <select class="w-full border-none rounded-md shadow-md" name="dropoff" id="dropoff">
                             <option value="LocationOne">Location One</option>
                             <option value="LocationTwo">Location two</option>
                             <option value="LocationThree">Location Three</option>
@@ -188,23 +188,23 @@
 
                     <p class="mt-2 font-semibold text-[#707070]">Pick-up Date & Time</p>
 
-                    <div class="flex justify-center items-center gap-4 w-full">
+                    <div class="flex items-center justify-center w-full gap-4">
                         <div class="w-full">
-                            <input class="w-full rounded-md border-none shadow-md" type="datetime-local" id="pickup_time" name="pickup_time">
+                            <input class="w-full border-none rounded-md shadow-md" type="datetime-local" id="pickup_time" name="pickup_time">
                         </div>
 
                     </div>
 
                     <p class="mt-2 font-semibold text-[#707070]">Drop-off Date & Time</p>
 
-                    <div class="flex items-center gap-4">
+                    <div class="flex items-center justify-center gap-4">
                         <div class="w-full">
-                            <input class="w-full rounded-md border-none shadow-md" type="datetime-local" name="dropoff_time" id="dropoff_time">
+                            <input class="w-full border-none rounded-md shadow-md" type="datetime-local" name="dropoff_time" id="dropoff_time">
                         </div>
 
                     </div>
 
-                    <div class="flex justify-center items-center pt-8">
+                    <div class="flex items-center justify-center pt-8">
                         <button type="submit" class="w-full bg-[#317256] p-3 rounded text-white font-semibold" name="cars" id="cars">
                             Book Now
                         </button>
@@ -215,13 +215,13 @@
             <!-- end pickup foam -->
 
             <!-- conatct number section -->
-            <div class="flex justify-center items-center">
+            <div class="flex items-center justify-center mt-4">
                 <div class="bg-[#317256] rounded text-center w-10/12 p-4">
-                    <h1 class="text-white font-semibold text-2xl">Call Us</h1>
-                    <div class="flex justify-center items-center mt-3">
-                        <a href="" class="hover:underline flex">
+                    <h1 class="text-2xl font-semibold text-white">Call Us</h1>
+                    <div class="flex items-center justify-center mt-3">
+                        <a href="" class="flex hover:underline">
                             <img class="w-10 h-10 " src="{{ URL('images/telephone (1).png')}}" alt="Telephone Icon">&nbsp;
-                            <span class="text-white font-semibold text-3xl">+ 8801 738 5678 64</span>
+                            <span class="text-3xl font-semibold text-white">+ 8801 738 5678 64</span>
                         </a>
                     </div>
                 </div>
@@ -250,7 +250,7 @@
                     </svg>
                 </div>
             </div>
-            <div class="flex justify-center items-center pl-8">
+            <div class="flex items-center justify-center pl-8">
                 <p class="text-black"> <span class="text-[#317256]">hasi_nimantha</span> Excellent service, clean cars, and helpful staff. Highly recommend for car rentals</p>
             </div>
             <!-- end review section -->
@@ -258,15 +258,15 @@
             <!--  rating foam -->
             <div class="p-8">
                 <div>
-                    <h1 class="text-gray-500 font-semibold text-lg">Add a Review</h1>
+                    <h1 class="text-lg font-semibold text-gray-500">Add a Review</h1>
                 </div>
                 <hr class="border-1 border-gary-600">
                 <div class="mt-4">
-                    <h1 class="text-gray-500 text-sm">Your Email Address Will Not Be Published.</h1>
+                    <h1 class="text-sm text-gray-500">Your Email Address Will Not Be Published.</h1>
                     <form>
                         <fieldset class="p-0 mt-5">
-                            <h1 class="text-black text-sm">Your Ratings <span class="text-red-500">*</span></h1>
-                            <span class="star-cb-group p-0">
+                            <h1 class="text-sm text-black">Your Ratings <span class="text-red-500">*</span></h1>
+                            <span class="p-0 star-cb-group">
                                 <input type="radio" id="rating-5" name="rating" value="5" /><label for="rating-5">5</label>
                                 <input type="radio" id="rating-4" name="rating" value="4" /><label for="rating-4">4</label>
                                 <input type="radio" id="rating-3" name="rating" value="3" /><label for="rating-3">3</label>
@@ -275,13 +275,13 @@
                                 <input type="radio" id="rating-0" name="rating" value="0" checked="checked" class="star-cb-clear" /><label for="rating-0">0</label>
                             </span>
                         </fieldset>
-                        <h1 class="text-black text-sm">Name <span class="text-red-500">*</span></h1>
-                        <input class="w-full bg-slate-300 rounded-md border-none shadow-md" type="text" name="" id="">
-                        <h1 class="text-black text-sm">Email <span class="text-red-500">*</span></h1>
-                        <input class="w-full bg-slate-300 rounded-md border-none shadow-md" type="text" name="" id="">
-                        <h1 class="text-black text-sm">Your Review <span class="text-red-500">*</span></h1>
-                        <textarea class="w-full bg-slate-300 rounded-md border-none shadow-md" name="" id="" cols="30" rows="10"></textarea>
-                        <div class="flex justify-start items-start pt-8 w-4/6">
+                        <h1 class="text-sm text-black">Name <span class="text-red-500">*</span></h1>
+                        <input class="w-full border-none rounded-md shadow-md bg-slate-300" type="text" name="" id="">
+                        <h1 class="text-sm text-black">Email <span class="text-red-500">*</span></h1>
+                        <input class="w-full border-none rounded-md shadow-md bg-slate-300" type="text" name="" id="">
+                        <h1 class="text-sm text-black">Your Review <span class="text-red-500">*</span></h1>
+                        <textarea class="w-full border-none rounded-md shadow-md bg-slate-300" name="" id="" cols="30" rows="10"></textarea>
+                        <div class="flex items-start justify-start w-4/6 pt-8">
                             <button class="bg-[#317256] p-3 rounded text-white font-semibold" name="cars" id="cars">
                                 Submit
                             </button>
