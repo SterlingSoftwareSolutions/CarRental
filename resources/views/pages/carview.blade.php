@@ -205,7 +205,7 @@
                     </div>
 
                     <div class="flex items-center justify-center pt-8">
-                        <button type="submit" class="w-full bg-[#317256] p-3 rounded text-white font-semibold" name="cars" id="cars">
+                        <button type="submit" class="w-full bg-[#317256] p-3 rounded text-white font-semibold hover:bg-[#e0aa87]" name="cars" id="cars">
                             Book Now
                         </button>
 
