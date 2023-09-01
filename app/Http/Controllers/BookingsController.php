@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateBookingsRequest;
 use App\Models\Bookings;
 use App\Models\Invoice;
+use App\Models\Surcharge;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Stripe\Refund;
@@ -48,8 +49,8 @@ class BookingsController extends Controller
     {
         $request->validate([
             'pickup' => 'required',
-            'pickup_time' => 'required',
-            'dropoff_time' => 'required',
+            'pickup_time' => 'required|before:dropoff_time',
+            'dropoff_time' => 'required|after:pickup_time',
             'dropoff' => 'required'
         ]);
 
@@ -100,9 +101,9 @@ class BookingsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Bookings $bookings)
+    public function show(Bookings $booking)
     {
-        //
+        return view('pages.admin.bookings.show', compact('booking'));
     }
 
     /**
@@ -187,5 +188,26 @@ class BookingsController extends Controller
         ]);
 
         return redirect()->route('bookings.all');
+    }
+
+    public function add_surcharge(Bookings $booking, Request $request)
+    {
+        $request->validate([
+            'type' => 'required|in:toll,fine',
+            'date' => 'required',
+            'amount' => 'required|min:0',
+            'note' => 'nullable',
+        ]);
+
+        $surcharge = Surcharge::create([
+            'booking_id' => $booking->id,
+            'type' => $request->type,
+            'date' => $request->date,
+            'amount' => $request->amount,
+            'note' => $request->note,
+            'paid' => false,
+        ]);
+
+        return redirect()->route('bookings.show', $booking);
     }
 }

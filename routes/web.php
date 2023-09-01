@@ -9,6 +9,7 @@ use App\Http\Controllers\VehiclesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\SurchargeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -57,16 +58,22 @@ Route::middleware('auth')->group(function () {
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
         Route::get('/dashboard', [DashboardController::class, 'admin'])->name('dashboard');
         Route::resource('users', UsersController::class);
-        Route::delete('/vehicle/{user_id}', [VehiclesController::class, 'destroy'])->name('delete_vehicle');
+
+        Route::delete('/vehicle/{vehicle}', [VehiclesController::class, 'destroy'])->name('delete_vehicle');
         Route::put('/vehicle', [VehiclesController::class, 'update'])->name('vehicle_update');
         Route::get('/vehicles', [VehiclesController::class, 'show_all_vehicles'])->name('vehicles.all');
         Route::get('/vehicles/{vehicle}/edit', [VehiclesController::class, 'edit_vehicle'])->name('vehicle.edit');
         Route::get('/vehicles/{vehicle}', [VehiclesController::class, 'show'])->name('vehicle.show');
         Route::post('/vehicles', [VehiclesController::class, 'store'])->name('vehicles.store');
+
         Route::get('/bookings', [BookingsController::class, 'index'])->name('bookings.all');
+        Route::get('/bookings/{booking}', [BookingsController::class, 'show'])->name('bookings.show');
+        Route::post('/bookings/{booking}/surcharge', [BookingsController::class, 'add_surcharge'])->name('bookings.surcharge');
         Route::post('/bookings/{booking}/return', [BookingsController::class, 'return'])->name('bookings.return');
         Route::post('/bookings/{booking}/return_confirm', [BookingsController::class, 'return_confirm'])->name('bookings.return');
         Route::delete('/booking/{bookingId}', [BookingsController::class, 'destroy'])->name('delete_booking');
+
+        Route::get('/surcharges', [SurchargeController::class, 'index'])->name('surcharges.all');
     });
 
 });

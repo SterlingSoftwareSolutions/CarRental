@@ -38,4 +38,8 @@ class Vehicles extends Model
     {
         return $this->hasMany(Bookings::class, 'vehicle_id');
     }
+
+    public function surcharges(){
+        return $this->hasManyThrough(Surcharge::class, Bookings::class, 'vehicle_id', 'id');
+    }
 }

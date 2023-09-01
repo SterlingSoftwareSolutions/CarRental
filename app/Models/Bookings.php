@@ -51,15 +51,18 @@ class Bookings extends Model
         return $this->belongsTo(Users::class);
     }
 
-    // Define the relationship with the User model
     public function transactions()
     {
         return $this->hasMany(Transaction::class, 'booking_id');
     }
 
-    // Define the relationship with the User model
     public function invoices()
     {
         return $this->hasMany(Invoice::class, 'booking_id');
+    }
+
+    public function surcharges()
+    {
+        return $this->hasMany(Surcharge::class, 'booking_id');
     }
 }

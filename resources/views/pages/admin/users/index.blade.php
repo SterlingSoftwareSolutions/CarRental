@@ -2,41 +2,41 @@
     <!-- Side BAr  -->
     <x-admin-sidebar />
 
-    <div class="sm:ml-64 p-6">
+    <div class="p-6 sm:ml-64">
 
         <!-- Top Grid  -->
-        <div class="grid lg:grid-cols-4 gap-10 ">
+        <div class="grid gap-10 lg:grid-cols-4 ">
             <!-- Total Users  -->
-            <div class="grid grid-cols-2 bg-white p-4 rounded-lg ">
+            <div class="grid grid-cols-2 p-4 bg-white rounded-lg ">
                 <div class="">
                     <p class="text-gray-500">Users</p>
-                    <p class="text-gray-600 text-2xl font-bold">
+                    <p class="text-2xl font-bold text-gray-600">
                         @php
                         echo count($users);
                         @endphp
                     </p>
-                    <p class="text-gray-400 text-sm ">Total Users</p>
+                    <p class="text-sm text-gray-400 ">Total Users</p>
                 </div>
 
                 <div class="flex justify-end">
-                    <svg class="w-11 h-11 p-3 rounded-md text-main-green bg-main-green " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
+                    <svg class="p-3 rounded-md w-11 h-11 text-main-green bg-main-green " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z" />
                     </svg>
                 </div>
             </div>
 
             <!-- Active Users  -->
-            <div class="grid grid-cols-2 bg-white p-4 rounded-lg">
+            <div class="grid grid-cols-2 p-4 bg-white rounded-lg">
                 <div class="">
                     <p class="text-gray-500">Active Users</p>
-                    <p class="text-gray-600 text-2xl font-bold">@php
+                    <p class="text-2xl font-bold text-gray-600">@php
                         echo count($users);
                         @endphp</p>
-                    <p class="text-gray-400 text-sm ">Active for today</p>
+                    <p class="text-sm text-gray-400 ">Active for today</p>
                 </div>
 
                 <div class="flex justify-end">
-                    <svg class="w-11 h-11 p-3 rounded-md text-main-green bg-main-green " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
+                    <svg class="p-3 rounded-md w-11 h-11 text-main-green bg-main-green " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z" />
                     </svg>
                 </div>
@@ -44,9 +44,9 @@
         </div>
 
         <div class="mt-10">
-            <div class="relative shadow-md sm:rounded-lg bg-white ">
+            <div class="relative bg-white shadow-md sm:rounded-lg ">
 
-                <div class="flex justify-end items-center">
+                <div class="flex items-center justify-end">
                     <div>
                         <!-- Search bar  -->
                         <form class="relative" method="get">
@@ -55,7 +55,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                                 </svg>
                             </div>
-                            <input type="text" id="default-search" name="search" class="border-none w-full p-4 pl-10 text-sm text-gray-500 bg-transparent focus:ring-0" placeholder="Search">
+                            <input type="text" id="default-search" name="search" class="w-full p-4 pl-10 text-sm text-gray-500 bg-transparent border-none focus:ring-0" placeholder="Search">
                         </form>
                     </div>
                 </div>
@@ -94,8 +94,7 @@
                                 </th>
 
                                 <th scope="col" class="px-6 py-3">
-                                    <span class="sr-only">Edit</span>
-
+                                    Actions
                                 </th>
                             </tr>
                         </thead>
@@ -108,9 +107,9 @@
                                         <div class="flex items-center">
                                             <div class="me-3">
                                                 @if(isset($user) && isset($user->images) && $user->images->count() > 0)
-                                                <img src="{{ Storage::url($user->images[0]->file_path) }}" alt="User Image" class="rounded-full w-10 h-10 object-cover">
+                                                <img src="{{ Storage::url($user->images[0]->file_path) }}" alt="User Image" class="object-cover w-10 h-10 rounded-full">
                                                 @else
-                                                <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" alt="User Image" class="rounded-full w-10 h-10 object-cover">
+                                                <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" alt="User Image" class="object-cover w-10 h-10 rounded-full">
                                                 @endif
                                             </div>
                                             <div>
@@ -140,15 +139,16 @@
                                 <td class="px-6 py-4">
                                     {{ $user['created_at'] }}
                                 </td>
-                                <td class="px-6 py-4 text-right">
-                                    <a href="/admin/users/{{ $user['id']}}/edit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                    /
-                                    <form action="/admin/user/{{ $user['id'] }}" method="POST" class="inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
-                                    </form>
-                                </td>
+                                <td class="px-6 py-4 text-center md:text-right">
+                                    <div class="flex flex-col justify-center gap-2 md:flex-row md:justify-end">
+                                        <a href="/admin/users/{{ $user['id']}}/edit" class="w-full px-3 py-2 text-center text-white bg-blue-600 rounded-full md:w-auto">Edit</a>
+                                        <form action="/admin/user/{{ $user['id'] }}" method="POST" class="inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="px-3 py-2 text-center text-white bg-red-600 rounded-full" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                                        </form>
+                                    </div>
+                                </td>                                
                             </tr>
                             @endforeach
                         </tbody>
