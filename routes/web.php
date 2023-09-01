@@ -64,6 +64,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/vehicles/{vehicle}', [VehiclesController::class, 'show'])->name('vehicle.show');
         Route::post('/vehicles', [VehiclesController::class, 'store'])->name('vehicles.store');
         Route::get('/bookings', [BookingsController::class, 'index'])->name('bookings.all');
+        Route::get('/bookings/{booking}', [BookingsController::class, 'show'])->name('bookings.show');
+        Route::post('/bookings/{booking}/surcharge', [BookingsController::class, 'add_surcharge'])->name('bookings.surcharge');
         Route::post('/bookings/{booking}/return', [BookingsController::class, 'return'])->name('bookings.return');
         Route::post('/bookings/{booking}/return_confirm', [BookingsController::class, 'return_confirm'])->name('bookings.return');
         Route::delete('/booking/{bookingId}', [BookingsController::class, 'destroy'])->name('delete_booking');
