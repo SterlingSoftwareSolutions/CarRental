@@ -12,7 +12,7 @@ class SurchargeController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.admin.surcharges.index', ['surcharges' => Surcharge::all()]);
     }
 
     /**

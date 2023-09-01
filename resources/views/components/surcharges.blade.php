@@ -52,10 +52,10 @@
                 </p>
             </td>
 
-            <td class="px-6 py-4">
-                <p>
-                    {{ $surcharge->note ?? 'N/A' }}
-                </p>
+            <td class="px-6 py-4 max-w-[150px]">
+                <div class="overflow-auto max-h-[160px]" >
+                    <pre>{{ $surcharge->note ?? 'N/A' }}</pre>
+                </div>
             </td>
 
 {{--             <td class="px-6 py-4">
