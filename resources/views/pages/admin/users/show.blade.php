@@ -97,69 +97,7 @@
         <div class="">
             <h1 class="p-4 font-semibold text-lg text-[#707070] mt-7">Fines & Tolls</h1>
             <div class="overflow-auto">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
-                    <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">
-                                #
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Vehicle Id
-                            </th>
-
-                            <th scope="col" class="px-6 py-3">
-                                Date
-                            </th>
-
-                            <th scope="col" class="px-6 py-3">
-                                <div class="flex items-center">
-                                    Troll/Fines Price
-                                </div>
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                <div class="flex items-center">
-                                    Action
-                                </div>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @for ($i = 0; $i < 1; $i++) <tr class="bg-white border-b">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
-                                <div class="flex items-center">
-                                    <div class="me-3">
-                                        <img src="{{ URL('images/Rectangle 148.png')}}" class="h-12 rounded w-15" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
-                                    </div>
-                                    <div>
-                                        <p>Nissan Sky-liner (Make + Model)</p>
-                                    </div>
-                                </div>
-                            </th>
-                            <td class="px-6 py-4">
-                                #SB123456
-                            </td>
-                            <td class="px-6 py-4">
-                                03/08/2023
-                            </td>
-                            <td class="px-6 py-4">
-                                $ 150.00
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex">
-                                    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        <img class="w-5 h-5" src="{{ URL('images/eye.png')}}" alt="" srcset="">
-                                        <span class="sr-only">Icon description</span>
-                                    </button>
-                                    <button type="button" class="text-white bg-[#08C561] hover:bg-[#4ade80] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        <img class="w-5 h-5 mr-2" src="{{ URL('images/credit-card.png')}}" alt="" srcset="">
-                                        Pay Now
-                                    </button>
-                                </div>
-                            </td>
-                            </tr>
-                            @endfor
-                    </tbody>
-                </table>
+                <x-surcharges :surcharges="$user->surcharges" :return="false"/>
             </div>
         </div>
 

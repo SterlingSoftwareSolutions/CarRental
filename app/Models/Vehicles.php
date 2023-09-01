@@ -40,6 +40,6 @@ class Vehicles extends Model
     }
 
     public function surcharges(){
-        return $this->hasManyThrough(Surcharge::class, Bookings::class);
+        return $this->hasManyThrough(Surcharge::class, Bookings::class, 'vehicle_id', 'id');
     }
 }

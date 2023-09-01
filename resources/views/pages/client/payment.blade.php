@@ -78,10 +78,12 @@
                             <td class="p-2 border-b-2 border-dotted">SUBTOTAL</td>
                             <td class="p-2 text-right border-b-2 border-dotted">AUD {{ $bookingData['bookingDaysCount'] * $bookingData->vehicle['price']}}.00</td>
                         </tr>
+{{--
                         <tr>
                             <td class="p-2 border-b-2 border-dotted">FINES</td>
                             <td class="p-2 text-right border-b-2 border-dotted">AUD 0.00</td>
                         </tr>
+--}}
                         <tr>
                             <td class="p-2 border-b-2 border-dotted">INSURANCE</td>
                             <td class="p-2 text-right border-b-2 border-dotted">AUD 0.00</td>

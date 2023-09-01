@@ -23,9 +23,9 @@
                 Notes
             </th>
 
-            <th scope="col" class="px-6 py-2">
+{{--             <th scope="col" class="px-6 py-2">
                 Status
-            </th>
+            </th> --}}
         </tr>
     </thead>
 
@@ -58,7 +58,7 @@
                 </p>
             </td>
 
-            <td class="px-6 py-4">
+{{--             <td class="px-6 py-4">
                 <p>
                     @if($surcharge->paid)
                         <span class="px-3 py-2 text-green-600 border border-green-600 rounded-full">Paid</span>
@@ -66,7 +66,7 @@
                         <span class="px-3 py-2 text-red-600 border border-red-600 rounded-full">Unpaid</span>
                     @endif
                 </p>
-            </td>
+            </td> --}}
         </tr>
         @endforeach
     </tbody>
