@@ -3,7 +3,7 @@
     <!-- Side Bar  -->
     <x-admin-sidebar />
 
-    <div class="sm:ml-64 p-6">
+    <div class="p-6 sm:ml-64">
 
         <!-- USER INFO -->
         <div class="">
@@ -51,9 +51,9 @@
                                 <div class="flex items-center">
                                     <div class="me-3">
                                         @if(isset($user) && isset($user->images) && $user->images->count() > 0)
-                                        <img src="{{ Storage::url($user->images[0]->file_path) }}" alt="User Image" class="rounded-full w-10 h-10 object-cover">
+                                        <img src="{{ Storage::url($user->images[0]->file_path) }}" alt="User Image" class="object-cover w-10 h-10 rounded-full">
                                         @else
-                                        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" alt="User Image" class="rounded-full w-10 h-10 object-cover">
+                                        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" alt="User Image" class="object-cover w-10 h-10 rounded-full">
                                         @endif
                                     </div>
                                     <div>
@@ -80,12 +80,11 @@
                                 {{ $user['created_at'] }}
                             </td>
                             <td class="px-6 py-4">
-                                <a href="/admin/users/{{ $user['id']}}/edit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                /
+                                <a href="/admin/users/{{ $user['id']}}/edit" class="w-full px-4 py-3 text-center text-white bg-blue-600 rounded-full md:w-auto">Edit</a>
                                 <form action="/admin/user/{{ $user['id'] }}" method="POST" class="inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                                    <button type="submit" class="px-3 py-2 text-center text-white bg-red-600 rounded-full" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
                                 </form>
                             </td>
                         </tr>
@@ -129,7 +128,7 @@
                             <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
                                 <div class="flex items-center">
                                     <div class="me-3">
-                                        <img src="{{ URL('images/Rectangle 148.png')}}" class="rounded w-15 h-12" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
+                                        <img src="{{ URL('images/Rectangle 148.png')}}" class="h-12 rounded w-15" alt="Logo Image" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
                                     </div>
                                     <div>
                                         <p>Nissan Sky-liner (Make + Model)</p>
