@@ -46,28 +46,30 @@
     <tbody>
         @foreach ($bookings as $booking)
         <tr class="bg-white border-b">
-            @if(isset($booking->vehicle))
             <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
-                <div class="flex items-center">
-                    <div class="me-3">
-                        <img src="
-                                @if(count($booking->vehicle->images))
-                                    {{Storage::url($booking->vehicle->images[0]->file_path)}}
-                                @else
-                                    /images/blank.png
-                                @endif
-                            " class="w-10 h-10 rounded-full" alt="Vehicle Image">
+            <a href="/admin/bookings/{{$booking->id}}">
+                @if(isset($booking->vehicle))
+                    <div class="flex items-center">
+                        <div class="me-3">
+                            <img src="
+                                    @if(count($booking->vehicle->images))
+                                        {{Storage::url($booking->vehicle->images[0]->file_path)}}
+                                    @else
+                                        /images/blank.png
+                                    @endif
+                                " class="w-10 h-10 rounded-full" alt="Vehicle Image">
+                        </div>
+                        <div>
+                            <p>{{ $booking->vehicle['make']}} {{ $booking->vehicle['model']}} #{{ $booking->vehicle['vin']}}</p>
+                        </div>
                     </div>
-                    <div>
-                        <p>{{ $booking->vehicle['make']}} {{ $booking->vehicle['model']}} #{{ $booking->vehicle['vin']}}</p>
-                    </div>
-                </div>
+                @else
+                    <p class="text-red-500">
+                    Vehicle no longer in the system.
+                    </p>
+                @endif
+            </a>
             </th>
-            @else
-            <th scope="row" class="px-6 py-4 font-medium text-red-500 whitespace-nowrap">
-                Vehicle no longer in the system.
-            </th>
-            @endif
 
             <td class="px-6 py-4">
                 <p>
@@ -105,12 +107,12 @@
             </td>
 
             <td class="px-6 py-4">
-                @if($booking->status == 'Unpaid')
-                    <span class="px-3 py-2 text-white bg-red-500 rounded-full">{{$booking->status}}</span>
-                @elseif($booking->status == 'Returned')
-                    <span class="px-3 py-2 text-black bg-yellow-500 rounded-full">{{$booking->status}}</span>
+                @if(strtolower($booking->status) == 'unpaid')
+                    <span class="px-3 py-2 text-red-600 border border-red-600 rounded-full">Unpaid</span>
+                @elseif(strtolower($booking->status) == 'returned')
+                    <span class="px-3 py-2 text-green-600 border border-green-600 rounded-full">Returned</span>
                 @else
-                    <span class="px-3 py-2 text-white bg-gray-600 rounded-full">{{$booking->status}}</span>
+                    <span class="px-3 py-2 text-gray-600 border border-gray-600 rounded-full">{{ ucfirst($booking->status)}}</span>
                 @endif
             </td>            
 
@@ -123,8 +125,12 @@
                     <button class="px-3 py-2 text-center text-white bg-blue-600 rounded-full" onclick="show_return_modal({{$booking->id}})">Return</button>
                     @endif
 
+                    {{-- SURCHARGES --}}
+                    <button class="px-3 py-2 text-center text-white bg-orange-500 rounded-full" onclick="show_surcharge_modal({{$booking->id}})">Fine/Toll</button>
+
                     {{-- EDIT BUTTON --}}
-                    <a href="/admin/bookings/{{ $booking['id']}}/edit" class="px-3 py-2 text-center text-white bg-green-600 rounded-full">Edit</a>
+                    {{-- <a href="/admin/bookings/{{ $booking['id']}}/edit" class="px-3 py-2 text-center text-white bg-green-600 rounded-full" disabled>Edit</a> --}}
+                    <button class="px-3 py-2 text-center text-white bg-green-300 rounded-full" disabled>Edit</button>
 
                     {{-- DELETE BUTTON --}}
                     <form action="/admin/booking/{{ $booking['id'] }}" method="POST" class="inline">
@@ -160,7 +166,42 @@
     </div>
 </div>
 
+<div class="relative z-40 hidden" id="surcharge_modal">
+    <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"></div>
+    <div class="fixed inset-0 z-10 overflow-y-auto">
+        <div class="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
+            <div class="relative p-5 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:w-full sm:max-w-lg">
+                <form class="flex flex-col gap-2" id="surcharge_form" method="post">
+                    @csrf
+                    <div class="flex gap-2">
+                        <div class="w-1/2">
+                            <h1>Type:</h1>
+                            <select name="type" class="w-full rounded-full mt-2">
+                                <option value="fine">Fine</option>
+                                <option value="toll">Toll</option>
+                            </select>
+                        </div>
+                        <div class="w-1/2">
+                            <h1>Date:</h1>
+                            <input class="w-full rounded-full mt-2" type="date" name="date" id="surcharge_form_date">
+                        </div>
+                    </div>
+                    <h1>Amount:</h1>
+                    <input class="w-full rounded-full" type="number" min="0" name="amount" id="surcharge_form_date" required>
+                    <h1>Notes:</h1>
+                    <textarea class="w-full rounded-xl" style="scrollbar-width: none;" rows="4" name="note"></textarea>
+                    <div class="flex justify-end gap-1">
+                        <button type="button" class="px-3 py-2 text-gray-500 border border-gray-600 rounded-full" onclick="hide_surcharge_modal()">Cancel</button>
+                        <button class="px-3 py-2 text-white bg-orange-500 rounded-full">Add Fine / Toll</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
+    // RETURN VEHICLE
     const return_modal = document.getElementById('return_modal')
     const return_form = document.getElementById('return_form')
     const return_form_date = document.getElementById('return_form_date')
@@ -173,6 +214,22 @@
         return_form_date.value = new Date().toISOString().substring(0, 10);
         return_form.setAttribute('action', '/admin/bookings/' + booking + '/return');
         return_modal.classList.remove('hidden');
+    }
+
+
+    // SURCHARGES
+    const surcharge_modal = document.getElementById('surcharge_modal')
+    const surcharge_form = document.getElementById('surcharge_form')
+    const surcharge_form_date = document.getElementById('surcharge_form_date')
+
+    function hide_surcharge_modal(){
+        surcharge_modal.classList.add('hidden');
+    }
+
+    function show_surcharge_modal(booking){
+        surcharge_form_date.value = new Date().toISOString().substring(0, 10);
+        surcharge_form.setAttribute('action', '/admin/bookings/' + booking + '/surcharge');
+        surcharge_modal.classList.remove('hidden');
     }
 </script>
 

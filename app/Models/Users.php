@@ -70,4 +70,9 @@ class Users extends Authenticatable
     {
         return $this->hasManyThrough(Invoice::class, Bookings::class, 'user_id', 'id');
     }
+
+    public function surcharges()
+    {
+        return $this->hasManyThrough(Surcharge::class, Bookings::class, 'user_id', 'id');
+    }
 }
