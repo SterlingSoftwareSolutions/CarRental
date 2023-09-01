@@ -79,7 +79,7 @@
             @foreach ($vehicles as $vehicle)
             <!-- Repeat this section for each car item -->
             <div class="bg-[#F8FFF2] grid p-4 rounded-lg shadow-lg transform hover:-translate-y-1 hover:rotate-x-2 hover:shadow-xl transition-transform duration-300">
-                <img class="object-cover w-full h-56 rounded md:w-full" src="@if($vehicle->images[0] ?? null) {{Storage::url($vehicle->images[0]->file_path)}} @else images/default.png @endif">
+                <img class="object-cover w-full h-56 rounded md:w-full" src="@if($vehicle->images[0] ?? null) {{$vehicle->images[0]->file_path}} @else images/default.png @endif">
                 <div class="flex items-center justify-between p-4">
                     <div class="flex w-4/6">
                         <div class="bg-[#F8FFF2] grid">

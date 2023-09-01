@@ -91,7 +91,7 @@
                                         <div class="flex items-center">
                                             <div class="me-3">
                                                 @if(isset($vehicle) && isset($vehicle->images) && $vehicle->images->count() > 0)
-                                                <img src="{{ Storage::url($vehicle->images[0]->file_path) }}" alt="vehicle Image" class="w-10 h-10 rounded-full">
+                                                <img src="{{ $vehicle->images[0]->file_path }}" alt="vehicle Image" class="w-10 h-10 rounded-full">
                                                 @else
                                                 <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80" alt="User Image" class="w-10 h-10 rounded-full">
                                                 @endif
