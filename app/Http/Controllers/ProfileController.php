@@ -30,20 +30,21 @@ class ProfileController extends Controller
     {
         $user = $request->user();
         $values = $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                Rule::unique('users')->ignore($user->id),
-            ],
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'mobile' => 'required|string|max:20',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'Address_1' => 'required|string|max:255',
+            'Address_2' => 'nullable|string|max:255',
+            'city' => 'required|string|max:255',
+            'zip' => 'required|string|max:20',
         ]);
+
         if ($request->hasFile('avatar')) {
             $imagePath = $request->file('avatar')->store('public/user_images');
             Attachments::updateOrCreate(['referenceId' => $user->id,], ['file_path' => $imagePath,], ['attachment_type' => "User Image"]);
         }
+
         $user->update($values);
         return back()->with('status', 'profile-updated');
     }
