@@ -38,7 +38,7 @@
             @include('auth.login')
         </div>
     </x-modal>
-        @endif
+    @endif
 
     <!-- start navigation -->
     @include('layouts.navigation')
@@ -47,8 +47,8 @@
     <!-- main home banner  -->
     <div class="main-banner flex justify-right items-center px-4 py-8 md:py-22">
         <div class="grid justify-center items-center align-middle md:pl-32 pl-1 mt-60 md:mt-20">
-            <h1 class="text-white text-3xl md:text-5xl font-bold mb-2 md:mb-4">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
-            <p class="text-white text-sm md:text-lg font-bold ">Rent a Car for Your Next Adventure with Our Convenient <br class="hidden md:inline"> and Reliable Services</p>
+            <h1 class="text-white text-3xl md:text-5xl lg:text-4xl font-bold mb-2 md:mb-4">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
+            <p class="text-white text-sm md:text-lg font-">Rent a Car for Your Next Adventure with Our Convenient <br class="hidden md:inline"> and Reliable Services</p>
             <div class="flex flex-col md:flex-row gap-5 mt-12 md:mt-4 md:w-1/2">
                 <div class="grid bg-black rounded-lg search-foam md:w-10 lg:w-auto">
                     <div class="text-center">

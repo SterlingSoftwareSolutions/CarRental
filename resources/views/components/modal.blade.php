@@ -49,7 +49,6 @@ $maxWidth = [
 
 
     <div x-show="show" class=" bg-white rounded-lg overflow-auto shadow-xl transform transition-all {{ $maxWidth }} sm:mx-auto h-5/6 md:h-4/5 " x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-
         <!-- Close button -->
         <button class="absolute top-2 right-2 text-main-green bg-white rounded-3xl focus:outline-none" x-on:click="show = false">
             <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
