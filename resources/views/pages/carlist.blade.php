@@ -14,7 +14,7 @@
 
 </head>
 
-<body>
+<body></body>
     <!-- start navigation -->
     @include('layouts.navigation')
     <!-- end navigation -->
