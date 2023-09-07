@@ -23,10 +23,10 @@
     @include('layouts.navigation')
     <!-- end navigation -->
     <!-- section one -->
-    <div class="flex md:flex-wrap md:justify-center md:items-start">
-        <div class="grid grid-flow-row p-4 mt-24 md:w-full lg:w-4/12 sm:mt-18">
+    <div class="flex flex-col items-center justify-center md:flex-row md:justify-center md:items-start">
+        <div class="grid grid-flow-row p-4 mt-24 md:w-full lg:w-4/12 sm:w-full sm:mt-4">
 
-            <div class="bg-[#F8FFF2] p-8">
+            <div class="bg-[#F8FFF2] p-8 md:mt-16">
 
                 <!-- car image -->
                 <div class="w-full">
@@ -78,12 +78,6 @@
                             <td class="p-2 border-b-2 border-dotted">SUBTOTAL</td>
                             <td class="p-2 text-right border-b-2 border-dotted">AUD {{ $bookingData['bookingDaysCount'] * $bookingData->vehicle['price']}}.00</td>
                         </tr>
-{{--
-                        <tr>
-                            <td class="p-2 border-b-2 border-dotted">FINES</td>
-                            <td class="p-2 text-right border-b-2 border-dotted">AUD 0.00</td>
-                        </tr>
---}}
                         <tr>
                             <td class="p-2 border-b-2 border-dotted">INSURANCE</td>
                             <td class="p-2 text-right border-b-2 border-dotted">AUD 0.00</td>
@@ -209,28 +203,28 @@
                     {{-- << CREDIT CARD INFO --}} 
                     <div class="w-full">
                         <form action="" id="payment-form">
-                            <div id="card_details" class="mt-5 flex flex-col gap-5 relative">
+                            <div id="card_details" class="relative flex flex-col gap-5 mt-5">
                                 <input type="text" name="card_holder_name" id="card-holder-name"
-                                    class="w-full rounded-md border-none bg-white shadow-md p-3" placeholder="Name on card">
+                                    class="w-full p-3 bg-white border-none rounded-md shadow-md" placeholder="Name on card">
 
-                                <div class="w-full rounded-md border-none bg-white shadow-md px-3">
-                                    <div id="card-number" class="form-control my-auto py-3"></div>
+                                <div class="w-full px-3 bg-white border-none rounded-md shadow-md">
+                                    <div id="card-number" class="py-3 my-auto form-control"></div>
                                 </div>
 
-                                <div class="w-full rounded-md border-none bg-white shadow-md px-3">
-                                    <div id="card-cvc" class="form-control py-3"></div>
+                                <div class="w-full px-3 bg-white border-none rounded-md shadow-md">
+                                    <div id="card-cvc" class="py-3 form-control"></div>
                                 </div>
 
-                                <div class="w-full rounded-md border-none bg-white shadow-md px-3">
-                                    <div id="card-expiry" class="form-control py-3"></div>
+                                <div class="w-full px-3 bg-white border-none rounded-md shadow-md">
+                                    <div id="card-expiry" class="py-3 form-control"></div>
                                 </div>
 
-                                <div id="card-errors" class="form-control py-3 absolute bottom-0"></div>
+                                <div id="card-errors" class="absolute bottom-0 py-3 form-control"></div>
 
                                 <button 
                                     type="button"
                                     id="card-button"
-                                    class="rounded-md border-none bg-green-900 text-white shadow-md p-3 w-1/2 ms-auto"
+                                    class="w-1/2 p-3 text-white bg-green-900 border-none rounded-md shadow-md ms-auto"
                                 >
                                 @if($amount)
                                     Pay ${{$amount}}
