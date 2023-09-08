@@ -1,13 +1,13 @@
-<nav class="nav w-full z-50">
-	<div class="logo p-10 md:pl-0 md:w-2/12 flex justify-end items-center z-50">
+<nav class="z-50 w-full nav">
+	<div class="z-50 flex items-center justify-end p-10 logo md:pl-0 md:w-2/12">
 		<img class="w-full md:w-full" src="{{ URL('images/flg_logo11079.png')}}" alt="Logo Image">
 	</div>
-	<div class="hamburger p-4 cursor-pointer">
-		<div class="line1 bg-white h-1 w-6 mb-1"></div>
-		<div class="line2 bg-white h-1 w-6 mb-1"></div>
-		<div class="line3 bg-white h-1 w-6"></div>
+	<div class="p-4 cursor-pointer hamburger">
+		<div class="w-6 h-1 mb-1 bg-white line1"></div>
+		<div class="w-6 h-1 mb-1 bg-white line2"></div>
+		<div class="w-6 h-1 bg-white line3"></div>
 	</div>
-	<ul class="nav-links w-2/6 flex justify-between items-center p-4 mx-auto">
+	<ul class="flex items-center justify-between w-2/6 p-4 mx-auto nav-links">
 		<li><a class="text-white font-semibold hover:text-[#E0AA87]" href="{{route('home')}}">HOME</a></li>
 		<li><a class="text-white font-semibold hover:text-[#E0AA87]" href="{{route('carlist')}}">VEHICLE LIST</a></li>
 		<li><a class="text-white font-semibold hover:text-[#E0AA87]" href="{{route('about')}}">ABOUT US</a></li>
@@ -19,12 +19,12 @@
 			    <img
 			    	
 					src="@if(isset(Auth::user()->images[0])) {{Storage::url(Auth::user()->images[0]->file_path)}} @else /images/avatar.png @endif"
-					class="rounded-full w-12 h-12 object-cover cursor-pointer"
+					class="object-cover w-12 h-12 rounded-full cursor-pointer"
 					alt="Avatar"
 					@click="dropdownMenu = ! dropdownMenu"
 				/>
 			    <!-- Dropdown list -->
-			    <div x-show="dropdownMenu" class="absolute right-0 mt-2 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+				<div x-show="dropdownMenu" class="absolute right-0 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 md:bottom-auto bottom-12">
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
                         <li>
                             <a href="{{ route('profile.edit') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My Profile</a>
@@ -44,7 +44,7 @@
 			</div>
 		</li>
 		@else
-    	<li><a class="text-white font-semibold login-button" href="{{ route('login') }}">Login</a></li>
+    	<li><a class="font-semibold text-white login-button" href="{{ route('login') }}">Login</a></li>
 		@endif
 	</ul>
 </nav>

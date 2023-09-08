@@ -45,28 +45,28 @@
     <!-- end navigation -->
 
     <!-- main home banner  -->
-    <div class="main-banner flex justify-right items-center px-4 py-8 md:py-22">
-        <div class="grid justify-center items-center align-middle md:pl-32 pl-1 mt-60 md:mt-20">
-            <h1 class="text-white text-3xl md:text-5xl lg:text-4xl font-bold mb-2 md:mb-4">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
-            <p class="text-white text-sm md:text-lg font-">Rent a Car for Your Next Adventure with Our Convenient <br class="hidden md:inline"> and Reliable Services</p>
-            <div class="flex flex-col md:flex-row gap-5 mt-12 md:mt-4 md:w-1/2">
+    <div class="flex items-center px-4 py-8 main-banner justify-right md:py-22">
+        <div class="grid items-center justify-center pl-1 align-middle md:pl-32 mt-60 md:mt-20">
+            <h1 class="mb-2 text-3xl font-bold text-white md:text-5xl lg:text-4xl md:mb-4">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
+            <p class="text-sm text-white md:text-lg font-">Rent a Car for Your Next Adventure with Our Convenient <br class="hidden md:inline"> and Reliable Services</p>
+            <div class="flex flex-col gap-5 mt-12 md:flex-row md:mt-4 md:w-1/2">
                 <div class="grid bg-black rounded-lg search-foam md:w-10 lg:w-auto">
                     <div class="text-center">
-                        <p class="text-white text-sm md:text-lg font-bold mt-2 md:mt-2">Ready to hit the road?</p>
+                        <p class="mt-2 text-sm font-bold text-white md:text-lg md:mt-2">Ready to hit the road?</p>
                     </div>
                     @php
                     $filters = App\Http\Controllers\VehiclesController::filters();
                     @endphp
-                    <form class=" w-4/6 lg:w-full" action="/carlist">
+                    <form class="w-4/6 lg:w-full" action="/carlist">
                         <label class="font-bold text-[#707070]" for="">Make</label>
-                        <select class="w-full h-12 md:h-9 mt-2 rounded-md border-none" name="make" id="cars">
+                        <select class="w-full h-12 mt-2 border-none rounded-md md:h-9" name="make" id="cars">
                             <option class="text-sm" value="">All Makes</option>
                             @foreach($filters['makes'] as $opt)
                             <option class="text-sm" value="{{$opt}}" @if(Request()->make == $opt) selected @endif>{{$opt}}</option>
                             @endforeach
                         </select>
                         <label class="font-bold text-[#707070]" for="">Model</label>
-                        <select class="w-full h-12 md:h-9 mt-2 rounded-md border-none" name="model" id="cars">
+                        <select class="w-full h-12 mt-2 border-none rounded-md md:h-9" name="model" id="cars">
                             <option class="text-sm" value="">All Models</option>
                             @foreach($filters['models'] as $opt)
                             <option class="text-sm" value="{{$opt}}" @if(Request()->model == $opt) selected @endif>{{$opt}}</option>
@@ -74,14 +74,14 @@
                         </select>
 
                         <label class="font-bold text-[#707070]" for="">Body Type</label>
-                        <select class="w-full h-12 md:h-9 mt-2 rounded-md border-none" name="body_type" id="cars">
+                        <select class="w-full h-12 mt-2 border-none rounded-md md:h-9" name="body_type" id="cars">
                             <option class="text-sm" value="">All Body Types</option>
                             @foreach($filters['body_types'] as $opt)
                             <option class="text-sm" value="{{$opt}}" @if(Request()->body_type == $opt) selected @endif>{{$opt}}</option>
                             @endforeach
                         </select>
                         <label class="font-bold text-[#707070]" for="">Transmission</label>
-                        <select class="w-full h-12 md:h-9 mt-2 rounded-md border-none" name="transmission" id="cars">
+                        <select class="w-full h-12 mt-2 border-none rounded-md md:h-9" name="transmission" id="cars">
                             <option class="text-sm" value="">All Transmissions</option>
                             @foreach($filters['transmissions'] as $opt)
                             <option class="text-sm" value="{{$opt}}" @if(Request()->transmission == $opt) selected @endif>{{$opt}}</option>
@@ -95,9 +95,9 @@
                         @csrf
                         @method('GET')
                         <input type="text" hidden name="availability" value="1">
-                        <div class="container-search mt-2 md:mt-4">
-                            <span class="selected-display text-white" id="destination">Choose Vehicle</span>
-                            <select class="w-full text-black h-12 rounded-md border-none" name="make" id="make">
+                        <div class="mt-2 container-search md:mt-4">
+                            <span class="text-white selected-display" id="destination">Choose Vehicle</span>
+                            <select class="w-full h-12 text-black border-none rounded-md" name="make" id="make">
                                 <option value="Toyota" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Toyota' ? 'selected' : '' }}>Toyota</option>
                                 <option value="BMW" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'BMW' ? 'selected' : '' }}>BMW</option>
                                 <option value="Benz" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Benz' ? 'selected' : '' }}>Benz</option>
@@ -107,14 +107,14 @@
                                 <!-- Add more body types as needed with the same `old()` check -->
                             </select>
                         </div>
-                        <div class="flex flex-col gap-2 md:flex-row md:gap-x-4 mt-3 md:mt-5">
+                        <div class="flex flex-col gap-2 mt-3 md:flex-row md:gap-x-4 md:mt-5">
                             <div>
                                 <p class="mt-2 font-semibold text-[#707070]">Pick-up Date & Time</p>
-                                <input class="date-input rounded-md text-sm w-full md:text-base" type="datetime-local" id="pickup_time" name="pickup_time">
+                                <input class="w-full text-sm rounded-md date-input md:text-base" type="datetime-local" id="pickup_time" name="pickup_time">
                             </div>
                             <div>
                                 <p class="mt-2 font-semibold text-[#707070]">Dropp Off Date & Time</p>
-                                <input class="date-input rounded-md text-sm w-full md:text-base" type="datetime-local" id="dropoff_time" name="dropoff_time">
+                                <input class="w-full text-sm rounded-md date-input md:text-base" type="datetime-local" id="dropoff_time" name="dropoff_time">
                             </div>
                         </div>
 
@@ -132,18 +132,18 @@
     <!-- end main home banner  -->
 
     <!-- why choose us section -->
-    <div class="text-center mt-40 md:mt-0">
+    <div class="mt-40 text-center md:mt-0">
         <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Why Choose Us</h1>
-        <p class="text-base md:text-lg text-gray-500 mt-4 md:mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+        <p class="mt-4 text-base font-medium text-gray-500 md:text-lg md:mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
-    <div class="whychoose-section w-full">
-        <div class="flex items-center justify-center p-5 md:p-0 mt-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="w-full whychoose-section">
+        <div class="flex items-center justify-center p-5 mt-4 md:p-0">
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <a class="flex flex-col items-center justify-center md:flex-row md:max-w-xl">
                     <div class="bg-white rounded-md border-2 border-[#317256] p-4 hover:border-t-8 ">
                         <img class="object-cover w-14 h-14 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg " src="{{ URL('images/car-insurance.png')}}" alt="">
                     </div>
-                    <div class="flex flex-col justify-center md:justify-between p-4 leading-normal text-center md:text-left">
+                    <div class="flex flex-col justify-center p-4 leading-normal text-center md:justify-between md:text-left">
                         <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Wide Range of Vehicles</h5>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a </p>
                     </div>
@@ -152,7 +152,7 @@
                     <div class="bg-white rounded-md border-2 border-[#317256] p-4 hover:border-t-8 ">
                         <img class="object-cover w-14 h-14 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ URL('images/offer.png')}}" alt="">
                     </div>
-                    <div class="flex flex-col justify-center md:justify-between p-4 leading-normal text-center md:text-left">
+                    <div class="flex flex-col justify-center p-4 leading-normal text-center md:justify-between md:text-left">
                         <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Competitive Prices</h5>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a </p>
                     </div>
@@ -160,12 +160,12 @@
             </div>
         </div>
         <div class="flex items-center justify-center mt-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <a class="flex flex-col items-center justify-center md:flex-row md:max-w-xl">
                     <div class="bg-white rounded-md border-2 border-[#317256] p-4 hover:border-t-8 ">
                         <img class="object-cover w-14 h-14 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ URL('images/tap.png')}}" alt="">
                     </div>
-                    <div class="flex flex-col justify-center md:justify-between p-4 leading-normal text-center md:text-left">
+                    <div class="flex flex-col justify-center p-4 leading-normal text-center md:justify-between md:text-left">
                         <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Easy Booking Process</h5>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a </p>
                     </div>
@@ -175,7 +175,7 @@
                     <div class="bg-white rounded-md border-2 border-[#317256] p-4 hover:border-t-8 ">
                         <img class="object-cover w-14 h-14 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ URL('images/tap (1).png')}}" alt="">
                     </div>
-                    <div class="flex flex-col justify-center md:justify-between p-4 leading-normal text-center md:text-left">
+                    <div class="flex flex-col justify-center p-4 leading-normal text-center md:justify-between md:text-left">
                         <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Flexible Rental Options</h5>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a </p>
                     </div>
@@ -186,57 +186,58 @@
     <!-- end why choose us section -->
 
     <!-- discover our lates section -->
-    <div class="text-center mt-12">
+    <div class="mt-12 text-center">
         <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Discover Our Latest Cars for Rental</h1>
-        <p class="text-base md:text-lg text-gray-500 mt-4 md:mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+        <p class="mt-4 text-base font-medium text-gray-500 md:text-lg md:mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
     <div class="discover-section">
-        <div class="flex items-center justify-center">
-            <div class=" mb-4 md:mb-0 ">
+        <div class="flex flex-col items-center justify-center md:flex-row"> <!-- Center content vertically on mobile -->
+            <div class="mb-4 md:mb-0">
                 <a href="" class="flex flex-col items-center md:flex-row md:max-w-xl">
                     <div>
-                        <img class="hidden md:block object-cover md:h-96 md:w-50 w-full h-full md:rounded-none md:rounded-l-lg mt-12" src="{{ URL('images/Rectangle 27.png')}}" alt="">
+                        <img class="hidden object-cover w-full h-full mt-12 md:block md:h-96 md:w-50 md:rounded-none md:rounded-l-lg" src="{{ URL('images/Rectangle 27.png')}}" alt="">
                     </div>
                 </a>
             </div>
             <div>
-                <div class="tab pl-8 md:pl-4">
+                <div class="tab">
                     <input class="tab-input" id="tab1" type="radio" name="tabs" checked>
                     <label class="tab-label" for="tab1">Features</label>
                     <input class="tab-input" id="tab2" type="radio" name="tabs">
                     <label class="tab-label" for="tab2">Specifications</label>
-
-                    <div id="content1" class="text-center md:text-left">
+                    
+                    <!-- Content for "Features" tab -->
+                    <div id="content1" class="mt-4">
                         <div class="px-2 md:px-0 slider">
-                            <div class="slides mt-2">
+                            <div class="mt-2 slides">
                                 @if (isset($vehicles))
                                 @foreach ($vehicles as $vehicle)
-                                <div class="slide mb-4">
+                                <div class="mb-4 slide">
                                     <div class="inner_content">
                                         <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl">
-                                            <div>
+                                            <div class="hidden md:block">
                                                 @if ($vehicle->images->count() > 0)
                                                 @php
                                                 $firstImage = $vehicle->images[0];
                                                 @endphp
-                                                <img class="w-96 h-auto md:h-32 md:w-52 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
+                                                <img class="h-auto w-96 md:h-32 md:w-52 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
                                                 @else
-                                                <img class="w-72 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
+                                                <img class="h-auto w-96 md:h-32 md:w-52 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
                                                 @endif
                                             </div>
                                             <div class="flex flex-col justify-between p-2 w-80 md:w-96 h-30 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
                                                 @if (!empty($vehicle['make']) && !empty($vehicle['model']))
-                                                <h5 class="mb-2 text-sm md:text-lg font-semibold tracking-tight text-gray-500 text-left">{{ $vehicle['make']}} {{ $vehicle['model']}}</h5>
+                                                <h5 class="mb-2 text-sm font-semibold tracking-tight text-left text-gray-500 md:text-lg">{{ $vehicle['make']}} {{ $vehicle['model']}}</h5>
                                                 @else
-                                                <h5 class="mb-2 text-sm md:text-lg font-semibold tracking-tight text-gray-500 text-left">Vehicle Details Missing</h5>
+                                                <h5 class="mb-2 text-sm font-semibold tracking-tight text-left text-gray-500 md:text-lg">Vehicle Details Missing</h5>
                                                 @endif
-
+    
                                                 @if (!empty($vehicle['passengers']))
-                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 text-left">{{ $vehicle['passengers']}} Seated Car </p>
+                                                <p class="mb-3 font-normal text-left text-gray-700 dark:text-gray-400">{{ $vehicle['passengers']}} Seated Car </p>
                                                 @endif
-
+    
                                                 @if (!empty($vehicle['price']))
-                                                <p class="mb-3 text-sm font-semibold text-green-500 dark:text-gray-400 text-left">$ {{ $vehicle['price']}} p/day </p>
+                                                <p class="mb-3 text-sm font-semibold text-left text-green-500 dark:text-gray-400">$ {{ $vehicle['price']}} p/day </p>
                                                 @endif
                                             </div>
                                         </a>
@@ -246,42 +247,43 @@
                                 @else
                                 <p>No vehicles available.</p>
                                 @endif
-
                             </div>
                         </div>
                     </div>
-                    <!-- end of section 1 -->
-                    <div id="content2">
+                    <!-- End of "Features" tab content -->
+    
+                    <!-- Content for "Specifications" tab -->
+                    <div id="content2" class="mt-4">
                         <div class="px-2 md:px-0 slider">
-                            <div class="slides mt-2">
+                            <div class="mt-2 slides">
                                 @if (isset($vehicles))
                                 @foreach ($vehicles as $vehicle)
-                                <div class="slide mb-4">
+                                <div class="mb-4 slide">
                                     <div class="inner_content">
                                         <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl">
-                                            <div>
+                                            <div class="hidden md:block">
                                                 @if ($vehicle->images->count() > 0)
                                                 @php
                                                 $firstImage = $vehicle->images[0];
                                                 @endphp
-                                                <img class="w-96 h-auto md:h-32 md:w-52 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
+                                                <img class="h-auto w-96 md:h-32 md:w-52 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
                                                 @else
-                                                <img class="w-72 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
+                                                <img class="h-auto w-96 md:h-32 md:w-52 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
                                                 @endif
                                             </div>
                                             <div class="flex flex-col justify-between p-2 w-80 md:w-96 h-30 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
                                                 @if (!empty($vehicle['make']) && !empty($vehicle['model']))
-                                                <h5 class="mb-2 text-sm md:text-lg font-semibold tracking-tight text-gray-500 text-left">{{ $vehicle['make']}} {{ $vehicle['model']}}</h5>
+                                                <h5 class="mb-2 text-sm font-semibold tracking-tight text-left text-gray-500 md:text-lg">{{ $vehicle['make']}} {{ $vehicle['model']}}</h5>
                                                 @else
-                                                <h5 class="mb-2 text-sm md:text-lg font-semibold tracking-tight text-gray-500 text-left">Vehicle Details Missing</h5>
+                                                <h5 class="mb-2 text-sm font-semibold tracking-tight text-left text-gray-500 md:text-lg">Vehicle Details Missing</h5>
                                                 @endif
-
+    
                                                 @if (!empty($vehicle['passengers']))
-                                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 text-left">{{ $vehicle['passengers']}} Seated Car </p>
+                                                <p class="mb-3 font-normal text-left text-gray-700 dark:text-gray-400">{{ $vehicle['passengers']}} Seated Car </p>
                                                 @endif
-
+    
                                                 @if (!empty($vehicle['price']))
-                                                <p class="mb-3 text-sm font-semibold text-green-500 dark:text-gray-400 text-left">$ {{ $vehicle['price']}} p/day </p>
+                                                <p class="mb-3 text-sm font-semibold text-left text-green-500 dark:text-gray-400">$ {{ $vehicle['price']}} p/day </p>
                                                 @endif
                                             </div>
                                         </a>
@@ -291,29 +293,30 @@
                                 @else
                                 <p>No vehicles available.</p>
                                 @endif
-
                             </div>
                         </div>
                     </div>
+                    <!-- End of "Specifications" tab content -->
                 </div>
             </div>
         </div>
     </div>
+    
     <!-- end discover our lates section -->
 
     <!-- diverse vehicle section -->
-    <div class="text-center mt-12 sm:mt-20">
+    <div class="mt-12 text-center sm:mt-20">
         <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Diverse Vehicle Selection for Every Journey</h1>
-        <p class="text-base md:text-lg text-gray-500 mt-4 md:mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+        <p class="mt-4 text-base font-medium text-gray-500 md:text-lg md:mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
-    <div id="app" class="w-4/6 mx-auto px-0 md:px-8 py-0 md:py-12 transition-all duration-500 ease-linear">
+    <div id="app" class="w-4/6 px-0 py-0 mx-auto transition-all duration-500 ease-linear md:px-8 md:py-12">
         <div class="relative">
             <div class="slides-container h-80 flex snap-x snap-mandatory overflow-hidden overflow-x-auto space-x-4 rounded scroll-smooth before:w-[45vw] before:shrink-0 after:w-[45vw] after:shrink-0 md:before:w-0 md:after:w-0">
                 @if (isset($vehicles))
                 @foreach ($vehicles as $vehicle)
                 <div class="lide overflow-hidden slide aspect-square rounded-lg h-full flex-shrink-0 snap-center shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
                     <img class="w-full rounded-lg" src="{{ Storage::url($firstImage->file_path ?? null) }}" alt="mountain_image">
-                    <div class="grid justify-items-stretch items-center justify-center ">
+                    <div class="grid items-center justify-center justify-items-stretch ">
                         <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">{{ $vehicle['make']}}</h1>
                         <p class="p-2">{{ $vehicle['short_Description']}} </p>
                     </div>
@@ -323,16 +326,16 @@
                 <p>No vehicles available.</p>
                 @endif
             </div>
-            <div class="absolute top-0 -left-4 h-full items-center">
+            <div class="absolute top-0 items-center h-full -left-4">
                 <button role="button" class="prev px-2 py-2 rounded-full bg-[#317256] text-neutral-900 group" aria-label="prev">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 group-active:-translate-x-2 transition-all duration-200 ease-linear">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 transition-all duration-200 ease-linear group-active:-translate-x-2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                     </svg>
                 </button>
             </div>
-            <div class="absolute top-0 -right-4 h-full items-center">
+            <div class="absolute top-0 items-center h-full -right-4">
                 <button role="button" class="next px-2 py-2 rounded-full bg-[#317256] text-neutral-900 group" aria-label="next">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 group-active:translate-x-2 transition-all duration-200 ease-linear">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 transition-all duration-200 ease-linear group-active:translate-x-2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                     </svg>
                 </button>
@@ -349,45 +352,45 @@
 
     <!-- car rental section -->
     <div class="bg-[#317256] mt-20">
-        <div class="flex justify-stretch md:justify-center mt-4 w-12/12">
+        <div class="flex mt-4 justify-stretch md:justify-center w-12/12">
             <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                <a class="flex flex-col h-full items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <a class="flex flex-col items-center h-full md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                     <div>
-                        <img class="object-cover h-96 hidden md:block" src="{{ URL('images/roland-denes-EWf48MRVUNE-unsplash.png')}}" alt="">
+                        <img class="hidden object-cover h-96 md:block" src="{{ URL('images/roland-denes-EWf48MRVUNE-unsplash.png')}}" alt="">
                     </div>
                     <div class="pl-5">
-                        <img class="object-cover h-96 hidden md:block" src="{{ URL('images/nate-johnston-obOin8-m5sw-unsplash.png')}}" alt="">
+                        <img class="hidden object-cover h-96 md:block" src="{{ URL('images/nate-johnston-obOin8-m5sw-unsplash.png')}}" alt="">
                     </div>
                 </a>
             </a>
             <a href="#" class="grid items-center md:flex-row md:max-w-xl">
                 <div class="grid p-2 md:p-8">
-                    <h1 class="text-white font-semibold mt-0 md:-mt-5 text-xl md:text-3xl">Car Rental Experts You Trust</h1>
-                    <p class="text-white mt-4 md:mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate.</p>
+                    <h1 class="mt-0 text-xl font-semibold text-white md:-mt-5 md:text-3xl">Car Rental Experts You Trust</h1>
+                    <p class="mt-4 text-white md:mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate.</p>
                 </div>
                 <div class="container mt-3 md:mt-0">
-                    <div class="counter-container grid grid-cols-1 md:grid-cols-3">
-                        <div class="counter text-center md:last:border-0">
+                    <div class="grid grid-cols-1 counter-container md:grid-cols-3">
+                        <div class="text-center counter md:last:border-0">
                             <div class="flex">
                                 <h3 data-target="12" class="text-[#e0aa87] font-semibold text-2xl md:text-5xl count">0</h3><span class="text-[#e0aa87] font-semibold text-2xl md:text-5xl">+</span>
                             </div>
-                            <p class="text-white text-sm md:text-lg">Years Experience</p>
+                            <p class="text-sm text-white md:text-lg">Years Experience</p>
                         </div>
-                        <div class="counter text-center md:last:border-0">
+                        <div class="text-center counter md:last:border-0">
                             <div class="flex">
                                 <h3 data-target="66" class="text-[#e0aa87] font-semibold text-2xl md:text-5xl count">0</h3><span class="text-[#e0aa87] font-semibold text-2xl md:text-5xl">+</span>
                             </div>
-                            <p class="text-white text-sm md:text-lg">Rental Cars</p>
+                            <p class="text-sm text-white md:text-lg">Rental Cars</p>
                         </div>
-                        <div class="counter text-center">
+                        <div class="text-center counter">
                             <div class="flex">
                                 <h3 data-target="172" class="text-[#e0aa87] font-semibold text-xl md:text-5xl count">0</h3><span class="text-[#e0aa87] font-semibold text-2xl md:text-5xl">+</span>
                             </div>
-                            <p class="text-white text-sm md:text-lg">Satisfied Clients</p>
+                            <p class="text-sm text-white md:text-lg">Satisfied Clients</p>
                         </div>
                     </div>
                 </div>
-                <div class="mt-3 ml-0 md:ml-8 md:mt-5 pb-5 flex justify-center md:justify-start">
+                <div class="flex justify-center pb-5 mt-3 ml-0 md:ml-8 md:mt-5 md:justify-start">
                     <button class="bg-white p-2 rounded text-[#317256] font-bold hover:bg-[#e0aa87]" onclick="window.location.href='{{ route('about') }}';">Read More</button>
                 </div>
             </a>
@@ -396,13 +399,13 @@
     <!-- end car rental section -->
 
     <!-- happy customert section -->
-    <div class="text-center mt-20">
+    <div class="mt-20 text-center">
         <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Happy Customers, Memorable Journeys</h1>
-        <p class="text-base md:text-lg text-gray-500 mt-4 md:mt-6 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+        <p class="mt-4 text-base font-medium text-gray-500 md:text-lg md:mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
     <div class="flex">
-        <div id="app" class="w-12/12 md:max-w-screen-lg mx-auto px-0 md:px-8 transition-all duration-500 ease-linear">
-            <div class="content-wrapper flex justify-center w-full">
+        <div id="app" class="px-0 mx-auto transition-all duration-500 ease-linear w-12/12 md:max-w-screen-lg md:px-8">
+            <div class="flex justify-center w-full content-wrapper">
                 <div class="wrapper-for-arrows">
                     <div style="opacity: 0;" class="chicken"></div>
                     <div id="reviewWrap" class="review-wrap">
@@ -410,7 +413,7 @@
                         </div>
                         <div id="personName"></div>
                         <div id="profession"></div>
-                        <div id="description" class="-mt-5 h-96 px-12 pb-4">
+                        <div id="description" class="px-12 pb-4 -mt-5 h-96">
                         </div>
                     </div>
 
@@ -423,8 +426,8 @@
                 </div>
             </div>
         </div>
-        <div id="app" class="max-w-screen-lg mx-auto px-0 md:px-4 transition-all duration-500 ease-linear">
-            <img class="object-cover hidden md:block" src="{{ URL('images/Group 126.png')}}" alt="">
+        <div id="app" class="max-w-screen-lg px-0 mx-auto transition-all duration-500 ease-linear md:px-4">
+            <img class="hidden object-cover md:block" src="{{ URL('images/Group 126.png')}}" alt="">
         </div>
     </div>
     <!-- happy customert section -->
