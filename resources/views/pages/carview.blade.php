@@ -24,7 +24,7 @@
         <div class="md:w-full lg:w-2/6">
 
             <!-- image carosol -->
-            <div class="container border-2 md:mt-[100px] mt-0 ">
+            <div class="border-2 md:mt-[100px] mt-28 md:p-0 p-4 justify-between">
                 <div class="mySlides">
                     <img src="{{ Storage::url($vehicle->images[0]->file_path ?? null) }}" style="width:100%">
                 </div>
@@ -82,7 +82,7 @@
             <!-- end vehicle details section -->
 
             <!-- vehicle spesification section -->
-            <div>
+            <div class="p-4 md:p-0">
                 <div>
                     <h1 class="text-lg font-semibold text-gray-500">Vehicle Details</h1>
                 </div>
@@ -131,7 +131,7 @@
             <!-- end vehicle spesification section -->
 
             <!-- vehicle description section -->
-            <div class="mt-8">
+            <div class="p-4 mt-8 md:p-0">
                 <div>
                     <h1 class="text-lg font-semibold text-gray-500">Vehicle Details</h1>
                 </div>
@@ -144,7 +144,7 @@
 
         </div>
 
-        <div class="grid grid-flow-row mt-24 md:w-full lg:w-2/6">
+        <div class="grid w-full grid-flow-row mt-0 md:p-2 md:mt-24 md:w-full lg:w-2/6">
 
             <!-- pickup foam -->
             <div class="bg-[#F8FFF2] grid md:p-8 md:mt-0 p-4">
@@ -298,7 +298,7 @@
     <!-- end vehicle details section -->
 
     <!-- start navigation -->
-    <div class="mt-40">
+    <div class="mt-20 md:mt-40">
         @include('layouts.footer')
     </div>
     <!-- end navigation -->
