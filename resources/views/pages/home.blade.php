@@ -405,7 +405,7 @@
     </div>
     <div class="flex mt-3">
         <div id="app" class="px-0 mx-auto mt-3 transition-all duration-500 ease-linear w-12/12 md:max-w-screen-lg md:px-8">
-            <div class="flex justify-center w-full h-full md:h-4/5">
+            <div class="flex justify-center w-full h-full md:h-full">
                 <div class="wrapper-for-arrows">
                     <div style="opacity: 0;" class="chicken"></div>
                     <div id="reviewWrap" class="review-wrap">

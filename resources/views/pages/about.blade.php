@@ -87,20 +87,20 @@
         <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Our Trusted Brands</h1>
         <p class="p-2 mt-6 mb-16 text-gray-500 md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
-    <div id="app" class="w-4/6 px-0 py-0 mx-auto mt-3 transition-all duration-500 ease-linear md:px-8 md:py-12">
+    <div id="app" class="w-3/5 px-0 py-0 mx-auto mt-3 transition-all duration-500 ease-linear md:px-8 md:py-12">
         <div class="relative">
             <div class="slides-container h-80 flex snap-x snap-mandatory overflow-hidden overflow-x-auto space-x-4 rounded scroll-smooth before:w-[45vw] before:shrink-0 after:w-[45vw] after:shrink-0 md:before:w-0 md:after:w-0">
-                <div class="lide overflow-hidden slide aspect-square rounded-lg h-full flex-shrink-0 snap-center shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 md:w-1/3">
-                    <img src="{{ URL('images/Group 151.png') }}" class="mx-auto my-16 mb-4 md:mb-0 md:mx-2 lg:w-80 md:w-40 md:m-14">
+                <div class="lide overflow-hidden slide aspect-square rounded-lg h-full flex-shrink-0 snap-center shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 md:w-2/5">
+                    <img src="{{ URL('images/Group 151.png') }}" class="mx-auto my-16 mb-4 md:mb-0 md:mx-2 lg:w-80 md:w-40 md:m-16">
                 </div>
-                <div class="lide overflow-hidden slide aspect-square rounded-lg h-full flex-shrink-0 snap-center shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 md:w-1/3">
-                    <img src="{{ URL('images/Group 152.png') }}" class="mx-auto my-16 mb-4 md:mb-0 md:mx-2 lg:w-80 md:w-40 md:m-14">
+                <div class="lide overflow-hidden slide aspect-square rounded-lg h-full flex-shrink-0 snap-center shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 md:w-2/5">
+                    <img src="{{ URL('images/Group 152.png') }}" class="mx-auto my-16 mb-4 md:mb-0 md:mx-2 lg:w-80 md:w-40 md:m-16">
                 </div>
-                <div class="lide overflow-hidden slide aspect-square rounded-lg h-full flex-shrink-0 snap-center shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 md:w-1/3">
-                    <img src="{{ URL('images/Group 153.png') }}" class="mx-auto my-16 mb-4 md:mb-0 md:mx-2 lg:w-80 md:w-40 md:m-14">
+                <div class="lide overflow-hidden slide aspect-square rounded-lg h-full flex-shrink-0 snap-center shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 md:w-2/5">
+                    <img src="{{ URL('images/Group 153.png') }}" class="mx-auto my-16 mb-4 md:mb-0 md:mx-2 lg:w-80 md:w-40 md:m-16">
                 </div>
-                <div class="lide overflow-hidden slide aspect-square rounded-lg h-full flex-shrink-0 snap-center shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 md:w-1/3">
-                    <img src="{{ URL('images/Group 154.png') }}" class="mx-auto my-16 mb-4 md:mb-0 md:mx-2 lg:w-80 md:w-40 md:m-14">
+                <div class="lide overflow-hidden slide aspect-square rounded-lg h-full flex-shrink-0 snap-center shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 md:w-2/5">
+                    <img src="{{ URL('images/Group 154.png') }}" class="mx-auto my-16 mb-4 md:mb-0 md:mx-2 lg:w-80 md:w-40 md:m-16">
                 </div>
             </div>
             <div class="absolute top-0 items-center h-full -left-4">
@@ -122,7 +122,7 @@
     </div>
 
     <!-- start navigation -->
-    <div class="mt-40">
+    <div class="mt-32">
         @include('layouts.footer')
     </div>
     <!-- end navigation -->

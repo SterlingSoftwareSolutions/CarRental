@@ -21,7 +21,7 @@
 
     <!-- banner section -->
     <div class="relative -z-50">
-        <img src="{{ URL('images/Group 180.png')}}" alt="" srcset="">
+        <img src="{{ URL('images/Group 180.png')}}" alt="" srcset="" class="h-full">
         <h1 class="absolute pl-0 text-2xl font-bold text-white top-2/4 left-4/12 md:pl-56 md:text-4xl">Find Your Dream Ride</h1>
     </div>
 
@@ -104,12 +104,12 @@
                 </div>
                 <hr class="bg-[#317256] h-0.5">
                 <div class="flex items-center justify-between p-4">
-                    <div class="grid text-center w-6/6">
+                    <div class="grid mr-3 text-center w-6/6">
                         <img src="{{ URL('images/seat-belt.png') }}" class="mx-auto">
                         <h1 class="text-center text-sm md:text-lg text-[#317256] font-semibold mt-2">{{ $vehicle['passengers']}} Passengers</h1>
                     </div>
 
-                    <div class="grid text-center w-6/6">
+                    <div class="grid mr-3 text-center w-6/6">
                         <img src="{{ URL('images/luggage.png')}}" class="mx-auto">
                         <h1 class="text-center text-sm md:text-lg text-[#317256] font-semibold mt-2">{{ $vehicle['luggage']}} Luggages</h1>
                     </div>
