@@ -46,10 +46,10 @@
 
     <!-- main home banner  -->
     <div class="flex items-center px-4 py-8 main-banner justify-right md:py-22">
-        <div class="grid items-center justify-center pl-1 align-middle md:pl-32 mt-60 md:mt-20">
+        <div class="grid items-center justify-center pl-1 align-middle md:pl-32 mt-30 md:mt-20">
             <h1 class="mb-2 text-3xl font-bold text-white md:text-5xl lg:text-4xl md:mb-4">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
             <p class="text-sm text-white md:text-lg font-">Rent a Car for Your Next Adventure with Our Convenient <br class="hidden md:inline"> and Reliable Services</p>
-            <div class="flex flex-col gap-5 mt-12 md:flex-row md:mt-4 md:w-1/2">
+            <div class="flex flex-col gap-5 mt-8 md:flex-row md:mt-4 md:w-1/2">
                 <div class="grid bg-black rounded-lg search-foam md:w-10 lg:w-auto">
                     <div class="text-center">
                         <p class="mt-2 text-sm font-bold text-white md:text-lg md:mt-2">Ready to hit the road?</p>
@@ -57,7 +57,7 @@
                     @php
                     $filters = App\Http\Controllers\VehiclesController::filters();
                     @endphp
-                    <form class="w-4/6 lg:w-full" action="/carlist">
+                    <form class="w-full lg:w-full" action="/carlist">
                         <label class="font-bold text-[#707070]" for="">Make</label>
                         <select class="w-full h-12 mt-2 border-none rounded-md md:h-9" name="make" id="cars">
                             <option class="text-sm" value="">All Makes</option>
@@ -132,9 +132,9 @@
     <!-- end main home banner  -->
 
     <!-- why choose us section -->
-    <div class="mt-40 text-center md:mt-0">
+    <div class="mt-0 text-center md:mt-0">
         <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Why Choose Us</h1>
-        <p class="mt-4 text-base font-medium text-gray-500 md:text-lg md:mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+        <p class="mt-4 text-base text-gray-500 md:text-lg md:mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
     <div class="w-full whychoose-section">
         <div class="flex items-center justify-center p-5 mt-4 md:p-0">
@@ -188,9 +188,9 @@
     <!-- discover our lates section -->
     <div class="mt-12 text-center">
         <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Discover Our Latest Cars for Rental</h1>
-        <p class="mt-4 text-base font-medium text-gray-500 md:text-lg md:mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+        <p class="mt-4 text-base text-gray-500 md:text-lg md:mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
-    <div class="discover-section">
+    <div class="mt-3 discover-section">
         <div class="flex flex-col items-center justify-center md:flex-row"> <!-- Center content vertically on mobile -->
             <div class="mb-4 md:mb-0">
                 <a href="" class="flex flex-col items-center md:flex-row md:max-w-xl">
@@ -215,17 +215,17 @@
                                 <div class="mb-4 slide">
                                     <div class="inner_content">
                                         <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl">
-                                            <div class="hidden md:block">
+                                            <div class="md:block">
                                                 @if ($vehicle->images->count() > 0)
                                                 @php
                                                 $firstImage = $vehicle->images[0];
                                                 @endphp
-                                                <img class="h-auto w-96 md:h-32 md:w-52 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
+                                                <img class="h-auto w-75 md:h-32 md:w-52 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
                                                 @else
-                                                <img class="h-auto w-96 md:h-32 md:w-52 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
+                                                <img class="h-auto w-75 md:h-32 md:w-52 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
                                                 @endif
                                             </div>
-                                            <div class="flex flex-col justify-between p-2 w-80 md:w-96 h-30 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
+                                            <div class="flex flex-col justify-between p-2 w-78 md:w-96 h-30 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
                                                 @if (!empty($vehicle['make']) && !empty($vehicle['model']))
                                                 <h5 class="mb-2 text-sm font-semibold tracking-tight text-left text-gray-500 md:text-lg">{{ $vehicle['make']}} {{ $vehicle['model']}}</h5>
                                                 @else
@@ -261,17 +261,17 @@
                                 <div class="mb-4 slide">
                                     <div class="inner_content">
                                         <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl">
-                                            <div class="hidden md:block">
+                                            <div class="md:block">
                                                 @if ($vehicle->images->count() > 0)
                                                 @php
                                                 $firstImage = $vehicle->images[0];
                                                 @endphp
-                                                <img class="h-auto w-96 md:h-32 md:w-52 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
+                                                <img class="h-auto w-75 md:h-32 md:w-52 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
                                                 @else
-                                                <img class="h-auto w-96 md:h-32 md:w-52 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
+                                                <img class="h-auto w-75 md:h-32 md:w-52 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
                                                 @endif
                                             </div>
-                                            <div class="flex flex-col justify-between p-2 w-80 md:w-96 h-30 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
+                                            <div class="flex flex-col justify-between p-2 w-78 md:w-96 h-30 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
                                                 @if (!empty($vehicle['make']) && !empty($vehicle['model']))
                                                 <h5 class="mb-2 text-sm font-semibold tracking-tight text-left text-gray-500 md:text-lg">{{ $vehicle['make']}} {{ $vehicle['model']}}</h5>
                                                 @else
@@ -307,9 +307,9 @@
     <!-- diverse vehicle section -->
     <div class="mt-12 text-center sm:mt-20">
         <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Diverse Vehicle Selection for Every Journey</h1>
-        <p class="mt-4 text-base font-medium text-gray-500 md:text-lg md:mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+        <p class="mt-4 text-base text-gray-500 md:text-lg md:mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
-    <div id="app" class="w-4/6 px-0 py-0 mx-auto transition-all duration-500 ease-linear md:px-8 md:py-12">
+    <div id="app" class="w-4/6 px-0 py-0 mx-auto mt-3 transition-all duration-500 ease-linear md:px-8 md:py-12">
         <div class="relative">
             <div class="slides-container h-80 flex snap-x snap-mandatory overflow-hidden overflow-x-auto space-x-4 rounded scroll-smooth before:w-[45vw] before:shrink-0 after:w-[45vw] after:shrink-0 md:before:w-0 md:after:w-0">
                 @if (isset($vehicles))
@@ -343,7 +343,7 @@
 
         </div>
     </div>
-    <div class="text-center">
+    <div class="mt-4 text-center">
         <button type="button" class="text-white bg-[#317256] font-bold hover:bg-[#e0aa87] px-6 py-3 text-center mr-3 md:mr-0 rounded" onclick="window.location.href='{{ route('carlist') }}';">
             View All
         </button>
@@ -399,13 +399,13 @@
     <!-- end car rental section -->
 
     <!-- happy customert section -->
-    <div class="mt-20 text-center">
+    <div class="mt-12 text-center">
         <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Happy Customers, Memorable Journeys</h1>
-        <p class="mt-4 text-base font-medium text-gray-500 md:text-lg md:mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+        <p class="mt-4 text-base text-gray-500 md:text-lg md:mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
-    <div class="flex">
-        <div id="app" class="px-0 mx-auto transition-all duration-500 ease-linear w-12/12 md:max-w-screen-lg md:px-8">
-            <div class="flex justify-center w-full content-wrapper">
+    <div class="flex mt-3">
+        <div id="app" class="px-0 mx-auto mt-3 transition-all duration-500 ease-linear w-12/12 md:max-w-screen-lg md:px-8">
+            <div class="flex justify-center w-full h-full md:h-full">
                 <div class="wrapper-for-arrows">
                     <div style="opacity: 0;" class="chicken"></div>
                     <div id="reviewWrap" class="review-wrap">
