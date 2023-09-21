@@ -1,32 +1,32 @@
     <!-- get off section -->
     <div class="flex getoff-section top-3">
-        <div class="max-w-screen-lg mx-auto md:px-12 py-12 transition-all duration-500 ease-linear flex items-center">
+        <div class="flex items-center max-w-screen-lg py-12 mx-auto transition-all duration-500 ease-linear md:px-12">
             <div>
-                <h1 class="text-white pl-5 md:pl-0 text-xl md:text-3xl font-extrabold inline-block">Get 15% Off Your Rental ! Choose Your Model</h1>
+                <h1 class="inline-block pl-5 text-xl font-extrabold text-white md:pl-0 md:text-3xl">Get 15% Off Your Rental ! Choose Your Model</h1>
             </div>
         </div>
-        <div class="max-w-screen-lg mx-auto px-4 md:px-8 py-12 transition-all duration-500 ease-linear flex items-center">
+        <div class="flex items-center max-w-screen-lg px-4 py-12 mx-auto transition-all duration-500 ease-linear md:px-8">
             <div>
-                <button class="bg-white p-2 px-10 rounded mt-3 text-lg font-bold text-[#317256] hover:bg-[#e0aa87] hover:text-white" onclick="window.location.href='{{ route('carlist') }}';">Book Now</button>
+                <button class="bg-white p-2 px-10 rounded mt-3 md:text-lg text-sm font-bold text-[#317256] hover:bg-[#e0aa87] hover:text-white" onclick="window.location.href='{{ route('carlist') }}';">Book Now</button>
             </div>
         </div>
     </div>
     <!-- end get off section -->
     <footer class="bg-[#317256] md:-mt-4 -mt-6" style="z-index: -999;">
-        <div class="mx-auto w-full max-w-screen-xl p-4 py-16 lg:py-16">
-            <div class="md:flex md:justify-between mt-5">
+        <div class="w-full max-w-screen-xl p-4 py-16 mx-auto lg:py-16">
+            <div class="mt-5 text-center md:flex md:justify-between md:text-left">
                 <div class="mb-6 md:mb-0">
-                    <a href="" class="grid justify-center items-center">
-                        <div class=" w-2/12 flex justify-end items-center ">
+                    <a href="" class="grid items-center">
+                        <div class="flex items-center justify-end w-2/12 ml-40 md:ml-0">
                             <img class="w-full h-full" src="{{ URL('images/flg_logo11079.png')}}" alt="Logo Image">
                         </div>
                         <p class="text-white">Lorem Ipsum Dolor Sit Amet, Consectetur <br> Adipiscing Elit. Sed Non Risus. Suspendisse <br> Lectus Tortor, Dignissim Sit Amet, </p>
                     </a>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-6">
+                <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6">
                     <div>
                         <h2 class="mb-6 text-lg font-semibold text-[#E0AA87] uppercase dark:text-white">Quick Links</h2>
-                        <ul class="text-white dark:text-gray-400 font-medium">
+                        <ul class="font-medium text-white dark:text-gray-400">
                             <li class="mb-4">
                                 <a href="{{route('home')}}" class="hover:underline">Home</a>
                             </li>
@@ -43,15 +43,15 @@
                     </div>
                     <div>
                         <h2 class="mb-6 text-lg font-semibold text-[#E0AA87] uppercase dark:text-white">Find Us</h2>
-                        <ul class="text-white dark:text-gray-400 font-medium">
-                            <li class="mb-4 flex">
-                                <a href="https://www.google.com/maps/@-26.7738869,134.7806741,12.75z?entry=ttu" class="hover:underline flex "><img class="w-5 h-5" src="{{ URL('images/location.png')}}">&nbsp; 5Th Floor, AH Building Melbourne, Australia</a>
+                        <ul class="justify-center font-medium text-white dark:text-gray-400">
+                            <li class="flex mb-4">
+                                <a href="https://www.google.com/maps/@-26.7738869,134.7806741,12.75z?entry=ttu" class="flex hover:underline "><img class="w-5 h-5" src="{{ URL('images/location.png')}}">&nbsp; 5Th Floor, AH Building Melbourne, Australia</a>
                             </li>
-                            <li class="mb-4 flex">
-                                <a href="mailto:info@carrental.com" class="hover:underline flex"><img class="w-5 h-5" src="{{ URL('images/email.png')}}">&nbsp; info@carrental.com</a>
+                            <li class="flex justify-center mb-4 md:justify-start">
+                                <a href="mailto:info@carrental.com" class="flex hover:underline"><img class="w-5 h-5" src="{{ URL('images/email.png')}}">&nbsp; info@carrental.com</a>
                             </li>
-                            <li class="mb-4 flex">
-                                <a href="tel:8801 738 5678 64" class="hover:underline flex"><img class="w-5 h-5" src="{{ URL('images/telephone.png')}}">&nbsp; + 8801 738 5678 64</a>
+                            <li class="flex justify-center mb-4 md:justify-start">
+                                <a href="tel:8801 738 5678 64" class="flex hover:underline"><img class="w-5 h-5" src="{{ URL('images/telephone.png')}}">&nbsp; + 8801 738 5678 64</a>
                             </li>
                         </ul>
                     </div>
@@ -82,7 +82,7 @@
                 </div>
             </div>
 
-            <div class="text-sm text-white sm:text-center dark:text-gray-400 text-center sm:flex sm:justify-center">
+            <div class="text-sm text-center text-white sm:text-center dark:text-gray-400 sm:flex sm:justify-center">
                 <span>© Copyright 2023 <a href="" class="hover:underline">by Automobex Car Rental</a></span>
             </div>
 
