@@ -18,7 +18,7 @@
 			    <!-- Dropdown toggle button -->
 			    <img
 			    	
-					src="@if(isset(Auth::user()->images[0])) {{Storage::url(Auth::user()->images[0]->file_path)}} @else /images/avatar.png @endif"
+                    src="@if(isset(Auth::user()->images[0])){{ Storage::url(Auth::user()->images[0]->file_path) }}@else /images/avatar.png @endif"
 					class="object-cover w-12 h-12 rounded-full cursor-pointer"
 					alt="Avatar"
 					@click="dropdownMenu = ! dropdownMenu"
