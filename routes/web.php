@@ -46,6 +46,7 @@ Route::get('/contact', function () {
 Route::get('/carlist/single-car-view/{id}', [VehiclesController::class, 'view_vehicle'])->name('booknow');
 
 Route::middleware('auth')->group(function () {
+
     Route::get('/user/dashboard', [DashboardController::class, 'client'])->name('user.dashboard');
     Route::get('/user/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/user/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -62,6 +63,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('/vehicle/{vehicle}', [VehiclesController::class, 'destroy'])->name('delete_vehicle');
         Route::put('/vehicle', [VehiclesController::class, 'update'])->name('vehicle_update');
         Route::get('/vehicles', [VehiclesController::class, 'show_all_vehicles'])->name('vehicles.all');
+        Route::get('/vehicles/create', [VehiclesController::class, 'create'])->name('vehicles.create');
         Route::get('/vehicles/{vehicle}/edit', [VehiclesController::class, 'edit_vehicle'])->name('vehicle.edit');
         Route::get('/vehicles/{vehicle}', [VehiclesController::class, 'show'])->name('vehicle.show');
         Route::post('/vehicles', [VehiclesController::class, 'store'])->name('vehicles.store');
