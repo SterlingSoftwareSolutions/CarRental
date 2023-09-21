@@ -70,7 +70,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/bookings/{booking}', [BookingsController::class, 'show'])->name('bookings.show');
         Route::post('/bookings/{booking}/surcharge', [BookingsController::class, 'add_surcharge'])->name('bookings.surcharge');
         Route::post('/bookings/{booking}/return', [BookingsController::class, 'return'])->name('bookings.return');
-        Route::post('/bookings/{booking}/return_confirm', [BookingsController::class, 'return_confirm'])->name('bookings.return');
+        Route::post('/bookings/{booking}/return_confirm', [BookingsController::class, 'return_confirm'])->name('bookings.return_confirm');
         Route::delete('/booking/{bookingId}', [BookingsController::class, 'destroy'])->name('delete_booking');
 
         Route::get('/surcharges', [SurchargeController::class, 'index'])->name('surcharges.all');
