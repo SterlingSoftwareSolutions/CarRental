@@ -13,6 +13,7 @@ class Vehicles extends Model
         'make',
         'model',
         'vin',
+        'reg_no',
         'body_type',
         'year',
         'fuel_type',

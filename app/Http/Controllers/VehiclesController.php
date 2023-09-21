@@ -94,7 +94,7 @@ class VehiclesController extends Controller
             ->find($vehicle_id);
 
 
-        return view('pages.admin.vehicles.index', ['vehicles' => $vehicles, 'vehicle_one' => $vehicle]);
+        return view('pages.admin.vehicles.form', ['vehicles' => $vehicles, 'vehicle_one' => $vehicle]);
     }
 
 
@@ -113,12 +113,18 @@ class VehiclesController extends Controller
 
         return view('pages.carview', ['vehicle' => $vehicle]);
     }
+
+    public function create(){
+        return view('pages.admin.vehicles.form');
+    }
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
             'make' => 'required|string|max:255',
             'model' => 'required|string|max:255',
             'vin' => 'required|string|max:255',
+            'reg_no' => 'required|string|max:255',
             'body_type' => 'required|string|max:255',
             'year' => 'required|integer|min:1900|max:' . date('Y'),
             'fuel_type' => 'required|string|max:255',
@@ -138,6 +144,7 @@ class VehiclesController extends Controller
             'make' => $request->make,
             'model' => $request->model,
             'vin' => $request->vin,
+            'reg_no' => $request->reg_no,
             'body_type' => $request->body_type,
             'year' => $request->year,
             'fuel_type' => $request->fuel_type,
@@ -178,6 +185,7 @@ class VehiclesController extends Controller
             'make' => 'required|string|max:255',
             'model' => 'required|string|max:255',
             'vin' => 'required|string|max:255',
+            'reg_no' => 'required|string|max:255',
             'body_type' => 'required|string|max:255',
             'year' => 'required|integer|min:1900|max:' . date('Y'),
             'fuel_type' => 'required|string|max:255',

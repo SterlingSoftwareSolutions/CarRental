@@ -43,7 +43,7 @@
                      <a href="/admin/vehicles" class="flex items-center w-full p-2 text-gray-500 rounded-lg text-ma hover:bg-main-green group hover:text-white">Vehicles</a>
                   </li>
                   <li>
-                     <a href="/admin/vehicles#addcar" class="flex items-center w-full p-2 text-gray-500 rounded-lg text-ma hover:bg-main-green group hover:text-white">Add Vehicle</a>
+                     <a href="/admin/vehicles/create" class="flex items-center w-full p-2 text-gray-500 rounded-lg text-ma hover:bg-main-green group hover:text-white">Add Vehicle</a>
                   </li>
                   <!-- <li>
                      <a href="#" class="flex items-center w-full p-2 text-gray-500 rounded-lg text-ma hover:bg-main-green group hover:text-white">Billing</a>
