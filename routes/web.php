@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BookingsController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
@@ -42,6 +43,8 @@ Route::get('search-carlist', [VehiclesController::class, 'search'])->name('searc
 Route::get('/contact', function () {
     return view('pages.contact');
 })->name('contact');
+
+Route::post('/send', [ContactController::class, 'send'])->name('contact.email');
 
 Route::get('/carlist/single-car-view/{id}', [VehiclesController::class, 'view_vehicle'])->name('booknow');
 
