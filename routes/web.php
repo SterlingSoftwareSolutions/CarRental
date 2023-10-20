@@ -62,6 +62,7 @@ Route::middleware('auth')->group(function () {
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
         Route::get('/dashboard', [DashboardController::class, 'admin'])->name('dashboard');
         Route::resource('users', UsersController::class);
+        Route::delete('/users/{user}', [UsersController::class, 'destroy'])->name('delete_user');
 
         Route::delete('/vehicle/{vehicle}', [VehiclesController::class, 'destroy'])->name('delete_vehicle');
         Route::put('/vehicle', [VehiclesController::class, 'update'])->name('vehicle_update');
