@@ -32,6 +32,20 @@ class BookingsController extends Controller
         return view('pages.admin.bookings.index', ['bookings' => $bookings]);
     }
 
+    public function searchs(Request $request)
+    {
+        $query = Bookings::query();
+
+        if($request->search){
+            $term = $request->search;
+            $query->where('pickup', 'like', '%' . $term . '%')
+                ->orWhere('dropoff', 'like', '%' . $term . '%')
+                ->orWhere('pickup_time', 'like', '%' . $term . '%')
+                ->orWhere('status', 'like', '%' . $term . '%');
+        }
+        return view('pages.admin.bookings.index', ['bookings' => $query->get()]);
+    }
+
     public function singlecar($id)
     {
         $query = Bookings::query();
