@@ -77,12 +77,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach ($latestUsers as $user)
+                            @foreach ($latestUsers as $latestuser)
                                 <tr class="bg-white border-b">
-                                    <td class="w-1/3 px-4 py-3 text-left">{{ $user->first_name }}</td>
-                                    <td class="w-1/3 px-4 py-3 text-left">{{ $user->last_name }}</td>
-                                    <td class="w-1/3 px-4 py-3 text-left">{{ $user->mobile }}</td>
-                                    <td class="w-1/3 px-4 py-3 text-left">{{ $user->email }}</td>
+                                    <td class="w-1/3 px-4 py-3 text-left">{{ $latestuser->first_name }}</td>
+                                    <td class="w-1/3 px-4 py-3 text-left">{{ $latestuser->last_name }}</td>
+                                    <td class="w-1/3 px-4 py-3 text-left">{{ $latestuser->mobile }}</td>
+                                    <td class="w-1/3 px-4 py-3 text-left">{{ $latestuser->email }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
