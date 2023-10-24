@@ -12,8 +12,10 @@
                             <div class="p-5 bg-green-600 rounded-full"><i class="fa fa-wallet fa-2x fa-inverse"></i></div>
                         </div>
                         <div class="flex-1 text-right md:text-center">
-                            <h2 class="font-bold text-gray-600 uppercase">Total Revenue</h2>
-                            <p class="text-3xl font-bold">$3249 <span class="text-green-500"><i class="fas fa-caret-up"></i></span></p>
+                            <h2 class="font-bold text-gray-600 uppercase">Total Bookings</h2>
+                            <p class="text-3xl font-bold">
+                                {{$totalBooking}}
+                                <span class="text-green-500"><i class="fas fa-caret-up"></i></span></p>
                         </div>
                     </div>
                 </div>
@@ -25,13 +27,7 @@
                         <div class="flex-1 text-right md:text-center">
                             <h2 class="font-bold text-gray-600 uppercase">Total Users</h2>
                             <p class="text-3xl font-bold">
-                                @php
-                                if (is_array($user) && count($user) > 0) {
-                                    echo count($user);
-                                } else {
-                                    echo 0; // Handle the case when $user is empty
-                                }
-                                @endphp
+                                {{$totalUsers}}
                             <span class="text-pink-500"><i class="fas fa-exchange-alt"></i></span></p>
                         </div>
                     </div>
@@ -44,13 +40,7 @@
                         <div class="flex-1 text-right md:text-center">
                             <h2 class="font-bold text-gray-600 uppercase">Active Users</h2>
                             <p class="text-3xl font-bold">
-                                @php
-                                if (is_array($user) && count($user) > 0) {
-                                    echo count($user);
-                                } else {
-                                    echo 0; // Handle the case when $user is empty
-                                }
-                                @endphp
+                                {{$totalUsers}}
                                 <span class="text-yellow-600"><i class="fas fa-caret-up"></i></span>
                             </p>                            
                             
@@ -63,8 +53,11 @@
                             <div class="p-5 bg-blue-600 rounded-full"><i class="fas fa-server fa-2x fa-inverse"></i></div>
                         </div>
                         <div class="flex-1 text-right md:text-center">
-                            <h2 class="font-bold text-gray-600 uppercase">Server Uptime</h2>
-                            <p class="text-3xl font-bold">152 days</p>
+                            <h2 class="font-bold text-gray-600 uppercase">Total Vehicles</h2>
+                            <p class="text-3xl font-bold">
+                                {{ $totalVehicles }}
+                                <span class="text-red-600"><i class="fas fa-caret-up"></i></span>
+                            </p>
                         </div>
                     </div>
                 </div>
