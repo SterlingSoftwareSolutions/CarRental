@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Users;
+use App\Models\Bookings;
+use App\Models\Vehicles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -22,7 +24,16 @@ class DashboardController extends Controller
         // Store the fetched user data in the session
         Session::put('user_data', $user);
 
-        return view('pages.admin.dashboard', ['user' => $user]);
+        //users all
+        $totalUsers = $this->countUsers();
+
+        // Retrieve bookings data
+        $totalBooking = $this->countBooking();
+
+        // Call the new method to get the total vehicle count
+        $totalVehicles = $this->countVehicles();
+
+        return view('pages.admin.dashboard', ['user' => $user, 'totalBooking' => $totalBooking , 'totalVehicles' => $totalVehicles, 'totalUsers' => $totalUsers]);
     }
 
     public function client(Request $request)
@@ -33,4 +44,23 @@ class DashboardController extends Controller
         }
         return view('pages.client.dashboard');
     }
+
+    public function countVehicles()
+    {
+        $totalVehicles = Vehicles::count();
+        return $totalVehicles;
+    }
+
+    public function countBooking()
+    {
+        $totalBooking = Bookings::count();
+        return $totalBooking;
+    }
+
+    public function countUsers()
+    {
+        $totalUsers = Users::count();
+        return $totalUsers;
+    }
+
 }

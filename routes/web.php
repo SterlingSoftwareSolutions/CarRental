@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BookingsController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
@@ -43,6 +44,8 @@ Route::get('/contact', function () {
     return view('pages.contact');
 })->name('contact');
 
+Route::post('/send', [ContactController::class, 'send'])->name('contact.email');
+
 Route::get('/carlist/single-car-view/{id}', [VehiclesController::class, 'view_vehicle'])->name('booknow');
 
 Route::middleware('auth')->group(function () {
@@ -59,21 +62,25 @@ Route::middleware('auth')->group(function () {
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
         Route::get('/dashboard', [DashboardController::class, 'admin'])->name('dashboard');
         Route::resource('users', UsersController::class);
+        Route::delete('/users/{user}', [UsersController::class, 'destroy'])->name('delete_user');
 
         Route::delete('/vehicle/{vehicle}', [VehiclesController::class, 'destroy'])->name('delete_vehicle');
         Route::put('/vehicle', [VehiclesController::class, 'update'])->name('vehicle_update');
         Route::get('/vehicles', [VehiclesController::class, 'show_all_vehicles'])->name('vehicles.all');
+        Route::get('/vehicles', [VehiclesController::class, 'searchs'])->name('vehicles.all');
         Route::get('/vehicles/create', [VehiclesController::class, 'create'])->name('vehicles.create');
         Route::get('/vehicles/{vehicle}/edit', [VehiclesController::class, 'edit_vehicle'])->name('vehicle.edit');
         Route::get('/vehicles/{vehicle}', [VehiclesController::class, 'show'])->name('vehicle.show');
         Route::post('/vehicles', [VehiclesController::class, 'store'])->name('vehicles.store');
 
         Route::get('/bookings', [BookingsController::class, 'index'])->name('bookings.all');
+        Route::get('/bookings', [BookingsController::class, 'searchs'])->name('bookings.all');
         Route::get('/bookings/{booking}', [BookingsController::class, 'show'])->name('bookings.show');
         Route::post('/bookings/{booking}/surcharge', [BookingsController::class, 'add_surcharge'])->name('bookings.surcharge');
         Route::post('/bookings/{booking}/return', [BookingsController::class, 'return'])->name('bookings.return');
         Route::post('/bookings/{booking}/return_confirm', [BookingsController::class, 'return_confirm'])->name('bookings.return_confirm');
         Route::delete('/booking/{bookingId}', [BookingsController::class, 'destroy'])->name('delete_booking');
+        Route::get('/bookings/{booking}/edit', [BookingsController::class, 'edit_booking'])->name('bookings.edit');
 
         Route::get('/surcharges', [SurchargeController::class, 'index'])->name('surcharges.all');
     });

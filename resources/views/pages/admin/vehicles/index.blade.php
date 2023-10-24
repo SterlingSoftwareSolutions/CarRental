@@ -30,15 +30,13 @@
                 <div class="flex items-center justify-end">
                     <div>
                         <!-- Search bar  -->
-                        <form class="">
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 flex items-center pl-3">
-                                    <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                                    </svg>
-                                </div>
-                                <input type="search" id="default-search" class="w-full p-4 pl-10 text-sm text-gray-500 bg-transparent border-none focus:ring-0" placeholder="Search">
+                        <form class="relative" method="get">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                </svg>
                             </div>
+                            <input type="text" id="default-search" name="search" class="w-full p-4 pl-10 text-sm text-gray-500 bg-transparent border-none focus:ring-0" placeholder="Search">
                         </form>
                     </div>
 
@@ -96,7 +94,7 @@
                                         <div class="flex items-center">
                                             <div class="me-3">
                                                 @if(isset($vehicle) && isset($vehicle->images) && $vehicle->images->count() > 0)
-                                                <img src="{{ Storage::url($vehicle->images[0]->file_path) }}" alt="vehicle Image" class="w-10 h-10 rounded-full object-cover">
+                                                <img src="{{ Storage::url($vehicle->images[0]->file_path) }}" alt="vehicle Image" class="object-cover w-10 h-10 rounded-full">
                                                 @else
                                                 <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80" alt="User Image" class="w-10 h-10 rounded-full">
                                                 @endif
@@ -128,7 +126,9 @@
 
                                 </td>
                                 <td class="flex flex-col items-center px-6 py-4 md:flex-row md:items-start">
-                                    <a href="/admin/vehicles/{{ $vehicle['id']}}/edit" class="bg-[#2563ea] hover:bg-[#77c6fc] p-2 rounded-lg mb-2 md:mb-0 md:mr-2"><img class="w-5 h-5" src="{{ URL('images/editing.png')}}" alt=""></a>
+                                    <a href="/admin/vehicles/{{ $vehicle['id'] }}/edit" class="bg-[#2563ea] hover:bg-[#77c6fc] p-2 rounded-lg mb-2 md:mb-0 md:mr-2 md:w-8">
+                                        <img class="w-10 h-5" src="{{ URL('images/editing.png') }}" alt="">
+                                    </a>                                    
                                     <span class="hidden text-xl md:inline">&nbsp/&nbsp</span>
                                     <form action="/admin/vehicle/{{ $vehicle['id'] }}" method="POST" class="inline">
                                         @csrf

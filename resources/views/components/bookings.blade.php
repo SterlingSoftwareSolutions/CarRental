@@ -130,7 +130,7 @@
 
                     {{-- EDIT BUTTON --}}
                     {{-- <a href="/admin/bookings/{{ $booking['id']}}/edit" class="px-3 py-2 text-center text-white bg-green-600 rounded-full" disabled>Edit</a> --}}
-                    <button class="px-3 py-2 text-center text-white bg-green-300 rounded-full" disabled>Edit</button>
+                    <a href="/admin/bookings/{{ $booking['id'] }}/edit" class="px-3 py-2 text-center text-white bg-green-300 rounded-full">Edit</a>
 
                     {{-- DELETE BUTTON --}}
                     <form action="/admin/booking/{{ $booking['id'] }}" method="POST" class="inline">
@@ -166,6 +166,7 @@
     </div>
 </div>
 
+
 <div class="relative z-40 hidden" id="surcharge_modal">
     <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"></div>
     <div class="fixed inset-0 z-10 overflow-y-auto">
@@ -176,14 +177,14 @@
                     <div class="flex gap-2">
                         <div class="w-1/2">
                             <h1>Type:</h1>
-                            <select name="type" class="w-full rounded-full mt-2">
+                            <select name="type" class="w-full mt-2 rounded-full">
                                 <option value="fine">Fine</option>
                                 <option value="toll">Toll</option>
                             </select>
                         </div>
                         <div class="w-1/2">
                             <h1>Date:</h1>
-                            <input class="w-full rounded-full mt-2" type="date" name="date" id="surcharge_form_date">
+                            <input class="w-full mt-2 rounded-full" type="date" name="date" id="surcharge_form_date">
                         </div>
                     </div>
                     <h1>Amount:</h1>

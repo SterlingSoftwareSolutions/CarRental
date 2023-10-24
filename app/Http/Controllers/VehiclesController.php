@@ -10,6 +10,19 @@ use Illuminate\Http\Request;
 
 class VehiclesController extends Controller
 {
+    public function searchs(Request $request)
+    {
+        $query = Vehicles::query();
+
+        if($request->search){
+            $term = $request->search;
+            $query->where('make', 'like', '%' . $term . '%')
+                ->orWhere('model', 'like', '%' . $term . '%')
+                ->orWhere('body_type', 'like', '%' . $term . '%')
+                ->orWhere('color', 'like', '%' . $term . '%');
+        }
+        return view('pages.admin.vehicles.index', ['vehicles' => $query->get()]);
+    }
     public function show(Vehicles $vehicle)
     {
         return view('pages.admin.vehicles.show', compact('vehicle'));

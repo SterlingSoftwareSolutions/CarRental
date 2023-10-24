@@ -142,7 +142,7 @@
                                 <td class="px-6 py-4 text-center md:text-right">
                                     <div class="flex flex-col justify-center gap-2 md:flex-row md:justify-end">
                                         <a href="/admin/users/{{ $user['id']}}/edit" class="w-full px-3 py-2 text-center text-white bg-blue-600 rounded-full md:w-auto">Edit</a>
-                                        <form action="/admin/user/{{ $user['id'] }}" method="POST" class="inline">
+                                        <form action="/admin/users/{{ $user['id'] }}" method="POST" class="inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="px-3 py-2 text-center text-white bg-red-600 rounded-full" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
