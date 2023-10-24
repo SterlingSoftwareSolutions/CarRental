@@ -12,8 +12,10 @@
                             <div class="p-5 bg-green-600 rounded-full"><i class="fa fa-wallet fa-2x fa-inverse"></i></div>
                         </div>
                         <div class="flex-1 text-right md:text-center">
-                            <h2 class="font-bold text-gray-600 uppercase">Total Revenue</h2>
-                            <p class="text-3xl font-bold">$3249 <span class="text-green-500"><i class="fas fa-caret-up"></i></span></p>
+                            <h2 class="font-bold text-gray-600 uppercase">Total Bookings</h2>
+                            <p class="text-3xl font-bold">
+                                {{$totalBooking}}
+                                <span class="text-green-500"><i class="fas fa-caret-up"></i></span></p>
                         </div>
                     </div>
                 </div>
@@ -24,7 +26,9 @@
                         </div>
                         <div class="flex-1 text-right md:text-center">
                             <h2 class="font-bold text-gray-600 uppercase">Total Users</h2>
-                            <p class="text-3xl font-bold">249 <span class="text-pink-500"><i class="fas fa-exchange-alt"></i></span></p>
+                            <p class="text-3xl font-bold">
+                                {{$totalUsers}}
+                            <span class="text-pink-500"><i class="fas fa-exchange-alt"></i></span></p>
                         </div>
                     </div>
                 </div>
@@ -34,8 +38,12 @@
                             <div class="p-5 bg-yellow-600 rounded-full"><i class="fas fa-user-plus fa-2x fa-inverse"></i></div>
                         </div>
                         <div class="flex-1 text-right md:text-center">
-                            <h2 class="font-bold text-gray-600 uppercase">New Users</h2>
-                            <p class="text-3xl font-bold">2 <span class="text-yellow-600"><i class="fas fa-caret-up"></i></span></p>
+                            <h2 class="font-bold text-gray-600 uppercase">Active Users</h2>
+                            <p class="text-3xl font-bold">
+                                {{$totalUsers}}
+                                <span class="text-yellow-600"><i class="fas fa-caret-up"></i></span>
+                            </p>
+                            
                         </div>
                     </div>
                 </div>
@@ -45,75 +53,38 @@
                             <div class="p-5 bg-blue-600 rounded-full"><i class="fas fa-server fa-2x fa-inverse"></i></div>
                         </div>
                         <div class="flex-1 text-right md:text-center">
-                            <h2 class="font-bold text-gray-600 uppercase">Server Uptime</h2>
-                            <p class="text-3xl font-bold">152 days</p>
+                            <h2 class="font-bold text-gray-600 uppercase">Total Vehicles</h2>
+                            <p class="text-3xl font-bold">
+                                {{ $totalVehicles }}
+                                <span class="text-red-600"><i class="fas fa-caret-up"></i></span>
+                            </p>
                         </div>
                     </div>
                 </div>
                 </div>
                 <div class="w-full mt-12">
                     <p class="flex items-center pb-3 text-xl">
-                        <i class="mr-3 fas fa-list"></i> Latest Reports
+                        <i class="mr-3 fas fa-list"></i> Latest Users
                     </p>
                     <div class="overflow-auto bg-white">
                         <table class="min-w-full bg-white">
                             <thead class="text-white bg-gray-800">
                                 <tr>
-                                    <th class="w-1/3 px-4 py-3 text-sm font-semibold text-left uppercase">Name</th>
+                                    <th class="w-1/3 px-4 py-3 text-sm font-semibold text-left uppercase">First Name</th>
                                     <th class="w-1/3 px-4 py-3 text-sm font-semibold text-left uppercase">Last name</th>
                                     <th class="px-4 py-3 text-sm font-semibold text-left uppercase">Phone</th>
                                     <th class="px-4 py-3 text-sm font-semibold text-left uppercase">Email</th>
                                 </tr>
                             </thead>
-                            <tbody class="text-gray-700">
-                                <tr>
-                                    <td class="w-1/3 px-4 py-3 text-left">Lian</td>
-                                    <td class="w-1/3 px-4 py-3 text-left">Smith</td>
-                                    <td class="px-4 py-3 text-left"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="px-4 py-3 text-left"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
+                            <tbody>
+                            @foreach ($latestUsers as $latestuser)
+                                <tr class="bg-white border-b">
+                                    <td class="w-1/3 px-4 py-3 text-left">{{ $latestuser->first_name }}</td>
+                                    <td class="w-1/3 px-4 py-3 text-left">{{ $latestuser->last_name }}</td>
+                                    <td class="w-1/3 px-4 py-3 text-left">{{ $latestuser->mobile }}</td>
+                                    <td class="w-1/3 px-4 py-3 text-left">{{ $latestuser->email }}</td>
                                 </tr>
-                                <tr class="bg-gray-200">
-                                    <td class="w-1/3 px-4 py-3 text-left">Emma</td>
-                                    <td class="w-1/3 px-4 py-3 text-left">Johnson</td>
-                                    <td class="px-4 py-3 text-left"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="px-4 py-3 text-left"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1/3 px-4 py-3 text-left">Oliver</td>
-                                    <td class="w-1/3 px-4 py-3 text-left">Williams</td>
-                                    <td class="px-4 py-3 text-left"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="px-4 py-3 text-left"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr class="bg-gray-200">
-                                    <td class="w-1/3 px-4 py-3 text-left">Isabella</td>
-                                    <td class="w-1/3 px-4 py-3 text-left">Brown</td>
-                                    <td class="px-4 py-3 text-left"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="px-4 py-3 text-left"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1/3 px-4 py-3 text-left">Lian</td>
-                                    <td class="w-1/3 px-4 py-3 text-left">Smith</td>
-                                    <td class="px-4 py-3 text-left"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="px-4 py-3 text-left"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr class="bg-gray-200">
-                                    <td class="w-1/3 px-4 py-3 text-left">Emma</td>
-                                    <td class="w-1/3 px-4 py-3 text-left">Johnson</td>
-                                    <td class="px-4 py-3 text-left"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="px-4 py-3 text-left"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1/3 px-4 py-3 text-left">Oliver</td>
-                                    <td class="w-1/3 px-4 py-3 text-left">Williams</td>
-                                    <td class="px-4 py-3 text-left"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="px-4 py-3 text-left"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr class="bg-gray-200">
-                                    <td class="w-1/3 px-4 py-3 text-left">Isabella</td>
-                                    <td class="w-1/3 px-4 py-3 text-left">Brown</td>
-                                    <td class="px-4 py-3 text-left"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="px-4 py-3 text-left"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -58,7 +58,7 @@
         <!-- end contact infomation section -->
 
         <!-- send message section -->
-        <div class="bg-[#317256] mt-20 mb-20 h-96">
+        <div class="bg-[#317256] mt-20 mb-20 h-100">
             <div class="flex justify-center mt-4 w-12/12">
                 <a class="flex flex-col items-center h-full md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                     <div>
@@ -69,26 +69,34 @@
                     </div>
                 </a>
                 <div class="items-center w-4/6 md:flex-row md:max-w-xl">
-                    <div class="grid py-3.5 pl-0 md:pl-5">
-                        <h1 class="mb-4 text-lg font-semibold text-white md:text-2xl">Send us a Message</h1>
-                        <div class="flex w-full mx-auto">
-                            <div class="relative flex flex-col w-full md:ml-auto send_message">
-                                <div class="relative mb-4">
-                                    <input type="text" placeholder="Your Name *" id="name" name="name" class="w-full placeholder-[#317256] bg-white border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <form action="{{route('contact.email')}}" method="POST">
+                        @csrf
+                        <div class="grid py-3.5 pl-0 md:pl-5">
+                            <h1 class="mb-4 text-lg font-semibold text-white md:text-2xl">Send us a Message</h1>
+                            <div class="flex w-full mx-auto">
+                                <div class="relative flex flex-col w-full md:ml-auto send_message">
+                                    <div class="relative mb-4">
+                                        @error('name')<span class="text-sm text-red-900">{{$message}}</span> @enderror
+                                        <input value="{{old('name')}}" type="text" placeholder="Your Name *" id="name" name="name" class="w-full placeholder-[#317256] bg-white border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    </div>
+                                    <div class="relative mb-4">
+                                        @error('phone')<span class="text-sm text-red-900">{{$message}}</span> @enderror
+                                        <input value="{{old('phone')}}" type="text" placeholder="Your Phone *" id="phone" name="phone" class="w-full placeholder-[#317256] bg-white border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    </div>
+                                    <div class="relative mb-4">
+                                        @error('email')<span class="text-sm text-red-900">{{$message}}</span> @enderror
+                                        <input value="{{old('email')}}" type="email" placeholder="Your Email *" id="email" name="email" class="w-full placeholder-[#317256] bg-white border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"> 
+                                    </div>
+                                    <div class="relative mb-4">
+                                        @error('message')<span class="text-sm text-red-900">{{$message}}</span> @enderror
+                                        <textarea value="{{old('message')}}" id="message" placeholder="Message" name="message" class="w-full h-12 bg-white placeholder-[#317256] border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                                    </div>
+                                    <button type="submit" class="text-[#317256] w-2/6 font-bold bg-white border-0 py-2 px-4 focus:outline-none hover:bg-[#e0aa87] hover:text-white rounded text-lg">Submit</button>
                                 </div>
-                                <div class="relative mb-4">
-                                    <input type="number" placeholder="Your Phone *" id="phone" name="phone" class="w-full placeholder-[#317256] bg-white border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                </div>
-                                <div class="relative mb-4">
-                                    <input type="email" placeholder="Your Email *" id="email" name="email" class="w-full placeholder-[#317256] bg-white border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                </div>
-                                <div class="relative mb-4">
-                                    <textarea id="message" placeholder="Message" name="message" class="w-full h-16 bg-white placeholder-[#317256] border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
-                                </div>
-                                <button type="submit" class="text-[#317256] w-2/6 font-bold bg-white border-0 py-2 px-4 focus:outline-none hover:bg-[#e0aa87] hover:text-white rounded text-lg">Submit</button>
                             </div>
                         </div>
-                    </div>`
+                    </form>
+
 
                 </div>
             </div>

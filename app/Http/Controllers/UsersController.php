@@ -117,4 +117,23 @@ class UsersController extends Controller
         $user->update($values);
         return redirect(route('users.show', $user->id));
     }
+
+    public function destroy($id)
+    {
+        $user = Users::find($id);
+
+        if (!$user) {
+            dd($id);
+            return redirect()->route('users.index')
+                ->with('error', 'user not found.');
+        }
+
+        // Delete vehicle's attachment if it exists
+        Attachments::where('referenceId', $user->id)->delete();
+
+        $user->delete();
+
+        return redirect()->route('users.index')
+            ->with('success', 'user deleted successfully.');
+    }
 }
