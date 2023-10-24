@@ -130,7 +130,7 @@
 
                     {{-- EDIT BUTTON --}}
                     {{-- <a href="/admin/bookings/{{ $booking['id']}}/edit" class="px-3 py-2 text-center text-white bg-green-600 rounded-full" disabled>Edit</a> --}}
-                    <a href="/bookings/{{ $booking['id'] }}/edit" class="px-3 py-2 text-center text-white bg-green-300 rounded-full">Edit</a>
+                    <a href="/admin/bookings/{{ $booking['id'] }}/edit" class="px-3 py-2 text-center text-white bg-green-300 rounded-full">Edit</a>
 
                     {{-- DELETE BUTTON --}}
                     <form action="/admin/booking/{{ $booking['id'] }}" method="POST" class="inline">

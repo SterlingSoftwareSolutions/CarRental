@@ -125,7 +125,7 @@ class BookingsController extends Controller
      */
     public function edit_booking(Bookings $bookings)
     {
-        return view('pages.admin.bookings.edit', compact('booking'));
+        return view('pages.admin.bookings.edit', compact('bookings'));
     }
 
     /**
