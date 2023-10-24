@@ -129,8 +129,7 @@
                     <button class="px-3 py-2 text-center text-white bg-orange-500 rounded-full" onclick="show_surcharge_modal({{$booking->id}})">Fine/Toll</button>
 
                     {{-- EDIT BUTTON --}}
-                    {{-- <a href="/admin/bookings/{{ $booking['id']}}/edit" class="px-3 py-2 text-center text-white bg-green-600 rounded-full" disabled>Edit</a> --}}
-                    <a href="/admin/bookings/{{ $booking['id'] }}/edit" class="px-3 py-2 text-center text-white bg-green-300 rounded-full">Edit</a>
+                    <a href="/admin/bookings/{{ $booking['id'] }}/edit" class="px-3 py-2 text-center text-white bg-green-500 rounded-full">Edit</a>
 
                     {{-- DELETE BUTTON --}}
                     <form action="/admin/booking/{{ $booking['id'] }}" method="POST" class="inline">
