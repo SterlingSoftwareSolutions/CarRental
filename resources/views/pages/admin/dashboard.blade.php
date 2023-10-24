@@ -42,7 +42,7 @@
                             <p class="text-3xl font-bold">
                                 {{$totalUsers}}
                                 <span class="text-yellow-600"><i class="fas fa-caret-up"></i></span>
-                            </p>                            
+                            </p>
                             
                         </div>
                     </div>

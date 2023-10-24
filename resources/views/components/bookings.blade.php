@@ -130,7 +130,7 @@
 
                     {{-- EDIT BUTTON --}}
                     {{-- <a href="/admin/bookings/{{ $booking['id']}}/edit" class="px-3 py-2 text-center text-white bg-green-600 rounded-full" disabled>Edit</a> --}}
-                    <button class="px-3 py-2 text-center text-white bg-green-300 rounded-full" onclick="showReturnModal()">Edit</button>
+                    <a href="/admin/bookings/{{$booking->id}}" class="px-3 py-2 text-center text-white bg-green-300 rounded-full">Edit</a>
 
                     {{-- DELETE BUTTON --}}
                     <form action="/admin/booking/{{ $booking['id'] }}" method="POST" class="inline">
@@ -166,43 +166,6 @@
     </div>
 </div>
 
-<div class="relative z-40 hidden" id="edit_modal">
-    <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" onclick="hideReturnModal()"></div>
-    <div class="fixed inset-0 z-10 overflow-y-auto">
-        <div class="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
-            <div class="relative p-5 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:w-full sm:max-w-lg">
-                <form class="flex flex-col gap-2" id="return_form" method="post" action="">
-                    @csrf
-                    <h1>Pick Up:</h1>
-                    <select name="type" class="w-full mt-2 rounded-full">
-                        <option value="fine">Location One</option>
-                        <option value="toll">Location Two</option>
-                    </select>
-                    <h1>Drop Off:</h1>
-                    <select name="type" class="w-full mt-2 rounded-full">
-                        <option value="fine">Location One</option>
-                        <option value="toll">Location Two</option>
-                    </select>
-                    <h1>Returned On:</h1>
-                    <input class="w-full rounded-full" type="text" name="returned_on" id="return_form_date">
-                    <h1>Paid:</h1>
-                    <input class="w-full rounded-full" type="text" name="returned_on" id="return_form_date">
-                    <h1>Due:</h1>
-                    <input class="w-full rounded-full" type="text" name="returned_on" id="return_form_date">
-                    <h1>Status:</h1>
-                    <select name="type" class="w-full mt-2 rounded-full">
-                        <option value="fine">Unpaid</option>
-                        <option value="toll">Paid</option>
-                    </select>
-                    <div class="flex justify-end gap-1">
-                        <button type="button" class="px-3 py-2 text-gray-500 border border-gray-600 rounded-full" onclick="hideReturnModal()">Cancel</button>
-                        <button class="px-3 py-2 text-white bg-blue-600 rounded-full">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="relative z-40 hidden" id="surcharge_modal">
     <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"></div>
@@ -268,15 +231,6 @@
         surcharge_form_date.value = new Date().toISOString().substring(0, 10);
         surcharge_form.setAttribute('action', '/admin/bookings/' + booking + '/surcharge');
         surcharge_modal.classList.remove('hidden');
-    }
-        // Function to show the modal
-    function showReturnModal() {
-        document.getElementById('edit_modal').classList.remove('hidden');
-    }
-
-    // Function to hide the modal
-    function hideReturnModal() {
-        document.getElementById('edit_modal').classList.add('hidden');
     }
 </script>
 
