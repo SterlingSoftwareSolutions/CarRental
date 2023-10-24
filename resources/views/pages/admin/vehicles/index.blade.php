@@ -126,7 +126,9 @@
 
                                 </td>
                                 <td class="flex flex-col items-center px-6 py-4 md:flex-row md:items-start">
-                                    <a href="/admin/vehicles/{{ $vehicle['id']}}/edit" class="bg-[#2563ea] hover:bg-[#77c6fc] p-2 rounded-lg mb-2 md:mb-0 md:mr-2"><img class="w-5 h-5" src="{{ URL('images/editing.png')}}" alt=""></a>
+                                    <a href="/admin/vehicles/{{ $vehicle['id'] }}/edit" class="bg-[#2563ea] hover:bg-[#77c6fc] p-2 rounded-lg mb-2 md:mb-0 md:mr-2 md:w-8">
+                                        <img class="w-10 h-5" src="{{ URL('images/editing.png') }}" alt="">
+                                    </a>                                    
                                     <span class="hidden text-xl md:inline">&nbsp/&nbsp</span>
                                     <form action="/admin/vehicle/{{ $vehicle['id'] }}" method="POST" class="inline">
                                         @csrf
