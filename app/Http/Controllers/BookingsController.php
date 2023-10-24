@@ -123,9 +123,9 @@ class BookingsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Bookings $bookings)
+    public function edit_booking(Bookings $bookings)
     {
-        //
+        return view('pages.admin.bookings.edit', compact('booking'));
     }
 
     /**
