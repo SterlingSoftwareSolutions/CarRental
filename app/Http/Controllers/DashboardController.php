@@ -24,8 +24,11 @@ class DashboardController extends Controller
         // Store the fetched user data in the session
         Session::put('user_data', $user);
 
-        //users all
+        // Count the total users
         $totalUsers = $this->countUsers();
+
+        // Retrieve the latest users
+        $latestUsers = Users::latest()->take(5)->get();
 
         // Retrieve bookings data
         $totalBooking = $this->countBooking();
@@ -33,7 +36,7 @@ class DashboardController extends Controller
         // Call the new method to get the total vehicle count
         $totalVehicles = $this->countVehicles();
 
-        return view('pages.admin.dashboard', ['user' => $user, 'totalBooking' => $totalBooking , 'totalVehicles' => $totalVehicles, 'totalUsers' => $totalUsers]);
+        return view('pages.admin.dashboard', ['user' => $user, 'totalBooking' => $totalBooking , 'totalVehicles' => $totalVehicles, 'totalUsers' => $totalUsers, 'latestUsers' => $latestUsers]);
     }
 
     public function client(Request $request)
