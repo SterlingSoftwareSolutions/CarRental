@@ -64,7 +64,7 @@
                 </div>
                 <div class="w-full mt-12">
                     <p class="flex items-center pb-3 text-xl">
-                        <i class="mr-3 fas fa-list"></i> Latest Reports
+                        <i class="mr-3 fas fa-list"></i> Latest Users
                     </p>
                     <div class="overflow-auto bg-white">
                         <table class="min-w-full bg-white">
@@ -77,12 +77,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach ($user as $u)
+                            @foreach ($latestUsers as $user)
                                 <tr class="bg-white border-b">
-                                    <td class="w-1/3 px-4 py-3 text-left">{{ $u['first_name'] ?? '' }}</td>
-                                    <td class="w-1/3 px-4 py-3 text-left">{{ $u['last_name'] ?? '' }}</td>
-                                    <td class="w-1/3 px-4 py-3 text-left">{{ $u['mobile'] ?? '' }}</td>
-                                    <td class="w-1/3 px-4 py-3 text-left">{{ $u['email'] ?? '' }}</td>
+                                    <td class="w-1/3 px-4 py-3 text-left">{{ $user->first_name }}</td>
+                                    <td class="w-1/3 px-4 py-3 text-left">{{ $user->last_name }}</td>
+                                    <td class="w-1/3 px-4 py-3 text-left">{{ $user->mobile }}</td>
+                                    <td class="w-1/3 px-4 py-3 text-left">{{ $user->email }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
