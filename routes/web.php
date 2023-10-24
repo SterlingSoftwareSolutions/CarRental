@@ -80,7 +80,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/bookings/{booking}/return', [BookingsController::class, 'return'])->name('bookings.return');
         Route::post('/bookings/{booking}/return_confirm', [BookingsController::class, 'return_confirm'])->name('bookings.return_confirm');
         Route::delete('/booking/{bookingId}', [BookingsController::class, 'destroy'])->name('delete_booking');
-        Route::get('/bookings/{booking}/edit', [BookingsController::class, 'edit_booking'])->name('bookings.edit');
+        Route::get('/bookings/{booking}/edit', [BookingsController::class, 'edit'])->name('bookings.edit');
+        Route::put('/bookings/{booking}', [BookingsController::class, 'update'])->name('bookings.update');
 
         Route::get('/surcharges', [SurchargeController::class, 'index'])->name('surcharges.all');
     });

@@ -123,17 +123,35 @@ class BookingsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit_booking(Bookings $bookings)
+    public function edit(Bookings $booking)
     {
-        return view('pages.admin.bookings.edit', compact('bookings'));
+        return view('pages.admin.bookings.edit', compact('booking'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBookingsRequest $request, Bookings $bookings)
+    public function update(UpdateBookingsRequest $request, Bookings $booking)
     {
-        //
+        $request->validate([
+          "pickup" => "required",
+          "pickup_time" => "required",
+          "dropoff" => "required",
+          "dropoff_time" => "required",
+          "status" => "required",
+          "returned_on" => "nullable",
+        ]);
+
+        $booking->update([
+          "pickup" => $request->pickup,
+          "pickup_time" => $request->pickup_time,
+          "dropoff" => $request->dropoff,
+          "dropoff_time" => $request->dropoff_time,
+          "status" => $request->status,
+          "returned_on" => $request->returned_on
+        ]);
+
+        return back()->with('message', 'Booking updated.');
     }
 
     /**
