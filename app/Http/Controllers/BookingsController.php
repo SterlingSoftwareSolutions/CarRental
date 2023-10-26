@@ -128,6 +128,11 @@ class BookingsController extends Controller
         return view('pages.admin.bookings.edit', compact('booking'));
     }
 
+    public function edit(Bookings $booking)
+    {
+        return view('pages.admin.bookings.edit', compact('booking'));
+    }
+
     /**
      * Update the specified resource in storage.
      */

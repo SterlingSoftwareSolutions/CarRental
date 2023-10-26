@@ -19,6 +19,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\RegistrationSuccessfulEmail;
 
 class RegisteredUserController extends Controller
 {
@@ -43,8 +44,10 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-
+        
         Auth::login($user);
+
+        Mail::to($user->email)->send(new RegistrationSuccessfulEmail($user));
 
         return redirect(RouteServiceProvider::HOME);
     }
@@ -103,7 +106,6 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
         
-        $user->notify(new WelcomeEmail($user));
 
         $imagePath = $request->file('image')->store('public/user_images');
         Attachments::create([
