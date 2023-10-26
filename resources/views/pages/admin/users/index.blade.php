@@ -104,18 +104,20 @@
                             <tr class="bg-white border-b">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
                                     <a href="/admin/users/{{ $user['id']}}/">
-                                        <div class="flex items-center">
-                                            <div class="me-3">
-                                                @if(isset($user) && isset($user->images) && $user->images->count() > 0)
-                                                <img src="{{ Storage::url($user->images[0]->file_path) }}" alt="User Image" class="object-cover w-10 h-10 rounded-full">
-                                                @else
-                                                <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" alt="User Image" class="object-cover w-10 h-10 rounded-full">
-                                                @endif
+                                        <div class="flex-row">
+                                            <div class="flex items-center justify-center">
+                                                <div class="me-3">
+                                                    @if(isset($user) && isset($user->images) && $user->images->count() > 0)
+                                                    <img src="{{ Storage::url($user->images[0]->file_path) }}" alt="User Image" class="object-cover w-10 h-10 rounded-full">
+                                                    @else
+                                                    <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" alt="User Image" class="object-cover w-10 h-10 rounded-full">
+                                                    @endif
+                                                </div>
                                             </div>
-                                            <div>
+                                            <div class="flex items-center justify-center">
                                                 <p> {{ $user['first_name'] }} {{ $user['last_name'] }}</p>
                                             </div>
-                                        </div>
+                                        </div>  
                                     </a>
                                 </th>
                                 <td class="px-6 py-4">
@@ -136,7 +138,7 @@
                                 <td class="px-6 py-4">
                                     {{ $user['email'] }}
                                 </td>
-                                <td class="px-6 py-4">
+                                <td class="px-4 py-4">
                                     {{ $user['created_at'] }}
                                 </td>
                                 <td class="px-6 py-4 text-center md:text-right">
