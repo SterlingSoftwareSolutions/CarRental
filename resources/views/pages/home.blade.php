@@ -312,20 +312,25 @@
     <div id="app" class="w-4/6 px-0 py-0 mx-auto mt-3 transition-all duration-500 ease-linear md:px-8 md:py-12">
         <div class="relative">
             <div class="slides-container h-80 flex snap-x snap-mandatory overflow-hidden overflow-x-auto space-x-4 rounded scroll-smooth before:w-[45vw] before:shrink-0 after:w-[45vw] after:shrink-0 md:before:w-0 md:after:w-0">
-                @if (isset($vehicles) && count($vehicles) > 0)
-                    @foreach ($vehicles as $vehicle)
-                        <div class="slide overflow-hidden aspect-square rounded-lg h-full flex-shrink-0 snap-center shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-50">
-                            <img class="w-full rounded-lg" src="{{ Storage::url($vehicle->file_path ?? null) }}" alt="vehicle_image">
-                            <div class="grid items-center justify-center justify-items-stretch">
-                                <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">{{ $vehicle->make }}</h1>
-                                <p class="p-2">{{ $vehicle->short_Description }}</p>
-                            </div>
+                @if (isset($vehicles))
+                @foreach ($vehicles as $vehicle)
+                    <div class="slide overflow-hidden slide aspect-square rounded-lg h-full flex-shrink-0 snap-center shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50">
+                        @if (count($vehicle->images) > 0)
+                            <img class="w-full rounded-lg" src="{{ Storage::url($vehicle->images[0]->file_path) }}" alt="{{ $vehicle->make }} Image">
+                        @else
+                            <!-- Display a default image or placeholder if no images are available for this vehicle -->
+                            <img class="w-full rounded-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
+                        @endif
+                        <div class="grid items-center justify-center justify-items-stretch">
+                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">{{ $vehicle->make }}</h1>
+                            <p class="p-2">{{ $vehicle->short_Description }}</p>
                         </div>
-                    @endforeach
+                    </div>
+                @endforeach
                 @else
-                    <p>No vehicles available.</p>
+                <p>No vehicles available.</p>
                 @endif
-            </div>            
+            </div>
             <div class="absolute top-0 items-center h-full -left-4">
                 <button role="button" class="prev px-2 py-2 rounded-full bg-[#317256] text-neutral-900 group" aria-label="prev">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 transition-all duration-200 ease-linear group-active:-translate-x-2">

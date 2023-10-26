@@ -98,7 +98,7 @@
 
                         </div>
                     </div>
-                    <div class="bg-[#317256] px-1 rounded">
+                    <div class="bg-[#317256] px-1 rounded md:w-[200px] flex justify-center">
                         <h1 class="text-sm text-white md:text-base">$ {{ $vehicle['price']}} /hour</h1>
                     </div>
                 </div>
