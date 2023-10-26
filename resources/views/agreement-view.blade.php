@@ -120,31 +120,3 @@
 
 </html>
 
-{{-- <script>
-    const canvas = document.getElementById('signatureCanvas');
-    const context = canvas.getContext('2d');
-    const clearButton = document.getElementById('clearSignature');
-
-    let isDrawing = false;
-
-    canvas.addEventListener('mousedown', () => {
-        isDrawing = true;
-        context.beginPath();
-        context.moveTo(event.clientX - canvas.getBoundingClientRect().left, event.clientY - canvas.getBoundingClientRect().top);
-    });
-
-    canvas.addEventListener('mousemove', () => {
-        if (!isDrawing) return;
-        context.lineTo(event.clientX - canvas.getBoundingClientRect().left, event.clientY - canvas.getBoundingClientRect().top);
-        context.stroke();
-    });
-
-    canvas.addEventListener('mouseup', () => {
-        isDrawing = false;
-    });
-
-    clearButton.addEventListener('click', () => {
-        context.clearRect(0, 0, canvas.width, canvas.height);
-    });
-
-</script> --}}
