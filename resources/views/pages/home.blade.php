@@ -47,7 +47,7 @@
     <!-- main home banner  -->
     <div class="flex items-center px-4 py-8 main-banner justify-right md:py-22">
         <div class="grid items-center justify-center pl-1 align-middle md:pl-32 mt-30 md:mt-20">
-            <h1 class="mb-2 text-3xl font-bold text-white md:text-5xl lg:text-4xl md:mb-4">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
+            <h1 class="mt-16 mb-2 text-3xl font-bold text-white md:text-5xl lg:text-4xl md:mb-4 md:mt-0">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
             <p class="text-sm text-white md:text-lg font-">Rent a Car for Your Next Adventure with Our Convenient <br class="hidden md:inline"> and Reliable Services</p>
             <div class="flex flex-col gap-5 mt-8 md:flex-row md:mt-4 md:w-1/2">
                 <div class="grid bg-black rounded-lg search-foam md:w-10 lg:w-auto">
@@ -314,13 +314,18 @@
             <div class="slides-container h-80 flex snap-x snap-mandatory overflow-hidden overflow-x-auto space-x-4 rounded scroll-smooth before:w-[45vw] before:shrink-0 after:w-[45vw] after:shrink-0 md:before:w-0 md:after:w-0">
                 @if (isset($vehicles))
                 @foreach ($vehicles as $vehicle)
-                <div class="lide overflow-hidden slide aspect-square rounded-lg h-full flex-shrink-0 snap-center shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50 ">
-                    <img class="w-full rounded-lg" src="{{ Storage::url($firstImage->file_path ?? null) }}" alt="mountain_image">
-                    <div class="grid items-center justify-center justify-items-stretch ">
-                        <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">{{ $vehicle['make']}}</h1>
-                        <p class="p-2">{{ $vehicle['short_Description']}} </p>
+                    <div class="slide overflow-hidden slide aspect-square rounded-lg h-full flex-shrink-0 snap-center shadow-2xl hover:bg-[#EAFED5] hover:bg-opacity-3=50">
+                        @if (count($vehicle->images) > 0)
+                            <img class="w-full rounded-lg" src="{{ Storage::url($vehicle->images[0]->file_path) }}" alt="{{ $vehicle->make }} Image">
+                        @else
+                            <!-- Display a default image or placeholder if no images are available for this vehicle -->
+                            <img class="w-full rounded-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
+                        @endif
+                        <div class="grid items-center justify-center justify-items-stretch">
+                            <h1 class="bg-[#317256] p-2 pl-5 pr-5 text-white -mt-10">{{ $vehicle->make }}</h1>
+                            <p class="p-2">{{ $vehicle->short_Description }}</p>
+                        </div>
                     </div>
-                </div>
                 @endforeach
                 @else
                 <p>No vehicles available.</p>

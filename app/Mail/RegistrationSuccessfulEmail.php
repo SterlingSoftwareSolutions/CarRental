@@ -9,8 +9,9 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ContactMail extends Mailable
+class RegistrationSuccessfulEmail extends Mailable
 {
+    
     use Queueable, SerializesModels;
 
     public $user;
@@ -23,9 +24,14 @@ class ContactMail extends Mailable
         $this->user = $user;
     }
 
-    public function build(){
-        return $this->markdown('emails.email-template')->subject(config('app.name'). 'Contact Us');
+    public function build()
+    {
+        // return $this->view('registeremail')
+        //     ->subject('Welcome to Our Application');
+
+        return $this->markdown('emails.registeremail')->subject(config('app.name'). 'Welcome to Our Application');
     }
+
 
     /**
      * Get the message envelope.
@@ -33,7 +39,7 @@ class ContactMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Contact Mail',
+            subject: 'Registration Successful Email',
         );
     }
 
