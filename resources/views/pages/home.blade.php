@@ -87,7 +87,7 @@
                             <option class="text-sm" value="{{$opt}}" @if(Request()->transmission == $opt) selected @endif>{{$opt}}</option>
                             @endforeach
                         </select>
-                        <button type="submit" class="text-white w-full bg-[#317256] hover:bg-[#e0aa87] focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded mt-3">
+                        <button type="submit" class="text-white w-full bg-[#317256] hover:bg-[#31754a] focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded mt-3">
                             <span class="text-base">Search Now</span>
                         </button>
                     </form>
@@ -119,7 +119,7 @@
                         </div>
 
                         <div class="flex justify-center mt-4 md:mt-6">
-                            <button type="submit" class="text-white w-full bg-[#317256] hover:bg-[#e0aa87] font-bold text-sm md:text-base py-2 rounded">
+                            <button type="submit" class="text-white w-full bg-[#317256] hover:bg-[#31754a] font-bold text-sm md:text-base py-2 rounded">
                                 <span class="text-base">Search Now</span>
                             </button>
                         </div>
@@ -349,7 +349,7 @@
         </div>
     </div>
     <div class="mt-4 text-center">
-        <button type="button" class="text-white bg-[#317256] font-bold hover:bg-[#e0aa87] px-6 py-3 text-center mr-3 md:mr-0 rounded" onclick="window.location.href='{{ route('carlist') }}';">
+        <button type="button" class="text-white bg-[#317256] font-bold hover:bg-[#31754a] px-6 py-3 text-center mr-3 md:mr-0 rounded" onclick="window.location.href='{{ route('carlist') }}';">
             View All
         </button>
     </div>
@@ -377,26 +377,26 @@
                     <div class="grid grid-cols-1 counter-container md:grid-cols-3">
                         <div class="text-center counter md:last:border-0">
                             <div class="flex">
-                                <h3 data-target="12" class="text-[#e0aa87] font-semibold text-2xl md:text-5xl count">0</h3><span class="text-[#e0aa87] font-semibold text-2xl md:text-5xl">+</span>
+                                <h3 data-target="12" class="text-[#31754a] font-semibold text-2xl md:text-5xl count">0</h3><span class="text-[#31754a] font-semibold text-2xl md:text-5xl">+</span>
                             </div>
                             <p class="text-sm text-white md:text-lg">Years Experience</p>
                         </div>
                         <div class="text-center counter md:last:border-0">
                             <div class="flex">
-                                <h3 data-target="66" class="text-[#e0aa87] font-semibold text-2xl md:text-5xl count">0</h3><span class="text-[#e0aa87] font-semibold text-2xl md:text-5xl">+</span>
+                                <h3 data-target="66" class="text-[#31754a] font-semibold text-2xl md:text-5xl count">0</h3><span class="text-[#31754a] font-semibold text-2xl md:text-5xl">+</span>
                             </div>
                             <p class="text-sm text-white md:text-lg">Rental Cars</p>
                         </div>
                         <div class="text-center counter">
                             <div class="flex">
-                                <h3 data-target="172" class="text-[#e0aa87] font-semibold text-xl md:text-5xl count">0</h3><span class="text-[#e0aa87] font-semibold text-2xl md:text-5xl">+</span>
+                                <h3 data-target="172" class="text-[#31754a] font-semibold text-xl md:text-5xl count">0</h3><span class="text-[#31754a] font-semibold text-2xl md:text-5xl">+</span>
                             </div>
                             <p class="text-sm text-white md:text-lg">Satisfied Clients</p>
                         </div>
                     </div>
                 </div>
                 <div class="flex justify-center pb-5 mt-3 ml-0 md:ml-8 md:mt-5 md:justify-start">
-                    <button class="bg-white p-2 rounded text-[#317256] font-bold hover:bg-[#e0aa87]" onclick="window.location.href='{{ route('about') }}';">Read More</button>
+                    <button class="bg-white p-2 rounded text-[#317256] font-bold hover:bg-[#31754a]" onclick="window.location.href='{{ route('about') }}';">Read More</button>
                 </div>
             </a>
         </div>
