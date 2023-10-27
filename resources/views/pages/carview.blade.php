@@ -189,7 +189,7 @@
                     <p class="mt-2 font-semibold text-[#707070]">Pick-up Date & Time</p>
 
                     <div class="flex items-center justify-center w-full gap-4">
-                        <div class="w-full">
+                        <div class="w-full -ml-14 md:ml-0">
                             <input class="w-full border-none rounded-md shadow-md" type="datetime-local" id="pickup_time" name="pickup_time">
                         </div>
 
@@ -198,7 +198,7 @@
                     <p class="mt-2 font-semibold text-[#707070]">Drop-off Date & Time</p>
 
                     <div class="flex items-center justify-center gap-4">
-                        <div class="w-full">
+                        <div class="w-full -ml-14 md:ml-0">
                             <input class="w-full border-none rounded-md shadow-md" type="datetime-local" name="dropoff_time" id="dropoff_time">
                         </div>
 

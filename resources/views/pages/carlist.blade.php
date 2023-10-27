@@ -20,7 +20,7 @@
     <!-- end navigation -->
 
     <!-- banner section -->
-    <div class="relative -z-50">
+    <div class="relative h-[200px] -z-50 md:h-[300px]">
         <img src="{{ URL('images/Group 180.png')}}" alt="" srcset="" class="h-full">
         <h1 class="absolute pl-0 text-2xl font-bold text-white top-2/4 left-4/12 md:pl-56 md:text-4xl">Find Your Dream Ride</h1>
     </div>
