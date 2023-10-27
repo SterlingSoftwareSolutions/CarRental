@@ -17,7 +17,7 @@
             <div class="mt-5 text-center md:flex md:justify-between md:text-left">
                 <div class="mb-6 md:mb-0">
                     <a href="" class="grid items-center">
-                        <div class="flex items-center justify-end w-2/12 ml-40 md:ml-0">
+                        <div class="flex items-center justify-center w-2/12 ml-32 md:ml-0">
                             <img class="w-full h-full" src="{{ URL('images/flg_logo11079.png')}}" alt="Logo Image">
                         </div>
                         <p class="text-white">Lorem Ipsum Dolor Sit Amet, Consectetur <br> Adipiscing Elit. Sed Non Risus. Suspendisse <br> Lectus Tortor, Dignissim Sit Amet, </p>
