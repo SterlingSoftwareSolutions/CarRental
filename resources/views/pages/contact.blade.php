@@ -91,7 +91,7 @@
                                         @error('message')<span class="text-sm text-red-900">{{$message}}</span> @enderror
                                         <textarea value="{{old('message')}}" id="message" placeholder="Message" name="message" class="w-full h-12 bg-white placeholder-[#317256] border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                                     </div>
-                                    <button type="submit" class="text-[#317256] w-2/6 font-bold bg-white border-0 py-2 px-4 focus:outline-none hover:bg-[#e0aa87] hover:text-white rounded text-lg">Submit</button>
+                                    <button type="submit" class="text-[#317256] w-2/6 font-bold bg-white border-0 py-2 px-4 focus:outline-none hover:bg-[#31754a] hover:text-white rounded text-lg">Submit</button>
                                 </div>
                             </div>
                         </div>
