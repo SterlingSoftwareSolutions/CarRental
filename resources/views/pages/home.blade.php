@@ -377,19 +377,19 @@
                     <div class="grid grid-cols-1 counter-container md:grid-cols-3">
                         <div class="text-center counter md:last:border-0">
                             <div class="flex">
-                                <h3 data-target="12" class="text-[#31754a] font-semibold text-2xl md:text-5xl count">0</h3><span class="text-[#31754a] font-semibold text-2xl md:text-5xl">+</span>
+                                <h3 data-target="12" class="text-white font-semibold text-2xl md:text-5xl count">0</h3><span class="text-white font-semibold text-2xl md:text-5xl">+</span>
                             </div>
                             <p class="text-sm text-white md:text-lg">Years Experience</p>
                         </div>
                         <div class="text-center counter md:last:border-0">
                             <div class="flex">
-                                <h3 data-target="66" class="text-[#31754a] font-semibold text-2xl md:text-5xl count">0</h3><span class="text-[#31754a] font-semibold text-2xl md:text-5xl">+</span>
+                                <h3 data-target="66" class="text-white font-semibold text-2xl md:text-5xl count">0</h3><span class="text-white font-semibold text-2xl md:text-5xl">+</span>
                             </div>
                             <p class="text-sm text-white md:text-lg">Rental Cars</p>
                         </div>
                         <div class="text-center counter">
                             <div class="flex">
-                                <h3 data-target="172" class="text-[#31754a] font-semibold text-xl md:text-5xl count">0</h3><span class="text-[#31754a] font-semibold text-2xl md:text-5xl">+</span>
+                                <h3 data-target="172" class="text-white font-semibold text-xl md:text-5xl count">0</h3><span class="text-white font-semibold text-2xl md:text-5xl">+</span>
                             </div>
                             <p class="text-sm text-white md:text-lg">Satisfied Clients</p>
                         </div>
