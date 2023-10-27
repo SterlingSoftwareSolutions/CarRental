@@ -1,7 +1,9 @@
 <nav class="z-50 w-full nav">
 	<div class="z-50 flex items-center justify-end p-10 logo md:pl-0 md:w-2/12">
-		<img class="w-full md:w-full" src="{{ URL('images/flg_logo11079.png')}}" alt="Logo Image">
-	</div>
+		<a href="{{ route('home') }}">
+			<img class="w-full md:w-full" src="{{ URL('images/flg_logo11079.png')}}" alt="Logo Image">
+		</a>
+	</div>	
 	<div class="p-4 cursor-pointer hamburger">
 		<div class="w-6 h-1 mb-1 bg-white line1"></div>
 		<div class="w-6 h-1 mb-1 bg-white line2"></div>

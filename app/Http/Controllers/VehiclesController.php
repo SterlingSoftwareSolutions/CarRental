@@ -209,8 +209,8 @@ class VehiclesController extends Controller
             'doors' => 'required|integer|min:1',
             'passengers' => 'required|integer|min:1',
             'price' => 'required|numeric|min:0',
-            'description' => 'required|string|max:255',
-            'short_Description' => 'required|string|max:255',
+            'description' => 'required|string',
+            'short_Description' => 'required|string',
             'image_1' => 'sometimes|required|image|max:2048', // Max file size of 2MB
             'image_2' => 'sometimes|required|image|max:2048',
             'image_3' => 'sometimes|required|image|max:2048',

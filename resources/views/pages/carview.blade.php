@@ -41,8 +41,8 @@
                     <img src="{{ Storage::url($vehicle->images[3]->file_path ?? null) }}" style="width:100%">
                 </div>
 
-                <a class="prev" onclick="plusSlides(-1)">❮</a>
-                <a class="next" onclick="plusSlides(1)">❯</a>
+                <a class="prev md:-ml-6" onclick="plusSlides(-1)">❮</a>
+                <a class="next md:mr-[650px]" onclick="plusSlides(1)">❯</a>
 
                 <div class="flex">
                     <div class="row">
@@ -89,8 +89,8 @@
                 <hr class="border-1 border-gary-600">
                 <div class="flex w-full">
                     <div class="flex justify-between w-full">
-                        <div class="flex flex-col w-full md:flex-row md:flex-wrap">
-                            <div class="flex mt-5 space-y-2 md:space-y-0 md:space-x-12">
+                        <div class="flex flex-col w-full md:flex-col md:flex-wrap">
+                            <div class="flex mt-5 space-y-2 md:space-y-0 md:space-x-10">
                                 <ul>
                                     <li>Make:</li>
                                     <li>Model:</li>
@@ -106,7 +106,7 @@
                                     <li>{{ $vehicle['fuel_type']}}</li>
                                 </ul>
                             </div>
-                            <div class="flex pl-0 mt-5 space-y-2 md:space-y-0 md:space-x-12 md:pl-5">
+                            <div class="flex pl-0 mt-5 space-y-2 md:space-y-0 md:space-x-12 md:pl-5 md:-ml-5">
                                 <ul>
                                     <li>VIN:</li>
                                     <li>Mileage:</li>
@@ -189,7 +189,7 @@
                     <p class="mt-2 font-semibold text-[#707070]">Pick-up Date & Time</p>
 
                     <div class="flex items-center justify-center w-full gap-4">
-                        <div class="w-full">
+                        <div class="w-full -ml-14 md:ml-0">
                             <input class="w-full border-none rounded-md shadow-md" type="datetime-local" id="pickup_time" name="pickup_time">
                         </div>
 
@@ -198,7 +198,7 @@
                     <p class="mt-2 font-semibold text-[#707070]">Drop-off Date & Time</p>
 
                     <div class="flex items-center justify-center gap-4">
-                        <div class="w-full">
+                        <div class="w-full -ml-14 md:ml-0">
                             <input class="w-full border-none rounded-md shadow-md" type="datetime-local" name="dropoff_time" id="dropoff_time">
                         </div>
 

@@ -9,22 +9,16 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ContactMail extends Mailable
+class forgotPassword extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $user;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($user)
+    public function __construct()
     {
-        $this->user = $user;
-    }
-
-    public function build(){
-        return $this->markdown('emails.email-template')->subject(config('app.name'). 'Contact Us');
+        //
     }
 
     /**
@@ -33,7 +27,7 @@ class ContactMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Contact Mail',
+            subject: 'Forgot Password',
         );
     }
 
