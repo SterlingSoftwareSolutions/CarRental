@@ -35,8 +35,8 @@
                     <img src="{{ Storage::url($vehicle->images[3]->file_path ?? null) }}" style="width:100%">
                 </div>
 
-                <a class="prev md:-ml-6" onclick="plusSlides(-1)">❮</a>
-                <a class="next md:mr-[650px]" onclick="plusSlides(1)">❯</a>
+                {{-- <a class="prev md:-ml-6" onclick="plusSlides(-1)">❮</a> --}}
+                {{-- <a class="next md:mr-[650px]" onclick="plusSlides(1)">❯</a> --}}
 
                 <div class="flex">
                     <div class="row">
