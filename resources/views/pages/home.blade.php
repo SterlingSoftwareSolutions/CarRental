@@ -214,7 +214,7 @@
                                 @foreach ($vehicles as $vehicle)
                                 <div class="mb-4 slide">
                                     <div class="inner_content">
-                                        <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl">
+                                        <a href="{{ route('booknow', ['id' => $vehicle->id]) }}" class="flex flex-row items-center md:flex-row md:max-w-xl">
                                             <div class="md:block">
                                                 @if ($vehicle->images->count() > 0)
                                                 @php
@@ -260,7 +260,7 @@
                                 @foreach ($vehicles as $vehicle)
                                 <div class="mb-4 slide">
                                     <div class="inner_content">
-                                        <a href="#" class="flex flex-row items-center md:flex-row md:max-w-xl">
+                                        <a href="{{ route('booknow', ['id' => $vehicle->id]) }}" class="flex flex-row items-center md:flex-row md:max-w-xl">
                                             <div class="md:block">
                                                 @if ($vehicle->images->count() > 0)
                                                 @php
@@ -377,19 +377,19 @@
                     <div class="grid grid-cols-1 counter-container md:grid-cols-3">
                         <div class="text-center counter md:last:border-0">
                             <div class="flex">
-                                <h3 data-target="12" class="text-white font-semibold text-2xl md:text-5xl count">0</h3><span class="text-white font-semibold text-2xl md:text-5xl">+</span>
+                                <h3 data-target="12" class="text-2xl font-semibold text-white md:text-5xl count">0</h3><span class="text-2xl font-semibold text-white md:text-5xl">+</span>
                             </div>
                             <p class="text-sm text-white md:text-lg">Years Experience</p>
                         </div>
                         <div class="text-center counter md:last:border-0">
                             <div class="flex">
-                                <h3 data-target="66" class="text-white font-semibold text-2xl md:text-5xl count">0</h3><span class="text-white font-semibold text-2xl md:text-5xl">+</span>
+                                <h3 data-target="66" class="text-2xl font-semibold text-white md:text-5xl count">0</h3><span class="text-2xl font-semibold text-white md:text-5xl">+</span>
                             </div>
                             <p class="text-sm text-white md:text-lg">Rental Cars</p>
                         </div>
                         <div class="text-center counter">
                             <div class="flex">
-                                <h3 data-target="172" class="text-white font-semibold text-xl md:text-5xl count">0</h3><span class="text-white font-semibold text-2xl md:text-5xl">+</span>
+                                <h3 data-target="172" class="text-xl font-semibold text-white md:text-5xl count">0</h3><span class="text-2xl font-semibold text-white md:text-5xl">+</span>
                             </div>
                             <p class="text-sm text-white md:text-lg">Satisfied Clients</p>
                         </div>
