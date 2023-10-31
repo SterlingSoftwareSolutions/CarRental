@@ -178,8 +178,13 @@
                         </div>
                         <div class="flex-1">
                             <h1 class="text-sm text-black">Expired Year (YYYY) <span class="text-red-500">*</span></h1>
-                            <input class="w-full border-none rounded-md shadow-md -ml-7 md:ml-0" type="number" value="{{old('driving_license_expire_year') ?? $user->driving_license_expire_year ?? ''}}"
-                                name="driving_license_expire_year" id="">
+                            <select class="w-full border-none rounded-md shadow-md -ml-7 md:ml-0" name="driving_license_expire_year" id="">
+                                <option value="">Select Year</option>
+                                @for ($year = date('Y'); $year <= date('Y') + 100; $year++)
+                                    <option value="{{ $year }}" {{ (old('driving_license_expire_year') ?? $user->driving_license_expire_year) == $year ? 'selected' : '' }}>{{ $year }}</option>
+                                @endfor
+                            </select>
+
                         </div>
                     </div>
                     <div class="flex w-full gap-4">
