@@ -117,10 +117,12 @@
                         <div class="flex items-center space-x-1">
                             <h1 class="text-sm text-black">Country <span class="text-red-500">*</span></h1>
                             <select class="w-3/6 border-none rounded-md shadow-md" name="country" id="country">
-                                @foreach ($countries as $country)
+                                <option value="australia">Australia</option>
+                                {{-- @foreach ($countries as $country)
                                 <option value="{{$country->name}}" @if((old('country') ?? $user->country) == $country->name) selected @endif>{{$country->name}} - {{$country->code}}</option>
-                                @endforeach
+                                @endforeach --}}
                             </select>
+                            
                         </div>
                     </div>
 

@@ -141,7 +141,7 @@
         <div class="grid w-full grid-flow-row mt-0 md:p-2 md:mt-24 md:w-full lg:w-2/6">
 
             <!-- pickup foam -->
-            <div class="bg-[#F8FFF2] grid md:p-8 md:mt-0 p-4">
+            <div class="bg-[#F8FFF2] grid md:p-8 p-4 md:-mt-8">
                 <h1 class="text-[#317256] font-semibold text-xl">{{ $vehicle['year']}} {{ $vehicle['make']}} {{
                     $vehicle['model']}} {{ $vehicle['body_type']}}</h1>
                 <p class="mt-2 font-semibold text-[#707070] whitespace-normal">{{ $vehicle['short_Description']}}</p>
@@ -215,7 +215,7 @@
 
             <!-- conatct number section -->
             <div class="flex items-center justify-center mt-4">
-                <div class="bg-[#317256] rounded text-center w-10/12 p-4">
+                <div class="bg-[#317256] rounded text-center w-full p-4">
                     <h1 class="text-2xl font-semibold text-white">Call Us</h1>
                     <div class="flex items-center justify-center mt-3">
                         <a href="" class="flex hover:underline">
