@@ -47,7 +47,8 @@
         @foreach ($bookings as $booking)
         <tr class="bg-white border-b">
             <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
-                <a href="/user/bookings/{{$booking->id}}">
+                @if(Auth::user()->role == 'admin')
+                <a href="/admin/bookings/{{$booking->id}}">
                     @if(isset($booking->vehicle))
                     <div class="flex items-center">
                         <div class="me-3">
@@ -69,6 +70,31 @@
                     </p>
                     @endif
                 </a>
+                @else
+                @if(isset($booking->vehicle))
+                <div class="flex items-center">
+                    <div class="me-3">
+                        <img src="
+                                    @if(count($booking->vehicle->images))
+                                        {{Storage::url($booking->vehicle->images[0]->file_path)}}
+                                    @else
+                                        /images/blank.png
+                                    @endif
+                                " class="w-10 h-10 rounded-full" alt="Vehicle Image">
+                    </div>
+                    <div>
+                        <p>{{ $booking->vehicle['make']}} {{ $booking->vehicle['model']}} #{{ $booking->vehicle['vin']}}</p>
+                    </div>
+                </div>
+                @else
+                <p class="text-red-500">
+                    Vehicle no longer in the system.
+                </p>
+                @endif
+                Actions
+            </th>
+            @endif
+
             </th>
 
             <td class="px-6 py-4">
