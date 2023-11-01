@@ -147,7 +147,7 @@
                 <p class="mt-2 font-semibold text-[#707070] whitespace-normal">{{ $vehicle['short_Description']}}</p>
                 <div class="flex items-center justify-right">
                     <div class="bg-[#317256] p-2 rounded">
-                        <h1 class="text-white">$ {{ $vehicle['price']}} /hour</h1>
+                        <h1 class="text-white">$ {{ $vehicle['price']}} /day</h1>
                     </div>
                 </div>
                 <form method="post" action="{{ route('bookvehicle') }}">

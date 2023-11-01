@@ -105,7 +105,7 @@
                                 </div>
                                 </div>
                                 <div class="bg-[#317256] px-1 rounded md:w-[200px] flex justify-center">
-                                <h1 class="text-sm text-white md:text-base">$ {{ $vehicle['price']}} /hour</h1>
+                                <h1 class="text-sm text-white md:text-base">$ {{ $vehicle['price']}} /day</h1>
                                 </div>
                                 </div>
                                 <hr class="bg-[#317256] h-0.5">
