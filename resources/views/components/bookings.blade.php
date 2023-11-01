@@ -47,8 +47,8 @@
         @foreach ($bookings as $booking)
         <tr class="bg-white border-b">
             <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
-            <a href="/admin/bookings/{{$booking->id}}">
-                @if(isset($booking->vehicle))
+                <a href="/user/bookings/{{$booking->id}}">
+                    @if(isset($booking->vehicle))
                     <div class="flex items-center">
                         <div class="me-3">
                             <img src="
@@ -63,12 +63,12 @@
                             <p>{{ $booking->vehicle['make']}} {{ $booking->vehicle['model']}} #{{ $booking->vehicle['vin']}}</p>
                         </div>
                     </div>
-                @else
+                    @else
                     <p class="text-red-500">
-                    Vehicle no longer in the system.
+                        Vehicle no longer in the system.
                     </p>
-                @endif
-            </a>
+                    @endif
+                </a>
             </th>
 
             <td class="px-6 py-4">
@@ -88,7 +88,7 @@
                     {{ explode( ' ', $booking['dropoff_time'])[0] }}
                 </p>
             </td>
-            
+
             <td class="px-6 py-4">
                 {{$booking['returned_on'] ?? '-'}}
             </td>
@@ -100,21 +100,21 @@
             <td class="px-6 py-4">
                 @php $due = $booking['returned_on'] ? $booking->invoices->where('paid', '0')->sum('amount') : $booking->amount() - $booking->amount_paid() @endphp
                 @if($due == 0)
-                    <p class="text-green-600">Paid</p>
+                <p class="text-green-600">Paid</p>
                 @else
-                    <p class="text-red-600">${{$due}}</p>
+                <p class="text-red-600">${{$due}}</p>
                 @endif
             </td>
 
             <td class="px-6 py-4">
                 @if(strtolower($booking->status) == 'unpaid')
-                    <span class="px-3 py-2 text-red-600 border border-red-600 rounded-full">Unpaid</span>
+                <span class="px-3 py-2 text-red-600 border border-red-600 rounded-full">Unpaid</span>
                 @elseif(strtolower($booking->status) == 'returned')
-                    <span class="px-3 py-2 text-green-600 border border-green-600 rounded-full">Returned</span>
+                <span class="px-3 py-2 text-green-600 border border-green-600 rounded-full">Returned</span>
                 @elseif(strtolower($booking->status) == 'paid')
-                    <span class="px-3 py-2 text-blue-600 border border-blue-600 rounded-full">Paid</span>
+                <span class="px-3 py-2 text-blue-600 border border-blue-600 rounded-full">Paid</span>
                 @else
-                    <span class="px-3 py-2 text-gray-600 border border-gray-600 rounded-full">{{ ucfirst($booking->status)}}</span>
+                <span class="px-3 py-2 text-gray-600 border border-gray-600 rounded-full">{{ ucfirst($booking->status)}}</span>
                 @endif
             </td>
 
@@ -208,11 +208,11 @@
     const return_form = document.getElementById('return_form')
     const return_form_date = document.getElementById('return_form_date')
 
-    function hide_return_modal(){
+    function hide_return_modal() {
         return_modal.classList.add('hidden');
     }
 
-    function show_return_modal(booking){
+    function show_return_modal(booking) {
         return_form_date.value = new Date().toISOString().substring(0, 10);
         return_form.setAttribute('action', '/admin/bookings/' + booking + '/return');
         return_modal.classList.remove('hidden');
@@ -224,11 +224,11 @@
     const surcharge_form = document.getElementById('surcharge_form')
     const surcharge_form_date = document.getElementById('surcharge_form_date')
 
-    function hide_surcharge_modal(){
+    function hide_surcharge_modal() {
         surcharge_modal.classList.add('hidden');
     }
 
-    function show_surcharge_modal(booking){
+    function show_surcharge_modal(booking) {
         surcharge_form_date.value = new Date().toISOString().substring(0, 10);
         surcharge_form.setAttribute('action', '/admin/bookings/' + booking + '/surcharge');
         surcharge_modal.classList.remove('hidden');
