@@ -44,8 +44,9 @@
                         </tr>
                         <tr>
                             <td class="p-2 border-b-2 border-dotted">Pick-up Date & Time</td>
-                            <td class="p-2 text-right border-b-2 border-dotted"> {{ $bookingData['pickup_time']}}</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">{{ $bookingData['pickup_time']}}</td>
                         </tr>
+                        
                         <tr>
                             <td class="p-2 border-b-2 border-dotted">Drop-off Date & Time</td>
                             <td class="p-2 text-right border-b-2 border-dotted">{{ $bookingData['dropoff_time']}}</td>
@@ -75,16 +76,24 @@
                 <table class="w-full mt-5 table-fixed">
                     <tbody>
                         <tr>
-                            <td class="p-2 border-b-2 border-dotted">SUBTOTAL</td>
-                            <td class="p-2 text-right border-b-2 border-dotted">AUD {{ $bookingData['bookingDaysCount'] * $bookingData->vehicle['price']}}.00</td>
+                            <td class="p-2 border-b-2 border-dotted">Days</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">{{ $bookingData['bookingDaysCount']}}</td>
                         </tr>
                         <tr>
-                            <td class="p-2 border-b-2 border-dotted">INSURANCE</td>
-                            <td class="p-2 text-right border-b-2 border-dotted">AUD 0.00</td>
+                            <td class="p-2 border-b-2 border-dotted">Per Day</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">AUD {{ $bookingData->vehicle['price']}}.00</td>
                         </tr>
                         <tr>
-                            <td class="p-2 mt-2 font-bold">TOTAL</td>
-                            <td class="p-2 font-bold text-right">AUD {{ $bookingData['bookingDaysCount'] * $bookingData->vehicle['price']}}.00</td>
+                            <td class="p-2 font-bold border-b-2 border-dotted">SUBTOTAL</td>
+                            <td class="p-2 font-bold text-right border-b-2 border-dotted">AUD {{ $bookingData['bookingDaysCount'] * $bookingData->vehicle['price']}}.00</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border-b-2 border-dotted">2 Weeks Advance</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">AUD {{ $amount }}.00</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 mt-2 font-bold text-red-600">Due</td>
+                            <td class="p-2 font-bold text-right text-red-600">AUD {{ ($bookingData['bookingDaysCount'] * $bookingData->vehicle['price'])- $amount}}.00</td>
                         </tr>
                     </tbody>
                 </table>
@@ -232,7 +241,7 @@
                                     class="w-1/2 p-3 text-white bg-green-900 border-none rounded-md shadow-md ms-auto"
                                 >
                                 @if($amount)
-                                    Pay ${{$amount}}
+                                    Pay ${{$amount}}.00
                                 @else
                                     Proceed
                                 @endif
