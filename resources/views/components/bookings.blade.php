@@ -91,7 +91,6 @@
                     Vehicle no longer in the system.
                 </p>
                 @endif
-                Actions
             </th>
             @endif
 
