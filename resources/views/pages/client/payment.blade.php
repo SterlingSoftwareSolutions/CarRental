@@ -43,13 +43,27 @@
                                 $bookingData->vehicle['body_type']}}</td>
                         </tr>
                         <tr>
-                            <td class="p-2 border-b-2 border-dotted">Pick-up Date & Time</td>
-                            <td class="p-2 text-right border-b-2 border-dotted">{{ $bookingData['pickup_time']}}</td>
+                            <?php
+                            $dateString = $bookingData['pickup_time'];
+                            $dateTime = new DateTime($dateString);
+                            $formattedDate = $dateTime->format('Y-m-d H:i:s');
+                        
+                            echo $formattedDate;
+                            ?>
+                            <td class="p-2 border-b-2 border-dotted">Pick-up Time</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">{{ $formattedDate }}</td>
                         </tr>
                         
                         <tr>
+                            <?php
+                            $dateString = $bookingData['pickup_time'];
+                            $dateTime = new DateTime($dateString);
+                            $formattedDate = $dateTime->format('Y-m-d H:i:s');
+                        
+                            echo $formattedDate;
+                            ?>
                             <td class="p-2 border-b-2 border-dotted">Drop-off Date & Time</td>
-                            <td class="p-2 text-right border-b-2 border-dotted">{{ $bookingData['dropoff_time']}}</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">{{ $formattedDate}}</td>
                         </tr>
                         <tr>
                             <td class="p-2 border-b-2 border-dotted">Total Days</td>
@@ -58,8 +72,8 @@
                         </tr>
                         <tr>
                             <td class="p-2 border-b-2 border-dotted">Pick-up Location</td>
-                            <td class="p-2 text-right border-b-2 border-dotted">{{ $bookingData['pickup']}}</td>
-                        </tr>
+                            <td class="p-2 text-right border-b-2 border-dotted">{{ str_replace(' ', ' ', $bookingData['pickup']) }}</td>
+                        </tr>                                                
                         <tr>
                             <td class="p-2">Drop-off Location</td>
                             <td class="p-2 text-right">{{ $bookingData['dropoff']}}</td>
@@ -117,10 +131,12 @@
                         <div class="flex items-center space-x-1">
                             <h1 class="text-sm text-black">Country <span class="text-red-500">*</span></h1>
                             <select class="w-3/6 border-none rounded-md shadow-md" name="country" id="country">
-                                @foreach ($countries as $country)
+                                <option value="australia">Australia</option>
+                                {{-- @foreach ($countries as $country)
                                 <option value="{{$country->name}}" @if((old('country') ?? $user->country) == $country->name) selected @endif>{{$country->name}} - {{$country->code}}</option>
-                                @endforeach
+                                @endforeach --}}
                             </select>
+                            
                         </div>
                     </div>
 

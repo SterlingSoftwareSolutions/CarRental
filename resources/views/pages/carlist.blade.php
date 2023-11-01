@@ -70,8 +70,7 @@
                     <!-- end filtering section -->
 
     <!-- car list -->
-                    <div class="grid items-center justify-center p-4"> <div class="grid gap-4 md:grid-cols-2
-                        lg:grid-cols-3">
+                    <div class="grid items-center justify-center p-4"> <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 
                         @foreach ($vehicles as $vehicle)
                         <!-- Repeat this section for each car item -->

@@ -144,7 +144,7 @@
         <div class="grid w-full grid-flow-row mt-0 md:p-2 md:mt-24 md:w-full lg:w-2/6">
 
             <!-- pickup foam -->
-            <div class="bg-[#F8FFF2] grid md:p-8 md:mt-0 p-4">
+            <div class="bg-[#F8FFF2] grid md:p-8 p-4 md:-mt-8">
                 <h1 class="text-[#317256] font-semibold text-xl">{{ $vehicle['year']}} {{ $vehicle['make']}} {{
                     $vehicle['model']}} {{ $vehicle['body_type']}}</h1>
                 <p class="mt-2 font-semibold text-[#707070] whitespace-normal">{{ $vehicle['short_Description']}}</p>
@@ -165,10 +165,10 @@
                     <div>
                         <p class="mt-2 font-semibold text-[#707070]">Pick-up Location</p>
                         <select class="w-full border-none rounded-md shadow-md" name="pickup" id="pickup">
-                            <option value="LocationOne">Location One</option>
-                            <option value="LocationTwo">Location two</option>
-                            <option value="LocationThree">Location Three</option>
-                            <option value="LocationFour">Location four</option>
+                            <option value="Location One">Location One</option>
+                            <option value="Location Two">Location two</option>
+                            <option value="Location Three">Location Three</option>
+                            <option value="Location Four">Location four</option>
                         </select>
 
                     </div>
@@ -177,10 +177,10 @@
                     <div>
                         <p class="mt-2 font-semibold text-[#707070]">Drop-off Location</p>
                         <select class="w-full border-none rounded-md shadow-md" name="dropoff" id="dropoff">
-                            <option value="LocationOne">Location One</option>
-                            <option value="LocationTwo">Location two</option>
-                            <option value="LocationThree">Location Three</option>
-                            <option value="LocationFour">Location four</option>
+                            <option value="Location One">Location One</option>
+                            <option value="Location Two">Location two</option>
+                            <option value="Location Three">Location Three</option>
+                            <option value="Location Four">Location four</option>
                         </select>
                     </div>
 
@@ -214,7 +214,7 @@
 
             <!-- conatct number section -->
             <div class="flex items-center justify-center mt-4">
-                <div class="bg-[#317256] rounded text-center w-10/12 p-4">
+                <div class="bg-[#317256] rounded text-center w-full p-4">
                     <h1 class="text-2xl font-semibold text-white">Call Us</h1>
                     <div class="flex items-center justify-center mt-3">
                         <a href="" class="flex hover:underline">
