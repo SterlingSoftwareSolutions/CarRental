@@ -164,42 +164,72 @@
                     <!-- Pickup Location  -->
                     <div>
                         <p class="mt-2 font-semibold text-[#707070]">Pick-up Location</p>
-                        <select class="w-full border-none rounded-md shadow-md" name="pickup" id="pickup">
-                            <option value="Location One">Location One</option>
-                            <option value="Location Two">Location two</option>
-                            <option value="Location Three">Location Three</option>
-                            <option value="Location Four">Location four</option>
-                        </select>
-
+                        @auth
+                            <select class="w-full border-none rounded-md shadow-md" name="pickup" id="pickup">
+                                <option value="Location One">Location One</option>
+                                <option value="Location Two">Location two</option>
+                                <option value="Location Three">Location Three</option>
+                                <option value="Location Four">Location four</option>
+                            </select>
+                        @else
+                            <select class="w-full border-none rounded-md shadow-md" name="pickup" id="pickup" disabled>
+                                <option value="Location One">Location One</option>
+                                <option value="Location Two">Location two</option>
+                                <option value="Location Three">Location Three</option>
+                                <option value="Location Four">Location four</option>
+                            </select>
+                        @endauth
                     </div>
 
                     <!-- Drop Off Location  -->
                     <div>
                         <p class="mt-2 font-semibold text-[#707070]">Drop-off Location</p>
-                        <select class="w-full border-none rounded-md shadow-md" name="dropoff" id="dropoff">
-                            <option value="Location One">Location One</option>
-                            <option value="Location Two">Location two</option>
-                            <option value="Location Three">Location Three</option>
-                            <option value="Location Four">Location four</option>
-                        </select>
+                        @auth
+                            <select class="w-full border-none rounded-md shadow-md" name="dropoff" id="dropoff">
+                                <option value="Location One">Location One</option>
+                                <option value="Location Two">Location two</option>
+                                <option value="Location Three">Location Three</option>
+                                <option value="Location Four">Location four</option>
+                            </select>
+                        @else
+                            <select class="w-full border-none rounded-md shadow-md" name="dropoff" id="dropoff" disabled>
+                                <option value="Location One">Location One</option>
+                                <option value="Location Two">Location two</option>
+                                <option value="Location Three">Location Three</option>
+                                <option value="Location Four">Location four</option>
+                            </select>
+                        @endauth
                     </div>
 
                     <p class="mt-2 font-semibold text-[#707070]">Pick-up Date & Time</p>
 
                     <div class="flex items-center justify-center w-full gap-4">
+                        @auth
                         <div class="w-full -ml-14 md:ml-0">
                             <input class="w-full border-none rounded-md shadow-md" type="datetime-local" id="pickup_time" name="pickup_time">
                         </div>
-
+                        @else
+                        <div class="w-full -ml-14 md:ml-0">
+                            <input class="w-full border-none rounded-md shadow-md" type="datetime-local" id="pickup_time" name="pickup_time" disabled>
+                        </div>
+                        @endauth
                     </div>
 
                     <p class="mt-2 font-semibold text-[#707070]">Drop-off Date & Time</p>
 
                     <div class="flex items-center justify-center gap-4">
+                        @auth
                         <div class="w-full -ml-14 md:ml-0">
                             <input class="w-full border-none rounded-md shadow-md" type="datetime-local" name="dropoff_time" id="dropoff_time">
                         </div>
-
+                        @else
+                        <div class="flex flex-col w-full">
+                            <div class="w-full -ml-14 md:ml-0">
+                                <input class="w-full border-none rounded-md shadow-md" type="datetime-local" name="dropoff_time" id="dropoff_time" disabled>
+                            </div>
+                            <p class="mt-2 -ml-4 text-red-500 md:-ml-0">Please log in to Enter Details</p>
+                        </div>
+                        @endauth
                     </div>
 
                     <div class="flex items-center justify-center pt-8">

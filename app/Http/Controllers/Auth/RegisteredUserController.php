@@ -44,12 +44,23 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        $role = $request->input('role', 'user'); // You may need to adjust this based on your form input
+
+        $user->update(['role' => $role]);
         
         Auth::login($user);
 
         // Mail::to($user->email)->send(new RegistrationSuccessfulEmail($user));
 
-        return redirect(RouteServiceProvider::HOME);
+        // Redirect based on the user's role
+        if ($role === 'admin') {
+            return redirect('admin/dashboard');
+        } else {
+            return redirect('user/dashboard');
+        }
+
+        // return redirect(RouteServiceProvider::HOME);
     }
 
 
