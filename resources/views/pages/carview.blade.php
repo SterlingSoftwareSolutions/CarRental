@@ -227,7 +227,7 @@
                             <div class="w-full -ml-14 md:ml-0">
                                 <input class="w-full border-none rounded-md shadow-md" type="datetime-local" name="dropoff_time" id="dropoff_time" disabled>
                             </div>
-                            <p class="mt-2 -ml-4 text-red-500 md:-ml-0">Please log in to Enter Details</p>
+                            <p class="mt-2 -ml-4 text-red-500 md:-ml-0">Please login to Enter Booking Details</p>
                         </div>
                         @endauth
                     </div>
