@@ -223,11 +223,11 @@
                             <input class="w-full border-none rounded-md shadow-md" type="datetime-local" name="dropoff_time" id="dropoff_time">
                         </div>
                         @else
-                        <div class="flex flex-col w-full">
-                            <div class="w-full -ml-14 md:ml-0">
-                                <input class="w-full border-none rounded-md shadow-md" type="datetime-local" name="dropoff_time" id="dropoff_time" disabled>
-                            </div>
-                            <p class="mt-2 -ml-4 text-red-500 md:-ml-0">Please login to Enter Booking Details</p>
+                        <div class="flex flex-col w-full -ml-14 md:ml-0">
+
+                            <input class="w-full border-none rounded-md shadow-md" type="datetime-local" name="dropoff_time" id="dropoff_time" disabled>
+                           
+                            <p class="mt-2 ml-10 text-red-500 md:-ml-0">Please login to Enter Booking Details</p>
                         </div>
                         @endauth
                     </div>
