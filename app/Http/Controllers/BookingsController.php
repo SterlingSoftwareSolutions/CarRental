@@ -19,7 +19,6 @@ class BookingsController extends Controller
      */
     public function index()
     {
-        if (Auth::check() && Auth::user()->role == 'admin') {
             $query = Bookings::query();
             $bookings = $query->with(['user', 'vehicle'])->where('approval', 'Pending')->get();
 
@@ -32,21 +31,6 @@ class BookingsController extends Controller
             }
     
             return view('pages.admin.bookings.index', ['bookings' => $bookings]);
-            
-        } else{
-            $query = Bookings::query();
-            $bookings = $query->with(['user', 'vehicle'])->where('approval', 'Approved')->get();
-    
-            foreach ($bookings as $key => $booking) {
-                $pickupTime = Carbon::parse($booking['pickup_time']);
-                $dropoffTime = Carbon::parse($booking['dropoff_time']);
-                // Calculate the difference in days
-                $daysCount = $dropoffTime->diffInDays($pickupTime);
-                $booking['bookingDaysCount'] = $daysCount;
-            }
-    
-            return view('pages.admin.bookings.index', ['bookings' => $bookings]);
-        }
         
     }
 
