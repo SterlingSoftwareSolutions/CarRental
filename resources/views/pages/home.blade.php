@@ -45,9 +45,9 @@
     <!-- end navigation -->
 
     <!-- main home banner  -->
-    <div class="flex items-center px-4 py-8 main-banner justify-right md:py-22">
+    <div class="flex items-center px-4 py-8 main-banner justify-right md:py-24">
         <div class="grid items-center justify-center pl-1 align-middle md:pl-32 mt-30 md:mt-20">
-            <h1 class="mt-16 mb-2 text-3xl font-bold text-white md:text-5xl lg:text-4xl md:mb-4 md:mt-0">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
+            <h1 class="mt-16 mb-2 text-3xl font-bold text-white md:text-5xl lg:text-4xl md:mb-4 md:mt-16">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
             <p class="text-sm text-white md:text-lg font-">Rent a Car for Your Next Adventure with Our Convenient <br class="hidden md:inline"> and Reliable Services</p>
             <div class="flex flex-col gap-5 mt-8 md:flex-row md:mt-4 md:w-1/2">
                 <div class="grid bg-black rounded-lg search-foam md:w-10 lg:w-auto">
@@ -137,7 +137,7 @@
     <!-- end main home banner  -->
 
     <!-- why choose us section -->
-    <div class="mt-0 text-center md:mt-4">
+    <div class="mt-0 text-center md:mt-12">
         <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Why Choose Us</h1>
         <p class="mt-4 text-base text-gray-500 md:text-lg md:mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
