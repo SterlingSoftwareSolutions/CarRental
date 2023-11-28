@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('body_type')->nullable();
             $table->string('year')->nullable();
             $table->string('fuel_type')->nullable();
+            $table->string('category')->nullable();
+            $table->string('status')->default('Pending');
             $table->string('transmission')->nullable();
             $table->string('mileage')->nullable();
             $table->string('color')->nullable();

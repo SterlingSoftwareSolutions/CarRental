@@ -24,6 +24,10 @@
             </th>
 
             <th scope="col" class="px-6 py-2">
+                Approval
+            </th>
+
+            <th scope="col" class="px-6 py-2">
                 Paid
             </th>
 
@@ -119,8 +123,17 @@
             </td>
 
             <td class="px-6 py-4">
+                @if(($booking->approval) == 'Pending')
+                <span class="px-3 py-2 text-yellow-500 ">Pending</span>
+                @else
+                <span class="px-3 py-2 text-green-500 ">Approved</span>
+                @endif
+            </td>
+
+            <td class="px-6 py-4">
                 ${{ $booking->amount_paid()}}
             </td>
+            
 
             <td class="px-6 py-4">
                 @php $due = $booking['returned_on'] ? $booking->invoices->where('paid', '0')->sum('amount') : $booking->amount() - $booking->amount_paid() @endphp
@@ -156,8 +169,18 @@
                     <button class="px-3 py-2 text-center text-white bg-orange-500 rounded-full" onclick="show_surcharge_modal({{$booking->id}})">Fine/Toll</button>
 
                     {{-- EDIT BUTTON --}}
-                    <a href="/admin/bookings/{{ $booking['id'] }}/edit" class="px-3 py-2 text-center text-white bg-green-500 rounded-full">Edit</a>
+                    <a href="/admin/bookings/{{ $booking['id'] }}/edit" class="px-3 py-2 text-center text-white bg-gray-500 rounded-full">Edit</a>
 
+                    @if($booking['approval'] === 'Pending')
+                        {{-- APPROVE Button --}}
+                        <form action="{{ route('bookings.approve', $booking) }}" method="POST" class="inline">
+                            @csrf
+                            @method('POST')
+                            <button href="{{ route('bookings.approve', $booking) }}" type="submit" class="px-3 py-2 text-center text-white bg-green-500 rounded-full">Approve</button>
+                        </form>
+                    @endif
+                
+                    
                     {{-- DELETE BUTTON --}}
                     <form action="/admin/booking/{{ $booking['id'] }}" method="POST" class="inline">
                         @csrf

@@ -33,7 +33,8 @@ class VehiclesController extends Controller
         $models = Vehicles::pluck('model')->unique();
         $body_types = Vehicles::pluck('body_type')->unique();
         $transmissions = Vehicles::pluck('transmission')->unique();
-        return compact('makes', 'models', 'body_types', 'transmissions');
+        $categories = Vehicles::pluck('category')->unique();
+        return compact('makes', 'models', 'body_types','transmissions', 'categories');
     }
 
     public function search(Request $request)
@@ -76,9 +77,23 @@ class VehiclesController extends Controller
             $query->where('transmission', $request->transmission);
         }
 
-        $vehicles = $query->with(['images' => function ($query) {
-            $query->where('attachment_type', 'Vehicle Image');
-        }])->get();
+        if($request->category){
+            $query->where('category', $request->category);
+        }
+
+        // Check if the user has 'admin' role and show descding order carlist
+        if (auth()->check() && auth()->user()->role === 'admin') {
+            $vehicles = $query->with(['images' => function ($query) {
+                $query->where('attachment_type', 'Vehicle Image');
+            }])
+            ->orderBy('created_at', 'desc')
+            ->get();
+        } else {
+            $vehicles = $query->with(['images' => function ($query) {
+                $query->where('attachment_type', 'Vehicle Image');
+            }])
+            ->get();
+        }
 
         return view('pages.carlist', ['vehicles' => $vehicles, 'filters' => $this->filters()]);
     }
@@ -141,6 +156,7 @@ class VehiclesController extends Controller
             'body_type' => 'required|string|max:255',
             'year' => 'required|integer|min:1900|max:' . date('Y'),
             'fuel_type' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
             'transmission' => 'required|string|max:255',
             'mileage' => 'required|numeric|min:0',
             'color' => 'required|string|max:255',
@@ -161,6 +177,7 @@ class VehiclesController extends Controller
             'body_type' => $request->body_type,
             'year' => $request->year,
             'fuel_type' => $request->fuel_type,
+            'category' => $request->category,
             'transmission' => $request->transmission,
             'mileage' => $request->mileage,
             'color' => $request->color,
@@ -202,6 +219,7 @@ class VehiclesController extends Controller
             'body_type' => 'required|string|max:255',
             'year' => 'required|integer|min:1900|max:' . date('Y'),
             'fuel_type' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
             'transmission' => 'required|string|max:255',
             'mileage' => 'required|numeric|min:0',
             'color' => 'required|string|max:255',
