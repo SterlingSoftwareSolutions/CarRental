@@ -16,11 +16,17 @@
 
 <body>
     <div>
-        <div class="flex justify-between p-8">
-            <button class="p-3 bg-[#317256] rounded text-white ml-6">Upload Pdf</button>
-            <button class="p-3 bg-[#317256] rounded text-white mr-6">Download</button>
+        <div class="flex p-8 md:ml-6">
+            <form action="/upload-pdf" method="post" enctype="multipart/form-data">
+                @csrf
+                <label class="font-bold text-[#707070]" for="pdf_file">Upload PDF</label>
+                <div class="flex items-center mt-2">
+                    <input type="file" name="pdf_file" id="pdf_file" accept=".pdf">
+                    <button type="submit" class="p-3 bg-[#317256] rounded text-white md:mt-2 -ml-32">Upload</button>
+                </div>
+            </form>
         </div>
-        
+        <button class="p-3 bg-[#317256] rounded text-white mr-6">Download</button>
         <div class="w-11/12 p-4 mt-10 mr-10 border border-gray-300 rounded ml-14">
             <p class="flex justify-center mb-4">Customer Declaration</p>
             <span class="font-light">I do hereby acknowledge that I have read and understood the terms and conditions of the Automobiles Unlimited rental agreement and agree to abide by all of them.</span>
