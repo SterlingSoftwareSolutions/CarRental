@@ -20,7 +20,7 @@ class BookingsController extends Controller
     public function index()
     {
             $query = Bookings::query();
-            $bookings = $query->with(['user', 'vehicle'])->where('approval', 'Pending')->get();
+            $bookings = $query->with(['user', 'vehicle'])->get();
 
             foreach ($bookings as $key => $booking) {
                 $pickupTime = Carbon::parse($booking['pickup_time']);
