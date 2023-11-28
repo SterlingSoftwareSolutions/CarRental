@@ -87,6 +87,11 @@
                             <option class="text-sm" value="{{$opt}}" @if(Request()->transmission == $opt) selected @endif>{{$opt}}</option>
                             @endforeach
                         </select>
+                        <label class="font-bold text-[#707070]" for="">Date Range(Start to End)</label>
+                        <div class="flex flex-row mt-2">
+                            <input class="w-1/2 h-12 mr-1 -ml-8 border-none rounded-md md:h-9 md:ml-0" type="date" name="start_date" id="start_date" value="{{ Request()->start_date }}">
+                            <input class="w-1/2 h-12 ml-1 border-none rounded-md md:h-9" type="date" name="end_date" id="end_date" value="{{ Request()->end_date }}">
+                        </div>
                         <button type="submit" class="text-white w-full bg-[#317256] hover:bg-[#31754a] focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded mt-3">
                             <span class="text-base">Search Now</span>
                         </button>
@@ -132,7 +137,7 @@
     <!-- end main home banner  -->
 
     <!-- why choose us section -->
-    <div class="mt-0 text-center md:mt-0">
+    <div class="mt-0 text-center md:mt-4">
         <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Why Choose Us</h1>
         <p class="mt-4 text-base text-gray-500 md:text-lg md:mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
