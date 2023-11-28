@@ -26,7 +26,7 @@
                 </div>
             </form>
         </div>
-        <button class="p-3 bg-[#317256] rounded text-white mr-6">Download</button>
+        {{-- <button class="p-3 bg-[#317256] rounded text-white mr-6">Download</button> --}}
         <div class="w-11/12 p-4 mt-10 mr-10 border border-gray-300 rounded ml-14">
             <p class="flex justify-center mb-4">Customer Declaration</p>
             <span class="font-light">I do hereby acknowledge that I have read and understood the terms and conditions of the Automobiles Unlimited rental agreement and agree to abide by all of them.</span>
