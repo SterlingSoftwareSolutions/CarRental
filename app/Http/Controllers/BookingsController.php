@@ -95,7 +95,7 @@ class BookingsController extends Controller
         if (auth()->check() && auth()->user()->role === 'admin'){
             return redirect()->route('bookings.all')->with('success', 'Vehicle booked successfully.');
         } else {
-            return redirect()->route('user/dashboard')->with('success', 'Vehicle booked successfully.');
+            return redirect()->route('user.dashboard')->with('success', 'Vehicle booked successfully.');
         }
     }
 

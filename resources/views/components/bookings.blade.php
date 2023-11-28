@@ -38,12 +38,10 @@
             <th scope="col" class="px-6 py-2">
                 Status
             </th>
-
-            @if(Auth::user()->role == 'admin')
+            
             <th scope="col" class="px-6 py-2">
                 Actions
             </th>
-            @endif
         </tr>
     </thead>
 
@@ -155,6 +153,11 @@
                 <span class="px-3 py-2 text-gray-600 border border-gray-600 rounded-full">{{ ucfirst($booking->status)}}</span>
                 @endif
             </td>
+            @if(Auth::user()->role == 'client')
+            <td class="px-6 py-4">
+                <a href="{{ route('payment') }}" class="px-3 py-2 text-center text-white bg-green-500 rounded-full">Pay</a>
+            </td>
+            @endif
 
             @if(Auth::user()->role == 'admin')
             <td class="px-6 py-4">
