@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateBookingsRequest;
-use App\Models\Bookings;
-use App\Models\Invoice;
-use App\Models\Surcharge;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Stripe\Refund;
 use Stripe\Stripe;
+use App\Models\Invoice;
+use App\Models\Bookings;
+use App\Models\Surcharge;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UpdateBookingsRequest;
 
 class BookingsController extends Controller
 {
@@ -18,18 +19,19 @@ class BookingsController extends Controller
      */
     public function index()
     {
-        $query = Bookings::query();
-        $bookings = $query->with(['user', 'vehicle'])->get();
+            $query = Bookings::query();
+            $bookings = $query->with(['user', 'vehicle'])->get();
 
-        foreach ($bookings as $key => $booking) {
-            $pickupTime = Carbon::parse($booking['pickup_time']);
-            $dropoffTime = Carbon::parse($booking['dropoff_time']);
-            // Calculate the difference in days
-            $daysCount = $dropoffTime->diffInDays($pickupTime);
-            $booking['bookingDaysCount'] = $daysCount;
-        }
-
-        return view('pages.admin.bookings.index', ['bookings' => $bookings]);
+            foreach ($bookings as $key => $booking) {
+                $pickupTime = Carbon::parse($booking['pickup_time']);
+                $dropoffTime = Carbon::parse($booking['dropoff_time']);
+                // Calculate the difference in days
+                $daysCount = $dropoffTime->diffInDays($pickupTime);
+                $booking['bookingDaysCount'] = $daysCount;
+            }
+    
+            return view('pages.admin.bookings.index', ['bookings' => $bookings]);
+        
     }
 
     public function searchs(Request $request)
@@ -75,6 +77,7 @@ class BookingsController extends Controller
             'dropoff' => $request->dropoff,
             'vehicle_id' => $request->vehicle_id,
             'status' => "Unpaid",
+            'approval' => "Pending",
             'user_id' => auth()->id(),
 
         ]);
@@ -89,7 +92,11 @@ class BookingsController extends Controller
 
         session(['BookingData' => $Booking]);
 
-        return redirect()->route('payment')->with('success', 'Vehicle booked successfully.');
+        if (auth()->check() && auth()->user()->role === 'admin'){
+            return redirect()->route('bookings.all')->with('success', 'Vehicle booked successfully.');
+        } else {
+            return redirect()->route('user.dashboard')->with('success', 'Vehicle booked successfully.');
+        }
     }
 
     /**
@@ -103,6 +110,7 @@ class BookingsController extends Controller
             'dropoff_time' => $request->dropoff_time,
             'dropoff' => $request->dropoff,
             'vehicle_id' => $request->vehicle_id,
+            'approval' => "Pending",
             'user_id' => auth()->id(),
 
         ]);
@@ -133,6 +141,15 @@ class BookingsController extends Controller
         return view('pages.admin.bookings.edit', compact('booking'));
     }
 
+    public function approve_booking(Bookings $booking){
+        $booking->update([
+            "approval" => 'Approved'
+        ]);
+    
+        // Redirect back to the admin dashboard or wherever appropriate
+        return redirect()->route('bookings.all');
+    }    
+
     /**
      * Update the specified resource in storage.
      */
@@ -144,6 +161,7 @@ class BookingsController extends Controller
           "dropoff" => "required",
           "dropoff_time" => "required",
           "status" => "required",
+          "approval" => "required",
           "returned_on" => "nullable",
         ]);
 
@@ -153,6 +171,7 @@ class BookingsController extends Controller
           "dropoff" => $request->dropoff,
           "dropoff_time" => $request->dropoff_time,
           "status" => $request->status,
+          "approval" => $request->approval,
           "returned_on" => $request->returned_on
         ]);
 

@@ -45,9 +45,9 @@
     <!-- end navigation -->
 
     <!-- main home banner  -->
-    <div class="flex items-center px-4 py-8 main-banner justify-right md:py-22">
+    <div class="flex items-center px-4 py-8 main-banner justify-right md:py-24">
         <div class="grid items-center justify-center pl-1 align-middle md:pl-32 mt-30 md:mt-20">
-            <h1 class="mt-16 mb-2 text-3xl font-bold text-white md:text-5xl lg:text-4xl md:mb-4 md:mt-0">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
+            <h1 class="mt-16 mb-2 text-3xl font-bold text-white md:text-5xl lg:text-4xl md:mb-4 md:mt-16">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
             <p class="text-sm text-white md:text-lg font-">Rent a Car for Your Next Adventure with Our Convenient <br class="hidden md:inline"> and Reliable Services</p>
             <div class="flex flex-col gap-5 mt-8 md:flex-row md:mt-4 md:w-1/2">
                 <div class="grid bg-black rounded-lg search-foam md:w-10 lg:w-auto">
@@ -87,6 +87,11 @@
                             <option class="text-sm" value="{{$opt}}" @if(Request()->transmission == $opt) selected @endif>{{$opt}}</option>
                             @endforeach
                         </select>
+                        <label class="font-bold text-[#707070]" for="">Date Range(Start to End)</label>
+                        <div class="flex flex-row mt-2">
+                            <input class="w-1/2 h-12 mr-1 -ml-8 border-none rounded-md md:h-9 md:ml-0" type="date" name="start_date" id="start_date" value="{{ Request()->start_date }}">
+                            <input class="w-1/2 h-12 ml-1 border-none rounded-md md:h-9" type="date" name="end_date" id="end_date" value="{{ Request()->end_date }}">
+                        </div>
                         <button type="submit" class="text-white w-full bg-[#317256] hover:bg-[#31754a] focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold text-sm md:text-base py-2 rounded mt-3">
                             <span class="text-base">Search Now</span>
                         </button>
@@ -132,7 +137,7 @@
     <!-- end main home banner  -->
 
     <!-- why choose us section -->
-    <div class="mt-0 text-center md:mt-0">
+    <div class="mt-0 text-center md:mt-12">
         <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Why Choose Us</h1>
         <p class="mt-4 text-base text-gray-500 md:text-lg md:mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
@@ -194,66 +199,65 @@
         <div class="flex flex-col items-center justify-center md:flex-row"> <!-- Center content vertically on mobile -->
             <div class="mb-4 md:mb-0">
                 <a href="" class="flex flex-col items-center md:flex-row md:max-w-xl">
-                    <div>
+                    {{-- <div>
                         <img class="hidden object-cover w-full h-full mt-12 md:block md:h-96 md:w-50 md:rounded-none md:rounded-l-lg" src="{{ URL('images/Rectangle 27.png')}}" alt="">
-                    </div>
+                    </div> --}}
                 </a>
             </div>
             <div>
-                <div class="tab">
-                    <input class="tab-input" id="tab1" type="radio" name="tabs" checked>
-                    <label class="tab-label" for="tab1">Features</label>
-                    <input class="tab-input" id="tab2" type="radio" name="tabs">
-                    <label class="tab-label" for="tab2">Specifications</label>
+                
+                    {{-- <input class="tab-input" id="tab1" type="radio" name="tabs" checked> --}}
+                    {{-- <label class="tab-label" for="tab1">Features</label> --}}
+                    {{-- <input class="tab-input" id="tab2" type="radio" name="tabs">
+                    <label class="tab-label" for="tab2">Specifications</label> --}}
                     
                     <!-- Content for "Features" tab -->
-                    <div id="content1" class="mt-4">
-                        <div class="px-2 md:px-0 slider">
-                            <div class="mt-2 slides">
-                                @if (isset($vehicles))
-                                @foreach ($vehicles as $vehicle)
-                                <div class="mb-4 slide">
-                                    <div class="inner_content">
-                                        <a href="{{ route('booknow', ['id' => $vehicle->id]) }}" class="flex flex-row items-center md:flex-row md:max-w-xl">
-                                            <div class="md:block">
-                                                @if ($vehicle->images->count() > 0)
-                                                @php
-                                                $firstImage = $vehicle->images[0];
-                                                @endphp
-                                                <img class="h-auto w-75 md:h-32 md:w-52 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
-                                                @else
-                                                <img class="h-auto w-75 md:h-32 md:w-52 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
-                                                @endif
-                                            </div>
-                                            <div class="flex flex-col justify-between p-2 w-78 md:w-96 h-30 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
-                                                @if (!empty($vehicle['make']) && !empty($vehicle['model']))
-                                                <h5 class="mb-2 text-sm font-semibold tracking-tight text-left text-gray-500 md:text-lg">{{ $vehicle['make']}} {{ $vehicle['model']}}</h5>
-                                                @else
-                                                <h5 class="mb-2 text-sm font-semibold tracking-tight text-left text-gray-500 md:text-lg">Vehicle Details Missing</h5>
-                                                @endif
-    
-                                                @if (!empty($vehicle['passengers']))
-                                                <p class="mb-3 font-normal text-left text-gray-700 dark:text-gray-400">{{ $vehicle['passengers']}} Seated Car </p>
-                                                @endif
-    
-                                                @if (!empty($vehicle['price']))
-                                                <p class="mb-3 text-sm font-semibold text-left text-green-500 dark:text-gray-400">$ {{ $vehicle['price']}} p/day </p>
-                                                @endif
-                                            </div>
-                                        </a>
+                    <div class="mt-4">
+                        <div class="flex flex-wrap px-2 md:px-0 md:ml-20">
+                            @if (isset($vehicles) && count($vehicles) > 0)
+                                @foreach ($vehicles->take(6) as $vehicle)
+                                    <div class="w-full px-2 mb-4 md:w-1/2">
+                                        <div class="inner_content">
+                                            <a href="{{ route('booknow', ['id' => $vehicle->id]) }}" class="flex flex-row items-center md:flex-row md:max-w-xl">
+                                                <div class="md:block">
+                                                    @if ($vehicle->images->count() > 0)
+                                                        @php
+                                                            $firstImage = $vehicle->images[0];
+                                                        @endphp
+                                                        <img class="h-auto w-75 md:h-32 md:w-52 md:rounded-none md:rounded-l-lg" src="{{ Storage::url($firstImage->file_path) }}" alt="">
+                                                    @else
+                                                        <img class="h-auto w-75 md:h-32 md:w-52 md:rounded-none md:rounded-l-lg" src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image">
+                                                    @endif
+                                                </div>
+                                                <div class="flex flex-col justify-between p-2 w-78 md:w-96 h-30 bg-white leading-normal hover:bg-[#EAFED5] border-y-2 border-r-2 border-emerald-400">
+                                                    @if (!empty($vehicle['make']) && !empty($vehicle['model']))
+                                                        <h5 class="mb-2 text-sm font-semibold tracking-tight text-left text-gray-500 md:text-lg">{{ $vehicle['make']}} {{ $vehicle['model']}}</h5>
+                                                    @else
+                                                        <h5 class="mb-2 text-sm font-semibold tracking-tight text-left text-gray-500 md:text-lg">Vehicle Details Missing</h5>
+                                                    @endif
+                    
+                                                    @if (!empty($vehicle['passengers']))
+                                                        <p class="mb-3 font-normal text-left text-gray-700 dark:text-gray-400">{{ $vehicle['passengers']}} Seated Car </p>
+                                                    @endif
+                    
+                                                    @if (!empty($vehicle['price']))
+                                                        <p class="mb-3 text-sm font-semibold text-left text-green-500 dark:text-gray-400">$ {{ $vehicle['price']}} p/day </p>
+                                                    @endif
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
                                 @endforeach
-                                @else
+                            @else
                                 <p>No vehicles available.</p>
-                                @endif
-                            </div>
+                            @endif
                         </div>
                     </div>
+                    
                     <!-- End of "Features" tab content -->
     
                     <!-- Content for "Specifications" tab -->
-                    <div id="content2" class="mt-4">
+                    {{-- <div id="content2" class="mt-4">
                         <div class="px-2 md:px-0 slider">
                             <div class="mt-2 slides">
                                 @if (isset($vehicles))
@@ -295,7 +299,7 @@
                                 @endif
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- End of "Specifications" tab content -->
                 </div>
             </div>
@@ -305,7 +309,7 @@
     <!-- end discover our lates section -->
 
     <!-- diverse vehicle section -->
-    <div class="mt-12 text-center sm:mt-20">
+    {{-- <div class="mt-12 text-center sm:mt-20">
         <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Diverse Vehicle Selection for Every Journey</h1>
         <p class="mt-4 text-base text-gray-500 md:text-lg md:mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
     </div>
@@ -347,7 +351,7 @@
             </div>
 
         </div>
-    </div>
+    </div> --}}
     <div class="mt-4 text-center">
         <button type="button" class="text-white bg-[#317256] font-bold hover:bg-[#31754a] px-6 py-3 text-center mr-3 md:mr-0 rounded" onclick="window.location.href='{{ route('carlist') }}';">
             View All

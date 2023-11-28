@@ -19,7 +19,7 @@
     <!-- banner section -->
     <div class="relative flex -z-20">
         <img src="{{ URL('images/Group 180.png') }}" alt="">
-        <h1 class="absolute pl-0 text-2xl font-bold text-white top-2/4 left-4/12 md:pl-56 md:text-4xl text-center">Find Your Dream Ride</h1>
+        <h1 class="absolute pl-0 text-2xl font-bold text-center text-white top-2/4 left-4/12 md:pl-56 md:text-4xl">Find Your Dream Ride</h1>
     </div>
 
 
@@ -27,7 +27,7 @@
     <!-- end banner section -->
 
     <!-- filtering section -->
-    <div class="flex flex-row items-center justify-center -mt-2 md:grid md:grid-flow-row z-10">
+    <div class="z-10 flex flex-row items-center justify-center -mt-2 md:grid md:grid-flow-row">
         <form>
             <div class="flex flex-col md:flex-row border-t-8 border-[#398564] bg-[#D3D3D3] w-full mx-auto">
                 <div class="p-0 dropdown md:p-8">
@@ -66,6 +66,15 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="dropdown">
+                    <label class="font-bold text-[#707070]" for="">Category</label>
+                    <select class="w-full h-12 mt-2 text-gray-500 border-none rounded-md" name="category" id="cars" onchange="this.form.submit()">
+                        <option value="" selected>All Category</option>
+                        @foreach($filters['categories'] as $opt)
+                            <option value="{{$opt}}" @if(Request()->category == $opt) selected @endif>{{$opt}}</option>
+                        @endforeach
+                    </select>
+                </div>                
             </div>
         </form>
     </div>
