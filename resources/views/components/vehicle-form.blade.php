@@ -78,6 +78,18 @@
         <x-input-error :messages="$errors->get('fuel_type')" class="mt-2" />
     </div>
 
+    <!-- category -->
+    <div>
+        <x-input-label for="category" :value="__('Category')" />
+        <select id="category" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" name="category" autofocus>
+            <option value="Economic" {{ old('category', $vehicle_one['category'] ?? '') === 'Economic' ? 'selected' : '' }}>Economic</option>
+            <option value="Premium" {{ old('category', $vehicle_one['category'] ?? '') === 'Premium' ? 'selected' : '' }}>Premium</option>
+            <option value="Long_Term" {{ old('category', $vehicle_one['category'] ?? '') === 'Long_Term' ? 'selected' : '' }}>Long Term</option>
+            <!-- Add more fuel types as needed with the same `old()` check -->
+        </select>
+        <x-input-error :messages="$errors->get('category')" class="mt-2" />
+    </div>
+
 
     <!-- Transmission -->
     <div>
@@ -177,7 +189,7 @@
         </div>
         @endfor
 
-    <div class="flex items-center w-full justify-start mt-4">
+    <div class="flex items-center justify-start w-full mt-4">
         <x-primary-button>
             {{ isset($vehicle_one) ? __('Update') : __('Add')}}
         </x-primary-button>
