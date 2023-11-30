@@ -15,29 +15,29 @@
 </head>
 
 <body>
-    <div>
-        <div class="flex justify-center w-11/12 p-8 md:ml-6">
+    <div class="flex flex-col md:justify-center">
+        <div class="flex justify-center w-11/12 p-8 md:ml-16">
             <form action="/upload-pdf" method="post" enctype="multipart/form-data">
                 @csrf
-                <div class="">
+                <div class="flex flex-col">
                     <label class="font-bold text-[#707070]" for="pdf_file">Upload PDF</label>
                     <p class="">Please complete the following PDF form and upload it below and after filled.</p> 
-                    <div class="flex items-center mt-2">
+                    <div class="flex flex-col items-start mt-2">
                         <input type="file" name="pdf_file" id="pdf_file" accept=".pdf">
-                        <button type="submit" class="p-3 bg-[#317256] rounded text-white md:mt-2 -ml-32 w-32">Upload</button>
+                        <button type="submit" class="p-3 bg-[#317256] rounded text-white md:mt-2 w-32">Upload</button>
                     </div>
                 </div>
             </form>
-            <div class="md:ml-[800px]">
-                <div class="flex items-center mt-2">
-                    <button type="submit" class="p-3 bg-[#317256] rounded text-white md:mt-2 -ml-32">Download PDF</button>
+            <div class="md:ml-[600px] w-full">
+                <div class="flex items-end justify-end mt-2">
+                    <button type="submit" class="p-3 bg-[#317256] rounded text-white md:mt-2">Download PDF</button>
                 </div>
            </div>
         </div>
         {{-- <button class="p-3 bg-[#317256] rounded text-white mr-6">Download</button> --}}
         <div class="w-11/12 p-4 mt-10 mr-10 border border-gray-300 rounded ml-14">
             <p class="flex justify-center mb-4">Customer Declaration</p>
-            <span class="flex justify-center font-light">I do hereby acknowledge that I have read and understood the terms and conditions of the Automobiles Unlimited rental agreement and agree to abide by all of them.</span>
+            <span class="flex justify-center font-light text-center">I do hereby acknowledge that I have read and understood the terms and conditions of the Automobiles Unlimited rental agreement and agree to abide by all of them.</span>
             <div class="border border-gray-100 p-14">
                 <form action="/upload-pdf" method="post" enctype="multipart/form-data">
                 @csrf
