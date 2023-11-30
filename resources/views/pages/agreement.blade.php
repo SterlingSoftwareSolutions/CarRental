@@ -16,7 +16,7 @@
 
 <body>
     <div class="flex flex-col md:justify-center">
-        <div class="flex justify-center w-11/12 p-8 md:ml-16">
+        <div class="flex justify-center w-11/12 p-8 md:ml-16 md:mt-28">
             <form method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="flex flex-col">
