@@ -16,21 +16,31 @@
 
 <body>
     <div>
-        <div class="flex p-8 md:ml-6">
+        <div class="flex justify-center w-11/12 p-8 md:ml-6">
             <form action="/upload-pdf" method="post" enctype="multipart/form-data">
                 @csrf
-                <label class="font-bold text-[#707070]" for="pdf_file">Upload PDF</label>
-                <div class="flex items-center mt-2">
-                    <input type="file" name="pdf_file" id="pdf_file" accept=".pdf">
-                    <button type="submit" class="p-3 bg-[#317256] rounded text-white md:mt-2 -ml-32">Upload</button>
+                <div class="">
+                    <label class="font-bold text-[#707070]" for="pdf_file">Upload PDF</label>
+                    <p class="">Please complete the following PDF form and upload it below and after filled.</p> 
+                    <div class="flex items-center mt-2">
+                        <input type="file" name="pdf_file" id="pdf_file" accept=".pdf">
+                        <button type="submit" class="p-3 bg-[#317256] rounded text-white md:mt-2 -ml-32 w-32">Upload</button>
+                    </div>
                 </div>
             </form>
+            <div class="md:ml-[800px]">
+                <div class="flex items-center mt-2">
+                    <button type="submit" class="p-3 bg-[#317256] rounded text-white md:mt-2 -ml-32">Download PDF</button>
+                </div>
+           </div>
         </div>
         {{-- <button class="p-3 bg-[#317256] rounded text-white mr-6">Download</button> --}}
         <div class="w-11/12 p-4 mt-10 mr-10 border border-gray-300 rounded ml-14">
             <p class="flex justify-center mb-4">Customer Declaration</p>
-            <span class="font-light">I do hereby acknowledge that I have read and understood the terms and conditions of the Automobiles Unlimited rental agreement and agree to abide by all of them.</span>
+            <span class="flex justify-center font-light">I do hereby acknowledge that I have read and understood the terms and conditions of the Automobiles Unlimited rental agreement and agree to abide by all of them.</span>
             <div class="border border-gray-100 p-14">
+                <form action="/upload-pdf" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="flex">
                     <div class="w-1/3 mr-4">
                         <label for="customer">Customer</label>
@@ -63,58 +73,59 @@
                         <button id="clearSignature2" class="ml-44">Clear</button>
                         <canvas id="signatureCanvas2" class="border border-black" width="300" height="80"></canvas>
                     </div>
-                
-                    <script>
-                        // JavaScript code for handling both signature canvases
-                        const canvas1 = document.getElementById("signatureCanvas");
-                        const ctx1 = canvas1.getContext("2d");
-                        let drawing1 = false;
-                
-                        const canvas2 = document.getElementById("signatureCanvas2");
-                        const ctx2 = canvas2.getContext("2d");
-                        let drawing2 = false;
-                
-                        // Function to handle drawing on canvas
-                        function handleDrawing(canvas, ctx, drawing) {
-                            canvas.addEventListener("mousedown", () => {
-                                drawing = true;
-                                ctx.beginPath();
-                            });
-                
-                            canvas.addEventListener("mousemove", (e) => {
-                                if (!drawing) return;
-                                ctx.lineWidth = 2;
-                                ctx.lineCap = "round";
-                                ctx.strokeStyle = "black";
-                                ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
-                                ctx.stroke();
-                            });
-                
-                            canvas.addEventListener("mouseup", () => {
-                                drawing = false;
-                                ctx.closePath();
-                            });
-                
-                            return drawing;
-                        }
-                
-                        drawing1 = handleDrawing(canvas1, ctx1, drawing1);
-                        drawing2 = handleDrawing(canvas2, ctx2, drawing2);
-                
-                        document.getElementById("clearSignature").addEventListener("click", () => {
-                            ctx1.clearRect(0, 0, canvas1.width, canvas1.height);
-                        });
-                
-                        document.getElementById("clearSignature2").addEventListener("click", () => {
-                            ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
-                        });
-                    </script>
-            
-                </div> 
+                </div>
+                <div class="flex items-center mt-2">
+                    <button type="submit" class="p-3 bg-[#317256] rounded text-white md:mt-2 w-32">Submit</button>
+                </div>
+                </form>
             </div>
         </div>
     </div>
-    
+    <script>
+        // JavaScript code for handling both signature canvases
+        const canvas1 = document.getElementById("signatureCanvas");
+        const ctx1 = canvas1.getContext("2d");
+        let drawing1 = false;
+
+        const canvas2 = document.getElementById("signatureCanvas2");
+        const ctx2 = canvas2.getContext("2d");
+        let drawing2 = false;
+
+        // Function to handle drawing on canvas
+        function handleDrawing(canvas, ctx, drawing) {
+            canvas.addEventListener("mousedown", () => {
+                drawing = true;
+                ctx.beginPath();
+            });
+
+            canvas.addEventListener("mousemove", (e) => {
+                if (!drawing) return;
+                ctx.lineWidth = 2;
+                ctx.lineCap = "round";
+                ctx.strokeStyle = "black";
+                ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+                ctx.stroke();
+            });
+
+            canvas.addEventListener("mouseup", () => {
+                drawing = false;
+                ctx.closePath();
+            });
+
+            return drawing;
+        }
+
+        drawing1 = handleDrawing(canvas1, ctx1, drawing1);
+        drawing2 = handleDrawing(canvas2, ctx2, drawing2);
+
+        document.getElementById("clearSignature").addEventListener("click", () => {
+            ctx1.clearRect(0, 0, canvas1.width, canvas1.height);
+        });
+
+        document.getElementById("clearSignature2").addEventListener("click", () => {
+            ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
+        });
+    </script>
 
     <!-- start navigation -->
     <div class="mt-36">
