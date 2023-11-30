@@ -11,76 +11,74 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
-    @include('layouts.navigation')
 </head>
 
 <body>
-    <div class="flex flex-col md:justify-center">
-        <div class="flex justify-center w-11/12 p-8 md:ml-16 md:mt-28">
-            <form method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="flex flex-col">
-                    <label class="font-bold text-[#707070]" for="pdf_file">Upload PDF</label>
-                    <p class="">Please complete the following PDF form and upload it below and after filled.</p> 
-                    <div class="flex flex-col items-start mt-2">
-                        <input type="file" name="pdf_file" id="pdf_file" accept=".pdf">
-                        <button type="submit" class="p-3 bg-[#317256] rounded text-white md:mt-2 w-32">Upload</button>
-                    </div>
-                </div>
-            </form>
-            <div class="md:ml-[600px] w-full">
-                <div class="flex items-end justify-end mt-2">
-                    <button type="submit" class="p-3 bg-[#317256] rounded text-white md:mt-2">Download PDF</button>
-                </div>
-           </div>
+    @include('layouts.navigation')
+    <form method="post" enctype="multipart/form-data" class="max-w-screen-xl flex flex-col gap-4 p-4 mx-auto">
+        @csrf
+        <div class="w-full p-8 border border-gray-300 rounded mt-28 flex justify-between items-center">
+            <div class="">
+                <label class="font-bold text-[#707070]" for="pdf_file">Upload Filled Agreement Form</label>
+                <p class="">Please complete the following PDF form and upload it below and after filled.</p>
+                <input type="file" name="pdf_file" id="pdf_file" accept=".pdf">
+            </div>
+            <a href="#" class="p-3 h-fit bg-[#317256] rounded text-white">Download Agreement Form</a>
         </div>
-        {{-- <button class="p-3 bg-[#317256] rounded text-white mr-6">Download</button> --}}
-        <div class="w-11/12 p-4 mt-10 mr-10 border border-gray-300 rounded ml-14">
-            <p class="flex justify-center mb-4">Customer Declaration</p>
+        <div class="w-full p-8 border border-gray-300 rounded flex flex-col gap-4">
+            <p class="flex justify-center">Customer Declaration</p>
             <span class="flex justify-center font-light text-center">I do hereby acknowledge that I have read and understood the terms and conditions of the Automobiles Unlimited rental agreement and agree to abide by all of them.</span>
-            <div class="border border-gray-100 p-14">
-                <form method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="flex">
-                    <div class="w-1/3 mr-4">
-                        <label for="customer">Customer</label>
-                        <input type="text" placeholder="Customer" style="border: none; border-bottom: 1px solid #000;">
-                    </div>
-                    <div class="w-1/3 mr-4 ">
-                        <label for="Date">Date</label>
-                        <input type="date" placeholder="Date" style="border: none; border-bottom: 1px solid #000;">
-                    </div>
-                    <!-- First Signature Field -->
-                    <div class="w-1/3">
-                        <label for="Signature">Signature</label>
-                        <button id="clearSignature" class="ml-44">Clear</button>
-                        <canvas id="signatureCanvas" class="border border-black" width="300" height="80"></canvas>
-                    </div>             
-                    
+
+            <div class="flex gap-4">
+                <div class="w-full">
+                    <label for="customer">Customer</label>
+                    <input name="customer" type="text" placeholder="Customer" class="border-0 border-b w-full">
                 </div>
-                <div class="flex mt-6">
-                    <div class="w-1/3 mr-4 ">
-                        <label for="Driver">Authorized Driver</label>
-                        <input type="text" placeholder="Customer" style="border: none; border-bottom: 1px solid #000;">
-                    </div>
-                    <div class="w-1/3 mr-4 ">
-                        <label for="Date">Date</label>
-                        <input type="date" placeholder="Date" style="border: none; border-bottom: 1px solid #000;">
-                    </div>
-                    <!-- Second Signature Field -->
-                    <div class="w-1/3">
-                        <label for="Signature2">Signature</label>
-                        <button id="clearSignature2" class="ml-44">Clear</button>
-                        <canvas id="signatureCanvas2" class="border border-black" width="300" height="80"></canvas>
+                <div class="w-full">
+                    <label for="Date">Date</label>
+                    <input name="customer_date" type="date" placeholder="Date" class="border-0 border-b w-full">
+                </div>
+
+                <!-- First Signature Field -->
+                <div class="w-full flex justify-end">
+                    <div class="w-[300px]">
+                        <div class="flex justify-between">
+                            <label for="Signature2">Signature</label>
+                            <button id="clearSignature2">Clear</button>
+                        </div>
+                        <canvas id="signatureCanvas" class="border border-black rounded w-full"></canvas>
                     </div>
                 </div>
-                <div class="flex items-center mt-2">
-                    <button type="submit" class="p-3 bg-[#317256] rounded text-white md:mt-2 w-32">Submit</button>
+            </div>
+
+            <div class="flex gap-4">
+                <div class="w-full">
+                    <label for="Driver">Authorized Driver</label>
+                    <input name="driver" type="text" placeholder="Driver" class="border-0 border-b w-full">
                 </div>
-                </form>
+                <div class="w-full ">
+                    <label for="Date">Date</label>
+                    <input name="driver_date" type="date" placeholder="Date" class="border-0 border-b w-full">
+                </div>
+                <!-- Second Signature Field -->
+                <div class="w-full flex justify-end">
+                    <div class="w-[300px]">
+                        <div class="flex justify-between">
+                            <label for="Signature2">Signature</label>
+                            <button id="clearSignature2">Clear</button>
+                        </div>
+                        <canvas id="signatureCanvas2" class="border border-black rounded w-full"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+        <div class="w-full flex justify-end mt-2">
+            <button type="submit" class="p-3 bg-[#317256] rounded text-white md:mt-2 w-32">Submit</button>
+        </div>
+    </form>
+
+    @include('layouts.footer')
+
     <script>
         // JavaScript code for handling both signature canvases
         const canvas1 = document.getElementById("signatureCanvas");
@@ -126,14 +124,6 @@
             ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
         });
     </script>
-
-    <!-- start navigation -->
-    <div class="mt-36">
-        @include('layouts.footer')
-    </div>
-    <!-- end navigation -->
-
 </body>
 
 </html>
-

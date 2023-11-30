@@ -58,6 +58,8 @@ class CreateBookingController extends Controller
         // TODO
         // Handle agreement
 
+        dd($request->allFiles(), $request->all());
+
         // Check if the booking is for more than 2 weeks
         $days = $booking->pickup_time->diff($booking->dropoff_time)->days;
 
