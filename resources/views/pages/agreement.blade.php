@@ -39,7 +39,7 @@
             <p class="flex justify-center mb-4">Customer Declaration</p>
             <span class="flex justify-center font-light text-center">I do hereby acknowledge that I have read and understood the terms and conditions of the Automobiles Unlimited rental agreement and agree to abide by all of them.</span>
             <div class="border border-gray-100 p-14">
-                <form action="/upload-pdf" method="post" enctype="multipart/form-data">
+                <form method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="flex">
                     <div class="w-1/3 mr-4">
