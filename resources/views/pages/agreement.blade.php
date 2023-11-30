@@ -17,7 +17,7 @@
 <body>
     <div class="flex flex-col md:justify-center">
         <div class="flex justify-center w-11/12 p-8 md:ml-16">
-            <form action="/upload-pdf" method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="flex flex-col">
                     <label class="font-bold text-[#707070]" for="pdf_file">Upload PDF</label>
