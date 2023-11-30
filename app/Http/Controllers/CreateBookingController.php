@@ -57,7 +57,15 @@ class CreateBookingController extends Controller
     {
         // TODO
         // Handle agreement
-        return redirect()->route('bookings.pay', compact('booking'));
+
+        // Check if the booking is for more than 2 weeks
+        $days = $booking->pickup_time->diff($booking->dropoff_time)->days;
+
+        if($days >= 14){
+            return redirect()->route('bookings.pay', compact('booking'));
+        }
+
+        return redirect()->route('user.dashboard', compact('booking'));
     }
 
     /**
