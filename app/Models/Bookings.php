@@ -21,6 +21,17 @@ class Bookings extends Model
         'user_id'
     ];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'pickup_time' => 'datetime',
+        'dropoff_time' => 'datetime',
+        'returned_on' => 'datetime',
+    ];
+
     public function duration(){
         $pickup_time = new DateTime($this->pickup_time);
         if($this->returned_on){
