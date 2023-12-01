@@ -44,8 +44,12 @@ class CreateBookingController extends Controller
      */
     public function agreement_form(Bookings $booking)
     {
-        // TODO
         // if agreement is already signed, redirect to payment
+        if($booking->agreement != null){
+            return redirect()->route('bookings.pay', compact('booking'));
+        }
+
+        // TODO
         // handle generating pdf
         return view('pages.agreement', compact('booking'));
     }
