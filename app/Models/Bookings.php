@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Bookings extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'pickup',
         'dropoff',
@@ -18,7 +19,10 @@ class Bookings extends Model
         'vehicle_id',
         'approval',
         'status',
-        'user_id'
+        'user_id',
+        'agreement',
+        'customer_signature',
+        'driver_signature'
     ];
 
     /**

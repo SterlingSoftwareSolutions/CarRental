@@ -24,10 +24,14 @@ return new class extends Migration
             $table->string('approval')->default('Pending');
             $table->foreign('user_id')->references('id')->on('users'); // Replace 'users' with the actual table name
             $table->string('status');
+
+            $table->string('agreement')->nullable();
+            $table->string('customer_signature')->nullable();
+            $table->string('driver_signature')->nullable();
+
             $table->timestamps(); // Created_at and updated_at timestamps
         });
     }
-    
 
     /**
      * Reverse the migrations.
