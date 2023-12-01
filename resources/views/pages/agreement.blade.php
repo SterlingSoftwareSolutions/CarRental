@@ -24,7 +24,7 @@
                 <input type="file" name="agreement" id="pdf_file" accept=".pdf">
                 @error('agreement')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
             </div>
-            <a href="#" class="p-3 h-fit bg-[#317256] rounded text-white">Download Agreement Form</a>
+            <a href="/agreement-form.pdf" target="_blank" class="p-3 h-fit bg-[#317256] rounded text-white">Download Agreement Form</a>
         </div>
         <div class="w-full p-8 border border-gray-300 rounded flex flex-col gap-4">
             <p class="flex justify-center">Customer Declaration</p>
