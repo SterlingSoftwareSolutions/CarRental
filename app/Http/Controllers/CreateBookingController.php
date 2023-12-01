@@ -55,10 +55,21 @@ class CreateBookingController extends Controller
      */
     public function agree(Bookings $booking, Request $request)
     {
-        // TODO
-        // Handle agreement
+        $request->validate([
+            'customer' => "required",
+            'customer_date' => "required|date",
+            'driver' => "required",
+            'driver_date' => "required|date",
+            'agreement' => 'required|file|max:2048',
+            'customer_signature' => 'required|image|max:2048',
+            'driver_signature' => 'required|image|max:2048',
+        ]);
 
-        dd($request->allFiles(), $request->all());
+        $booking->update([
+            'agreement' => $request->agreement->store('agreements'),
+            'customer_signature' => $request->customer_signature->store('signatures'),
+            'driver_signature' => $request->driver_signature->store('signatures'),
+        ]);
 
         // Check if the booking is for more than 2 weeks
         $days = $booking->pickup_time->diff($booking->dropoff_time)->days;
