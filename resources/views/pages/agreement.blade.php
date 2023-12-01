@@ -44,7 +44,7 @@
                     <div class="w-[300px]">
                         <div class="flex justify-between">
                             <label for="Signature2">Signature</label>
-                            <button id="clearSignature2">Clear</button>
+                            <button type="button" id="clearSignature">Clear</button>
                         </div>
                         <canvas id="signatureCanvas" class="border border-black rounded w-full"></canvas>
                     </div>
@@ -65,7 +65,7 @@
                     <div class="w-[300px]">
                         <div class="flex justify-between">
                             <label for="Signature2">Signature</label>
-                            <button id="clearSignature2">Clear</button>
+                            <button type="button" id="clearSignature2">Clear</button>
                         </div>
                         <canvas id="signatureCanvas2" class="border border-black rounded w-full"></canvas>
                     </div>
