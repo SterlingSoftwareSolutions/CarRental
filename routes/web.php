@@ -53,7 +53,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/user/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/user/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/car_rent/payment', [PaymentsController::class, 'index'])->name('payment');
     Route::get('/invoices/{invoice}/pay', [InvoiceController::class, 'payment']);
     Route::post('/invoices/{invoice}/pay', [InvoiceController::class, 'payment_post']);
     Route::post('/car_rent/payment-final', [PaymentsController::class, 'store'])->name('payment.saving');
