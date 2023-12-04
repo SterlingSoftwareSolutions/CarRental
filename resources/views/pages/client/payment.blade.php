@@ -43,27 +43,13 @@
                                 $bookingData->vehicle['body_type']}}</td>
                         </tr>
                         <tr>
-                            <?php
-                            $dateString = $bookingData['pickup_time'];
-                            $dateTime = new DateTime($dateString);
-                            $formattedDate = $dateTime->format('Y-m-d H:i:s');
-                        
-                            echo $formattedDate;
-                            ?>
                             <td class="p-2 border-b-2 border-dotted">Pick-up Time</td>
-                            <td class="p-2 text-right border-b-2 border-dotted">{{ $formattedDate }}</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">{{$bookingData->pickup_time->format('Y-m-d H:i:s');}}</td>
                         </tr>
                         
                         <tr>
-                            <?php
-                            $dateString = $bookingData['pickup_time'];
-                            $dateTime = new DateTime($dateString);
-                            $formattedDate = $dateTime->format('Y-m-d H:i:s');
-                        
-                            echo $formattedDate;
-                            ?>
                             <td class="p-2 border-b-2 border-dotted">Drop-off Date & Time</td>
-                            <td class="p-2 text-right border-b-2 border-dotted">{{ $formattedDate}}</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">{{$bookingData->dropoff_time->format('Y-m-d H:i:s');}}</td>
                         </tr>
                         <tr>
                             <td class="p-2 border-b-2 border-dotted">Total Days</td>
@@ -115,7 +101,7 @@
             </div>
         </div>
         <div class="grid w-11/12 grid-flow-row mt-24 h-55 md:w-full lg:w-4/12 sm:mt-18">
-            <form action="{{route('payment.saving')}}" method="post" id="payment-form">
+            <form action="{{route('bookings.pay', ['booking' => $bookingData])}}" method="post" id="payment-form">
                 @csrf
                 <div class="bg-[#F8FFF2] grid md:p-8 md:mt-0">
                     @if($errors->any())

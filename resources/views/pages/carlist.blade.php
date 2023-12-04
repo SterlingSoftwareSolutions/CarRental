@@ -135,7 +135,7 @@
                     </div>
                 </div>
                 <div class="flex items-center justify-center p-4">
-                    <a href="{{ route('booknow', ['id' => $vehicle['id']]) }}" class="text-white bg-[#317256] border-0 py-2 px-6 focus:outline-none hover:bg-[#307449] rounded text-lg">Book
+                    <a href="{{ route('vehicles.show', ['vehicle' => $vehicle['id']]) }}" class="text-white bg-[#317256] border-0 py-2 px-6 focus:outline-none hover:bg-[#307449] rounded text-lg">Book
                         Now</a>
                 </div>
             </div>

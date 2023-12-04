@@ -153,7 +153,7 @@
                         <h1 class="text-white">$ {{ $vehicle['price']}} /day</h1>
                     </div>
                 </div>
-                <form method="post" action="{{ route('bookvehicle') }}">
+                <form method="post" action="{{ route('bookings.store') }}">
                     @csrf
                     @if($errors->any())
                     <div class="alert alert-danger" role="alert">
