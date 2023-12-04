@@ -12,6 +12,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\SurchargeController;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('pdf', function () {
+    $pdf = Pdf::loadView('pdf.agreement')->setPaper('a4', 'portrait');
+    return $pdf->stream('agreement.pdf');
+});
 
 Route::get('/view/{view}', function ($view) {
     return view($view);
