@@ -103,6 +103,10 @@ class BookingsController extends Controller
         return view('pages.admin.bookings.edit', compact('booking'));
     }
 
+    public function review_booking(Bookings $booking){
+        return view('pages.admin.bookings.review', compact('booking'));
+    }    
+
     public function approve_booking(Bookings $booking){
         $booking->update([
             "approval" => 'Approved'

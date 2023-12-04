@@ -101,6 +101,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/bookings/{booking}/return_confirm', [BookingsController::class, 'return_confirm'])->name('bookings.return_confirm');
         Route::delete('/booking/{bookingId}', [BookingsController::class, 'destroy'])->name('delete_booking');
         Route::get('/bookings/{booking}/edit', [BookingsController::class, 'edit'])->name('bookings.edit');
+        Route::get('/bookings/{booking}/review', [BookingsController::class, 'review_booking'])->name('bookings.review');
         Route::post('/bookings/{booking}/approve', [BookingsController::class, 'approve_booking'])->name('bookings.approve');
         Route::put('/bookings/{booking}', [BookingsController::class, 'update'])->name('bookings.update');
 
