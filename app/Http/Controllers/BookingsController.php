@@ -107,11 +107,16 @@ class BookingsController extends Controller
         return view('pages.admin.bookings.review', compact('booking'));
     }    
 
-    public function approve_booking(Bookings $booking){
-        $booking->update([
-            "approval" => 'Approved'
+    public function approve_booking(Bookings $booking,  Request $request){
+        $request->validate([
+            'admin_signature' => 'required|file'
         ]);
-    
+
+        $booking->update([
+            "approval" => 'Approved',
+            'admin_signature' => $request->admin_signature->store('signatures')
+        ]);
+
         // Redirect back to the admin dashboard or wherever appropriate
         return redirect()->route('bookings.all');
     }    

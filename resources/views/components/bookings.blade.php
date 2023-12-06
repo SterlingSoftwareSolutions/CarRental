@@ -153,9 +153,9 @@
                 <span class="px-3 py-2 text-gray-600 border border-gray-600 rounded-full">{{ ucfirst($booking->status)}}</span>
                 @endif
             </td>
-            @if(Auth::user()->role == 'client')
+            @if(Auth::user()->role == 'client' && strtolower($booking->status) == 'unpaid')
             <td class="px-6 py-4">
-                <a href="{{ route('payment') }}" class="px-3 py-2 text-center text-white bg-green-500 rounded-full">Pay</a>
+                <a href="{{ route('bookings.pay', compact('booking')) }}" class="px-3 py-2 text-center text-white bg-green-500 rounded-full">Pay</a>
             </td>
             @endif
 

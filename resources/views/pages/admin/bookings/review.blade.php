@@ -21,8 +21,7 @@
                         {{ session()->get('message') }}
                     </div>
                 @endif
-                <form action="/admin/bookings/{{$booking->id}}" method="post" class="flex flex-wrap gap-4">
-                    @method('put')
+                <form action="/admin/bookings/{{$booking->id}}/review" method="post" class="flex flex-wrap gap-4">
                     @csrf
                     <embed
                         src="@if($booking->agreement)data:application/pdf;base64,{{base64_encode(file_get_contents(storage_path( 'app/' . $booking->agreement)))}}@endif"

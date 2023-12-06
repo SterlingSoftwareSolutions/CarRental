@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bookings;
 use App\Models\Country;
 use App\Models\Transaction;
+use Barryvdh\DomPDF\Facade\Pdf;
 use DateTime;
 use Illuminate\Http\Request;
 use Stripe\PaymentMethod;
@@ -37,6 +38,12 @@ class CreateBookingController extends Controller
         ]);
 
         return redirect()->route('bookings.agree', compact('booking'));
+    }
+
+    public function agreement_pdf(Bookings $booking)
+    {
+        $pdf = Pdf::loadView('pdf.agreement')->setPaper('a4', 'portrait');
+        return $pdf->stream('agreement.pdf');
     }
 
     /**
@@ -90,6 +97,11 @@ class CreateBookingController extends Controller
      */
     public function payment_form(Bookings $booking)
     {
+        // if agreement is not already signed, redirect to agreement
+        if($booking->agreement == null){
+            return redirect()->route('bookings.agree', compact('booking'));
+        }
+
         $countries = Country::all();
         $pickup_time = new DateTime($booking->pickup_time);
         $dropoff_time = new DateTime($booking->dropoff_time);
@@ -112,6 +124,11 @@ class CreateBookingController extends Controller
      */
     public function pay(Bookings $booking, Request $request)
     {
+        // if agreement is not already signed, redirect to agreement
+        if($booking->agreement == null){
+            return redirect()->route('bookings.agree', compact('booking'));
+        }
+
         $request->validate([
             "country" => "required",
             "first_name" => "required",
