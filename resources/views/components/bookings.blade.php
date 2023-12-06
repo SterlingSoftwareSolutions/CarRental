@@ -123,6 +123,8 @@
             <td class="px-6 py-4">
                 @if(($booking->approval) == 'Pending')
                 <span class="px-3 py-2 text-yellow-500 ">Pending</span>
+                @elseif($booking->approval == 'Rejected')
+                <span class="px-3 py-2 text-red-500 ">Rejected</span>
                 @else
                 <span class="px-3 py-2 text-green-500 ">Approved</span>
                 @endif
@@ -153,13 +155,15 @@
                 <span class="px-3 py-2 text-gray-600 border border-gray-600 rounded-full">{{ ucfirst($booking->status)}}</span>
                 @endif
             </td>
+            @if(Auth::user()->role == 'client')
             <td class="px-6 py-4">
-            @if(Auth::user()->role == 'client' && $booking->status == 'Unpaid')
-                <a href="{{ route('bookings.pay', compact('booking')) }}" class="px-3 py-2 text-center text-white bg-green-500 rounded-full">Pay</a>
-            @else
-                <button class="px-3 py-2 text-center text-white bg-gray-300 rounded-full" disabled>Pay</button>
-            @endif
+                @if($booking->status == 'Unpaid')
+                    <a href="{{ route('bookings.pay', compact('booking')) }}" class="px-3 py-2 text-center text-white bg-green-500 rounded-full">Pay</a>
+                @else
+                    <button class="px-3 py-2 text-center text-white bg-gray-300 rounded-full" disabled>Pay</button>
+                @endif
             </td>
+            @endif
 
             @if(Auth::user()->role == 'admin')
             <td class="px-6 py-4">
