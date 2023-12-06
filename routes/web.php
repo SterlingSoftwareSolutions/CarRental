@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BookingsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CreateBookingController;
-use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\VehiclesController;
@@ -12,8 +10,6 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\SurchargeController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,7 +51,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/user/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/invoices/{invoice}/pay', [InvoiceController::class, 'payment']);
     Route::post('/invoices/{invoice}/pay', [InvoiceController::class, 'payment_post']);
-    Route::post('/car_rent/payment-final', [PaymentsController::class, 'store'])->name('payment.saving');
 
     // Step 1 - Choose vehicle
     Route::get('/carlist/{vehicle}', [VehiclesController::class, 'view_vehicle'])->name('vehicles.show');
@@ -64,6 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/bookings/create', [CreateBookingController::class, 'store'])->name('bookings.store');
 
     // Step 3 - Agree
+    Route::get('/bookings/{booking}/pdf', [CreateBookingController::class, 'agreement_pdf'])->name('bookings.pdf');
     Route::get('/bookings/{booking}/agree', [CreateBookingController::class, 'agreement_form'])->name('bookings.agree');
     Route::post('/bookings/{booking}/agree', [CreateBookingController::class, 'agree'])->name('bookings.agree');
 
@@ -94,7 +90,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/bookings/{booking}/return_confirm', [BookingsController::class, 'return_confirm'])->name('bookings.return_confirm');
         Route::delete('/booking/{bookingId}', [BookingsController::class, 'destroy'])->name('delete_booking');
         Route::get('/bookings/{booking}/edit', [BookingsController::class, 'edit'])->name('bookings.edit');
-        Route::post('/bookings/{booking}/approve', [BookingsController::class, 'approve_booking'])->name('bookings.approve');
+        Route::get('/bookings/{booking}/review', [BookingsController::class, 'review_booking'])->name('bookings.review');
+        Route::post('/bookings/{booking}/review', [BookingsController::class, 'approve_booking'])->name('bookings.review');
         Route::put('/bookings/{booking}', [BookingsController::class, 'update'])->name('bookings.update');
 
         Route::get('/surcharges', [SurchargeController::class, 'index'])->name('surcharges.all');

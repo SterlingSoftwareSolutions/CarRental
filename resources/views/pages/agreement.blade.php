@@ -12,7 +12,7 @@
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
 </head>
-
+            
 <body>
     @include('layouts.navigation')
     <form method="post" enctype="multipart/form-data" class="max-w-screen-xl flex flex-col gap-4 p-4 mx-auto" id="agreement_form">
@@ -24,12 +24,11 @@
                 <input type="file" name="agreement" id="pdf_file" accept=".pdf">
                 @error('agreement')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
             </div>
-            <a href="/agreement-form.pdf" target="_blank" class="p-3 h-fit bg-[#317256] rounded text-white">Download Agreement Form</a>
+            <a href="{{route('bookings.pdf', ['booking' => $booking])}}" target="_blank" class="p-3 h-fit bg-[#317256] rounded text-white">Download Agreement Form</a>
         </div>
         <div class="w-full p-8 border border-gray-300 rounded flex flex-col gap-4">
             <p class="flex justify-center">Customer Declaration</p>
             <span class="flex justify-center font-light text-center">I do hereby acknowledge that I have read and understood the terms and conditions of the Automobiles Unlimited rental agreement and agree to abide by all of them.</span>
-
             <div class="flex gap-4">
                 <div class="w-full">
                     <label for="customer">Customer</label>
