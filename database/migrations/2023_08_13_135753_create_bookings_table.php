@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('agreement')->nullable();
             $table->string('customer_signature')->nullable();
             $table->string('driver_signature')->nullable();
+            $table->string('admin_signature')->nullable();
 
             $table->timestamps(); // Created_at and updated_at timestamps
         });
