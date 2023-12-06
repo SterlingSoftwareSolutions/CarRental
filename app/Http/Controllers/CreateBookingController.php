@@ -89,7 +89,7 @@ class CreateBookingController extends Controller
             return redirect()->route('bookings.pay', compact('booking'));
         }
 
-        return redirect()->route('user.dashboard', compact('booking'));
+        return redirect()->route('user.dashboard');
     }
 
     /**
@@ -97,6 +97,9 @@ class CreateBookingController extends Controller
      */
     public function payment_form(Bookings $booking)
     {
+        if($booking->status != "Unpaid"){
+            return redirect()->route('user.dashboard')->with('error', 'Already paid');
+        }
         // if agreement is not already signed, redirect to agreement
         if($booking->agreement == null){
             return redirect()->route('bookings.agree', compact('booking'));
@@ -111,12 +114,12 @@ class CreateBookingController extends Controller
             $amount = $booking->vehicle->price * 14;
         }
 
-        return view('pages.client.payment', [
-            'bookingData' => $booking,
-            'countries' => $countries,
-            'days' => $days,
-            'amount' => $amount ?? 0
-        ]);
+        return view('pages.client.payment', compact(
+            'booking',
+            'countries',
+            'days',
+            'amount'
+        ));
     }
 
     /**
@@ -124,6 +127,10 @@ class CreateBookingController extends Controller
      */
     public function pay(Bookings $booking, Request $request)
     {
+        if($booking->status != "Unpaid"){
+            return redirect()->route('user.dashboard')->with('error', 'Already paid');
+        }
+
         // if agreement is not already signed, redirect to agreement
         if($booking->agreement == null){
             return redirect()->route('bookings.agree', compact('booking'));
