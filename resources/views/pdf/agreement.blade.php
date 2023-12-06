@@ -22,7 +22,7 @@
   
 	  .contact p {
 		float: left;
-		width: 30%;
+		width: 35%;
 		box-sizing: border-box;
 		padding-right: 10px;
 	  }
