@@ -153,11 +153,13 @@
                 <span class="px-3 py-2 text-gray-600 border border-gray-600 rounded-full">{{ ucfirst($booking->status)}}</span>
                 @endif
             </td>
-            @if(Auth::user()->role == 'client')
             <td class="px-6 py-4">
-                <a href="{{ route('payment') }}" class="px-3 py-2 text-center text-white bg-green-500 rounded-full">Pay</a>
-            </td>
+            @if(Auth::user()->role == 'client' && $booking->status == 'Unpaid')
+                <a href="{{ route('bookings.pay', compact('booking')) }}" class="px-3 py-2 text-center text-white bg-green-500 rounded-full">Pay</a>
+            @else
+                <button class="px-3 py-2 text-center text-white bg-gray-300 rounded-full" disabled>Pay</button>
             @endif
+            </td>
 
             @if(Auth::user()->role == 'admin')
             <td class="px-6 py-4">
@@ -174,16 +176,11 @@
                     {{-- EDIT BUTTON --}}
                     <a href="/admin/bookings/{{ $booking['id'] }}/edit" class="px-3 py-2 text-center text-white bg-gray-500 rounded-full">Edit</a>
 
+                    {{-- REVIEW BUTTON --}}
                     @if($booking['approval'] === 'Pending')
-                        {{-- APPROVE Button --}}
-                        <form action="{{ route('bookings.approve', $booking) }}" method="POST" class="inline">
-                            @csrf
-                            @method('POST')
-                            <button href="{{ route('bookings.approve', $booking) }}" type="submit" class="px-3 py-2 text-center text-white bg-green-500 rounded-full">Approve</button>
-                        </form>
+                        <a href="/admin/bookings/{{ $booking['id'] }}/review" class="px-3 py-2 text-center text-white bg-green-500 rounded-full">Review</a>
                     @endif
-                
-                    
+
                     {{-- DELETE BUTTON --}}
                     <form action="/admin/booking/{{ $booking['id'] }}" method="POST" class="inline">
                         @csrf
@@ -199,6 +196,7 @@
     </tbody>
 </table>
 
+{{-- Return Vehicle Modal --}}
 <div class="relative z-40 hidden" id="return_modal">
     <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"></div>
     <div class="fixed inset-0 z-10 overflow-y-auto">
@@ -218,7 +216,7 @@
     </div>
 </div>
 
-
+{{-- Add Surcharge Modal --}}
 <div class="relative z-40 hidden" id="surcharge_modal">
     <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"></div>
     <div class="fixed inset-0 z-10 overflow-y-auto">
