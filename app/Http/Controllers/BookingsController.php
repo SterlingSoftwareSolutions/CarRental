@@ -108,6 +108,14 @@ class BookingsController extends Controller
     }    
 
     public function approve_booking(Bookings $booking,  Request $request){
+
+        if($request->has('reject')){
+            $booking->update([
+                "approval" => 'Rejected',
+            ]);
+            return redirect()->route('bookings.all');
+        }
+
         $request->validate([
             'admin_signature' => 'required|file'
         ]);

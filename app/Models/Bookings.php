@@ -22,7 +22,8 @@ class Bookings extends Model
         'user_id',
         'agreement',
         'customer_signature',
-        'driver_signature'
+        'driver_signature',
+        'admin_signature'
     ];
 
     /**
