@@ -61,7 +61,7 @@ Route::middleware('auth')->group(function () {
     // Step 3 - Agree
     Route::get('/bookings/{booking}/pdf', [CreateBookingController::class, 'agreement_pdf'])->name('bookings.pdf');
     Route::get('/bookings/{booking}/agree', [CreateBookingController::class, 'agreement_form'])->name('bookings.agree');
-    Route::post('/bookings/{booking}/agree', [CreateBookingController::class, 'agree'])->name('bookings.agree');
+    Route::post('/bookings/{booking}/agree', [CreateBookingController::class, 'agree'])->name('bookings.agree_post');
 
     // Step 4 - Pay
     Route::get('/bookings/{booking}/pay', [CreateBookingController::class, 'payment_form'])->name('bookings.pay');
