@@ -102,6 +102,7 @@ class CreateBookingController extends Controller
         if($booking->status != "Unpaid"){
             return redirect()->route('user.dashboard')->with('error', 'Already paid');
         }
+
         // if agreement is not already signed, redirect to agreement
         if($booking->agreement == null){
             return redirect()->route('bookings.agree', compact('booking'));
@@ -111,6 +112,7 @@ class CreateBookingController extends Controller
         $pickup_time = new DateTime($booking->pickup_time);
         $dropoff_time = new DateTime($booking->dropoff_time);
         $days = $dropoff_time->diff($pickup_time)->days;
+        $amount = 0;
 
         if($days >= 14){
             $amount = $booking->vehicle->price * 14;
