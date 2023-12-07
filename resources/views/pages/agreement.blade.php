@@ -108,11 +108,23 @@
                 ctx.lineWidth = 2;
                 ctx.lineCap = "round";
                 ctx.strokeStyle = "black";
-                ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+
+                // Adjust the mouse position based on the scroll offset
+                const rect = canvas.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left;
+                const mouseY = e.clientY - rect.top;
+
+                // Draw a line
+                ctx.lineTo(mouseX, mouseY);
                 ctx.stroke();
             });
 
             canvas.addEventListener("mouseup", () => {
+                drawing = false;
+                ctx.closePath();
+            });
+
+            canvas.addEventListener("mouseleave", () => {
                 drawing = false;
                 ctx.closePath();
             });
