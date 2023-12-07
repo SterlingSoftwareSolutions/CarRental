@@ -1,89 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-	<style type="text/css">
-		body {
-			font-family: Arial, sans-serif;
-		}
-
-		.header {
-			width: 95%;
-		}
-
-		.header-para {
-			line-height: 120%;
-		}
-
-		.header-1 {
-			text-align: center;
-			font-size: 35px;
-		}
-
-		.contact {
-			overflow: hidden;
-			margin-left: 25%;
-		}
-
-		.contact p {
-			float: left;
-			width: 35%;
-			box-sizing: border-box;
-		}
-
-		.text-h {
-			float: left;
-			width: 50%;
-			box-sizing: border-box;
-		}
-
-		.text-g {
-			float: left;
-			width: 40%;
-			box-sizing: border-box;
-		}
-
-		.second-text {
-			text-align: center;
-			margin-top: 20px;
-		}
-
-		.input-rental {
-			width: 50%;
-		}
-
-		.center-container {
-			text-align: center;
-		}
-
-		.form label {
-			display: block;
-			margin-bottom: 5px;
-		}
-
-		.form input,
-		.table-2 input {
-			width: 100%;
-			box-sizing: border-box;
-			margin-bottom: 10px;
-			height: 40px;
-		}
-	</style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
 </head>
 
 <body>
-	<div class="center-container">
-		<b class="header-1"><u>AUTOMOBILES UNLIMITED PTY LTD</u></b>
+	<div style="width: 100%; text-align: center; font-size: 30px;">
+		<b><u>AUTOMOBILES UNLIMITED PTY LTD</u></b>
 	</div>
-	<table style="width: 100%; margin-left: 15px; margin-right: 15px;">
+	<table style="width: 85%; margin: auto;">
 		<tr>
 			<td>
-				<div class="">
+				<div>
 					<p>Phone: 0449541159</p>
-					<p class="">3/233-235 Boundary Road Mordialloc Vic 3195</p>
+					<p>3/233-235 Boundary Road Mordialloc Vic 3195</p>
 				</div>
 			</td>
 			<td>
-				<div class="">
+				<div>
 					<p>sales@automobex.com.au</p>
-					<p class="">ABN:79 6598 5869</p>
+					<p>ABN:79 6598 5869</p>
 				</div>
 			</td>
 		</tr>
@@ -91,100 +30,163 @@
 	<p style="text-align: center;">
 		<b>AUTOMOBILES UNLIMITED VEHICLE RENTAL AGREEMENT</b>
 	</p>
-	<div class="form-1">
-		<div class="form action=">
+	<div>
+		<div>
 			<h2><b>CUSTOMER DETAILS</b></h2>
-			<label for="">Customer/Company Name: <input type="text" /></label><br />
-			<label for="">Phone: <input type="text" /></label><br />
-			<label for="">Email: <input type="text" /></label><br />
-			<label for="">Address: <input type="text" /></label><br />
-			<label for="">License No.: <input type="text" /></label><br />
-			<label for="">Expiry Date: <input type="text" /></label><br />
-			<label for="">DOB: <input type="text" /></label><br />
-			<label for="">Additional Driver: <input type="text" /></label><br />
-			<label for="">Contact Number:<input type="text" /></label><br />
-			<label for="">Address: <input type="text" /></label>
+			<label>Customer/Company Name: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}"
+					type="text" /></label><br />
+			<label>Phone: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}" type="text" /></label><br />
+			<label>Email: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}" type="text" /></label><br />
+			<label>Address: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}"
+					type="text" /></label><br />
+			<label>License No.: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}"
+					type="text" /></label><br />
+			<label>Expiry Date: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}"
+					type="text" /></label><br />
+			<label>DOB: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}" type="text" /></label><br />
+			<label>Additional Driver: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}"
+					type="text" /></label><br />
+			<label>Contact Number:<input style="width: 100%;" name="input_{{random_int(0, 9999)}}"
+					type="text" /></label><br />
+			<label>Address: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}" type="text" /></label>
 		</div>
-		<div class="form-2">
+		<div>
 			<h2><b>VEHICLE DETAILS</b></h2>
-			<div action="" class="form">
-				<label for="">Registration No.: <input type="text"></label><br>
-				<label for="">Type: <input type="text"></label><br>
-				<label for="">Make: <input type="text"> </label><br>
-				<label for="">Model: <input type="text"> </label>
-				<div class="">
-					<table style="width: 100%;">
-						<thead>
+			<div>
+				<label>Registration No.: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}"
+						type="text"></label><br>
+				<label>Type: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}" type="text"></label><br>
+				<label>Make: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}" type="text"> </label><br>
+				<label>Model: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}" type="text"> </label>
+			</div>
+			<div>
+				<table>
+					<thead>
+						<tr>
 							<th></th>
-							<th>Date</th>
-							<th>Time</th>
-							<th>Mileage</th>
-							<th>Fuel Level</th>
-						</thead>
+							<th style="width: 20%;">Date</th>
+							<th style="width: 20%;">Time</th>
+							<th style="width: 20%;">Mileage</th>
+							<th style="width: 20%;">Fuel Level</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Pick up:</td>
+							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
+							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
+							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
+							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
+						</tr>
+						<tr>
+							<td>Drop off:</td>
+							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
+							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
+							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
+							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
+						</tr>
+						<tr>
+						<tr>
+							<td>Returned:</td>
+							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
+							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
+							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
+							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
+						</tr>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div>
+			<h2><b>BODY DAMAGE DETAILS</b></h2>
+			<div>
+				<div>
+					<img
+						src="data:image/png;base64,{{base64_encode(file_get_contents(public_path( 'images/image.png' )))}}">
+				</div>
+				<div>
+					<table>
 						<tbody>
 							<tr>
-								<td>Pick up:</td>
-								<td><input type="text"></td>
-								<td><input type="text"></td>
-								<td><input type="text"></td>
-								<td><input type="text"></td>
+								<td style="width: 50%;">
+									<label>Number of days</label>
+									<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+								</td>
+								<td style="width: 50%;">
+									<label>Allowed vehicle mileage km/day/week</label>
+									<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+								</td>
 							</tr>
 							<tr>
-								<td>Drop off:</td>
-								<td><input type="text"></td>
-								<td><input type="text"></td>
-								<td><input type="text"></td>
-								<td><input type="text"></td>
+								<td style="width: 50%;">
+									<label>Rate per day/week</label>
+									<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+								</td>
+								<td style="width: 50%;">
+									<label>Charge for extra km</label>
+									<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+								</td>
 							</tr>
 							<tr>
-							<tr>
-								<td>Returned:</td>
-								<td><input type="text"></td>
-								<td><input type="text"></td>
-								<td><input type="text"></td>
-								<td><input type="text"></td>
-							</tr>
+
+								<td style="width: 50%;">
+									<label>Insurance premium</label>
+									<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
 		</div>
-		<div class="form-2">
-			<h2><b>BODY DAMAGE DETAILS</b></h2>
-			<div class="form-3">
-				<div class="">
-					<img src="data:image/png;base64,{{base64_encode(file_get_contents(public_path( 'images/image.png' )))}}"
-						style="width: 100%;">
-				</div><br />
-				<div action="" class="form">
-					<label for="">Number of days <input type="text"></label>
-					<label for="">Allowed vehicle mileage km/day/week <input type="text"></label>
-					<label for="">Rate per day/week <input type="text"></label>
-					<label for="">Charge for extra km <input type="text"></label>
-					<label for="">Insurance premium <input type="text"></label>
-				</div>
-			</div>
-		</div>
-		<p style="margin: 40px 40px 40px 60px;">You acknowledge that you have received and understood the terms and
+		<p>You acknowledge that you have received and understood the terms and
 			conditions of the rental agreement.</p>
-		<div class="rental">
-			<div action="" class="form">
-				<label for="">□ Rental <input type="text"></label>
-				<label for="">□ Extra Mileage <input type="text"></label>
-				<label for="">□ Damage Liability Reduction <input type="text"></label>
-				<label for="">□ Bond / Deposit <input type="text"></label>
-				<label for="">□ Card fee <input type="text"></label>
-				<label for="">□ Others <input type="text"></label>
-				<label for="">Total <input type="text" class="input-rental"></label>
-			</div>
+		<div>
+			<table>
+				<tr>
+					<td>
+						<label>□ Rental</label>
+						<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+					</td>
+					<td>
+						<label>□ Extra Mileage</label>
+						<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>□ Damage Liability Reduction</label>
+						<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+					</td>
+					<td>
+						<label>□ Bond / Deposit</label>
+						<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>□ Card fee</label>
+						<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+					</td>
+					<td>
+						<label>□ Others</label>
+						<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Total</label>
+						<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+					</td>
+				</tr>
+			</table>
 		</div>
-		<p class="sign-text">Customer Signature</p>
-
-		<p class="header-term">TERMS AND CONDITIONS OF RENTAL</p> <br>
-		<p class="header-term">The rental agreement is made upon the detailed terms and conditions of Automobiles
+		<!-- <p>Customer Signature</p> -->
+		<p style="font-size: 20px;">TERMS AND CONDITIONS OF RENTAL</p>
+		<p>The rental agreement is made upon the detailed terms and conditions of Automobiles
 			Unlimited which will be issued to you at the time of signing the contract</p>
-		<p class="header-para">1. The renter states that he/she is physically and legally qualified to operate the above
+		<p>1. The renter states that he/she is physically and legally qualified to operate the above
 			described vehicle.<br /><br>
 			2. The driver should be over 25 years of age, possess a valid, unrestricted driver’s license held for at
 			least 12 months. <br /><br>
@@ -249,57 +251,55 @@
 			of the Automobiles Unlimited rental
 			agreement
 		</p>
-		<div class="table-container">
-			<h1 class="table-2">Checklist</h1>
-			<table style="width: 50%;">
+		<div>
+			<h1>Checklist</h1>
+			<table>
 				<thead>
-					<td style="font-weight: bold;">Desciption</td>
-					<td style="font-weight: bold;">Remarks</td>
+					<td>Desciption</td>
+					<td>Remarks</td>
 				</thead>
 				<tbody>
 					<tr>
 						<td>Reverse camera</td>
-						<td><input type="checkbox"></td>
+						<td><input value="null" name="input_{{random_int(0, 9999)}}" type="checkbox"></td>
 					</tr>
-
 					<tr>
 						<td>Cargo Barrier</td>
-						<td><input type="checkbox"></td>
+						<td><input value="null" name="input_{{random_int(0, 9999)}}" type="checkbox"></td>
 					</tr>
-
 					<tr>
 						<td>Fuel Cap</td>
-						<td><input type="checkbox"></td>
+						<td><input value="null" name="input_{{random_int(0, 9999)}}" type="checkbox"></td>
 					</tr>
-
 					<tr>
 						<td>Rim Cups</td>
-						<td><input type="checkbox"></td>
+						<td><input value="null" name="input_{{random_int(0, 9999)}}" type="checkbox"></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-
-		<div class="table-container">
-			<div class="table-2">
+		<div>
+			<div>
 				<p>Automobiles Unlimited Pty Ltd – Bank account Details </p>
 			</div>
-			<table class="table-2" style="width: 50%;">
+			<table>
 				<tbody>
 					<tr>
-						<td style="width: 50%;">BSB</td>
-						<td style="width: 50%;"><input type="text"></td>
+						<td>BSB</td>
+						<td><input name="input_{{random_int(0, 9999)}}" type="text" style="width: 25%;"></td>
 					</tr>
 					<tr>
 						<td>Account Number</td>
-						<td><input type="text"></td>
+						<td><input name="input_{{random_int(0, 9999)}}" type="text" style="width: 25%;"></td>
 					</tr>
 					<tr>
 						<td>Contact Number</td>
-						<td><input type="text"></td>
+						<td><input name="input_{{random_int(0, 9999)}}" type="text" style="width: 25%;"></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
 </body>
+
+</html>

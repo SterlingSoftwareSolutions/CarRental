@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Bookings;
 use App\Models\Country;
 use App\Models\Transaction;
-use Barryvdh\DomPDF\Facade\Pdf;
 use DateTime;
 use Illuminate\Http\Request;
 use Stripe\PaymentMethod;
@@ -42,8 +41,11 @@ class CreateBookingController extends Controller
 
     public function agreement_pdf(Bookings $booking)
     {
-        $pdf = Pdf::loadView('pdf.agreement')->setPaper('a4', 'portrait');
-        return $pdf->stream('agreement.pdf');
+        $mpdf = new \Mpdf\Mpdf();
+        $mpdf->useActiveForms = true;
+        $html = view('pdf/agreement')->render();
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
     }
 
     /**
