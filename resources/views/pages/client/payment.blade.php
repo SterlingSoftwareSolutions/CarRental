@@ -30,7 +30,7 @@
 
                 <!-- car image -->
                 <div class="w-full">
-                    <img class="w-full" src="{{ Storage::url($bookingData->vehicle->images[0]->file_path ?? null) }}">
+                    <img class="w-full" src="{{ Storage::url($booking->vehicle->images[0]->file_path ?? null) }}">
                 </div>
 
                 <!-- pickup details -->
@@ -38,45 +38,31 @@
                     <tbody>
                         <tr>
                             <td class="p-2 border-b-2 border-dotted">Title</td>
-                            <td class="p-2 text-right border-b-2 border-dotted">{{ $bookingData->vehicle['year']}} {{
-                                $bookingData->vehicle['make']}} {{ $bookingData->vehicle['model']}} {{
-                                $bookingData->vehicle['body_type']}}</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">{{ $booking->vehicle->year}} {{
+                                $booking->vehicle['make']}} {{ $booking->vehicle['model']}} {{
+                                $booking->vehicle['body_type']}}</td>
                         </tr>
                         <tr>
-                            <?php
-                            $dateString = $bookingData['pickup_time'];
-                            $dateTime = new DateTime($dateString);
-                            $formattedDate = $dateTime->format('Y-m-d H:i:s');
-                        
-                            echo $formattedDate;
-                            ?>
-                            <td class="p-2 border-b-2 border-dotted">Pick-up Time</td>
-                            <td class="p-2 text-right border-b-2 border-dotted">{{ $formattedDate }}</td>
+                            <td class="p-2 border-b-2 border-dotted">Pick-up Date & Time</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">{{$booking->pickup_time->format('Y-m-d H:i:s');}}</td>
                         </tr>
                         
                         <tr>
-                            <?php
-                            $dateString = $bookingData['pickup_time'];
-                            $dateTime = new DateTime($dateString);
-                            $formattedDate = $dateTime->format('Y-m-d H:i:s');
-                        
-                            echo $formattedDate;
-                            ?>
                             <td class="p-2 border-b-2 border-dotted">Drop-off Date & Time</td>
-                            <td class="p-2 text-right border-b-2 border-dotted">{{ $formattedDate}}</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">{{$booking->dropoff_time->format('Y-m-d H:i:s');}}</td>
                         </tr>
                         <tr>
                             <td class="p-2 border-b-2 border-dotted">Total Days</td>
-                            <td class="p-2 text-right border-b-2 border-dotted">{{ $bookingData['bookingDaysCount']}}
+                            <td class="p-2 text-right border-b-2 border-dotted">{{ $days}}
                             </td>
                         </tr>
                         <tr>
                             <td class="p-2 border-b-2 border-dotted">Pick-up Location</td>
-                            <td class="p-2 text-right border-b-2 border-dotted">{{ str_replace(' ', ' ', $bookingData['pickup']) }}</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">{{ str_replace(' ', ' ', $booking['pickup']) }}</td>
                         </tr>                                                
                         <tr>
                             <td class="p-2">Drop-off Location</td>
-                            <td class="p-2 text-right">{{ $bookingData['dropoff']}}</td>
+                            <td class="p-2 text-right">{{ $booking['dropoff']}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -91,23 +77,23 @@
                     <tbody>
                         <tr>
                             <td class="p-2 border-b-2 border-dotted">Days</td>
-                            <td class="p-2 text-right border-b-2 border-dotted">{{ $bookingData['bookingDaysCount']}}</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">{{ $days}}</td>
                         </tr>
                         <tr>
                             <td class="p-2 border-b-2 border-dotted">Per Day</td>
-                            <td class="p-2 text-right border-b-2 border-dotted">AUD {{ $bookingData->vehicle['price']}}.00</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">AUD {{ number_format($booking->vehicle['price'], 2)}}</td>
                         </tr>
                         <tr>
                             <td class="p-2 font-bold border-b-2 border-dotted">SUBTOTAL</td>
-                            <td class="p-2 font-bold text-right border-b-2 border-dotted">AUD {{ $bookingData['bookingDaysCount'] * $bookingData->vehicle['price']}}.00</td>
+                            <td class="p-2 font-bold text-right border-b-2 border-dotted">AUD {{ number_format($days * $booking->vehicle->price, 2)}}</td>
                         </tr>
                         <tr>
                             <td class="p-2 border-b-2 border-dotted">2 Weeks Advance</td>
-                            <td class="p-2 text-right border-b-2 border-dotted">AUD {{ $amount }}.00</td>
+                            <td class="p-2 text-right border-b-2 border-dotted">AUD {{ number_format($amount, 2) }}</td>
                         </tr>
                         <tr>
                             <td class="p-2 mt-2 font-bold text-red-600">Due</td>
-                            <td class="p-2 font-bold text-right text-red-600">AUD {{ ($bookingData['bookingDaysCount'] * $bookingData->vehicle['price'])- $amount}}.00</td>
+                            <td class="p-2 font-bold text-right text-red-600">AUD {{ number_format($amount - $days * $booking->vehicle->price, 2)}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -115,7 +101,7 @@
             </div>
         </div>
         <div class="grid w-11/12 grid-flow-row mt-24 h-55 md:w-full lg:w-4/12 sm:mt-18">
-            <form action="{{route('payment.saving')}}" method="post" id="payment-form">
+            <form action="{{route('bookings.pay', ['booking' => $booking])}}" method="post" id="payment-form">
                 @csrf
                 <div class="bg-[#F8FFF2] grid md:p-8 md:mt-0">
                     @if($errors->any())
@@ -257,7 +243,7 @@
                                     class="w-1/2 p-3 text-white bg-green-900 border-none rounded-md shadow-md ms-auto"
                                 >
                                 @if($amount)
-                                    Pay ${{$amount}}.00
+                                    Pay ${{number_format($amount, 2)}}
                                 @else
                                     Proceed
                                 @endif

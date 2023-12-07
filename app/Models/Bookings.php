@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Bookings extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'pickup',
         'dropoff',
@@ -18,7 +19,22 @@ class Bookings extends Model
         'vehicle_id',
         'approval',
         'status',
-        'user_id'
+        'user_id',
+        'agreement',
+        'customer_signature',
+        'driver_signature',
+        'admin_signature'
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'pickup_time' => 'datetime',
+        'dropoff_time' => 'datetime',
+        'returned_on' => 'datetime',
     ];
 
     public function duration(){

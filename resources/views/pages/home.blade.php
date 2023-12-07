@@ -218,7 +218,7 @@
                                 @foreach ($vehicles->take(6) as $vehicle)
                                     <div class="w-full px-2 mb-4 md:w-1/2">
                                         <div class="inner_content">
-                                            <a href="{{ route('booknow', ['id' => $vehicle->id]) }}" class="flex flex-row items-center md:flex-row md:max-w-xl">
+                                            <a href="{{ route('vehicles.show', ['vehicle' => $vehicle]) }}" class="flex flex-row items-center md:flex-row md:max-w-xl">
                                                 <div class="md:block">
                                                     @if ($vehicle->images->count() > 0)
                                                         @php

@@ -11,6 +11,7 @@ use App\Models\Surcharge;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateBookingsRequest;
+use Illuminate\Support\Facades\Storage;
 
 class BookingsController extends Controller
 {
@@ -61,44 +62,6 @@ class BookingsController extends Controller
         //
     }
 
-    public function book(Request $request)
-    {
-        $request->validate([
-            'pickup' => 'required',
-            'pickup_time' => 'required|before:dropoff_time',
-            'dropoff_time' => 'required|after:pickup_time',
-            'dropoff' => 'required'
-        ]);
-
-        $Booking = Bookings::create([
-            'pickup' => $request->pickup,
-            'pickup_time' => $request->pickup_time,
-            'dropoff_time' => $request->dropoff_time,
-            'dropoff' => $request->dropoff,
-            'vehicle_id' => $request->vehicle_id,
-            'status' => "Unpaid",
-            'approval' => "Pending",
-            'user_id' => auth()->id(),
-
-        ]);
-
-
-
-        $pickupTime = Carbon::parse($Booking['pickup_time']);
-        $dropoffTime = Carbon::parse($Booking['dropoff_time']);
-        // Calculate the difference in days
-        $daysCount = $dropoffTime->diffInDays($pickupTime);
-        $Booking['bookingDaysCount'] = $daysCount;
-
-        session(['BookingData' => $Booking]);
-
-        if (auth()->check() && auth()->user()->role === 'admin'){
-            return redirect()->route('bookings.all')->with('success', 'Vehicle booked successfully.');
-        } else {
-            return redirect()->route('user.dashboard')->with('success', 'Vehicle booked successfully.');
-        }
-    }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -141,14 +104,37 @@ class BookingsController extends Controller
         return view('pages.admin.bookings.edit', compact('booking'));
     }
 
-    public function approve_booking(Bookings $booking){
-        $booking->update([
-            "approval" => 'Approved'
+    public function review_booking(Bookings $booking){
+        return view('pages.admin.bookings.review', compact('booking'));
+    }    
+
+    public function approve_booking(Bookings $booking,  Request $request){
+
+        if($request->has('reject')){
+            $booking->update([
+                "approval" => 'Rejected',
+            ]);
+            return redirect()->route('bookings.all');
+        }
+
+        $request->validate([
+            'admin_signature' => 'required|file',
+            'agreement' => 'file|nullable'
         ]);
-    
+
+        if($request->hasFile('agreement')){
+            Storage::delete($booking->agreement);
+        }
+
+        $booking->update([
+            "approval" => 'Approved',
+            'agreement' => $request->agreement->store('agreements'),
+            'admin_signature' => $request->admin_signature->store('signatures')
+        ]);
+
         // Redirect back to the admin dashboard or wherever appropriate
         return redirect()->route('bookings.all');
-    }    
+    }
 
     /**
      * Update the specified resource in storage.

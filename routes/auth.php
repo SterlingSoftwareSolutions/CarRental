@@ -60,8 +60,6 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
-    Route::post('carlist/single-car-view/book', [BookingsController::class, 'book'])->name('bookvehicle');
-    Route::post('/car_rent/payment-final', [PaymentsController::class, 'store'])->name('payment.saving');
 
      Route::post('register', [RegisteredUserController::class, 'store']);
 
