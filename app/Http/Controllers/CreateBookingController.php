@@ -43,7 +43,7 @@ class CreateBookingController extends Controller
     {
         $mpdf = new \Mpdf\Mpdf();
         $mpdf->useActiveForms = true;
-        $html = view('pdf/agreement')->render();
+        $html = view('pdf/agreement', ['booking' => $booking->toArray(), 'user' => $booking->user, 'vehicle' => $booking->vehicle])->render();
         $mpdf->WriteHTML($html);
         $mpdf->Output();
     }

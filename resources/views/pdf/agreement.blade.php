@@ -33,31 +33,31 @@
 	<div>
 		<div>
 			<h2><b>CUSTOMER DETAILS</b></h2>
-			<label>Customer/Company Name: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}"
-					type="text" /></label><br />
-			<label>Phone: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}" type="text" /></label><br />
-			<label>Email: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}" type="text" /></label><br />
-			<label>Address: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}"
-					type="text" /></label><br />
-			<label>License No.: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}"
-					type="text" /></label><br />
-			<label>Expiry Date: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}"
-					type="text" /></label><br />
-			<label>DOB: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}" type="text" /></label><br />
-			<label>Additional Driver: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}"
-					type="text" /></label><br />
-			<label>Contact Number:<input style="width: 100%;" name="input_{{random_int(0, 9999)}}"
-					type="text" /></label><br />
-			<label>Address: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}" type="text" /></label>
+			<label>Customer/Company Name: <input style="width: 100%;" name="customer_name" value="{{$user['first_name']}} {{$user['last_name']}}" type="text" /></label><br />
+			<label>Phone: <input style="width: 100%;" name="customer_phone" value="{{ $user['mobile'] }}" type="text" /></label><br />
+			<label>Email: <input style="width: 100%;" name="customer_email" value="{{ $user['email'] }}" type="text" /></label><br />
+			<label>Address: </label>
+				<input style="width: 100%;" name="customer_address_line_1" type="text" value="{{ $user['Address_1'] }}" /><br />
+				<input style="width: 100%;" name="customer_address_line_2" type="text" value="{{ $user['Address_2'] }}" />
+			<label>License No.:</label><input style="width: 100%;" name="customer_license" type="text" value="{{ $user['driving_license'] }}" /><br />
+			<label style="width: 100%;">Expiry Date:</label><br />
+				Year: <input style="width: 25%;" name="customer_license_expiry_year" value="{{$user['driving_license_expire_year']}}" type="text" />
+				Month: <input style="width: 25%;" name="customer_license_expiry_month" value="{{$user['driving_license_expire_month']}}" type="text" />
+				Date: <input style="width: 25%;" name="customer_license_expiry_date" value="{{$user['driving_license_expire_date']}}" type="text" /><br/>
+			<label>DOB: <input style="width: 100%;" name="customer_dob" type="text" /></label><br />
+			<label>Additional Driver: <input style="width: 100%;" name="addtional_driver_name" type="text" /></label><br />
+			<label>Contact Number:<input style="width: 100%;" name="addtional_driver_mobile" type="text" /></label><br />
+			<label>Address:</label>
+			<input style="width: 100%;" name="addtional_driver_address_line_1" type="text" />
+			<input style="width: 100%;" name="addtional_driver_address_line_2" type="text" />
 		</div>
 		<div>
 			<h2><b>VEHICLE DETAILS</b></h2>
 			<div>
-				<label>Registration No.: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}"
-						type="text"></label><br>
-				<label>Type: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}" type="text"></label><br>
-				<label>Make: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}" type="text"> </label><br>
-				<label>Model: <input style="width: 100%;" name="input_{{random_int(0, 9999)}}" type="text"> </label>
+				<label>Registration No.: <input style="width: 100%;" name="vehicle_reg_no" value="{{$vehicle['reg_no']}}" type="text"></label><br>
+				<label>Type: <input style="width: 100%;" name="vehicle_type" value="{{$vehicle['body_type']}}" type="text"></label><br>
+				<label>Make: <input style="width: 100%;" name="vehicle_make" value="{{$vehicle['make']}}" type="text"> </label><br>
+				<label>Model: <input style="width: 100%;" name="vehicle_model" value="{{$vehicle['model']}}" type="text"> </label>
 			</div>
 			<div>
 				<table>
@@ -73,15 +73,15 @@
 					<tbody>
 						<tr>
 							<td>Pick up:</td>
-							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
-							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
-							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
-							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
+							<td><input name="pickup_date" value="{{\Carbon\Carbon::parse($booking['pickup_time'])->format('Y-m-d') }}" style="width: 20%;" type="text"></td>
+							<td><input name="pickup_time" value="{{ \Carbon\Carbon::parse($booking['pickup_time'])->format('H:i') }}" style="width: 20%;" type="text"></td>
+							<td><input name="pickup_mileage" style="width: 20%;" type="text"></td>
+							<td><input name="pickup_fuel_level" style="width: 20%;" type="text"></td>
 						</tr>
 						<tr>
 							<td>Drop off:</td>
-							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
-							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
+							<td><input name="dropoff_date" value="{{\Carbon\Carbon::parse($booking['dropoff_time'])->format('Y-m-d') }}" style="width: 20%;" type="text"></td>
+							<td><input name="dropoff_time" value="{{ \Carbon\Carbon::parse($booking['dropoff_time'])->format('H:i') }}" style="width: 20%;" type="text"></td>
 							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
 							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
 						</tr>
