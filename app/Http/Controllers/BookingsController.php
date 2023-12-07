@@ -11,6 +11,7 @@ use App\Models\Surcharge;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateBookingsRequest;
+use Illuminate\Support\Facades\Storage;
 
 class BookingsController extends Controller
 {
@@ -117,17 +118,23 @@ class BookingsController extends Controller
         }
 
         $request->validate([
-            'admin_signature' => 'required|file'
+            'admin_signature' => 'required|file',
+            'agreement' => 'file|nullable'
         ]);
+
+        if($request->hasFile('agreement')){
+            Storage::delete($booking->agreement);
+        }
 
         $booking->update([
             "approval" => 'Approved',
+            'agreement' => $request->agreement->store('agreements'),
             'admin_signature' => $request->admin_signature->store('signatures')
         ]);
 
         // Redirect back to the admin dashboard or wherever appropriate
         return redirect()->route('bookings.all');
-    }    
+    }
 
     /**
      * Update the specified resource in storage.

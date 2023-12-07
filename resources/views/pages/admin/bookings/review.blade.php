@@ -21,39 +21,45 @@
                         {{ session()->get('message') }}
                     </div>
                 @endif
-                <form action="/admin/bookings/{{$booking->id}}/review" enctype="multipart/form-data" method="post" class="flex flex-wrap gap-4" id="review_form">
+                <form action="/admin/bookings/{{$booking->id}}/review" enctype="multipart/form-data" method="post" id="review_form">
                     @csrf
-                    <embed
-                        src="@if($booking->agreement)data:application/pdf;base64,{{base64_encode(file_get_contents(storage_path( 'app/' . $booking->agreement)))}}@endif"
-                        class="w-full h-[500px] m-2 rounded border-2 border-black"
-                    />
-
-                    <div class="p-2">
-                        <h4 class="text-lg font-bold">Customer Signature</h4>
-                        <img
-                            src="@if($booking->customer_signature)data:image/png;base64,{{base64_encode(file_get_contents(storage_path( 'app/' . $booking->customer_signature)))}} @else /images/blank.png @endif"
-                            class="rounded w-[250px] h-[125px] object-cover"
-                            alt=""
-                        >
+                    <div>
+                        <embed
+                            src="@if($booking->agreement)data:application/pdf;base64,{{base64_encode(file_get_contents(storage_path( 'app/' . $booking->agreement)))}}@endif"
+                            class="w-full h-[500px] rounded border-2 border-black"
+                            name="agreement"
+                        />
+                        <p class="font-bold mt-2">Change PDF</p>
+                        <input type="file" name="agreement" class="mt-2">
                     </div>
+                    <div class="flex mt-4">
+                        <div>
+                            <h4 class="text-lg font-bold">Customer Signature</h4>
+                            <img
+                                src="@if($booking->customer_signature)data:image/png;base64,{{base64_encode(file_get_contents(storage_path( 'app/' . $booking->customer_signature)))}} @else /images/blank.png @endif"
+                                class="rounded w-[250px] h-[125px] object-cover"
+                                alt=""
+                            >
+                        </div>
 
-                    <div class="p-2">
-                        <h4 class="text-lg font-bold">Driver Signature</h4>
-                        <img
-                            src="@if($booking->driver_signature)data:image/png;base64,{{base64_encode(file_get_contents(storage_path( 'app/' . $booking->driver_signature)))}} @else /images/blank.png @endif"
-                            class="rounded w-[250px] h-[125px] object-cover"
-                            alt=""
-                        >
+                        <div>
+                            <h4 class="text-lg font-bold">Driver Signature</h4>
+                            <img
+                                src="@if($booking->driver_signature)data:image/png;base64,{{base64_encode(file_get_contents(storage_path( 'app/' . $booking->driver_signature)))}} @else /images/blank.png @endif"
+                                class="rounded w-[250px] h-[125px] object-cover"
+                                alt=""
+                            >
+                        </div>
+
+                        <div class="ml-auto">
+                            <h4 class="text-lg font-bold">Admin Signature</h4>
+                            <canvas id="signatureCanvas" class="border border-black rounded w-[250px] h-[125px]"></canvas>
+                            <input type="file" name="admin_signature" id="admin_signature" class="">
+                            @error('admin_signature')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
+                        </div>
+
                     </div>
-
-                    <div class="p-2 ml-auto">
-                        <h4 class="text-lg font-bold">Admin Signature</h4>
-                        <canvas id="signatureCanvas" class="border border-black rounded w-[250px] h-[125px]"></canvas>
-                        <input type="file" name="admin_signature" id="admin_signature" class="">
-                        @error('admin_signature')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
-                    </div>
-
-                    <div class="flex justify-end w-full p-2">
+                    <div class="flex justify-end w-full">
                         <button type="submit" name="reject" class="px-4 py-2 ms-2 text-white bg-red-500 rounded-lg">Reject</button>
                         <button type="button" class="px-4 py-2 ms-2 text-white bg-main-green rounded-lg" onclick="submit_form()">Approve</button>
                     </div>
