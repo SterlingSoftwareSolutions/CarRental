@@ -24,6 +24,7 @@ $statuses = [
                 <form action="/admin/bookings/{{$booking->id}}/review" enctype="multipart/form-data" method="post" id="review_form">
                     @csrf
                     <div>
+                        
                         @if($booking->agreement)
                         <embed src="data:application/pdf;base64,{{base64_encode(file_get_contents(storage_path( 'app/public/' . $booking->agreement)))}}" class="w-full h-[500px] rounded border-2 border-black" name="agreement" />
                         @else
