@@ -132,9 +132,10 @@ class BookingsController extends Controller
 
         $booking->update([
             "approval" => 'Approved',
-            'agreement' => $request->agreement->store('agreements'),
-            'admin_signature' => $request->admin_signature->store('signatures')
+            'agreement' => $request->hasFile('agreement') ? $request->agreement->store('agreements') : null,
+            'admin_signature' => $request->hasFile('admin_signature') ? $request->admin_signature->store('signatures') : null
         ]);
+
 
         // Redirect back to the admin dashboard or wherever appropriate
         return redirect()->route('bookings.all');

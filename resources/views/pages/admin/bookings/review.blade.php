@@ -1,10 +1,10 @@
 @php
-    $statuses = [
-        'booked',
-        'unpaid',
-        'paid',
-        'returned'
-    ];
+$statuses = [
+'booked',
+'unpaid',
+'paid',
+'returned'
+];
 @endphp
 
 <x-app-layout>
@@ -17,39 +17,31 @@
             <h1 class="p-2 font-semibold text-lg text-[#707070]">Review Booking</h1>
             <div class="p-4 m-2 overflow-auto bg-white rounded">
                 @if(session()->has('message'))
-                    <div class="p-4 text-green-800 bg-green-100 rounded">
-                        {{ session()->get('message') }}
-                    </div>
+                <div class="p-4 text-green-800 bg-green-100 rounded">
+                    {{ session()->get('message') }}
+                </div>
                 @endif
                 <form action="/admin/bookings/{{$booking->id}}/review" enctype="multipart/form-data" method="post" id="review_form">
                     @csrf
                     <div>
-                        <embed
-                            src="@if($booking->agreement)data:application/pdf;base64,{{base64_encode(file_get_contents(storage_path( 'app/public/' . $booking->agreement)))}}@endif"
-                            class="w-full h-[500px] rounded border-2 border-black"
-                            name="agreement"
-                        />
-                        <p class="mt-2 font-bold">Change PDF</p>
+                        @if($booking->agreement)
+                        <embed src="data:application/pdf;base64,{{base64_encode(file_get_contents(storage_path( 'app/public/' . $booking->agreement)))}}" class="w-full h-[500px] rounded border-2 border-black" name="agreement" />
+                        @else
+                        <p class="text-red-500">Customer hasn't uploaded a PDF Yet.</p>
+                        @endif
+                        <p class="font-bold mt-2">Change PDF</p>
                         <input type="file" name="agreement" class="mt-2">
                         @error('agreement')<p class="mt-2 text-red-700">{{$message}}@enderror</p>
                     </div>
                     <div class="flex mt-4">
                         <div>
                             <h4 class="text-lg font-bold">Customer Signature</h4>
-                            <img
-                                src="@if($booking->customer_signature)data:image/png;base64,{{base64_encode(file_get_contents(storage_path( 'app/public/' . $booking->customer_signature)))}} @else /images/blank.png @endif"
-                                class="rounded w-[250px] h-[125px] object-cover"
-                                alt=""
-                            >
+                            <img src="@if($booking->customer_signature)data:image/png;base64,{{base64_encode(file_get_contents(storage_path( 'app/public/' . $booking->customer_signature)))}} @else /images/blank.png @endif" class="rounded w-[250px] h-[125px] object-cover" alt="">
                         </div>
 
                         <div>
                             <h4 class="text-lg font-bold">Driver Signature</h4>
-                            <img
-                                src="@if($booking->driver_signature)data:image/png;base64,{{base64_encode(file_get_contents(storage_path( 'app/public/' . $booking->driver_signature)))}} @else /images/blank.png @endif"
-                                class="rounded w-[250px] h-[125px] object-cover"
-                                alt=""
-                            >
+                            <img src="@if($booking->driver_signature)data:image/png;base64,{{base64_encode(file_get_contents(storage_path( 'app/public/' . $booking->driver_signature)))}} @else /images/blank.png @endif" class="rounded w-[250px] h-[125px] object-cover" alt="">
                         </div>
 
                         <div class="ml-auto">
@@ -123,7 +115,9 @@
             // Admin Signature
             const admin_signature_input = document.getElementById('admin_signature');
             const admin_signature_blob = await (await fetch(canvas1.toDataURL('image/png'))).blob();
-            setFile(admin_signature_input, new File([admin_signature_blob], 'admin_signature.png', {type: "image/png"}));
+            setFile(admin_signature_input, new File([admin_signature_blob], 'admin_signature.png', {
+                type: "image/png"
+            }));
 
             document.getElementById('review_form').submit();
         }
