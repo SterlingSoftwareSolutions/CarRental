@@ -12,7 +12,7 @@
     <x-admin-sidebar />
 
     <div class="p-6 sm:ml-64">
-        <div class="mt-7 max-w-screen-lg mx-auto">
+        <div class="max-w-screen-lg mx-auto mt-7">
             <!-- booking List  -->
             <h1 class="p-2 font-semibold text-lg text-[#707070]">Review Booking</h1>
             <div class="p-4 m-2 overflow-auto bg-white rounded">
@@ -29,8 +29,9 @@
                             class="w-full h-[500px] rounded border-2 border-black"
                             name="agreement"
                         />
-                        <p class="font-bold mt-2">Change PDF</p>
+                        <p class="mt-2 font-bold">Change PDF</p>
                         <input type="file" name="agreement" class="mt-2">
+                        @error('agreement')<p class="mt-2 text-red-700">{{$message}}@enderror</p>
                     </div>
                     <div class="flex mt-4">
                         <div>
@@ -55,13 +56,13 @@
                             <h4 class="text-lg font-bold">Admin Signature</h4>
                             <canvas id="signatureCanvas" class="border border-black rounded w-[250px] h-[125px]"></canvas>
                             <input type="file" name="admin_signature" id="admin_signature" class="hidden">
-                            @error('admin_signature')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
+                            @error('admin_signature')<p class="mt-2 text-red-700">{{$message}}@enderror</p>
                         </div>
 
                     </div>
-                    <div class="flex justify-end w-full">
-                        <button type="submit" name="reject" class="px-4 py-2 ms-2 text-white bg-red-500 rounded-lg">Reject</button>
-                        <button type="button" class="px-4 py-2 ms-2 text-white bg-main-green rounded-lg" onclick="submit_form()">Approve</button>
+                    <div class="flex justify-end w-full md:mt-8">
+                        <button type="submit" name="reject" class="px-4 py-2 text-white bg-red-500 rounded-lg ms-2">Reject</button>
+                        <button type="button" class="px-4 py-2 text-white rounded-lg ms-2 bg-main-green" onclick="submit_form()">Approve</button>
                     </div>
                 </form>
             </div>

@@ -119,8 +119,12 @@ class BookingsController extends Controller
 
         $request->validate([
             'admin_signature' => 'required|file',
-            'agreement' => 'file|nullable'
+            'agreement' => 'required|file',
+        ], [
+            'admin_signature.required' => 'The Admin Signature field is required.',
+            'agreement.required' => 'The Approved Agreement File is required.',
         ]);
+        
 
         if($request->hasFile('agreement')){
             Storage::delete($booking->agreement);
