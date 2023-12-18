@@ -26,7 +26,7 @@
                 <img src="{{ URL('images/aboutus.jpg') }}" class="w-full rounded-xl">
             </div>
             <div class="w-full md:w-2/6 md:pl-8">
-                <h1 class="text-center md:text-left pb-5 text-3xl md:text-5xl font-bold text-[#317256] ">About Us</h1>
+                <h1 class="text-center md:text-left pb-5 text-3xl md:text-5xl font-bold text-[#317256] md:-mt-20">About Us</h1>
                 <p class="text-gray-500 md:">
                     With a proud legacy spanning over 8 years, AutoMobex has established itself as a trusted name in the car rental industry. We take pride in providing our customers with reliable vehicles, ensuring they embark on their journeys with ease and confidence. Offering a diverse fleet of over 60 cars, we aim to meet the varied needs of our valued customers
                 </p>
@@ -86,7 +86,7 @@
         <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Our Trusted Brands</h1>
         {{-- <p class="p-2 mt-6 mb-16 text-gray-500 md:text-lg"></p> --}}
     </div>
-    <div id="app" class="w-4/5 px-0 py-0 mx-auto mt-3 transition-all duration-500 ease-linear md:px-8 md:py-12">
+    <div id="app" class="w-4/5 px-0 py-0 mx-auto mt-3 transition-all duration-500 ease-linear md:px-8 md:pb-12">
         <div class="relative">
             <div class="slides-container h-full md:h-full flex snap-x snap-mandatory overflow-hidden overflow-x-auto space-x-4 rounded scroll-smooth before:w-[45vw] before:shrink-0 after:w-[45vw] after:shrink-0 md:before:w-0 md:after:w-0 md:py-12">
                 <img src="{{ URL('images/Group 151.png') }}" class="flex-shrink-0 mx-auto my-16 mb-4 rounded-lg shadow-2xl h-60 slide aspect-square h-11/12 snap-center md:mb-0 md:mx-2 lg:w-80 md:w-40 md:m-16">
