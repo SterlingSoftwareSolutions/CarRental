@@ -211,7 +211,7 @@
                 </div>
                 <div class="flex flex-col items-center justify-center md:flex-col md:w-1/5 md:gap-4">
                     <img src="{{ URL('images/list.png')}}" alt="" class="w-24 h-24">
-                    <p class="w-1/2 text-center text-gray-600 md:w-3/4">Select your preferences and make a booking online</p>
+                    <p class="w-1/2 text-center text-gray-600 md:w-full">Select your preferences and make a booking online</p>
                 </div>
                 <div class="flex flex-col items-center justify-center md:flex-col md:w-1/5 md:gap-4">
                     <img src="{{ URL('images/searching-car.png')}}" alt="" class="w-24 h-24">
@@ -223,7 +223,7 @@
                 </div>
                 <div class="flex flex-col items-center justify-center md:flex-col md:w-1/5 md:gap-4">
                     <img src="{{ URL('images/car-confirm.png')}}" alt="" class="w-24 h-24">
-                    <p class="w-1/2 text-center text-gray-600 md:w-3/4">Payment is processed and you are ready to pick up your ride!</p>
+                    <p class="w-1/2 text-center text-gray-600 md:w-full">Payment is processed and you are ready to pick up your ride!</p>
                 </div>
             </div>
         </div>
