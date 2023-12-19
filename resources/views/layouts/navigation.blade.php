@@ -15,20 +15,17 @@
 					/images/avatar.png @endif" class="object-cover w-12 h-12 rounded-full cursor-pointer" alt="Avatar"
 					@click="dropdownMenu=! dropdownMenu" />
 				<!-- Dropdown list -->
-				<div x-show="dropdownMenu" class="absolute right-0 bg-white divide-y divide-gray-100 rounded-lg shadow
-				w-44 dark:bg-gray-700 md:bottom-auto bottom-12">
+				<div x-show="dropdownMenu" class="absolute right-0 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 md:bottom-auto bottom-12">
 				<ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
 					<li>
-					<a href="{{ route('profile.edit') }}" class="block px-4 py-2 hover:bg-gray-100
-					dark:hover:bg-gray-600 dark:hover:text-white">My Profile</a>
+					<a href="{{ route('profile.edit') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My Profile</a>
 					</li>
 					<li>
 					<a href=@if(Auth::user()->role == 'admin') "/admin/dashboard/" @else "/user/dashboard/" @endif
 					class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
 					</li>
 					<li>
-					<a href="{{ route('logout') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600
-					dark:hover:text-white" onclick="event.preventDefault();
+					<a href="{{ route('logout') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="event.preventDefault();
 					document.getElementById('logout-form').submit();">Sign out</a>
 					</li>
 					</ul>

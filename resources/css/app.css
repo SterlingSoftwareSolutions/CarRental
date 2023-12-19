@@ -177,7 +177,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    height: 770px;
 }
 
 /* serach foam CSS  */
@@ -501,7 +501,7 @@ ul > li {
 .arrow {
     width: calc(1.4rem + 0.6vmin);
     height: calc(1.4rem + 0.6vmin);
-    border: solid #398564;
+    border: solid #39856463;
     border-width: 0 calc(0.5rem + 0.2vmin) calc(0.5rem + 0.2vmin) 0;
     cursor: pointer;
     transition: transform 0.3s;

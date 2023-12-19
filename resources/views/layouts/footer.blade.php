@@ -1,18 +1,18 @@
 <!-- get off section -->
-    <div class="flex getoff-section top-3">
+    <div class="flex getoff-section top-10">
         <div class="flex items-center max-w-screen-lg py-12 mx-auto transition-all duration-500 ease-linear md:px-12">
-            <div>
+            {{-- <div>
                 <h1 class="inline-block pl-5 text-xl font-extrabold text-white md:pl-0 md:text-3xl">Get 15% Off Your Rental ! Choose Your Model</h1>
-            </div>
+            </div> --}}
         </div>
         <div class="flex items-center max-w-screen-lg px-4 py-12 mx-auto transition-all duration-500 ease-linear md:px-8">
-            <div>
+            {{-- <div>
                 <button class="bg-white p-2 px-10 rounded mt-3 md:text-lg text-sm font-bold text-[#317256] hover:bg-[#307449] hover:text-white" onclick="window.location.href='{{ route('carlist') }}';">Book Now</button>
-            </div>
+            </div> --}}
         </div>
     </div>
     <!-- end get off section -->
-    <footer class="bg-[#317256] md:-mt-4 -mt-6" style="z-index: -999;">
+    <footer class="bg-[#317256] md:mt-4 -mt-6" style="z-index: -999;">
         <div class="w-full max-w-screen-xl p-4 py-16 mx-auto lg:py-16">
             <div class="mt-5 text-center md:flex md:justify-between md:text-left">
                 <div class="mb-6 md:mb-0">
