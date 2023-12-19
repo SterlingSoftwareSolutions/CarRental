@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://unpkg.com/gsap@3.9.2"></script>
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
 
@@ -194,7 +195,7 @@
     </div>
     <!-- end why choose us section -->
 
-    {{-- how to ride section --}}
+    {{-- how to book ride section --}}
     <div class="mt-16 text-center md:mt-12">
         <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">How to Book Your Ride</h1>
         <div class="flex items-center justify-center text-center">
@@ -228,7 +229,7 @@
             </div>
         </div>
     </div>
-    {{--end how to ride section --}}
+    {{--end how to book ride section --}}
     
     <!-- discover our lates section -->
     <div class="mt-12 text-center">

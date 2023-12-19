@@ -89,10 +89,10 @@
     <div id="app" class="w-4/5 px-0 py-0 mx-auto mt-3 transition-all duration-500 ease-linear md:px-8 md:pb-12">
         <div class="relative">
             <div class="slides-container h-full md:h-full flex snap-x snap-mandatory overflow-hidden overflow-x-auto space-x-4 rounded scroll-smooth before:w-[45vw] before:shrink-0 after:w-[45vw] after:shrink-0 md:before:w-0 md:after:w-0 md:py-12">
-                <img src="{{ URL('images/Group 151.png') }}" class="flex-shrink-0 mx-auto my-16 mb-4 rounded-lg shadow-2xl h-60 slide aspect-square h-11/12 snap-center md:mb-0 md:mx-2 lg:w-80 md:w-40 md:m-16">
-                <img src="{{ URL('images/Group 152.png') }}" class="flex-shrink-0 mx-auto my-16 mb-4 rounded-lg shadow-2xl h-60 slide aspect-square snap-center md:mb-0 md:mx-2 lg:w-80 md:w-40 md:m-16">
-                <img src="{{ URL('images/Group 153.png') }}" class="flex-shrink-0 mx-auto my-16 mb-4 rounded-lg shadow-2xl h-60 slide aspect-square snap-center md:mb-0 md:mx-2 lg:w-80 md:w-40 md:m-16">
-                <img src="{{ URL('images/Group 154.png') }}" class="flex-shrink-0 mx-auto my-16 mb-4 rounded-lg shadow-2xl h-60 slide aspect-square snap-center md:mb-0 md:mx-2 lg:w-80 md:w-40 md:m-16">
+                <img src="{{ URL('images/Group 151.png') }}" class="flex-shrink-0 mx-auto my-16 mb-4 rounded-lg h-60 slide aspect-square h-11/12 snap-center md:mb-0 md:mx-2 lg:w-80 md:w-40 md:m-16">
+                <img src="{{ URL('images/Group 152.png') }}" class="flex-shrink-0 mx-auto my-16 mb-4 rounded-lg h-60 slide aspect-square snap-center md:mb-0 md:mx-2 lg:w-80 md:w-40 md:m-16">
+                <img src="{{ URL('images/Group 153.png') }}" class="flex-shrink-0 mx-auto my-16 mb-4 rounded-lg h-60 slide aspect-square snap-center md:mb-0 md:mx-2 lg:w-80 md:w-40 md:m-16">
+                <img src="{{ URL('images/Group 154.png') }}" class="flex-shrink-0 mx-auto my-16 mb-4 rounded-lg h-60 slide aspect-square snap-center md:mb-0 md:mx-2 lg:w-80 md:w-40 md:m-16">
             </div>
             <div class="absolute top-0 items-center h-full -left-4">
                 <button role="button" class="prev px-2 py-2 rounded-full bg-[#317256] text-neutral-900 group" aria-label="prev">
