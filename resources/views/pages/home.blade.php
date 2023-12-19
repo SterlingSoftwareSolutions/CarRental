@@ -9,9 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://unpkg.com/gsap@3.9.2"></script>
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
-
 </head>
 
 <body>
@@ -47,7 +48,7 @@
     <!-- main home banner  -->
     <div class="flex items-center px-4 py-8 main-banner justify-right md:py-24">
         <div class="grid items-center justify-center pl-1 align-middle md:pl-32 mt-30 md:mt-20">
-            <h1 class="mt-16 mb-2 text-3xl font-bold text-white md:text-5xl lg:text-4xl md:mb-4 md:mt-16">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys</h1>
+            <h1 class="mt-36 mb-2 text-3xl font-bold text-white md:text-5xl lg:text-4xl md:mb-4 md:mt-32 md:w-[700px]">Your Key to <span class="text-amber-600">Unforgettable</span> Journeys at <span class="text-amber-600">Affrodable</span> Prices</h1>
             <p class="text-sm text-white md:text-lg font-">Rent a Car for Your Next Adventure with Our Convenient <br class="hidden md:inline"> and Reliable Services</p>
             <div class="flex flex-col gap-5 mt-8 md:flex-row md:mt-4 md:w-1/2">
                 <div class="grid bg-black rounded-lg search-foam md:w-10 lg:w-auto">
@@ -137,9 +138,12 @@
     <!-- end main home banner  -->
 
     <!-- why choose us section -->
-    <div class="mt-0 text-center md:mt-12">
+    <div class="mt-20 text-center md:mt-16">
         <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Why Choose Us</h1>
-        <p class="mt-4 text-base text-gray-500 md:text-lg md:mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+        <div class="flex items-center justify-center text-center">
+            <p class="mt-4 text-base text-gray-500 md:w-[920px] md:text-lg md:mt-6 text-center">AutoMobex offers unbeatable affordability and quality in car rentals. Drive with confidence, knowing you've chosen the smart solution that is both reliable and budget-friendly mobility. </p>
+        </div>
+        
     </div>
     <div class="w-full whychoose-section">
         <div class="flex items-center justify-center p-5 mt-4 md:p-0">
@@ -150,7 +154,7 @@
                     </div>
                     <div class="flex flex-col justify-center p-4 leading-normal text-center md:justify-between md:text-left">
                         <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Wide Range of Vehicles</h5>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a </p>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Our extensive fleet offers a wide selection of vehicles, from compact cars to spacious SUVs, ensuring you find the perfect match for your travel needs. Enjoy the flexibility to pick the right car for your journey, all at unbeatable prices. </p>
                     </div>
                 </a>
                 <a class="flex flex-col items-center justify-center md:flex-row md:max-w-xl">
@@ -159,7 +163,7 @@
                     </div>
                     <div class="flex flex-col justify-center p-4 leading-normal text-center md:justify-between md:text-left">
                         <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Competitive Prices</h5>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a </p>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">At AutoMobex, we deliver unbeatable value with competitive prices. Enjoy reliable vehicles without breaking the bank, making every journey with us a smart and economical choice.</p>
                     </div>
                 </a>
             </div>
@@ -172,7 +176,7 @@
                     </div>
                     <div class="flex flex-col justify-center p-4 leading-normal text-center md:justify-between md:text-left">
                         <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Easy Booking Process</h5>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a </p>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Experience stress-free reservations with AutoMobex. Our user-friendly booking process ensures a seamless and efficient way to secure the perfect vehicle for your needs, with support offered along the way</p>
                     </div>
 
                 </a>
@@ -182,7 +186,7 @@
                     </div>
                     <div class="flex flex-col justify-center p-4 leading-normal text-center md:justify-between md:text-left">
                         <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-500 dark:text-white">Flexible Rental Options</h5>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a </p>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Customise your travel experience effortlessly with AutoMobex's flexible rental options. Whether you require a car for a day, a week, or a month, our versatile plans will ensure to get the perfect fit for your needs.</p>
                     </div>
                 </a>
             </div>
@@ -190,10 +194,46 @@
     </div>
     <!-- end why choose us section -->
 
+    {{-- how to book ride section --}}
+    <div class="mt-16 text-center md:mt-12">
+        <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">How to Book Your Ride</h1>
+        <div class="flex items-center justify-center text-center">
+            <p class="mt-4 text-base text-gray-500 md:w-[920px] md:text-lg md:mt-6 text-center">Booking with AutoMobex couldn’t be much simpler. Simply follow the steps below. If you wish to speak with us in person, ring us on 0449 541 159 today !</p>
+        </div>
+        
+    </div>
+    <div class="w-full whychoose-section">
+        <div class="flex items-center justify-center p-5 mt-4 md:p-0">
+            <div class="flex flex-col md:flex-row md:gap-4 md:mx-4 md:mb-4">
+                <div class="flex flex-col items-center justify-center gap-4 md:flex-col md:w-1/5 md:gap-4">
+                    <img src="{{ URL('images/two-cars-in-line.png')}}" alt="" class="w-24 h-24">
+                    <p class="w-1/2 text-center text-gray-700 md:w-1/2">Create an account with us</p>
+                </div>
+                <div class="flex flex-col items-center justify-center md:flex-col md:w-1/5 md:gap-4">
+                    <img src="{{ URL('images/list.png')}}" alt="" class="w-24 h-24">
+                    <p class="w-1/2 text-center text-gray-600 md:w-full">Select your preferences and make a booking online</p>
+                </div>
+                <div class="flex flex-col items-center justify-center md:flex-col md:w-1/5 md:gap-4">
+                    <img src="{{ URL('images/searching-car.png')}}" alt="" class="w-24 h-24">
+                    <p class="w-1/2 text-center text-gray-600 md:w-3/4">Our team will review your application</p>
+                </div>
+                <div class="flex flex-col items-center justify-center md:flex-col md:w-1/5 md:gap-4">
+                    <img src="{{ URL('images/car.png')}}" alt="" class="w-24 h-24">
+                    <p class="w-1/2 text-center text-gray-600 md:w-full">Once reviewed, our team will contact you with a booking confirmation</p>
+                </div>
+                <div class="flex flex-col items-center justify-center md:flex-col md:w-1/5 md:gap-4">
+                    <img src="{{ URL('images/car-confirm.png')}}" alt="" class="w-24 h-24">
+                    <p class="w-1/2 text-center text-gray-600 md:w-full">Payment is processed and you are ready to pick up your ride!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{--end how to book ride section --}}
+    
     <!-- discover our lates section -->
     <div class="mt-12 text-center">
-        <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Discover Our Latest Cars for Rental</h1>
-        <p class="mt-4 text-base text-gray-500 md:text-lg md:mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+        <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Check Out Our Range</h1>
+        <p class="mt-4 text-base text-gray-500 md:text-lg md:mt-6">Explore our diverse range of vehicles. Want to make a specific inquiry ? <a class="text-red-600 underline" href={{route('contact')}}>Contact us</a> today !</p>
     </div>
     <div class="mt-3 discover-section">
         <div class="flex flex-col items-center justify-center md:flex-row"> <!-- Center content vertically on mobile -->
@@ -375,32 +415,32 @@
             <a href="#" class="grid items-center md:flex-row md:max-w-xl">
                 <div class="grid p-2 md:p-8">
                     <h1 class="mt-0 text-xl font-semibold text-white md:-mt-5 md:text-3xl">Car Rental Experts You Trust</h1>
-                    <p class="mt-4 text-white md:mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate.</p>
+                    <p class="mt-4 text-white md:mt-3">With 8 years of experience, our team of experienced professionals is dedicated to providing personalized service, ensuring a smooth and enjoyable rental experience. Count on us for expert guidance and support, making AutoMobex the trusted choice for all your car rental needs.</p>
                 </div>
                 <div class="container mt-3 md:mt-0">
                     <div class="grid grid-cols-1 counter-container md:grid-cols-3">
                         <div class="text-center counter md:last:border-0">
                             <div class="flex">
-                                <h3 data-target="12" class="text-2xl font-semibold text-white md:text-5xl count">0</h3><span class="text-2xl font-semibold text-white md:text-5xl">+</span>
+                                <h3 data-target="12" class="text-2xl font-semibold text-white md:text-5xl count">8</h3><span class="text-2xl font-semibold text-white md:text-5xl">+</span>
                             </div>
                             <p class="text-sm text-white md:text-lg">Years Experience</p>
                         </div>
                         <div class="text-center counter md:last:border-0">
                             <div class="flex">
-                                <h3 data-target="66" class="text-2xl font-semibold text-white md:text-5xl count">0</h3><span class="text-2xl font-semibold text-white md:text-5xl">+</span>
+                                <h3 data-target="66" class="text-2xl font-semibold text-white md:text-5xl count">60</h3><span class="text-2xl font-semibold text-white md:text-5xl">+</span>
                             </div>
                             <p class="text-sm text-white md:text-lg">Rental Cars</p>
                         </div>
                         <div class="text-center counter">
                             <div class="flex">
-                                <h3 data-target="172" class="text-xl font-semibold text-white md:text-5xl count">0</h3><span class="text-2xl font-semibold text-white md:text-5xl">+</span>
+                                <h3 data-target="172" class="text-xl font-semibold text-white md:text-5xl count">1200</h3><span class="text-2xl font-semibold text-white md:text-5xl">+</span>
                             </div>
                             <p class="text-sm text-white md:text-lg">Satisfied Clients</p>
                         </div>
                     </div>
                 </div>
                 <div class="flex justify-center pb-5 mt-3 ml-0 md:ml-8 md:mt-5 md:justify-start">
-                    <button class="bg-white p-2 rounded text-[#317256] font-bold hover:bg-[#31754a]" onclick="window.location.href='{{ route('about') }}';">Read More</button>
+                    <button class="bg-white p-2 rounded text-[#317256] font-bold hover:bg-[#31754a] hover:text-white" onclick="window.location.href='{{ route('about') }}';">Read More</button>
                 </div>
             </a>
         </div>
@@ -409,12 +449,14 @@
 
     <!-- happy customert section -->
     <div class="mt-12 text-center">
-        <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Happy Customers, Memorable Journeys</h1>
-        <p class="mt-4 text-base text-gray-500 md:text-lg md:mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante nec justo eleifend consequat. Curabitur <br> auctor est a orci ultrices, eu bibendum risus tempus. Fusce sollicitudin leo a ullamcorper vulputate. </p>
+        <h1 class="text-3xl md:text-5xl font-bold text-[#317256]">Happy Customers, Unforgettable Journeys</h1>
+        <div class="flex items-center justify-center">
+            <p class="mt-4 text-base text-gray-500 md:text-lg md:mt-6 md:w-10/12">Thinking about booking our next ride with us ? Hear what our customers have to say . Join the community of happy renters who trust AutoMobex for a seamless and stress-free car rental experience</p>
+        </div>
     </div>
     <div class="flex mt-3">
         <div id="app" class="px-0 mx-auto mt-3 transition-all duration-500 ease-linear w-12/12 md:max-w-screen-lg md:px-8">
-            <div class="flex justify-center w-full h-full md:h-full">
+            <div class="flex justify-center w-full h-full md:h-[100%]">
                 <div class="wrapper-for-arrows">
                     <div style="opacity: 0;" class="chicken"></div>
                     <div id="reviewWrap" class="review-wrap">
@@ -422,10 +464,9 @@
                         </div>
                         <div id="personName"></div>
                         <div id="profession"></div>
-                        <div id="description" class="px-12 pb-4 -mt-5 h-96">
+                        <div id="description">
                         </div>
                     </div>
-
                     <div class="left-arrow-wrap arrow-wrap">
                         <div class="arrow" id="leftArrow"></div>
                     </div>
@@ -436,18 +477,181 @@
             </div>
         </div>
         <div id="app" class="max-w-screen-lg px-0 mx-auto transition-all duration-500 ease-linear md:px-4">
-            <img class="hidden object-cover md:block" src="{{ URL('images/Group 126.png')}}" alt="">
+            <img class="hidden object-cover md:block" src="{{ URL('images/Group 160.png')}}" alt="">
         </div>
     </div>
     <!-- happy customert section -->
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script>
+        const reviewWrap = document.getElementById("reviewWrap");
+        const leftArrow = document.getElementById("leftArrow");
+        const rightArrow = document.getElementById("rightArrow");
+        const imgDiv = document.getElementById("imgDiv");
+        const personName = document.getElementById("personName");
+        const profession = document.getElementById("profession");
+        const description = document.getElementById("description");
+        const surpriseMeBtn = document.getElementById("surpriseMeBtn");
+        const chicken = document.querySelector(".chicken");
+
+        let isChickenVisible;
+
+        let people = [
+            {
+                photo:
+                    'url("https://cdn.pixabay.com/photo/2018/03/06/22/57/portrait-3204843_960_720.jpg")',
+                name: "Susan Smith",
+                profession: "WEB DEVELOPER",
+                description:
+                    "Cheese and biscuits chalk and cheese fromage frais. Cheeseburger caerphilly cheese slices chalk and cheese cheeseburger mascarpone danish fontina rubber cheese. Squirty cheese say cheese manchego jarlsberg lancashire taleggio cheese and wine squirty cheese. Babybel pecorino feta macaroni cheese brie queso everyone loves gouda. Cheese and biscuits camembert de normandie fromage fromage macaroni cheese"
+            },
+
+            {
+                photo:
+                    "url('https://cdn.pixabay.com/photo/2019/02/11/20/20/woman-3990680_960_720.jpg')",
+                name: "Anna Grey",
+                profession: "UFC FIGHTER",
+                description:
+                    "I'm baby migas cornhole hell of etsy tofu, pickled af cardigan pabst. Man braid deep v pour-over, blue bottle art party thundercats vape. Yr waistcoat whatever yuccie, farm-to-table next level PBR&B. Banh mi pinterest palo santo, aesthetic chambray leggings activated charcoal cred hammock kitsch humblebrag typewriter neutra knausgaard. Pabst succulents lo-fi microdosing portland gastropub Banh mi pinterest palo santo"
+            },
+
+            {
+                photo:
+                    "url('https://cdn.pixabay.com/photo/2016/11/21/12/42/beard-1845166_960_720.jpg')",
+                name: "Branson Cook",
+                profession: "ACTOR",
+                description:
+                    "Radio telescope something incredible is waiting to be known billions upon billions Jean-François Champollion hearts of the stars tingling of the spine. Encyclopaedia galactica not a sunrise but a galaxyrise concept of the number one encyclopaedia galactica from which we spring bits of moving fluff. Vastness is bearable only through love paroxysm of global death concept"
+            },
+
+            {
+                photo:
+                    "url('https://cdn.pixabay.com/photo/2014/10/30/17/32/boy-509488_960_720.jpg')",
+                name: "Julius Grohn",
+                profession: "PROFESSIONAL CHILD",
+                description:
+                    "Biscuit chocolate pastry topping lollipop pie. Sugar plum brownie halvah dessert tiramisu tiramisu gummi bears icing cookie. Gummies gummi bears pie apple pie sugar plum jujubes. Oat cake croissant bear claw tootsie roll caramels. Powder ice cream caramels candy tiramisu shortbread macaroon chocolate bar. Sugar plum jelly-o chocolate dragée tart chocolate marzipan cupcake gingerbread."
+            }
+        ];
+
+        imgDiv.style.backgroundImage = people[0].photo;
+        personName.innerText = people[0].name;
+        profession.innerText = people[0].profession;
+        description.innerText = people[0].description;
+        let currentPerson = 0;
+
+        //Select the side where you want to slide
+        function slide(whichSide, personNumber) {
+            let reviewWrapWidth = reviewWrap.offsetWidth + "px";
+            let descriptionHeight = description.offsetHeight + "px";
+            //(+ or -)
+            let side1symbol = whichSide === "left" ? "" : "-";
+            let side2symbol = whichSide === "left" ? "-" : "";
+
+            let tl = gsap.timeline();
+
+            if (isChickenVisible) {
+                tl.to(chicken, {
+                    duration: 0.4,
+                    opacity: 0
+                });
+            }
+
+            tl.to(reviewWrap, {
+                duration: 0.4,
+                opacity: 0,
+                translateX: `${side1symbol + reviewWrapWidth}`
+            });
+
+            tl.to(reviewWrap, {
+                duration: 0,
+                translateX: `${side2symbol + reviewWrapWidth}`
+            });
+
+            setTimeout(() => {
+                imgDiv.style.backgroundImage = people[personNumber].photo;
+            }, 400);
+            setTimeout(() => {
+                description.style.height = descriptionHeight;
+            }, 400);
+            setTimeout(() => {
+                personName.innerText = people[personNumber].name;
+            }, 400);
+            setTimeout(() => {
+                profession.innerText = people[personNumber].profession;
+            }, 400);
+            setTimeout(() => {
+                description.innerText = people[personNumber].description;
+            }, 400);
+
+            tl.to(reviewWrap, {
+                duration: 0.4,
+                opacity: 1,
+                translateX: 0
+            });
+
+            if (isChickenVisible) {
+                tl.to(chicken, {
+                    duration: 0.4,
+                    opacity: 1
+                });
+            }
+        }
+
+        function setNextCardLeft() {
+            if (currentPerson === 3) {
+                currentPerson = 0;
+                slide("left", currentPerson);
+            } else {
+                currentPerson++;
+            }
+
+            slide("left", currentPerson);
+        }
+
+        function setNextCardRight() {
+            if (currentPerson === 0) {
+                currentPerson = 3;
+                slide("right", currentPerson);
+            } else {
+                currentPerson--;
+            }
+
+            slide("right", currentPerson);
+        }
+
+        leftArrow.addEventListener("click", setNextCardLeft);
+        rightArrow.addEventListener("click", setNextCardRight);
+
+        surpriseMeBtn.addEventListener("click", () => {
+            if (chicken.style.opacity === "0") {
+                chicken.style.opacity = "1";
+                imgDiv.classList.add("move-head");
+                surpriseMeBtn.innerText = "Remove the chicken";
+                surpriseMeBtn.classList.remove("surprise-me-btn");
+                surpriseMeBtn.classList.add("hide-chicken-btn");
+                isChickenVisible = true;
+            } else if (chicken.style.opacity === "1") {
+                chicken.style.opacity = "0";
+                imgDiv.classList.remove("move-head");
+                surpriseMeBtn.innerText = "Surprise me";
+                surpriseMeBtn.classList.add("surprise-me-btn");
+                surpriseMeBtn.classList.remove("hide-chicken-btn");
+                isChickenVisible = false;
+            }
+        });
+
+        window.addEventListener("resize", () => {
+            description.style.height = "100%";
+        });
+
+        
+    </script>
     <!-- start navigation -->
-    <div class="m md:-mt-50">
+    <div class="md:-mt-50">
         @include('layouts.footer')
     </div>
     <!-- end navigation -->
-
-
 </body>
 
 </html>
