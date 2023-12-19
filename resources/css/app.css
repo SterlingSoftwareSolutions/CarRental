@@ -501,7 +501,7 @@ ul > li {
 .arrow {
     width: calc(1.4rem + 0.6vmin);
     height: calc(1.4rem + 0.6vmin);
-    border: solid #398564;
+    border: solid #39856463;
     border-width: 0 calc(0.5rem + 0.2vmin) calc(0.5rem + 0.2vmin) 0;
     cursor: pointer;
     transition: transform 0.3s;
