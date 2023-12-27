@@ -27,25 +27,48 @@
     <!-- end banner section -->
 
     <!-- filtering section -->
-    <div class="z-10 flex flex-row items-center justify-center -mt-2 md:grid md:grid-flow-row">
+
+    <script type="text/javascript">
+        function getData() {
+            return {
+                // Data 
+                selectedMake: '{{request()->make}}',
+                selectedModel: '{{request()->model}}',
+                models: [],
+
+                // Functions
+                fetchModels() {
+                    fetch(`/api/models?make=${this.selectedMake}`)
+                        .then((res) => res.json())
+                        .then((data) => {
+                            this.models = data.models;
+                            console.log(this.selectedModel);
+                        });
+                },
+            };
+        }
+
+    </script>
+
+    <div class="z-10 flex flex-row items-center justify-center -mt-2 md:grid md:grid-flow-row" x-data="getData()">
         <form>
             <div class="flex flex-col md:flex-row border-t-8 border-[#398564] bg-[#D3D3D3] w-full mx-auto">
                 <div class="p-0 dropdown md:p-8">
                     <label class="font-bold text-[#707070]" for="">Make</label>
-                    <select class="w-full h-12 mt-2 text-gray-500 border-none rounded-md" name="make" id="cars" onchange="this.form.submit()">
+                    <select class="w-full h-12 mt-2 text-gray-500 border-none rounded-md" name="make" id="cars" onchange="this.form.submit()" x-model="selectedMake">
                         <option value="">All Makes</option>
                         @foreach($filters['makes'] as $opt)
-                        <option value="{{$opt}}" @if(Request()->make == $opt) selected @endif>{{$opt}}</option>
+                        <option value="{{$opt}}" @selected(request()->make == $opt)>{{$opt}}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="dropdown">
                     <label class="font-bold text-[#707070]" for="">Model</label>
-                    <select class="w-full h-12 mt-2 text-gray-500 border-none rounded-md" name="model" id="cars" onchange="this.form.submit()">
+                    <select class="w-full h-12 mt-2 text-gray-500 border-none rounded-md" name="model" id="cars" onchange="this.form.submit()" x-model="selectedModel" x-init="fetchModels()">
                         <option value="">All Models</option>
-                        @foreach($filters['models'] as $opt)
-                        <option value="{{$opt}}" @if(Request()->model == $opt) selected @endif>{{$opt}}</option>
-                        @endforeach
+                        <template x-for="(model, index) in models">
+                            <option class="text-sm" x-bind:value="model" :selected="selectedModel == model" x-text="model"></option>
+                        </template>
                     </select>
                 </div>
                 <div class="dropdown">
@@ -135,8 +158,9 @@
                     </div>
                 </div>
                 <div class="flex items-center justify-center p-4">
-                    <a href="{{ route('vehicles.show', ['vehicle' => $vehicle['id']]) }}" class="text-white bg-[#317256] border-0 py-2 px-6 focus:outline-none hover:bg-[#307449] rounded text-lg">Book
-                        Now</a>
+                    <a href="{{ route('vehicles.show', ['vehicle' => $vehicle['id']]) }}" class="text-white bg-[#317256] border-0 py-2 px-6 focus:outline-none hover:bg-[#307449] rounded text-lg">
+                        View Vehicle
+                    </a>
                 </div>
             </div>
 
