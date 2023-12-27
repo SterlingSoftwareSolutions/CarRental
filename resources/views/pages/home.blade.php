@@ -22,23 +22,23 @@
     @endphp
 
     @if ($currentRoute === 'login' && !$loggedIn)
-    <x-modal :name="true" :show="true" :maxWidth="'3xl'">
-        <div class="h-full">
-            @include('auth.login')
-        </div>
-    </x-modal>
+        <x-modal :name="true" :show="true" :maxWidth="'3xl'">
+            <div class="h-full">
+                @include('auth.login')
+            </div>
+        </x-modal>
     @elseif ($currentRoute === 'register' && !$loggedIn)
-    <x-modal :name="true" :show="true" :maxWidth="'3xl'">
-        <div class="h-full">
-            @include('auth.register')
-        </div>
-    </x-modal>
+        <x-modal :name="true" :show="true" :maxWidth="'3xl'">
+            <div class="h-full">
+                @include('auth.register')
+            </div>
+        </x-modal>
     @elseif (!$loggedIn)
-    <x-modal :name="true" :show="true" :maxWidth="'3xl'">
-        <div class="h-full">
-            @include('auth.login')
-        </div>
-    </x-modal>
+        <x-modal :name="true" :show="false" :maxWidth="'3xl'">
+            <div class="h-full">
+                @include('auth.login')
+            </div>
+        </x-modal>
     @endif
 
     <!-- start navigation -->
