@@ -57,7 +57,7 @@ class RegisteredUserController extends Controller
         if ($role === 'admin') {
             return redirect('admin/dashboard');
         } else {
-            return redirect('user/profile')->with('prompt', true);
+            return redirect('user/profile')->with('success', 'Registration Successful! Complete your profile details below.');
         }
 
         // return redirect(RouteServiceProvider::HOME);
