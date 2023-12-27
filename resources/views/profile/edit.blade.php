@@ -7,6 +7,13 @@
                 {{session('success')}}
             </div>
             @endif
+            @if($errors->any() || $errors->updatePassword->any() || $errors->userDeletion->any())
+            <div class="mx-auto bg-red-100 border border-red-300 text-red-900 p-5 rounded-lg" id="errorMessage">
+                Error: {{$errors->updatePassword->first()}}
+                {{$errors->userDeletion->first()}}
+                {{$errors->first()}}
+            </div>
+            @endif
             <h1 class="font-semibold text-lg text-[#707070] text-center">Edit Your Profile</h1>
             <div class="p-4 bg-white shadow sm:p-8 sm:rounded-lg">
                 <div class="w-full sm:hidden md:block">
