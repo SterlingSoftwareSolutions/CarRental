@@ -46,7 +46,7 @@ class ProfileController extends Controller
         }
 
         $user->update($values);
-        return back()->with('status', 'profile-updated');
+        return back()->with('success', 'Profile updated');
     }
 
     /**

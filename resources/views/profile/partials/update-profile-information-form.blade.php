@@ -28,7 +28,7 @@
                 />
                 <div class="w-32 p-1 mx-auto mt-3 text-center text-white bg-gray-800 rounded cursor-pointer">Change Avatar</div>
             </label>
-            <input type="file" id="avatar" name="avatar"  class="hidden mt-1" autofocus autocomplete="avatar" onchange="previewImage()" />
+            <input type="file" id="avatar" name="avatar"  class="hidden mt-1" autocomplete="avatar" onchange="previewImage()" />
             <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
 
             <script>
@@ -42,20 +42,20 @@
         <div class="flex gap-2">
             <div class="w-1/2">
                 <x-input-label for="first_name" :value="__('First Name')" />
-                <x-text-input id="first_name" name="first_name" type="text" class="block w-full mt-1 -ml-10 md:ml-0" :value="old('first_name', $user->first_name)" required autofocus autocomplete="name" />
+                <x-text-input id="first_name" name="first_name" type="text" class="block w-full mt-1 -ml-10 md:ml-0" :value="old('first_name', $user->first_name)" required autocomplete="name" />
                 <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
             </div>
 
             <div class="w-1/2">
                 <x-input-label for="last_name" :value="__('Last Name')" />
-                <x-text-input id="last_name" name="last_name" type="text" class="block w-full mt-1 -ml-10 md:ml-0" :value="old('last_name', $user->last_name)" required autofocus autocomplete="name" />
+                <x-text-input id="last_name" name="last_name" type="text" class="block w-full mt-1 -ml-10 md:ml-0" :value="old('last_name', $user->last_name)" required autocomplete="name" />
                 <x-input-error class="mt-2" :messages="$errors->get('last_name')" />
             </div>
         </div>
 
         <div>
             <x-input-label for="mobile" :value="__('Phone Number')" />
-            <x-text-input id="mobile" name="mobile" type="text" class="block w-full mt-1 -ml-10 md:ml-0" :value="old('mobile', $user->mobile)" required autofocus autocomplete="name" />
+            <x-text-input id="mobile" name="mobile" type="text" class="block w-full mt-1 -ml-10 md:ml-0" :value="old('mobile', $user->mobile)" required autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('mobile')" />
         </div>
 
@@ -85,26 +85,26 @@
 
         <div>
             <x-input-label for="Address_1" :value="__('Address Line 1')" />
-            <x-text-input id="Address_1" name="Address_1" type="text" class="block w-full mt-1 -ml-10 md:ml-0" :value="old('Address_1', $user->Address_1)" required autofocus autocomplete="name" />
+            <x-text-input id="Address_1" name="Address_1" type="text" class="block w-full mt-1 -ml-10 md:ml-0" :value="old('Address_1', $user->Address_1)" required autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('Address_1')" />
         </div>
 
         <div>
             <x-input-label for="Address_2" :value="__('Address Line 2')" />
-            <x-text-input id="Address_2" name="Address_2" type="text" class="block w-full mt-1 -ml-10 md:ml-0" :value="old('Address_2', $user->Address_2)" required autofocus autocomplete="name" />
+            <x-text-input id="Address_2" name="Address_2" type="text" class="block w-full mt-1 -ml-10 md:ml-0" :value="old('Address_2', $user->Address_2)" required autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('Address_2')" />
         </div>
 
         <div class="flex gap-2">
             <div class="w-1/2">
                 <x-input-label for="city" :value="__('City')" />
-                <x-text-input id="city" name="city" type="text" class="block w-full mt-1 -ml-10 md:ml-0" :value="old('city', $user->city)" required autofocus autocomplete="name" />
+                <x-text-input id="city" name="city" type="text" class="block w-full mt-1 -ml-10 md:ml-0" :value="old('city', $user->city)" required autocomplete="name" />
                 <x-input-error class="mt-2" :messages="$errors->get('city')" />
             </div>
 
             <div class="w-1/2">
                 <x-input-label for="zip" :value="__('ZIP')" />
-                <x-text-input id="zip" name="zip" type="text" class="block w-full mt-1 -ml-10 md:ml-0" :value="old('zip', $user->zip)" required autofocus autocomplete="name" />
+                <x-text-input id="zip" name="zip" type="text" class="block w-full mt-1 -ml-10 md:ml-0" :value="old('zip', $user->zip)" required autocomplete="name" />
                 <x-input-error class="mt-2" :messages="$errors->get('zip')" />
             </div>
         </div>

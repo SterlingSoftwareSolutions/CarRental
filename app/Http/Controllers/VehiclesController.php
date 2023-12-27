@@ -269,4 +269,17 @@ class VehiclesController extends Controller
         return redirect()->route('vehicles.all')
             ->with('success', 'vehicle deleted successfully.');
     }
+
+    public function models(Request $request)
+    {
+        $query = Vehicles::query();
+        if($request->make){
+            $query->where('make', $request->make);
+        }
+
+        return response()->json([
+            'success' => true,
+            'models' => $query->pluck('model')->unique()
+        ]);
+    }
 }

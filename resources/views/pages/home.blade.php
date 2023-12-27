@@ -22,23 +22,23 @@
     @endphp
 
     @if ($currentRoute === 'login' && !$loggedIn)
-    <x-modal :name="true" :show="true" :maxWidth="'3xl'">
-        <div class="h-full">
-            @include('auth.login')
-        </div>
-    </x-modal>
+        <x-modal :name="true" :show="true" :maxWidth="'3xl'">
+            <div class="h-full">
+                @include('auth.login')
+            </div>
+        </x-modal>
     @elseif ($currentRoute === 'register' && !$loggedIn)
-    <x-modal :name="true" :show="true" :maxWidth="'3xl'">
-        <div class="h-full">
-            @include('auth.register')
-        </div>
-    </x-modal>
+        <x-modal :name="true" :show="true" :maxWidth="'3xl'">
+            <div class="h-full">
+                @include('auth.register')
+            </div>
+        </x-modal>
     @elseif (!$loggedIn)
-    <x-modal :name="true" :show="true" :maxWidth="'3xl'">
-        <div class="h-full">
-            @include('auth.login')
-        </div>
-    </x-modal>
+        <x-modal :name="true" :show="false" :maxWidth="'3xl'">
+            <div class="h-full">
+                @include('auth.login')
+            </div>
+        </x-modal>
     @endif
 
     <!-- start navigation -->
@@ -58,20 +58,42 @@
                     @php
                     $filters = App\Http\Controllers\VehiclesController::filters();
                     @endphp
-                    <form class="w-full lg:w-full" action="/carlist">
+
+                    <script type="text/javascript">
+                        function getData() {
+                            return {
+                                // Data 
+                                selectedMake: null,
+                                selectedModel: null,
+                                models: [],
+
+                                // Functions
+                                fetchModels() {
+                                    this.selectedModel = null;
+                                    fetch(`/api/models?make=${this.selectedMake}`)
+                                        .then((res) => res.json())
+                                        .then((data) => {
+                                            this.models = data.models;
+                                        });
+                                },
+                            };
+                        }
+                    </script>
+
+                    <form class="w-full lg:w-full" action="/carlist" x-data="getData()">
                         <label class="font-bold text-[#707070]" for="">Make</label>
-                        <select class="w-full h-12 mt-2 border-none rounded-md md:h-9" name="make" id="cars">
+                        <select class="w-full h-12 mt-2 border-none rounded-md md:h-9" name="make" id="cars" x-model="selectedMake" x-on:change="fetchModels">
                             <option class="text-sm" value="">All Makes</option>
                             @foreach($filters['makes'] as $opt)
                             <option class="text-sm" value="{{$opt}}" @if(Request()->make == $opt) selected @endif>{{$opt}}</option>
                             @endforeach
                         </select>
                         <label class="font-bold text-[#707070]" for="">Model</label>
-                        <select class="w-full h-12 mt-2 border-none rounded-md md:h-9" name="model" id="cars">
+                        <select class="w-full h-12 mt-2 border-none rounded-md md:h-9" name="model" id="cars" x-model="selectedModel">
                             <option class="text-sm" value="">All Models</option>
-                            @foreach($filters['models'] as $opt)
-                            <option class="text-sm" value="{{$opt}}" @if(Request()->model == $opt) selected @endif>{{$opt}}</option>
-                            @endforeach
+                            <template x-for="(model, index) in models">
+                                <option class="text-sm" x-bind:value="model" x-text="model"></option>
+                            </template>
                         </select>
 
                         <label class="font-bold text-[#707070]" for="">Body Type</label>
@@ -97,40 +119,6 @@
                             <span class="text-base">Search Now</span>
                         </button>
                     </form>
-{{--                     <form method="post" action="{{ route('search_vehicle') }}" enctype="multipart/form-data">
-                        @csrf
-                        @method('GET')
-                        <input type="text" hidden name="availability" value="1">
-                        <div class="mt-2 container-search md:mt-4">
-                            <span class="text-white selected-display" id="destination">Choose Vehicle</span>
-                            <select class="w-full h-12 text-black border-none rounded-md" name="make" id="make">
-                                <option value="Toyota" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Toyota' ? 'selected' : '' }}>Toyota</option>
-                                <option value="BMW" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'BMW' ? 'selected' : '' }}>BMW</option>
-                                <option value="Benz" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Benz' ? 'selected' : '' }}>Benz</option>
-                                <option value="Audi" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Audi' ? 'selected' : '' }}>Audi</option>
-                                <option value="Sedan" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Sedan' ? 'selected' : '' }}>Sedan</option>
-                                <option value="Truck" {{ old('body_type', $vehicle_one['body_type'] ?? '') === 'Truck' ? 'selected' : '' }}>Truck</option>
-                                <!-- Add more body types as needed with the same `old()` check -->
-                            </select>
-                        </div>
-                        <div class="flex flex-col gap-2 mt-3 md:flex-row md:gap-x-4 md:mt-5">
-                            <div>
-                                <p class="mt-2 font-semibold text-[#707070]">Pick-up Date & Time</p>
-                                <input class="w-full text-sm rounded-md date-input md:text-base" type="datetime-local" id="pickup_time" name="pickup_time">
-                            </div>
-                            <div>
-                                <p class="mt-2 font-semibold text-[#707070]">Dropp Off Date & Time</p>
-                                <input class="w-full text-sm rounded-md date-input md:text-base" type="datetime-local" id="dropoff_time" name="dropoff_time">
-                            </div>
-                        </div>
-
-                        <div class="flex justify-center mt-4 md:mt-6">
-                            <button type="submit" class="text-white w-full bg-[#317256] hover:bg-[#31754a] font-bold text-sm md:text-base py-2 rounded">
-                                <span class="text-base">Search Now</span>
-                            </button>
-                        </div>
-                    </form>
---}}
                 </div>
             </div>
         </div>
