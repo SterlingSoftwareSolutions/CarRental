@@ -204,43 +204,27 @@
                     <p class="mt-2 font-semibold text-[#707070]">Pick-up Date & Time</p>
 
                     <div class="flex items-center justify-center w-full gap-4">
-                        @auth
                         <div class="w-full -ml-14 md:ml-0">
-                            <input class="w-full border-none rounded-md shadow-md" type="datetime-local" id="pickup_time" name="pickup_time">
+                            <input class="w-full border-none rounded-md shadow-md" type="datetime-local" id="pickup_time" min="{{today()}}" name="pickup_time">
                         </div>
-                        @else
-                        <div class="w-full -ml-14 md:ml-0">
-                            <input class="w-full border-none rounded-md shadow-md" type="datetime-local" id="pickup_time" name="pickup_time" disabled>
-                        </div>
-                        @endauth
                     </div>
 
                     <p class="mt-2 font-semibold text-[#707070]">Drop-off Date & Time</p>
 
                     <div class="flex items-center justify-center gap-4">
-                        @auth
                         <div class="w-full -ml-14 md:ml-0">
                             <input class="w-full border-none rounded-md shadow-md" type="datetime-local" name="dropoff_time" id="dropoff_time">
                         </div>
-                        @else
-                        <div class="flex flex-col w-full -ml-14 md:ml-0">
-
-                            <input class="w-full border-none rounded-md shadow-md" type="datetime-local" name="dropoff_time" id="dropoff_time" disabled>
-                           
-                            <p class="mt-2 ml-10 text-red-500 md:-ml-0">Please login to Enter Booking Details</p>
-                        </div>
-                        @endauth
                     </div>
 
                     <div class="flex items-center justify-center pt-8">
                         <button type="submit" class="w-full bg-[#317256] p-3 rounded text-white font-semibold hover:bg-[#307449]" name="cars" id="cars">
                             Book Now
                         </button>
-
                     </div>
                 </form>
             </div>
-            <!-- end pickup foam -->
+            <!-- end pickup form -->
 
             <!-- conatct number section -->
             <div class="flex items-center justify-center mt-4">
@@ -255,88 +239,6 @@
                 </div>
             </div>
             <!-- end conatct number section -->
-
-            {{-- COMMENTS SECTION
-            <!-- review section -->
-            <div class="p-8">
-                <h1>1 Comment</h1>
-                <div class="flex items-center space-x-1">
-                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor" viewBox="0 0 22 20">
-                        <path
-                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor" viewBox="0 0 22 20">
-                        <path
-                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor" viewBox="0 0 22 20">
-                        <path
-                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <svg class="w-4 h-4 text-gray-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor" viewBox="0 0 22 20">
-                        <path
-                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <svg class="w-4 h-4 text-gray-300 dark:text-gray-500" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                        <path
-                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                </div>
-            </div>
-            <div class="flex items-center justify-center pl-8">
-                <p class="text-black"> <span class="text-[#317256]">hasi_nimantha</span> Excellent service, clean cars,
-                    and helpful staff. Highly recommend for car rentals</p>
-            </div>
-            <!-- end review section -->
-
-            <!--  rating foam -->
-            <div class="p-8">
-                <div>
-                    <h1 class="text-lg font-semibold text-gray-500">Add a Review</h1>
-                </div>
-                <hr class="border-1 border-gary-600">
-                <div class="mt-4">
-                    <h1 class="text-sm text-gray-500">Your Email Address Will Not Be Published.</h1>
-                    <form>
-                        <fieldset class="p-0 mt-5">
-                            <h1 class="text-sm text-black">Your Ratings <span class="text-red-500">*</span></h1>
-                            <span class="p-0 star-cb-group">
-                                <input type="radio" id="rating-5" name="rating" value="5" /><label
-                                    for="rating-5">5</label>
-                                <input type="radio" id="rating-4" name="rating" value="4" /><label
-                                    for="rating-4">4</label>
-                                <input type="radio" id="rating-3" name="rating" value="3" /><label
-                                    for="rating-3">3</label>
-                                <input type="radio" id="rating-2" name="rating" value="2" /><label
-                                    for="rating-2">2</label>
-                                <input type="radio" id="rating-1" name="rating" value="1" /><label
-                                    for="rating-1">1</label>
-                                <input type="radio" id="rating-0" name="rating" value="0" checked="checked"
-                                    class="star-cb-clear" /><label for="rating-0">0</label>
-                            </span>
-                        </fieldset>
-                        <h1 class="text-sm text-black">Name <span class="text-red-500">*</span></h1>
-                        <input class="w-full border-none rounded-md shadow-md bg-slate-300" type="text" name="" id="">
-                        <h1 class="text-sm text-black">Email <span class="text-red-500">*</span></h1>
-                        <input class="w-full border-none rounded-md shadow-md bg-slate-300" type="text" name="" id="">
-                        <h1 class="text-sm text-black">Your Review <span class="text-red-500">*</span></h1>
-                        <textarea class="w-full border-none rounded-md shadow-md bg-slate-300" name="" id="" cols="30"
-                            rows="10"></textarea>
-                        <div class="flex items-start justify-start w-4/6 pt-8">
-                            <button class="bg-[#317256] p-3 rounded text-white font-semibold" name="cars" id="cars">
-                                Submit
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!-- end rating foam -->
-            COMMENTS SECTION --}}
 
         </div>
     </div>
@@ -386,37 +288,13 @@
         // end single car view js
     </script>
     <script>
-        // Include moment.js in your project
-        // You can add it through a script tag in your HTML or via npm
-        // <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js">
+        const pickupTime = document.getElementById('pickup_time');
+        const dropOffTime = document.getElementById('dropoff_time');
 
-        // Add event listener to the pick-up date & time input
-        const pickupTimeInput = document.getElementById('pickup_time');
-        pickupTimeInput.addEventListener('input', validatePickupDateTime);
-
-        // Add event listener to the drop-off date & time input
-        const dropoffTimeInput = document.getElementById('dropoff_time');
-        dropoffTimeInput.addEventListener('input', validateDropoffDateTime);
-
-        function validatePickupDateTime() {
-            const selectedPickupTime = moment(pickupTimeInput.value, 'DD/MM/YYYY HH:mm');
-            const currentDate = moment();
-
-            if (selectedPickupTime.isBefore(currentDate)) {
-                alert('Pick-up date and time cannot be in the past.');
-                pickupTimeInput.value = ''; // Clear the input
-            }
-        }
-
-        function validateDropoffDateTime() {
-            const selectedDropoffTime = moment(dropoffTimeInput.value, 'DD/MM/YYYY HH:mm');
-            const currentDate = moment();
-
-            if (selectedDropoffTime.isBefore(currentDate)) {
-                alert('Drop-off date and time cannot be in the past.');
-                dropoffTimeInput.value = ''; // Clear the input
-            }
-        }
+        pickupTime.addEventListener('change', function() {
+            console.log("change");
+            dropOffTime.min = pickupTime.value;
+        });
     </script>
 
 </body>
