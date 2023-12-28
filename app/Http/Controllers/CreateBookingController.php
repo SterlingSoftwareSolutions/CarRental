@@ -68,14 +68,31 @@ class CreateBookingController extends Controller
      */
     public function agree(Bookings $booking, Request $request)
     {
-        $request->validate([
-            'customer' => "required",
-            'customer_date' => "required|date",
-            'driver' => "required",
-            'driver_date' => "required|date",
-            'agreement' => 'required|file|max:2048',
+        $request->validateWithBag('page1',[
+            'customer_name' => 'required',
+            'customer_phone' => 'required',
+            'customer_email' => 'required',
+            'customer_address_line_1' => 'required',
+            'customer_address_line_2' => 'required',
+            'customer_dob' => 'required',
+            'customer_license' => 'required',
+            'customer_license_expiry_year' => 'required',
+            'customer_license_expiry_month' => 'required',
+            'customer_license_expiry_date' => 'required',
+        ]);
+
+        $request->validateWithBag('page2',[
             'customer_signature' => 'required|image|max:2048',
+            'customer_signature_name' => 'required',
+            'customer_signature_date' => 'required',
             'driver_signature' => 'required|image|max:2048',
+            'driver_signature_name' => 'required',
+            'driver_signature_date' => 'required',
+        ]);
+
+        $request->validateWithBag('page3',[
+            'license_image_1' => 'required|image|max:2048',
+            'license_image_2' => 'required|image|max:2048',
         ]);
 
         $booking->update([
