@@ -187,7 +187,7 @@
 
                     {{-- REVIEW BUTTON --}}
                     @if($booking['approval'] === 'Pending')
-                        <a href="/admin/bookings/{{ $booking['id'] }}/review" class="px-3 py-2 text-center text-white bg-green-500 rounded-full">Review</a>
+                        <a @if($booking->agreement != null) href="/admin/bookings/{{ $booking['id'] }}/review" @endif class="px-3 py-2 text-center text-white @if($booking->agreement != null) bg-green-500 @else bg-gray-300 @endif rounded-full">Review</a>
                     @endif
 
                     {{-- DELETE BUTTON --}}
