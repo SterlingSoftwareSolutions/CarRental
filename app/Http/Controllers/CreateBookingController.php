@@ -143,9 +143,14 @@ class CreateBookingController extends Controller
             return redirect()->route('user.dashboard')->with('error', 'Already paid');
         }
 
-        // if agreement is not already signed, redirect to agreement
+        // if agreement is not already completed, redirect to agreement
         if($booking->agreement == null){
             return redirect()->route('bookings.agree', compact('booking'));
+        }
+
+        // cannot pay before approval
+        if($booking->approval != 'Approved'){
+            return redirect()->intended('/user/dashboard');
         }
 
         $request->validate([

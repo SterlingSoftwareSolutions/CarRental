@@ -155,12 +155,17 @@
                 <span class="px-3 py-2 text-gray-600 border border-gray-600 rounded-full">{{ ucfirst($booking->status)}}</span>
                 @endif
             </td>
+
             @if(Auth::user()->role == 'client')
             <td class="px-6 py-4">
-                @if($booking->status == 'Unpaid')
-                    <a href="{{ route('bookings.pay', compact('booking')) }}" class="px-3 py-2 text-center text-white bg-green-500 rounded-full">Pay</a>
+                @if($booking->approval == 'Approved')
+                    @if($booking->status == 'Unpaid')
+                        <a href="{{ route('bookings.pay', compact('booking')) }}" class="px-3 py-2 text-center text-white bg-green-500 rounded-full">Pay</a>
+                    @else
+                        <button class="px-3 py-2 text-center text-white bg-gray-300 rounded-full" disabled>Pay</button>
+                    @endif
                 @else
-                    <button class="px-3 py-2 text-center text-white bg-gray-300 rounded-full" disabled>Pay</button>
+                    <a href="{{ route('bookings.agree', compact('booking')) }}" class="px-3 py-2 text-center text-white bg-yellow-500 rounded-full">Agree</a>
                 @endif
             </td>
             @endif
