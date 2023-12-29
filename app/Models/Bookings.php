@@ -5,6 +5,7 @@ namespace App\Models;
 use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Bookings extends Model
 {
@@ -81,5 +82,10 @@ class Bookings extends Model
     public function surcharges()
     {
         return $this->hasMany(Surcharge::class, 'booking_id');
+    }
+
+    public function agreement()
+    {
+        return $this->HasOne(Agreement::class, 'booking_id');
     }
 }

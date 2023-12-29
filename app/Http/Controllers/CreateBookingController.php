@@ -66,7 +66,7 @@ class CreateBookingController extends Controller
      */
     public function agree(Bookings $booking, Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'customer_name' => 'required',
             'customer_phone' => 'required',
             'customer_email' => 'required',
@@ -77,28 +77,27 @@ class CreateBookingController extends Controller
             'customer_license_expiry_year' => 'required',
             'customer_license_expiry_month' => 'required',
             'customer_license_expiry_date' => 'required',
+            'addtional_driver_name' => 'nullable',
+            'addtional_driver_mobile' => 'nullable',
+            'addtional_driver_address_line_1' => 'nullable',
+            'addtional_driver_address_line_2' => 'nullable',
             'customer_signature' => 'required|image|max:2048',
             'customer_signature_name' => 'required',
             'customer_signature_date' => 'required',
             'driver_signature' => 'required|image|max:2048',
             'driver_signature_name' => 'required',
             'driver_signature_date' => 'required',
-            'license_image_1' => 'required|image|max:2048',
-            'license_image_2' => 'required|image|max:2048',
+            'license_image_front' => 'required|image|max:4096',
+            'license_image_back' => 'required|image|max:4096',
         ]);
 
-        $booking->update([
-            'agreement' => $request->agreement->store('agreements'),
-            'customer_signature' => $request->customer_signature->store('signatures'),
-            'driver_signature' => $request->driver_signature->store('signatures'),
-        ]);
+        // Save files and store the paths
+        $validated['customer_signature'] = $request->customer_signature->store('signatures');
+        $validated['driver_signature'] = $request->driver_signature->store('signatures');
+        $validated['license_image_front'] = $request->license_image_front->store('licenses');
+        $validated['license_image_back'] = $request->license_image_back->store('licenses');
 
-        // Check if the booking is for more than 2 weeks
-        $days = $booking->pickup_time->diff($booking->dropoff_time)->days;
-
-        if($days >= 14){
-            return redirect()->route('bookings.pay', compact('booking'));
-        }
+        $booking->agreement()->updateOrCreate(['booking_id' => $booking->id], $validated);
 
         return redirect()->route('user.dashboard');
     }

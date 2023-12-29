@@ -110,7 +110,7 @@
                     @error('customer_address_line_1')<span class="text-red-600">{{$message}}</span>@enderror
                     <input class="w-full border-0 border-b" name="customer_address_line_2" type="text" value="{{old('customer_address_line_2', $user['Address_2'] )}}" />
                     @error('customer_address_line_2')<span class="text-red-600">{{$message}}</span>@enderror
-                <label>DOB: <input class="w-full border-0 border-b" name="customer_dob" value="{{old('customer_dob')}}" type="text" /></label>
+                <label>DOB: <input class="w-full border-0 border-b" name="customer_dob" value="{{old('customer_dob')}}" type="date" /></label>
                 @error('customer_dob')<span class="text-red-600">{{$message}}</span>@enderror
                 <label>License No.:</label><input class="w-full border-0 border-b" name="customer_license" type="text" value="{{old('customer_license', $user['driving_license'] )}}" />
                 @error('customer_license')<span class="text-red-600">{{$message}}</span>@enderror
@@ -206,10 +206,12 @@
 
             <div x-show="page == 3" class="w-full p-8 border border-gray-300 rounded flex flex-col gap-8">
                 <p class="flex justify-center">License Images</p>
-                <label>Image 01: <input class="w-full" name="license_image_1" type="file" /></label>
-                @error('license_image_1')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
-                <label>Image 02: <input class="w-full" name="license_image_2" type="file" /></label>
-                @error('license_image_2')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
+                <div class="flex">                    
+                    <label class="w-1/2">Front: <input class="w-full" name="license_image_front" type="file" /></label>
+                    @error('license_image_front')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
+                    <label class="w-1/2">Back: <input class="w-full" name="license_image_back" type="file" /></label>
+                    @error('license_image_back')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
+                </div>
             </div>
 
             <div class="flex justify-between items-center">
