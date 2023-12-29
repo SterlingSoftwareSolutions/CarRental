@@ -18,7 +18,7 @@
         function getData() {
             return {
                 // Data 
-                page: {{($errors->page1->any() ? 1 : 0) ?? ($errors->page2->any() ? 2 : 0) ?? ($errors->page3->any() ? 3 : 0)}},
+                page: {{$errors->any() ? 1 : 0}},
 
                 // Functions
                 nextPage() {
@@ -44,8 +44,9 @@
         <div class="mt-28">
             @if($errors->any())
             <div class="mx-auto bg-red-100 border border-red-300 text-red-900 p-5 rounded-lg mb-4" id="errorMessage">
-                Error:
-                {{$errors->first()}}
+                @foreach($errors->all() as $error)
+                <p>{{$error}}</p>
+                @endforeach
             </div>
             @endif
 
@@ -98,53 +99,53 @@
 
             <div x-show="page == 1" class="w-full p-8 border border-gray-300 rounded flex flex-col gap-4">
                 <p class="flex justify-center">Customer details</p>
-                <label>Customer/Company Name: <input class="w-full border-0 border-b" name="customer_name" value="{{$user['first_name']}} {{$user['last_name']}}" type="text" /></label>
-                @error('customer_name', 'page1')<span class="text-red-600">{{$message}}</span>@enderror
-                <label>Phone: <input class="w-full border-0 border-b" name="customer_phone" value="{{ $user['mobile'] }}" type="text" /></label>
-                @error('customer_phone', 'page1')<span class="text-red-600">{{$message}}</span>@enderror
-                <label>Email: <input class="w-full border-0 border-b" name="customer_email" value="{{ $user['email'] }}" type="text" /></label>
-                @error('customer_email', 'page1')<span class="text-red-600">{{$message}}</span>@enderror
+                <label>Customer/Company Name: <input class="w-full border-0 border-b" name="customer_name" value="{{old('customer_name', $user['first_name'].' '.$user['last_name'])}}" type="text" /></label>
+                @error('customer_name')<span class="text-red-600">{{$message}}</span>@enderror
+                <label>Phone: <input class="w-full border-0 border-b" name="customer_phone" value="{{old('customer_phone', $user['mobile'] )}}" type="text" /></label>
+                @error('customer_phone')<span class="text-red-600">{{$message}}</span>@enderror
+                <label>Email: <input class="w-full border-0 border-b" name="customer_email" value="{{old('customer_email', $user['email'] )}}" type="text" /></label>
+                @error('customer_email')<span class="text-red-600">{{$message}}</span>@enderror
                 <label>Address: </label>
-                    <input class="w-full border-0 border-b" name="customer_address_line_1" type="text" value="{{ $user['Address_1'] }}" />
-                    @error('customer_address_line_1', 'page1')<span class="text-red-600">{{$message}}</span>@enderror
-                    <input class="w-full border-0 border-b" name="customer_address_line_2" type="text" value="{{ $user['Address_2'] }}" />
-                    @error('customer_address_line_2', 'page1')<span class="text-red-600">{{$message}}</span>@enderror
-                <label>DOB: <input class="w-full border-0 border-b" name="customer_dob" type="text" /></label>
-                @error('customer_dob', 'page1')<span class="text-red-600">{{$message}}</span>@enderror
-                <label>License No.:</label><input class="w-full border-0 border-b" name="customer_license" type="text" value="{{ $user['driving_license'] }}" />
-                @error('customer_license', 'page1')<span class="text-red-600">{{$message}}</span>@enderror
+                    <input class="w-full border-0 border-b" name="customer_address_line_1" type="text" value="{{old('customer_address_line_1', $user['Address_1'] )}}" />
+                    @error('customer_address_line_1')<span class="text-red-600">{{$message}}</span>@enderror
+                    <input class="w-full border-0 border-b" name="customer_address_line_2" type="text" value="{{old('customer_address_line_2', $user['Address_2'] )}}" />
+                    @error('customer_address_line_2')<span class="text-red-600">{{$message}}</span>@enderror
+                <label>DOB: <input class="w-full border-0 border-b" name="customer_dob" value="{{old('customer_dob')}}" type="text" /></label>
+                @error('customer_dob')<span class="text-red-600">{{$message}}</span>@enderror
+                <label>License No.:</label><input class="w-full border-0 border-b" name="customer_license" type="text" value="{{old('customer_license', $user['driving_license'] )}}" />
+                @error('customer_license')<span class="text-red-600">{{$message}}</span>@enderror
                 <div class="flex gap-4">
                     <div class="w-1/3">
                         <label>Expiry Year: </label>
                         <input class="w-full border-0 border-b" name="customer_license_expiry_year"
-                            value="{{$user['driving_license_expire_year']}}" type="text" />
-                        @error('customer_license_expiry_year', 'page1')<span class="text-red-600">{{$message}}</span>@enderror
+                            value="{{old('customer_license_expiry_year', $user['driving_license_expire_year'])}}" type="text" />
+                        @error('customer_license_expiry_year')<span class="text-red-600">{{$message}}</span>@enderror
                     </div>
                     <div class="w-1/3">
                         <label>Expiry Month: </label>
                         <input class="w-full border-0 border-b" name="customer_license_expiry_month"
-                            value="{{$user['driving_license_expire_month']}}" type="text" />
-                        @error('customer_license_expiry_month', 'page1')<span class="text-red-600">{{$message}}</span>@enderror
+                            value="{{old('customer_license_expiry_month', $user['driving_license_expire_month'])}}" type="text" />
+                        @error('customer_license_expiry_month')<span class="text-red-600">{{$message}}</span>@enderror
                     </div>
                     <div class="w-1/3">
                         <label>Expiry Date: </label>
                         <input class="w-full border-0 border-b" name="customer_license_expiry_date"
-                            value="{{$user['driving_license_expire_date']}}" type="text" />
-                        @error('customer_license_expiry_date', 'page1')<span class="text-red-600">{{$message}}</span>@enderror
+                            value="{{old('customer_license_expiry_date', $user['driving_license_expire_date'])}}" type="text" />
+                        @error('customer_license_expiry_date')<span class="text-red-600">{{$message}}</span>@enderror
                     </div>
                 </div>
 
                 <p class="flex justify-center mt-8">Additional Driver details</p>
                 <span class="flex justify-center font-light text-center mb-4">Please note that any additional drivers for this vehicle booking must be declared. If there are no additional drivers for this booking, please leave the questions blank</span>
-                <label>Additional Driver: <input class="w-full border-0 border-b" name="addtional_driver_name" type="text" /></label>
-                @error('addtional_driver_name', 'page1')<span class="text-red-600">{{$message}}</span>@enderror
-                <label>Contact Number:<input class="w-full border-0 border-b" name="addtional_driver_mobile" type="text" /></label>
-                @error('addtional_driver_mobile', 'page1')<span class="text-red-600">{{$message}}</span>@enderror
+                <label>Additional Driver: <input class="w-full border-0 border-b" name="addtional_driver_name" value="{{old('addtional_driver_name')}}" type="text" /></label>
+                @error('addtional_driver_name')<span class="text-red-600">{{$message}}</span>@enderror
+                <label>Contact Number:<input class="w-full border-0 border-b" name="addtional_driver_mobile" value="{{old('addtional_driver_mobile')}}" type="text" /></label>
+                @error('addtional_driver_mobile')<span class="text-red-600">{{$message}}</span>@enderror
                 <label>Address:
-                    <input class="w-full border-0 border-b" name="addtional_driver_address_line_1" type="text" />
-                    @error('addtional_driver_address_line_1', 'page1')<span class="text-red-600">{{$message}}</span>@enderror
-                    <input class="w-full border-0 border-b" name="addtional_driver_address_line_2" type="text" />
-                    @error('addtional_driver_address_line_2', 'page1')<span class="text-red-600">{{$message}}</span>@enderror
+                    <input class="w-full border-0 border-b" name="addtional_driver_address_line_1" value="{{old('addtional_driver_address_line_1')}}" type="text" />
+                    @error('addtional_driver_address_line_1')<span class="text-red-600">{{$message}}</span>@enderror
+                    <input class="w-full border-0 border-b" name="addtional_driver_address_line_2" value="{{old('addtional_driver_address_line_2')}}" type="text" />
+                    @error('addtional_driver_address_line_2')<span class="text-red-600">{{$message}}</span>@enderror
                 </label>
             </div>
 
@@ -154,13 +155,13 @@
                 <div class="flex gap-4">
                     <div class="w-full">
                         <label for="customer">Customer</label>
-                        <input name="customer_signature_name" type="text" placeholder="Customer" class="border-0 border-b w-full">
-                        @error('customer_signature_name', 'page2')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
+                        <input name="customer_signature_name" value="{{old('customer_signature_name')}}" type="text" placeholder="Customer" class="border-0 border-b w-full">
+                        @error('customer_signature_name')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
                     </div>
                     <div class="w-full">
                         <label for="Date">Date</label>
-                        <input name="customer_signature_date" type="date" placeholder="Date" class="border-0 border-b w-full">
-                        @error('customer_signature_date', 'page2')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
+                        <input name="customer_signature_date" value="{{old('customer_signature_date')}}" type="date" placeholder="Date" class="border-0 border-b w-full">
+                        @error('customer_signature_date')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
                     </div>
 
                     <!-- First Signature Field -->
@@ -172,7 +173,7 @@
                             </div>
                             <canvas id="signatureCanvas" class="border border-black rounded w-full"></canvas>
                             <input type="file" name="customer_signature" id="customer_signature" class="hidden">
-                            @error('driver_signature', 'page2')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
+                            @error('driver_signature')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
                         </div>
                     </div>
                 </div>
@@ -180,13 +181,13 @@
                 <div class="flex gap-4">
                     <div class="w-full">
                         <label for="Driver">Additional Driver</label>
-                        <input name="driver_signature_name" type="text" placeholder="Driver" class="border-0 border-b w-full">
-                        @error('driver_signature_name', 'page2')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
+                        <input name="driver_signature_name" value="{{old('driver_signature_name')}}" type="text" placeholder="Driver" class="border-0 border-b w-full">
+                        @error('driver_signature_name')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
                     </div>
                     <div class="w-full ">
                         <label for="Date">Date</label>
-                        <input name="driver_signature_date" type="date" placeholder="Date" class="border-0 border-b w-full">
-                        @error('driver_signature_date', 'page2')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
+                        <input name="driver_signature_date" value="{{old('driver_signature_date')}}" type="date" placeholder="Date" class="border-0 border-b w-full">
+                        @error('driver_signature_date')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
                     </div>
                     <!-- Second Signature Field -->
                     <div class="w-full flex justify-end">
@@ -197,7 +198,7 @@
                             </div>
                             <canvas id="signatureCanvas2" class="border border-black rounded w-full"></canvas>
                             <input type="file" name="driver_signature" id="driver_signature" class="hidden">
-                            @error('driver_signature', 'page2')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
+                            @error('driver_signature')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
                         </div>
                     </div>
                 </div>
@@ -206,17 +207,17 @@
             <div x-show="page == 3" class="w-full p-8 border border-gray-300 rounded flex flex-col gap-8">
                 <p class="flex justify-center">License Images</p>
                 <label>Image 01: <input class="w-full" name="license_image_1" type="file" /></label>
-                @error('license_image_1', 'page3')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
+                @error('license_image_1')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
                 <label>Image 02: <input class="w-full" name="license_image_2" type="file" /></label>
-                @error('license_image_2', 'page3')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
+                @error('license_image_2')<p class="text-red-700 mt-2">{{$message}}@enderror</p>
             </div>
 
             <div class="flex justify-between items-center">
                 <p x-text="(page + 1) + '/4'" class="p-5 text-gray-500 text-lg"></p>      
                 <div class="w-full flex justify-end mt-2 gap-4">
-                    <button type="button" x-show="page != 0" x-on:click="prevPage()" class="p-3 bg-[#317256] disabled:bg-gray-500 rounded text-white md:mt-2 w-32">Previous</button>
-                    <button type="button" x-show="page != 3" x-on:click="nextPage()" class="p-3 bg-[#317256] rounded text-white md:mt-2 w-32">Next</button>
-                    <button type="button" x-show="page == 3" onclick="submit_form()" class="p-3 bg-[#317256] rounded text-white md:mt-2 w-32">Submit</button>
+                    <button type="button" x-bind:disabled="page == 0" x-on:click="prevPage()" class="p-3 bg-[#317256] hover:shadow-md disabled:shadow-none disabled:bg-gray-400 rounded text-white md:mt-2 w-32">Previous</button>
+                    <button type="button" x-show="page != 3" x-on:click="nextPage()" class="p-3 bg-[#317256] hover:shadow-md disabled:shadow-none disabled:bg-gray-400 rounded text-white md:mt-2 w-32">Next</button>
+                    <button type="button" x-show="page == 3" onclick="submit_form()" class="p-3 bg-[#317256] hover:shadow-md disabled:shadow-none disabled:bg-gray-400 rounded text-white md:mt-2 w-32">Submit</button>
                 </div>
             </div>
         </div>

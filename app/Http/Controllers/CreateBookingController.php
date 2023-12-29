@@ -58,8 +58,6 @@ class CreateBookingController extends Controller
             return redirect()->route('bookings.pay', compact('booking'));
         }
 
-        // TODO
-        // handle generating pdf
         return view('pages.agreement', compact('booking'));
     }
 
@@ -68,7 +66,7 @@ class CreateBookingController extends Controller
      */
     public function agree(Bookings $booking, Request $request)
     {
-        $request->validateWithBag('page1',[
+        $request->validate([
             'customer_name' => 'required',
             'customer_phone' => 'required',
             'customer_email' => 'required',
@@ -79,18 +77,12 @@ class CreateBookingController extends Controller
             'customer_license_expiry_year' => 'required',
             'customer_license_expiry_month' => 'required',
             'customer_license_expiry_date' => 'required',
-        ]);
-
-        $request->validateWithBag('page2',[
             'customer_signature' => 'required|image|max:2048',
             'customer_signature_name' => 'required',
             'customer_signature_date' => 'required',
             'driver_signature' => 'required|image|max:2048',
             'driver_signature_name' => 'required',
             'driver_signature_date' => 'required',
-        ]);
-
-        $request->validateWithBag('page3',[
             'license_image_1' => 'required|image|max:2048',
             'license_image_2' => 'required|image|max:2048',
         ]);
