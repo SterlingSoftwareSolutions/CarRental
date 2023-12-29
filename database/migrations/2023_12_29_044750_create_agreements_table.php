@@ -34,7 +34,7 @@ return new class extends Migration
             $table->string('driver_signature')->nullable();
             $table->string('driver_signature_name')->nullable();
             $table->string('driver_signature_date')->nullable();
-            $table->string('admin_signaure')->nullable();
+            $table->string('admin_signature')->nullable();
             $table->string('license_image_front')->nullable();
             $table->string('license_image_back')->nullable();
             $table->timestamps();

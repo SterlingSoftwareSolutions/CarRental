@@ -26,7 +26,7 @@ $statuses = [
                     <div>
                         @if($booking->agreement)
                             <p class="flex justify-center text-xl font-bold">Customer details</p>
-                            <hr class="my-4 border-green-900">
+                            <hr class="mt-4 mb-6 border-green-900">
                             <label class="font-bold">Customer/Company Name:</label>
                             <p class="mb-4">{{$booking->agreement->customer_name }}</p>
                             <label class="font-bold">Phone:</label>
@@ -54,7 +54,7 @@ $statuses = [
                                 </div>
                             </div>
                             <p class="flex justify-center text-xl font-bold mt-12">Additional Driver details</p>
-                            <hr class="my-4 border-green-900">
+                            <hr class="mt-4 mb-6 border-green-900">
                             <label class="font-bold">Additional Driver: </label>
                             <p class="mb-4">{{$booking->agreement->addtional_driver_name}}"</p>
                             <label class="font-bold">Contact Number: </label>
@@ -63,7 +63,7 @@ $statuses = [
                             <p class="mb-4">{{$booking->agreement->addtional_driver_address_line_1}}"</p</p>
                             <p class="mb-4">{{$booking->agreement->addtional_driver_address_line_2}}"</p</p>
                             <p class="flex justify-center text-xl font-bold mt-12">License Images</p>
-                            <hr class="my-4 border-green-900">
+                            <hr class="mt-4 mb-6 border-green-900">
                             <div class="flex mt-4 gap-4">
                                 <div class="w-1/2">
                                     <label class="font-bold">Front</label>
@@ -79,19 +79,19 @@ $statuses = [
                         @endif
                     </div>
                     <p class="flex justify-center text-xl font-bold mt-12">Signatures</p>
-                    <hr class="my-4 border-green-900">
+                    <hr class="mt-4 mb-6 border-green-900">
                     <div class="flex mt-12 gap-4">
                         <div>
                             <h4 class="text-lg font-bold">Customer Signature</h4>
-                            <img src="@if($booking->agreement->customer_signature)data:image/png;base64,{{base64_encode(file_get_contents(storage_path( 'app/' . $booking->agreement->customer_signature)))}} @else /images/blank.png @endif" class="rounded w-[250px] h-[125px] object-cover border border-black" alt="">
-                            <p class="mt-1">Name: {{$booking->agreement->customer_signature_name}}</p>
-                            <p class="mt-1">Date: {{$booking->agreement->customer_signature_date}}</p>
+                            <img src="@if($booking?->agreement?->customer_signature)data:image/png;base64,{{base64_encode(file_get_contents(storage_path( 'app/' . $booking->agreement->customer_signature)))}} @else /images/blank.png @endif" class="rounded w-[250px] h-[125px] object-cover border border-black" alt="">
+                            <p class="mt-1">Name: {{$booking?->agreement?->customer_signature_name}}</p>
+                            <p class="mt-1">Date: {{$booking?->agreement?->customer_signature_date}}</p>
                         </div>
                         <div>
                             <h4 class="text-lg font-bold">Driver Signature</h4>
-                            <img src="@if($booking->agreement->driver_signature)data:image/png;base64,{{base64_encode(file_get_contents(storage_path( 'app/' . $booking->agreement->driver_signature)))}} @else /images/blank.png @endif" class="rounded w-[250px] h-[125px] object-cover border border-black" alt="">
-                            <p class="mt-1">Name: {{$booking->agreement->driver_signature_name}}</p>
-                            <p class="mt-1">Date: {{$booking->agreement->driver_signature_date}}</p>
+                            <img src="@if($booking->agreement?->driver_signature)data:image/png;base64,{{base64_encode(file_get_contents(storage_path( 'app/' . $booking->agreement->driver_signature)))}} @else /images/blank.png @endif" class="rounded w-[250px] h-[125px] object-cover border border-black" alt="">
+                            <p class="mt-1">Name: {{$booking?->agreement?->driver_signature_name}}</p>
+                            <p class="mt-1">Date: {{$booking?->agreement?->driver_signature_date}}</p>
                         </div>
 
                         <div class="ml-auto">

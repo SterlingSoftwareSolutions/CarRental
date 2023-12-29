@@ -119,23 +119,20 @@ class BookingsController extends Controller
 
         $request->validate([
             'admin_signature' => 'required|file',
-            'agreement' => 'required|file',
         ], [
             'admin_signature.required' => 'The Admin Signature field is required.',
-            'agreement.required' => 'The Approved Agreement File is required.',
         ]);
-        
+
 
         if($request->hasFile('agreement')){
             Storage::delete($booking->agreement);
         }
 
-        $booking->update([
-            "approval" => 'Approved',
-            'agreement' => $request->hasFile('agreement') ? $request->agreement->store('agreements') : null,
+        $booking->agreement->update([
             'admin_signature' => $request->hasFile('admin_signature') ? $request->admin_signature->store('signatures') : null
         ]);
 
+        $booking->update(['approval' => 'Approved']);
 
         // Redirect back to the admin dashboard or wherever appropriate
         return redirect()->route('bookings.all');
