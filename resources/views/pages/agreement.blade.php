@@ -215,9 +215,9 @@
             <div class="flex justify-between items-center">
                 <p x-text="(page + 1) + '/4'" class="p-5 text-gray-500 text-lg"></p>      
                 <div class="w-full flex justify-end mt-2 gap-4">
-                    <button type="button" x-bind:disabled="page == 0" x-on:click="prevPage()" class="p-3 bg-[#317256] hover:shadow-md disabled:shadow-none disabled:bg-gray-400 rounded text-white md:mt-2 w-32">Previous</button>
-                    <button type="button" x-show="page != 3" x-on:click="nextPage()" class="p-3 bg-[#317256] hover:shadow-md disabled:shadow-none disabled:bg-gray-400 rounded text-white md:mt-2 w-32">Next</button>
-                    <button type="button" x-show="page == 3" onclick="submit_form()" class="p-3 bg-[#317256] hover:shadow-md disabled:shadow-none disabled:bg-gray-400 rounded text-white md:mt-2 w-32">Submit</button>
+                    <button type="button" x-bind:disabled="page == 0" x-on:click="prevPage()" class="p-3 bg-gray-700 hover:shadow-md disabled:shadow-none disabled:bg-gray-300 rounded text-white md:mt-2 w-32">Previous</button>
+                    <button type="button" x-show="page != 3" x-on:click="nextPage()" class="p-3 bg-gray-700 hover:shadow-md disabled:shadow-none disabled:bg-gray-300 rounded text-white md:mt-2 w-32">Next</button>
+                    <button type="button" x-show="page == 3" onclick="submit_form()" class="p-3 bg-[#317256] hover:shadow-md disabled:shadow-none disabled:bg-gray-300 rounded text-white md:mt-2 w-32">Submit</button>
                 </div>
             </div>
         </div>
