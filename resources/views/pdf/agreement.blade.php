@@ -7,7 +7,7 @@
 	<title>Agreement</title>
 </head>
 
-<body>
+<body style="font-family: sans-serif;">
 	<div style="width: 100%; text-align: center; font-size: 30px;">
 		<b><u>AUTOMOBILES UNLIMITED PTY LTD</u></b>
 	</div>
@@ -32,32 +32,38 @@
 	</p>
 	<div>
 		<div>
-			<h2><b>CUSTOMER DETAILS</b></h2>
-			<label>Customer/Company Name: <input style="width: 100%;" name="customer_name" value="{{$user['first_name']}} {{$user['last_name']}}" type="text" /></label><br />
-			<label>Phone: <input style="width: 100%;" name="customer_phone" value="{{ $user['mobile'] }}" type="text" /></label><br />
-			<label>Email: <input style="width: 100%;" name="customer_email" value="{{ $user['email'] }}" type="text" /></label><br />
+			<h3 style="margin-top: 30px;"><b>CUSTOMER DETAILS</b></h3>
+			<label>Customer/Company Name: <input style="width: 100%;" name="customer_name" value="{{$agreement?->customer_name}}" type="text" readonly="readonly" /></label><br />
+			<label>Phone: <input style="width: 100%;" name="customer_phone" value="{{$agreement?->customer_phone}}" type="text" readonly="readonly" /></label><br />
+			<label>Email: <input style="width: 100%;" name="customer_email" value="{{$agreement?->customer_email}}" type="text" readonly="readonly" /></label><br />
 			<label>Address: </label>
-				<input style="width: 100%;" name="customer_address_line_1" type="text" value="{{ $user['Address_1'] }}" /><br />
-				<input style="width: 100%;" name="customer_address_line_2" type="text" value="{{ $user['Address_2'] }}" />
-			<label>License No.:</label><input style="width: 100%;" name="customer_license" type="text" value="{{ $user['driving_license'] }}" /><br />
+				<input style="width: 100%;" name="customer_address_line_1" value="{{$agreement?->customer_address_line_1}}" type="text" readonly="readonly" /><br />
+				<input style="width: 100%;" name="customer_address_line_2" value="{{$agreement?->customer_address_line_2}}" type="text" readonly="readonly" />
+			<label>License No.:</label><input style="width: 100%;" name="customer_license" value="{{$agreement?->customer_license}}" type="text" readonly="readonly" /><br />
 			<label style="width: 100%;">Expiry Date:</label><br />
-				Year: <input style="width: 25%;" name="customer_license_expiry_year" value="{{$user['driving_license_expire_year']}}" type="text" />
-				Month: <input style="width: 25%;" name="customer_license_expiry_month" value="{{$user['driving_license_expire_month']}}" type="text" />
-				Date: <input style="width: 25%;" name="customer_license_expiry_date" value="{{$user['driving_license_expire_date']}}" type="text" /><br/>
-			<label>DOB: <input style="width: 100%;" name="customer_dob" type="text" /></label><br />
-			<label>Additional Driver: <input style="width: 100%;" name="addtional_driver_name" type="text" /></label><br />
-			<label>Contact Number:<input style="width: 100%;" name="addtional_driver_mobile" type="text" /></label><br />
-			<label>Address:</label>
-			<input style="width: 100%;" name="addtional_driver_address_line_1" type="text" />
-			<input style="width: 100%;" name="addtional_driver_address_line_2" type="text" />
+				Year: <input style="width: 25%;" name="customer_license_expiry_year" value="{{$agreement?->customer_license_expiry_year}}" type="text" readonly="readonly" />
+				Month: <input style="width: 25%;" name="customer_license_expiry_month" value="{{$agreement?->customer_license_expiry_month}}" type="text" readonly="readonly" />
+				Date: <input style="width: 25%;" name="customer_license_expiry_date" value="{{$agreement?->customer_license_expiry_date}}" type="text" readonly="readonly" /><br/>
+			<label>DOB: <input style="width: 100%;" name="customer_dob" value="{{$agreement?->customer_dob}} "type="text" readonly="readonly" /></label><br />
 		</div>
 		<div>
-			<h2><b>VEHICLE DETAILS</b></h2>
+			<h3 style="margin-top: 30px;"><b>ADDITIONAL DRIVER DETAILS</b></h3>
+			<p style="margin-bottom: 10px; margin-top: 0;">Please note that any additional drivers for this vehicle booking must be declared. If there are no additional drivers for this booking, please leave the questions blank.</p>
+			<label>Additional Driver: <input style="width: 100%;" name="addtional_driver_name" value="{{$agreement?->addtional_driver_name}}" type="text" readonly="readonly" /></label><br />
+			<label>Contact Number:<input style="width: 100%;" name="addtional_driver_mobile" value="{{$agreement?->addtional_driver_mobile}}" type="text" readonly="readonly" /></label><br />
+			<label>Address:</label>
+			<input style="width: 100%;" name="addtional_driver_address_line_1" value="{{$agreement?->addtional_driver_address_line_1}}" type="text" readonly="readonly" />
+			<input style="width: 100%;" name="addtional_driver_address_line_2" value="{{$agreement?->addtional_driver_address_line_2}}" type="text" readonly="readonly" />
+		</div>
+
+		<div style="page-break-before: always;">
+			<h3 style="margin-top: 30px;"><b>VEHICLE DETAILS</b></h3>
+			<p style="margin-bottom: 10px; margin-top: 0;">To be filled out by admin</p>
 			<div>
-				<label>Registration No.: <input style="width: 100%;" name="vehicle_reg_no" value="{{$vehicle['reg_no']}}" type="text"></label><br>
-				<label>Type: <input style="width: 100%;" name="vehicle_type" value="{{$vehicle['body_type']}}" type="text"></label><br>
-				<label>Make: <input style="width: 100%;" name="vehicle_make" value="{{$vehicle['make']}}" type="text"> </label><br>
-				<label>Model: <input style="width: 100%;" name="vehicle_model" value="{{$vehicle['model']}}" type="text"> </label>
+				<label>Registration No.: <input style="width: 100%;" name="vehicle_reg_no" value="{{$vehicle['reg_no']}} "type="text" readonly="readonly" /></label><br>
+				<label>Type: <input style="width: 100%;" name="vehicle_type" value="{{$vehicle['body_type']}} "type="text" readonly="readonly" /></label><br>
+				<label>Make: <input style="width: 100%;" name="vehicle_make" value="{{$vehicle['make']}} "type="text" readonly="readonly" /> </label><br>
+				<label>Model: <input style="width: 100%;" name="vehicle_model" value="{{$vehicle['model']}} "type="text" readonly="readonly" /> </label>
 			</div>
 			<div>
 				<table>
@@ -99,12 +105,57 @@
 			</div>
 		</div>
 		<div>
-			<h2><b>BODY DAMAGE DETAILS</b></h2>
+			<h3 style="margin-top: 30px;"><b>BODY DAMAGE DETAILS</b></h3>
+			<p style="margin-bottom: 10px; margin-top: 0;">To be filled out by admin</p>
 			<div>
-				<div>
-					<img
-						src="data:image/png;base64,{{base64_encode(file_get_contents(public_path( 'images/image.png' )))}}">
-				</div>
+				<table>
+					<tr>						
+						<td style="text-align: center;">
+							<img src="data:image/png;base64,{{base64_encode(file_get_contents(public_path( 'images/body_damage_left.png' )))}}">
+							<p style="width: 100%;">Side (Left)</p>
+						</td>
+						<td style="vertical-align: top;">
+							<textarea style="width: 100%" name="body_damage_left" rows="8">&nbsp;</textarea>
+							<p><input type="checkbox" name="body_damage_left_none" value="1"/> No visible damages</p>
+						</td>
+					</tr>
+					<tr>						
+						<td style="text-align: center;">
+							<img src="data:image/png;base64,{{base64_encode(file_get_contents(public_path( 'images/body_damage_right.png' )))}}">
+							<p style="width: 100%;">Side (Right)</p>
+						</td>
+						<td style="vertical-align: top;">
+							<textarea style="width: 100%" name="body_damage_right" rows="8">&nbsp;</textarea>
+							<p><input type="checkbox" name="body_damage_right_none" value="1"/> No visible damages</p>
+						</td>
+					</tr>
+					<tr>						
+						<td style="text-align: center;">
+							<img src="data:image/png;base64,{{base64_encode(file_get_contents(public_path( 'images/body_damage_front.png' )))}}">
+							<p style="width: 100%;">Front</p>
+						</td>
+						<td style="vertical-align: top;">
+							<textarea style="width: 100%" name="body_damage_front" rows="8">&nbsp;</textarea>
+							<p><input type="checkbox" name="body_damage_front_none" value="1"/> No visible damages</p>
+						</td>
+					</tr>
+					<tr>						
+						<td style="text-align: center;">
+							<img src="data:image/png;base64,{{base64_encode(file_get_contents(public_path( 'images/body_damage_back.png' )))}}">
+							<p style="width: 100%;">Back</p>
+						</td>
+						<td style="vertical-align: top;">
+							<textarea style="width: 100%" name="body_damage_back" rows="8">&nbsp;</textarea>
+							<p><input type="checkbox" name="body_damage_back_none" value="1"/> No visible damages</p>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div style="page-break-before: always;">
+			<h3 style="margin-top: 30px;"><b>BOOKING DETAILS</b></h3>
+			<p style="margin-bottom: 10px; margin-top: 0;">To be filled out by admin</p>
+			<div>
 				<div>
 					<table>
 						<tbody>
@@ -140,9 +191,35 @@
 				</div>
 			</div>
 		</div>
-		<p>You acknowledge that you have received and understood the terms and
-			conditions of the rental agreement.</p>
 		<div>
+			<h3 style="margin-top: 30px;"><b>CHECKLIST</b></h3>
+			<p style="margin-bottom: 10px; margin-top: 0;">To be filled out by admin upon the return of the vehicle</p>
+			<table>
+				<thead>
+					<td>Desciption</td>
+					<td>Remarks</td>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Reverse camera</td>
+						<td><input value="null" name="input_{{random_int(0, 9999)}}" type="checkbox"></td>
+					</tr>
+					<tr>
+						<td>Cargo Barrier</td>
+						<td><input value="null" name="input_{{random_int(0, 9999)}}" type="checkbox"></td>
+					</tr>
+					<tr>
+						<td>Fuel Cap</td>
+						<td><input value="null" name="input_{{random_int(0, 9999)}}" type="checkbox"></td>
+					</tr>
+					<tr>
+						<td>Rim Cups</td>
+						<td><input value="null" name="input_{{random_int(0, 9999)}}" type="checkbox"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div style="margin-top: 30px;">
 			<table>
 				<tr>
 					<td>
@@ -182,7 +259,8 @@
 				</tr>
 			</table>
 		</div>
-		<!-- <p>Customer Signature</p> -->
+	</div>
+	<div style="page-break-before: always;">
 		<p style="font-size: 20px;">TERMS AND CONDITIONS OF RENTAL</p>
 		<p>The rental agreement is made upon the detailed terms and conditions of Automobiles
 			Unlimited which will be issued to you at the time of signing the contract</p>
@@ -218,7 +296,7 @@
 			13. In the instances where the customer intends to extend the rental period, customer must get prior
 			approval from Automobiles Unlimited. If the vehicle is
 			not returned at the time mentioned in the agreement, actions will be taken considering the has been stolen.
-			<br /><br>
+			<br  /><br>
 			14. It is customer’s responsibility to assure the safety of the vehicle. In case of any damage, accident to
 			the vehicle or a third party, during the rental period
 			the authorized drivers must inform all the details to Automobiles Unlimited and the police (if required) at
@@ -251,54 +329,6 @@
 			of the Automobiles Unlimited rental
 			agreement
 		</p>
-		<div>
-			<h1>Checklist</h1>
-			<table>
-				<thead>
-					<td>Desciption</td>
-					<td>Remarks</td>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Reverse camera</td>
-						<td><input value="null" name="input_{{random_int(0, 9999)}}" type="checkbox"></td>
-					</tr>
-					<tr>
-						<td>Cargo Barrier</td>
-						<td><input value="null" name="input_{{random_int(0, 9999)}}" type="checkbox"></td>
-					</tr>
-					<tr>
-						<td>Fuel Cap</td>
-						<td><input value="null" name="input_{{random_int(0, 9999)}}" type="checkbox"></td>
-					</tr>
-					<tr>
-						<td>Rim Cups</td>
-						<td><input value="null" name="input_{{random_int(0, 9999)}}" type="checkbox"></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div>
-			<div>
-				<p>Automobiles Unlimited Pty Ltd – Bank account Details </p>
-			</div>
-			<table>
-				<tbody>
-					<tr>
-						<td>BSB</td>
-						<td><input name="input_{{random_int(0, 9999)}}" type="text" style="width: 25%;"></td>
-					</tr>
-					<tr>
-						<td>Account Number</td>
-						<td><input name="input_{{random_int(0, 9999)}}" type="text" style="width: 25%;"></td>
-					</tr>
-					<tr>
-						<td>Contact Number</td>
-						<td><input name="input_{{random_int(0, 9999)}}" type="text" style="width: 25%;"></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
 	</div>
 </body>
 

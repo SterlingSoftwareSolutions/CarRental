@@ -93,7 +93,7 @@
                 <br><br>
                 20. In an early return before the contract termination date, Automobiles Unlimited has the right to charge for the full period. If it’s a long term contract an extra one week’s rental will be charged.
                 <br><br>
-                21. By signing this you acknowledge that you have received and understood the detailed terms and conditions of the Automobiles Unlimited rental agreement
+                21. By signing this you acknowledge that you have received and understood the detailed terms and conditions of the Automobiles Unlimited rental agreement.
                 </p>
             </div>
 
