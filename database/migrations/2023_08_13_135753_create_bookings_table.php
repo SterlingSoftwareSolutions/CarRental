@@ -12,19 +12,83 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('bookings', function (Blueprint $table) {
-            $table->id(); // Auto-incrementing primary key
-            $table->string('pickup'); // Change this to the appropriate data type if needed
-            $table->string('dropoff'); // Change this to the appropriate data type if needed
-            $table->dateTime('pickup_time'); // Change this to the appropriate data type if needed
-            $table->dateTime('dropoff_time'); // Change this to the appropriate data type if needed
-            $table->date('returned_on')->nullable();
-            $table->unsignedBigInteger('vehicle_id'); // Assuming vehicle_id is a foreign key
-            $table->foreign('vehicle_id')->references('id')->on('vehicles'); // Replace 'vehicles' with the actual table name
-            $table->unsignedBigInteger('user_id'); // Assuming user_id is a foreign key
+            $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('vehicle_id');
+
+            // Status
             $table->string('approval')->default('Pending');
-            $table->foreign('user_id')->references('id')->on('users'); // Replace 'users' with the actual table name
             $table->string('status');
-            $table->timestamps(); // Created_at and updated_at timestamps
+
+            // Customer details
+            $table->string('customer_name')->nullable();
+            $table->string('customer_phone')->nullable();
+            $table->string('customer_email')->nullable();
+            $table->string('customer_address_line_1')->nullable();
+            $table->string('customer_address_line_2')->nullable();
+            $table->string('customer_dob')->nullable();
+            $table->string('customer_license')->nullable();
+            $table->string('customer_license_expiry_year')->nullable();
+            $table->string('customer_license_expiry_month')->nullable();
+            $table->string('customer_license_expiry_date')->nullable();
+            $table->string('addtional_driver_name')->nullable();
+            $table->string('addtional_driver_mobile')->nullable();
+            $table->string('addtional_driver_address_line_1')->nullable();
+            $table->string('addtional_driver_address_line_2')->nullable();
+            $table->string('customer_signature')->nullable();
+            $table->string('customer_signature_name')->nullable();
+            $table->string('customer_signature_date')->nullable();
+            $table->string('driver_signature')->nullable();
+            $table->string('driver_signature_name')->nullable();
+            $table->string('driver_signature_date')->nullable();
+            $table->string('admin_signature')->nullable();
+            $table->string('license_image_front')->nullable();
+            $table->string('license_image_back')->nullable();
+
+            // Booking details
+            $table->string('pickup');
+            $table->dateTime('pickup_time')->nullable();
+            $table->string('pickup_mileage')->nullable();
+            $table->string('pickup_fuel_level')->nullable();
+
+            $table->string('dropoff');
+            $table->dateTime('dropoff_time')->nullable();
+            $table->string('dropoff_mileage')->nullable();
+            $table->string('dropoff_fuel_level')->nullable();
+
+            $table->string('return')->nullable();
+            $table->string('returned_time')->nullable();
+            $table->string('returned_mileage')->nullable();
+            $table->string('returned_fuel_level')->nullable();
+
+            $table->string('body_damage_left')->nullable();
+            $table->boolean('body_damage_left_none')->nullable();
+            $table->string('body_damage_right')->nullable();
+            $table->boolean('body_damage_right_none')->nullable();
+            $table->string('body_damage_front')->nullable();
+            $table->boolean('body_damage_front_none')->nullable();
+            $table->string('body_damage_back')->nullable();
+            $table->boolean('body_damage_back_none')->nullable();
+
+            $table->string('allowed_vehicle_mileage')->nullable();
+            $table->string('rate')->nullable();
+            $table->string('extra_charge_km')->nullable();
+            $table->string('insurance_premium')->nullable();
+            $table->string('rental')->nullable();
+            $table->string('extra_mileage')->nullable();
+            $table->string('damage_liablity_reduction')->nullable();
+            $table->string('bond_depost')->nullable();
+            $table->string('card_fee')->nullable();
+            $table->string('others')->nullable();
+            $table->string('total')->nullable();
+
+            // Checklist
+            $table->boolean('reverse_camera')->nullable();
+            $table->boolean('cargo_barrier')->nullable();
+            $table->boolean('fuel_cap')->nullable();
+            $table->boolean('rim_cups')->nullable();
+
+            $table->timestamps();
         });
     }
 

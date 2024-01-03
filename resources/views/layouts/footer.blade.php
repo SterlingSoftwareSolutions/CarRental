@@ -25,8 +25,8 @@
                 </div>
                 <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6">
                     <div>
-                        <h2 class="mb-6 text-lg font-semibold text-[#307449] uppercase dark:text-white">Quick Links</h2>
-                        <ul class="font-medium text-white dark:text-gray-400">
+                        <h2 class="mb-6 text-lg font-semibold text-white uppercase">Quick Links</h2>
+                        <ul class="font-medium text-white">
                             <li class="mb-4">
                                 <a href="{{route('home')}}" class="hover:underline">Home</a>
                             </li>
@@ -42,8 +42,8 @@
                         </ul>
                     </div>
                     <div>
-                        <h2 class="mb-6 text-lg font-semibold text-[#307449] uppercase dark:text-white">Find Us</h2>
-                        <ul class="justify-center font-medium text-white dark:text-gray-400">
+                        <h2 class="mb-6 text-lg font-semibold text-white uppercase">Find Us</h2>
+                        <ul class="justify-center font-medium text-white">
                             <li class="flex mb-4">
                                 <a href="https://www.google.com/maps/@-26.7738869,134.7806741,12.75z?entry=ttu" class="flex hover:underline "><img class="w-5 h-5" src="{{ URL('images/location.png')}}">&nbsp; 5Th Floor, AH Building Melbourne, Australia</a>
                             </li>
@@ -60,7 +60,7 @@
             </div>
             <div class="flex items-center justify-center">
                 <div class="flex-1">
-                    <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+                    <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
                 </div>
                 <div class="mx-3">
                     <a href="#!" role="button">
@@ -92,11 +92,11 @@
     </a>
 </div>
 <div class="flex-1">
-    <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+    <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
 </div>
 </div>
 
-<div class="text-sm text-center text-white sm:text-center dark:text-gray-400 sm:flex sm:justify-center">
+<div class="text-sm text-center text-white sm:text-center sm:flex sm:justify-center">
     <span>© Copyright 2023 <a href="" class="hover:underline">by Automobex Car Rental</a></span>
 </div>
 

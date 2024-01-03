@@ -83,5 +83,5 @@
     </tbody>
 </table>
 @else
-<div class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">No Invoices Found</div>
+<div class="px-6 py-4 text-gray-500 whitespace-nowrap">No Invoices Found.</div>
 @endif
