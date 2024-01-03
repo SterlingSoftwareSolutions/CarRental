@@ -8,7 +8,7 @@ $user = Auth::user();
     <h1 class="text-2xl text-[#307449] mt-7">Hi, {{$user->first_name}} {{$user->last_name}}!</h1>
     <!-- BOOKING HISTORY -->
     <h1 class="font-semibold text-lg text-[#707070] mt-4">Your Booking History</h1>
-    <div class="w-full h-[200px] overflow-auto flex flex-col justify-center items-center border">            
+    <div class="w-full min-h-[200px] overflow-auto flex flex-col justify-center items-center border">            
         @if(count($user->bookings) > 0)
             <x-bookings :bookings="$user->bookings"/>
         @else
@@ -19,7 +19,7 @@ $user = Auth::user();
 
     <!-- INVOICES -->
     <h1 class="font-semibold text-lg text-[#707070] mt-4">Your Invoices</h1>
-    <div class="w-full h-[200px] overflow-auto flex flex-col justify-center items-center border">            
+    <div class="w-full min-h-[200px] overflow-auto flex flex-col justify-center items-center border">            
         <x-invoices :invoices="$user->invoices"/>
     </div>
 </div>

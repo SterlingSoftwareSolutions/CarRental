@@ -78,10 +78,10 @@ class CreateBookingController extends Controller
             'customer_license_expiry_year' => 'required',
             'customer_license_expiry_month' => 'required',
             'customer_license_expiry_date' => 'required',
-            'addtional_driver_name' => 'nullable',
-            'addtional_driver_mobile' => 'nullable',
-            'addtional_driver_address_line_1' => 'nullable',
-            'addtional_driver_address_line_2' => 'nullable',
+            'additional_driver_name' => 'nullable',
+            'additional_driver_mobile' => 'nullable',
+            'additional_driver_address_line_1' => 'nullable',
+            'additional_driver_address_line_2' => 'nullable',
             'customer_signature' => 'required|image|max:2048',
             'customer_signature_name' => 'required',
             'customer_signature_date' => 'required',
@@ -92,21 +92,20 @@ class CreateBookingController extends Controller
             'license_image_back' => 'required|image|max:4096',
         ]);
 
-        // Auth::user()->update([
-        //     "country" => $request->country,
-        //     "first_name" => $request->first_name,
-        //     "last_name" => $request->last_name,
-        //     "mobile" => $request->mobile,
-        //     "email" => $request->email,
-        //     "Address_1" => $request->Address_1,
-        //     "Address_2" => $request->Address_2,
-        //     "city" => $request->city,
-        //     "zip" => $request->zip,
-        //     "driving_license" => $request->driving_license,
-        //     "driving_license_expire_year" => $request->customer_license_expiry_year,
-        //     "driving_license_expire_month" => $request->customer_license_expiry_month,
-        //     "driving_license_expire_date" => $request->customer_license_expiry_date,
-        // ]);
+        $names = explode(' ', $request->customer_name);
+
+        Auth::user()->update([
+            "first_name" => $names[0],
+            "last_name" => end($names),
+            "mobile" => $request->customer_phone,
+            "email" => $request->customer_email,
+            "Address_1" => $request->customer_address_line_1,
+            "Address_2" => $request->customer_address_line_2,
+            "driving_license" => $request->customer_license,
+            "driving_license_expire_year" => $request->customer_license_expiry_year,
+            "driving_license_expire_month" => $request->customer_license_expiry_month,
+            "driving_license_expire_date" => $request->customer_license_expiry_date,
+        ]);
 
         // Save files and store the paths
         $validated['customer_signature'] = $request->customer_signature->store('signatures');
@@ -161,7 +160,7 @@ class CreateBookingController extends Controller
         }
 
         // if agreement is not already completed, redirect to agreement
-        if($booking->agreement == null){
+        if(!$booking->agreed){
             return redirect()->route('bookings.agree', compact('booking'));
         }
 
@@ -171,19 +170,6 @@ class CreateBookingController extends Controller
         }
 
         $request->validate([
-            "country" => "required",
-            "first_name" => "required",
-            "last_name" => "required",
-            "mobile" => "required",
-            "email" => "required",
-            "Address_1" => "required",
-            "Address_2" => "required",
-            "city" => "required",
-            "zip" => "required",
-            "driving_license" => "required",
-            "driving_license_expire_year" => "required",
-            "driving_license_expire_month" => "required",
-            "driving_license_expire_date" => "required",
             "payment_method" => "required"
         ]);
 

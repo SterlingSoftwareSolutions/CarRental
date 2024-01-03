@@ -25,17 +25,26 @@ return new class extends Migration
             $table->string('customer_name')->nullable();
             $table->string('customer_phone')->nullable();
             $table->string('customer_email')->nullable();
+            $table->string('customer_dob')->nullable();
             $table->string('customer_address_line_1')->nullable();
             $table->string('customer_address_line_2')->nullable();
-            $table->string('customer_dob')->nullable();
+
             $table->string('customer_license')->nullable();
             $table->string('customer_license_expiry_year')->nullable();
             $table->string('customer_license_expiry_month')->nullable();
             $table->string('customer_license_expiry_date')->nullable();
-            $table->string('addtional_driver_name')->nullable();
-            $table->string('addtional_driver_mobile')->nullable();
-            $table->string('addtional_driver_address_line_1')->nullable();
-            $table->string('addtional_driver_address_line_2')->nullable();
+
+            // Additional driver details
+            $table->string('additional_driver_name')->nullable();
+            $table->string('additional_driver_mobile')->nullable();
+            $table->string('additional_driver_address_line_1')->nullable();
+            $table->string('additional_driver_address_line_2')->nullable();
+
+            // License images
+            $table->string('license_image_front')->nullable();
+            $table->string('license_image_back')->nullable();
+
+            // Signatures
             $table->string('customer_signature')->nullable();
             $table->string('customer_signature_name')->nullable();
             $table->string('customer_signature_date')->nullable();
@@ -43,8 +52,6 @@ return new class extends Migration
             $table->string('driver_signature_name')->nullable();
             $table->string('driver_signature_date')->nullable();
             $table->string('admin_signature')->nullable();
-            $table->string('license_image_front')->nullable();
-            $table->string('license_image_back')->nullable();
 
             // Booking details
             $table->string('pickup');
@@ -58,15 +65,17 @@ return new class extends Migration
             $table->string('dropoff_fuel_level')->nullable();
 
             $table->string('return')->nullable();
-            $table->dateTime('returned_time')->nullable();
-            $table->string('returned_mileage')->nullable();
-            $table->string('returned_fuel_level')->nullable();
+            $table->dateTime('return_time')->nullable();
+            $table->string('return_mileage')->nullable();
+            $table->string('return_fuel_level')->nullable();
 
+            // Vehicle damage details
             $table->string('body_damage_left')->nullable();
             $table->string('body_damage_right')->nullable();
             $table->string('body_damage_front')->nullable();
             $table->string('body_damage_back')->nullable();
 
+            // Fees
             $table->string('allowed_vehicle_mileage')->nullable();
             $table->string('rate')->nullable();
             $table->string('extra_charge_km')->nullable();

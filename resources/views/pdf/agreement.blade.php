@@ -49,11 +49,11 @@
 		<div>
 			<h3 style="margin-top: 30px;"><b>ADDITIONAL DRIVER DETAILS</b></h3>
 			<p style="margin-bottom: 10px; margin-top: 0;">Please note that any additional drivers for this vehicle booking must be declared. If there are no additional drivers for this booking, please leave the questions blank.</p>
-			<label>Additional Driver: <input style="width: 100%;" name="addtional_driver_name" value="{{$agreement?->addtional_driver_name}}" type="text" readonly="readonly" /></label><br />
-			<label>Contact Number:<input style="width: 100%;" name="addtional_driver_mobile" value="{{$agreement?->addtional_driver_mobile}}" type="text" readonly="readonly" /></label><br />
+			<label>Additional Driver: <input style="width: 100%;" name="additional_driver_name" value="{{$agreement?->additional_driver_name}}" type="text" readonly="readonly" /></label><br />
+			<label>Contact Number:<input style="width: 100%;" name="additional_driver_mobile" value="{{$agreement?->additional_driver_mobile}}" type="text" readonly="readonly" /></label><br />
 			<label>Address:</label>
-			<input style="width: 100%;" name="addtional_driver_address_line_1" value="{{$agreement?->addtional_driver_address_line_1}}" type="text" readonly="readonly" />
-			<input style="width: 100%;" name="addtional_driver_address_line_2" value="{{$agreement?->addtional_driver_address_line_2}}" type="text" readonly="readonly" />
+			<input style="width: 100%;" name="additional_driver_address_line_1" value="{{$agreement?->additional_driver_address_line_1}}" type="text" readonly="readonly" />
+			<input style="width: 100%;" name="additional_driver_address_line_2" value="{{$agreement?->additional_driver_address_line_2}}" type="text" readonly="readonly" />
 		</div>
 
 		<div style="page-break-before: always;">
@@ -94,10 +94,10 @@
 						<tr>
 						<tr>
 							<td>Returned:</td>
-							<td><input name="returned_date" style="width: 20%;" type="text"></td>
-							<td><input name="returned_time" style="width: 20%;" type="text"></td>
-							<td><input name="returned_mileage" style="width: 20%;" type="text"></td>
-							<td><input name="returned_fuel_level" style="width: 20%;" type="text"></td>
+							<td><input name="return_date" style="width: 20%;" type="text"></td>
+							<td><input name="return_time" style="width: 20%;" type="text"></td>
+							<td><input name="return_mileage" style="width: 20%;" type="text"></td>
+							<td><input name="return_fuel_level" style="width: 20%;" type="text"></td>
 						</tr>
 						</tr>
 					</tbody>

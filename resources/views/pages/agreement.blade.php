@@ -137,15 +137,15 @@
 
                 <p class="flex justify-center mt-8">Additional Driver details</p>
                 <span class="flex justify-center font-light text-center mb-4">Please note that any additional drivers for this vehicle booking must be declared. If there are no additional drivers for this booking, please leave the questions blank</span>
-                <label>Additional Driver: <input class="w-full border-0 border-b" name="addtional_driver_name" value="{{old('addtional_driver_name')}}" type="text" /></label>
-                @error('addtional_driver_name')<span class="text-red-600">{{$message}}</span>@enderror
-                <label>Contact Number:<input class="w-full border-0 border-b" name="addtional_driver_mobile" value="{{old('addtional_driver_mobile')}}" type="text" /></label>
-                @error('addtional_driver_mobile')<span class="text-red-600">{{$message}}</span>@enderror
+                <label>Additional Driver: <input class="w-full border-0 border-b" name="additional_driver_name" value="{{old('additional_driver_name')}}" type="text" /></label>
+                @error('additional_driver_name')<span class="text-red-600">{{$message}}</span>@enderror
+                <label>Contact Number:<input class="w-full border-0 border-b" name="additional_driver_mobile" value="{{old('additional_driver_mobile')}}" type="text" /></label>
+                @error('additional_driver_mobile')<span class="text-red-600">{{$message}}</span>@enderror
                 <label>Address:
-                    <input class="w-full border-0 border-b" name="addtional_driver_address_line_1" value="{{old('addtional_driver_address_line_1')}}" type="text" />
-                    @error('addtional_driver_address_line_1')<span class="text-red-600">{{$message}}</span>@enderror
-                    <input class="w-full border-0 border-b" name="addtional_driver_address_line_2" value="{{old('addtional_driver_address_line_2')}}" type="text" />
-                    @error('addtional_driver_address_line_2')<span class="text-red-600">{{$message}}</span>@enderror
+                    <input class="w-full border-0 border-b" name="additional_driver_address_line_1" value="{{old('additional_driver_address_line_1')}}" type="text" />
+                    @error('additional_driver_address_line_1')<span class="text-red-600">{{$message}}</span>@enderror
+                    <input class="w-full border-0 border-b" name="additional_driver_address_line_2" value="{{old('additional_driver_address_line_2')}}" type="text" />
+                    @error('additional_driver_address_line_2')<span class="text-red-600">{{$message}}</span>@enderror
                 </label>
             </div>
 
