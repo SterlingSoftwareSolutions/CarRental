@@ -164,6 +164,8 @@
                     @else
                         <button class="px-3 py-2 text-center text-white bg-gray-300 rounded-full" disabled>Pay</button>
                     @endif
+                @elseif($booking->agreed)
+                    <button class="px-3 py-2 text-center text-white bg-gray-300 rounded-full" disabled>Pay</button>
                 @else
                     <a href="{{ route('bookings.agree', compact('booking')) }}" class="px-3 py-2 text-center text-white bg-yellow-500 rounded-full">Agree</a>
                 @endif
@@ -187,7 +189,7 @@
 
                     {{-- REVIEW BUTTON --}}
                     @if($booking['approval'] === 'Pending')
-                        <a @if($booking->agreement != null) href="/admin/bookings/{{ $booking['id'] }}/review" @endif class="px-3 py-2 text-center text-white @if($booking->agreement != null) bg-green-500 @else bg-gray-300 @endif rounded-full">Review</a>
+                        <a @if($booking->agreed) href="/admin/bookings/{{ $booking['id'] }}/review" @endif class="px-3 py-2 text-center text-white @if($booking->agreed) bg-green-500 @else bg-gray-300 @endif rounded-full">Review</a>
                     @endif
 
                     {{-- DELETE BUTTON --}}

@@ -123,12 +123,7 @@ class BookingsController extends Controller
             'admin_signature.required' => 'The Admin Signature field is required.',
         ]);
 
-
-        if($request->hasFile('agreement')){
-            Storage::delete($booking->agreement);
-        }
-
-        $booking->agreement->update([
+        $booking->update([
             'admin_signature' => $request->hasFile('admin_signature') ? $request->admin_signature->store('signatures') : null
         ]);
 

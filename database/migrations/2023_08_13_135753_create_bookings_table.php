@@ -17,8 +17,9 @@ return new class extends Migration
             $table->foreignId('vehicle_id');
 
             // Status
-            $table->string('approval')->default('Pending');
+            $table->string('approval')->default('pending');
             $table->string('status');
+            $table->boolean('agreed')->default(false);
 
             // Customer details
             $table->string('customer_name')->nullable();
@@ -57,18 +58,14 @@ return new class extends Migration
             $table->string('dropoff_fuel_level')->nullable();
 
             $table->string('return')->nullable();
-            $table->string('returned_time')->nullable();
+            $table->dateTime('returned_time')->nullable();
             $table->string('returned_mileage')->nullable();
             $table->string('returned_fuel_level')->nullable();
 
             $table->string('body_damage_left')->nullable();
-            $table->boolean('body_damage_left_none')->nullable();
             $table->string('body_damage_right')->nullable();
-            $table->boolean('body_damage_right_none')->nullable();
             $table->string('body_damage_front')->nullable();
-            $table->boolean('body_damage_front_none')->nullable();
             $table->string('body_damage_back')->nullable();
-            $table->boolean('body_damage_back_none')->nullable();
 
             $table->string('allowed_vehicle_mileage')->nullable();
             $table->string('rate')->nullable();

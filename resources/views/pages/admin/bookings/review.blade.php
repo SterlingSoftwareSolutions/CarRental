@@ -24,54 +24,54 @@ $statuses = [
                 <form action="/admin/bookings/{{$booking->id}}/review" enctype="multipart/form-data" method="post" id="review_form">
                     @csrf
                     <div>
-                        @if($booking->agreement)
+                        @if($booking->agreed)
                             <p class="flex justify-center text-xl font-bold">Customer details</p>
                             <hr class="mt-4 mb-6 border-green-900">
                             <label class="font-bold">Customer/Company Name:</label>
-                            <p class="mb-4">{{$booking->agreement->customer_name }}</p>
+                            <p class="mb-4">{{$booking->customer_name }}</p>
                             <label class="font-bold">Phone:</label>
-                            <p class="mb-4">{{$booking->agreement->customer_phone }}</p>
+                            <p class="mb-4">{{$booking->customer_phone }}</p>
                             <label class="font-bold">Email:</label>
-                            <p class="mb-4">{{$booking->agreement->customer_email }}</p>
+                            <p class="mb-4">{{$booking->customer_email }}</p>
                             <label class="font-bold">Address: </label>
-                            <p class="mb-4">{{$booking->agreement->customer_address_line_1 }}</p>
-                            <p class="mb-4">{{$booking->agreement->customer_address_line_2 }}</p>
+                            <p class="mb-4">{{$booking->customer_address_line_1 }}</p>
+                            <p class="mb-4">{{$booking->customer_address_line_2 }}</p>
                             <label class="font-bold">DOB:</label>
-                            <p class="mb-4">{{$booking->agreement->customer_dob}}"</p>
-                            <label class="font-bold">License No.:</label> <p class="mb-4">{{$booking->agreement->customer_license }}</p></label>
+                            <p class="mb-4">{{$booking->customer_dob}}"</p>
+                            <label class="font-bold">License No.:</label> <p class="mb-4">{{$booking->customer_license }}</p></label>
                             <div class="flex gap-4">
                                 <div class="w-1/3">
                                     <label class="font-bold">Expiry Year: </label>
-                                    <p class="mb-4">{{$booking->agreement->customer_license_expiry_year}}</p>
+                                    <p class="mb-4">{{$booking->customer_license_expiry_year}}</p>
                                 </div>
                                 <div class="w-1/3">
                                     <label class="font-bold">Expiry Month: </label>
-                                    <p class="mb-4">{{$booking->agreement->customer_license_expiry_month}}</p>
+                                    <p class="mb-4">{{$booking->customer_license_expiry_month}}</p>
                                 </div>
                                 <div class="w-1/3">
                                     <label class="font-bold">Expiry Date: </label>
-                                    <p class="mb-4">{{$booking->agreement->customer_license_expiry_date}}</p>
+                                    <p class="mb-4">{{$booking->customer_license_expiry_date}}</p>
                                 </div>
                             </div>
                             <p class="flex justify-center text-xl font-bold mt-12">Additional Driver details</p>
                             <hr class="mt-4 mb-6 border-green-900">
                             <label class="font-bold">Additional Driver: </label>
-                            <p class="mb-4">{{$booking->agreement->addtional_driver_name}}"</p>
+                            <p class="mb-4">{{$booking->addtional_driver_name}}"</p>
                             <label class="font-bold">Contact Number: </label>
-                            <p class="mb-4">{{$booking->agreement->addtional_driver_mobile}}"</p>
+                            <p class="mb-4">{{$booking->addtional_driver_mobile}}"</p>
                             <label class="font-bold">Address: </label>
-                            <p class="mb-4">{{$booking->agreement->addtional_driver_address_line_1}}"</p>
-                            <p class="mb-4">{{$booking->agreement->addtional_driver_address_line_2}}"</p>
+                            <p class="mb-4">{{$booking->addtional_driver_address_line_1}}"</p>
+                            <p class="mb-4">{{$booking->addtional_driver_address_line_2}}"</p>
                             <p class="flex justify-center text-xl font-bold mt-12">License Images</p>
                             <hr class="mt-4 mb-6 border-green-900">
                             <div class="flex mt-4 gap-4">
                                 <div class="w-1/2">
                                     <label class="font-bold">Front</label>
-                                    <img src="@if($booking->agreement->license_image_front)data:image/png;base64,{{base64_encode(file_get_contents(storage_path( 'app/' . $booking->agreement->license_image_front)))}} @else /images/blank.png @endif" class="rounded w-full object-cover border" alt="">
+                                    <img src="@if($booking->license_image_front)data:image/png;base64,{{base64_encode(file_get_contents(storage_path( 'app/' . $booking->license_image_front)))}} @else /images/blank.png @endif" class="rounded w-full object-cover border" alt="">
                                 </div>
                                 <div class="w-1/2">
                                     <label class="font-bold">Back</label>
-                                    <img src="@if($booking->agreement->license_image_back)data:image/png;base64,{{base64_encode(file_get_contents(storage_path( 'app/' . $booking->agreement->license_image_back)))}} @else /images/blank.png @endif" class="rounded w-full object-cover border" alt="">
+                                    <img src="@if($booking->license_image_back)data:image/png;base64,{{base64_encode(file_get_contents(storage_path( 'app/' . $booking->license_image_back)))}} @else /images/blank.png @endif" class="rounded w-full object-cover border" alt="">
                                 </div>
                             </div>
                         @else
@@ -83,15 +83,15 @@ $statuses = [
                     <div class="flex mt-12 gap-4">
                         <div>
                             <h4 class="text-lg font-bold">Customer Signature</h4>
-                            <img src="@if($booking?->agreement?->customer_signature)data:image/png;base64,{{base64_encode(file_get_contents(storage_path( 'app/' . $booking->agreement->customer_signature)))}} @else /images/blank.png @endif" class="rounded w-[250px] h-[125px] object-cover border border-black" alt="">
-                            <p class="mt-1">Name: {{$booking?->agreement?->customer_signature_name}}</p>
-                            <p class="mt-1">Date: {{$booking?->agreement?->customer_signature_date}}</p>
+                            <img src="@if($booking?->customer_signature)data:image/png;base64,{{base64_encode(file_get_contents(storage_path( 'app/' . $booking->customer_signature)))}} @else /images/blank.png @endif" class="rounded w-[250px] h-[125px] object-cover border border-black" alt="">
+                            <p class="mt-1">Name: {{$booking?->customer_signature_name}}</p>
+                            <p class="mt-1">Date: {{$booking?->customer_signature_date}}</p>
                         </div>
                         <div>
                             <h4 class="text-lg font-bold">Driver Signature</h4>
-                            <img src="@if($booking->agreement?->driver_signature)data:image/png;base64,{{base64_encode(file_get_contents(storage_path( 'app/' . $booking->agreement->driver_signature)))}} @else /images/blank.png @endif" class="rounded w-[250px] h-[125px] object-cover border border-black" alt="">
-                            <p class="mt-1">Name: {{$booking?->agreement?->driver_signature_name}}</p>
-                            <p class="mt-1">Date: {{$booking?->agreement?->driver_signature_date}}</p>
+                            <img src="@if($booking?->driver_signature)data:image/png;base64,{{base64_encode(file_get_contents(storage_path( 'app/' . $booking->driver_signature)))}} @else /images/blank.png @endif" class="rounded w-[250px] h-[125px] object-cover border border-black" alt="">
+                            <p class="mt-1">Name: {{$booking?->driver_signature_name}}</p>
+                            <p class="mt-1">Date: {{$booking?->driver_signature_date}}</p>
                         </div>
 
                         <div class="ml-auto">

@@ -88,16 +88,16 @@
 							<td>Drop off:</td>
 							<td><input name="dropoff_date" value="{{\Carbon\Carbon::parse($booking['dropoff_time'])->format('Y-m-d') }}" style="width: 20%;" type="text"></td>
 							<td><input name="dropoff_time" value="{{ \Carbon\Carbon::parse($booking['dropoff_time'])->format('H:i') }}" style="width: 20%;" type="text"></td>
-							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
-							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
+							<td><input name="dropoff_mileage" style="width: 20%;" type="text"></td>
+							<td><input name="dropoff_fuel_level" style="width: 20%;" type="text"></td>
 						</tr>
 						<tr>
 						<tr>
 							<td>Returned:</td>
-							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
-							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
-							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
-							<td><input name="input_{{random_int(0, 9999)}}" style="width: 20%;" type="text"></td>
+							<td><input name="returned_date" style="width: 20%;" type="text"></td>
+							<td><input name="returned_time" style="width: 20%;" type="text"></td>
+							<td><input name="returned_mileage" style="width: 20%;" type="text"></td>
+							<td><input name="returned_fuel_level" style="width: 20%;" type="text"></td>
 						</tr>
 						</tr>
 					</tbody>
@@ -162,28 +162,28 @@
 							<tr>
 								<td style="width: 50%;">
 									<label>Number of days</label>
-									<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+									<input name="number_of_days" type="text" style="width: 50%;">
 								</td>
 								<td style="width: 50%;">
 									<label>Allowed vehicle mileage km/day/week</label>
-									<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+									<input name="allowed_vehicle_mileage" type="text" style="width: 50%;">
 								</td>
 							</tr>
 							<tr>
 								<td style="width: 50%;">
 									<label>Rate per day/week</label>
-									<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+									<input name="rate" type="text" style="width: 50%;">
 								</td>
 								<td style="width: 50%;">
 									<label>Charge for extra km</label>
-									<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+									<input name="extra_charge_km" type="text" style="width: 50%;">
 								</td>
 							</tr>
 							<tr>
 
 								<td style="width: 50%;">
 									<label>Insurance premium</label>
-									<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+									<input name="insurance_premium" type="text" style="width: 50%;">
 								</td>
 							</tr>
 						</tbody>
@@ -202,19 +202,19 @@
 				<tbody>
 					<tr>
 						<td>Reverse camera</td>
-						<td><input value="null" name="input_{{random_int(0, 9999)}}" type="checkbox"></td>
+						<td><input value="null" name="reverse_camera" type="checkbox"></td>
 					</tr>
 					<tr>
 						<td>Cargo Barrier</td>
-						<td><input value="null" name="input_{{random_int(0, 9999)}}" type="checkbox"></td>
+						<td><input value="null" name="cargo_barrier" type="checkbox"></td>
 					</tr>
 					<tr>
 						<td>Fuel Cap</td>
-						<td><input value="null" name="input_{{random_int(0, 9999)}}" type="checkbox"></td>
+						<td><input value="null" name="fuel_cap" type="checkbox"></td>
 					</tr>
 					<tr>
 						<td>Rim Cups</td>
-						<td><input value="null" name="input_{{random_int(0, 9999)}}" type="checkbox"></td>
+						<td><input value="null" name="rim_cups" type="checkbox"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -224,37 +224,37 @@
 				<tr>
 					<td>
 						<label>□ Rental</label>
-						<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+						<input name="rental" type="text" style="width: 50%;">
 					</td>
 					<td>
 						<label>□ Extra Mileage</label>
-						<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+						<input name="extra_mileage" type="text" style="width: 50%;">
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<label>□ Damage Liability Reduction</label>
-						<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+						<input name="damage_liablity_reduction" type="text" style="width: 50%;">
 					</td>
 					<td>
 						<label>□ Bond / Deposit</label>
-						<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+						<input name="bond_depost" type="text" style="width: 50%;">
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<label>□ Card fee</label>
-						<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+						<input name="card_fee" type="text" style="width: 50%;">
 					</td>
 					<td>
 						<label>□ Others</label>
-						<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+						<input name="others" type="text" style="width: 50%;">
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<label>Total</label>
-						<input name="input_{{random_int(0, 9999)}}" type="text" style="width: 50%;">
+						<input name="total" type="text" style="width: 50%;">
 					</td>
 				</tr>
 			</table>

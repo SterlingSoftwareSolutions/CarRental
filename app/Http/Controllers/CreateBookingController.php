@@ -7,6 +7,7 @@ use App\Models\Country;
 use App\Models\Transaction;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Stripe\PaymentMethod;
 use Stripe\Stripe;
 
@@ -54,7 +55,7 @@ class CreateBookingController extends Controller
     public function agreement_form(Bookings $booking)
     {
         // if agreement is already signed, redirect to payment
-        if($booking->agreement != null){
+        if($booking->agreed){
             return redirect()->route('bookings.pay', compact('booking'));
         }
 
@@ -91,14 +92,30 @@ class CreateBookingController extends Controller
             'license_image_back' => 'required|image|max:4096',
         ]);
 
+        // Auth::user()->update([
+        //     "country" => $request->country,
+        //     "first_name" => $request->first_name,
+        //     "last_name" => $request->last_name,
+        //     "mobile" => $request->mobile,
+        //     "email" => $request->email,
+        //     "Address_1" => $request->Address_1,
+        //     "Address_2" => $request->Address_2,
+        //     "city" => $request->city,
+        //     "zip" => $request->zip,
+        //     "driving_license" => $request->driving_license,
+        //     "driving_license_expire_year" => $request->customer_license_expiry_year,
+        //     "driving_license_expire_month" => $request->customer_license_expiry_month,
+        //     "driving_license_expire_date" => $request->customer_license_expiry_date,
+        // ]);
+
         // Save files and store the paths
         $validated['customer_signature'] = $request->customer_signature->store('signatures');
         $validated['driver_signature'] = $request->driver_signature->store('signatures');
         $validated['license_image_front'] = $request->license_image_front->store('licenses');
         $validated['license_image_back'] = $request->license_image_back->store('licenses');
+        $validated['agreed'] = true;
 
-        $booking->agreement()->updateOrCreate(['booking_id' => $booking->id], $validated);
-
+        $booking->update($validated);
         return redirect()->route('user.dashboard');
     }
 
@@ -112,7 +129,7 @@ class CreateBookingController extends Controller
         }
 
         // if agreement is not already signed, redirect to agreement
-        if($booking->agreement == null){
+        if(!$booking->agreed){
             return redirect()->route('bookings.agree', compact('booking'));
         }
 
@@ -176,22 +193,6 @@ class CreateBookingController extends Controller
         $user = $request->user();
         $user->createOrGetStripeCustomer();
         $user->addPaymentMethod($paymentMethodObject);
-
-        $user->update([
-            "country" => $request->country,
-            "first_name" => $request->first_name,
-            "last_name" => $request->last_name,
-            "mobile" => $request->mobile,
-            "email" => $request->email,
-            "Address_1" => $request->Address_1,
-            "Address_2" => $request->Address_2,
-            "city" => $request->city,
-            "zip" => $request->zip,
-            "driving_license" => $request->driving_license,
-            "driving_license_expire_year" => $request->driving_license_expire_year,
-            "driving_license_expire_month" => $request->driving_license_expire_month,
-            "driving_license_expire_date" => $request->driving_license_expire_date,
-        ]);
 
         $pickup_time = new DateTime($booking->pickup_time);
         $dropoff_time = new DateTime($booking->dropoff_time);

@@ -11,21 +11,7 @@ class Bookings extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'pickup',
-        'dropoff',
-        'pickup_time',
-        'dropoff_time',
-        'returned_on',
-        'vehicle_id',
-        'approval',
-        'status',
-        'user_id',
-        'agreement',
-        'customer_signature',
-        'driver_signature',
-        'admin_signature'
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be cast.
@@ -35,7 +21,7 @@ class Bookings extends Model
     protected $casts = [
         'pickup_time' => 'datetime',
         'dropoff_time' => 'datetime',
-        'returned_on' => 'datetime',
+        'returned_time' => 'datetime',
     ];
 
     public function duration(){
@@ -82,10 +68,5 @@ class Bookings extends Model
     public function surcharges()
     {
         return $this->hasMany(Surcharge::class, 'booking_id');
-    }
-
-    public function agreement()
-    {
-        return $this->HasOne(Agreement::class, 'booking_id');
     }
 }

@@ -14,8 +14,9 @@ body {
 .nav {
     height: 6rem;
     width: 100vw;
-    background-color: #13141888;
+    background-color: #13141866;
     display: flex;
+    backdrop-filter: blur(3px);
     position: fixed;
     z-index: 10;
 }

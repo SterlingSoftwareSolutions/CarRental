@@ -16,7 +16,8 @@
 		<li><a class="text-white font-semibold hover:text-[#307449]" href="{{route('contact')}}">CONTACT US</a></li>
 		@if(Auth::check())
 		<li>
-			<div x-data="{dropdownMenu: false}" class="relative"> <!-- Dropdown toggle button --> <img src="@if(isset(Auth::user()->images[0])){{ Storage::url(Auth::user()->images[0]->file_path) }}@else
+			<div x-data="{dropdownMenu: false}" class="relative"> 
+				<!-- Dropdown toggle button --> <img src="@if(isset(Auth::user()->images[0])){{ Storage::url(Auth::user()->images[0]->file_path) }}@else
 					/images/avatar.png @endif" class="object-cover w-12 h-12 rounded-full cursor-pointer" alt="Avatar"
 					@click="dropdownMenu=! dropdownMenu" />
 				<!-- Dropdown list -->
