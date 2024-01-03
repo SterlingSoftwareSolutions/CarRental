@@ -19,7 +19,6 @@
     <!-- section one -->
     <div class="flex flex-wrap h-full md:max-h-full md:justify-center md:items-start">
         <div class="md:w-full lg:w-2/6">
-
             <!-- image carosol -->
             <div class="border-2 md:mt-[100px] mt-28 md:p-0 p-4 justify-between">
                 <div class="mySlides">
@@ -138,13 +137,10 @@
                 </div>
             </div>
             <!-- end vehicle description section -->
-
         </div>
-
         <div class="grid w-full grid-flow-row mt-0 md:p-2 md:mt-24 md:w-full lg:w-2/6">
-
             <!-- pickup foam -->
-            <div class="bg-[#F8FFF2] grid md:p-8 p-4 md:-mt-8">
+            <div class="bg-[#F8FFF2] grid md:p-8 p-4">
                 <h1 class="text-[#317256] font-semibold text-xl">{{ $vehicle['year']}} {{ $vehicle['make']}} {{
                     $vehicle['model']}} {{ $vehicle['body_type']}}</h1>
                 <p class="mt-2 font-semibold text-[#707070] whitespace-normal">{{ $vehicle['short_Description']}}</p>
@@ -164,48 +160,30 @@
                     <!-- Pickup Location  -->
                     <div>
                         <p class="mt-2 font-semibold text-[#707070]">Pick-up Location</p>
-                        @auth
                             <select class="w-full border-none rounded-md shadow-md" name="pickup" id="pickup">
                                 <option value="Location One">Location One</option>
-                                <option value="Location Two">Location two</option>
+                                <option value="Location Two">Location Two</option>
                                 <option value="Location Three">Location Three</option>
-                                <option value="Location Four">Location four</option>
+                                <option value="Location Four">Location Four</option>
                             </select>
-                        @else
-                            <select class="w-full border-none rounded-md shadow-md" name="pickup" id="pickup" disabled>
-                                <option value="Location One">Location One</option>
-                                <option value="Location Two">Location two</option>
-                                <option value="Location Three">Location Three</option>
-                                <option value="Location Four">Location four</option>
-                            </select>
-                        @endauth
                     </div>
 
                     <!-- Drop Off Location  -->
                     <div>
                         <p class="mt-2 font-semibold text-[#707070]">Drop-off Location</p>
-                        @auth
                             <select class="w-full border-none rounded-md shadow-md" name="dropoff" id="dropoff">
                                 <option value="Location One">Location One</option>
-                                <option value="Location Two">Location two</option>
+                                <option value="Location Two">Location Two</option>
                                 <option value="Location Three">Location Three</option>
-                                <option value="Location Four">Location four</option>
+                                <option value="Location Four">Location Four</option>
                             </select>
-                        @else
-                            <select class="w-full border-none rounded-md shadow-md" name="dropoff" id="dropoff" disabled>
-                                <option value="Location One">Location One</option>
-                                <option value="Location Two">Location two</option>
-                                <option value="Location Three">Location Three</option>
-                                <option value="Location Four">Location four</option>
-                            </select>
-                        @endauth
                     </div>
 
                     <p class="mt-2 font-semibold text-[#707070]">Pick-up Date & Time</p>
 
                     <div class="flex items-center justify-center w-full gap-4">
                         <div class="w-full -ml-14 md:ml-0">
-                            <input class="w-full border-none rounded-md shadow-md" type="datetime-local" id="pickup_time" min="{{today()}}" name="pickup_time">
+                            <input class="w-full border-none rounded-md shadow-md" type="datetime-local" id="pickup_time" min="{{today()->addDay()}}" name="pickup_time">
                         </div>
                     </div>
 
@@ -227,7 +205,7 @@
             <!-- end pickup form -->
 
             <!-- conatct number section -->
-            <div class="flex items-center justify-center mt-4">
+            <div class="flex items-center justify-center">
                 <div class="bg-[#317256] rounded text-center w-full p-4">
                     <h1 class="text-2xl font-semibold text-white">Call Us</h1>
                     <div class="flex items-center justify-center mt-3">
@@ -239,7 +217,6 @@
                 </div>
             </div>
             <!-- end conatct number section -->
-
         </div>
     </div>
     <!-- end section one -->
@@ -288,15 +265,14 @@
         // end single car view js
     </script>
     <script>
-        const pickupTime = document.getElementById('pickup_time');
-        const dropOffTime = document.getElementById('dropoff_time');
+        const pickupTimeElement = document.getElementById('pickup_time');
+        const dropOffTimeElement = document.getElementById('dropoff_time');
 
-        pickupTime.addEventListener('change', function() {
-            console.log("change");
-            dropOffTime.min = pickupTime.value;
+        pickupTimeElement.addEventListener('change', function() {
+          const pickupTime = new Date(pickupTimeElement.value);
+          pickupTime.setDate(pickupTime.getDate() + 1);
+          dropOffTimeElement.min = pickupTime.toISOString().slice(0, 16);
         });
     </script>
-
 </body>
-
 </html>
