@@ -21,6 +21,23 @@ return new class extends Migration
             $table->string('status');
             $table->boolean('agreed')->default(false);
 
+            // Booking details
+            $table->string('pickup');
+            $table->dateTime('pickup_time')->nullable();
+            $table->string('pickup_mileage')->nullable();
+            $table->string('pickup_fuel_level')->nullable();
+
+            $table->string('dropoff');
+            $table->dateTime('dropoff_time')->nullable();
+            $table->string('dropoff_mileage')->nullable();
+            $table->string('dropoff_fuel_level')->nullable();
+
+            $table->string('return')->nullable();
+            $table->dateTime('return_time')->nullable();
+            $table->string('return_mileage')->nullable();
+            $table->string('return_fuel_level')->nullable();
+
+
             // Customer details
             $table->string('customer_name')->nullable();
             $table->string('customer_phone')->nullable();
@@ -52,22 +69,6 @@ return new class extends Migration
             $table->string('driver_signature_name')->nullable();
             $table->string('driver_signature_date')->nullable();
             $table->string('admin_signature')->nullable();
-
-            // Booking details
-            $table->string('pickup');
-            $table->dateTime('pickup_time')->nullable();
-            $table->string('pickup_mileage')->nullable();
-            $table->string('pickup_fuel_level')->nullable();
-
-            $table->string('dropoff');
-            $table->dateTime('dropoff_time')->nullable();
-            $table->string('dropoff_mileage')->nullable();
-            $table->string('dropoff_fuel_level')->nullable();
-
-            $table->string('return')->nullable();
-            $table->dateTime('return_time')->nullable();
-            $table->string('return_mileage')->nullable();
-            $table->string('return_fuel_level')->nullable();
 
             // Vehicle damage details
             $table->string('body_damage_left')->nullable();

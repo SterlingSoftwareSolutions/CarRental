@@ -85,7 +85,9 @@
                 <br><br>
                 15. In case of an accident, and it is the customer’s fault, the Insurance excess amount of $2,000.00 must be paid by the customer. Unauthorized drivers will not be covered by our insurance. For customers under 25yrs, an age excess of $850.00 will be added on top of the standard excess. Insurance will not cover overhead, under body, tyre, windscreen and water damages to the vehicle.
                 <br><br>
-                16. In case of a total write-off caused by the driver, the driver is liable to pay the insurance premiums for the remainder of the year. 17. If the rental and the insurance payment have not made in advance at the time of an accident, the insurance may not cover the damages and the customer is liable for all the damages.
+                16. In case of a total write-off caused by the driver, the driver is liable to pay the insurance premiums for the remainder of the year.
+                <br><br>
+                17. If the rental and the insurance payment have not made in advance at the time of an accident, the insurance may not cover the damages and the customer is liable for all the damages.
                 <br><br>
                 18. Customer is fully responsible for the toll way charges or any other infringements they get during the rental period. Automobiles Unlimited will have to surrender the customer’s information if the relevant authorities required.
                 <br><br>
