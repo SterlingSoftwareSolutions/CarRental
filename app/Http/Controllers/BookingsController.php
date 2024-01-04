@@ -9,9 +9,7 @@ use App\Models\Invoice;
 use App\Models\Bookings;
 use App\Models\Surcharge;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateBookingsRequest;
-use Illuminate\Support\Facades\Storage;
 
 class BookingsController extends Controller
 {
@@ -139,25 +137,99 @@ class BookingsController extends Controller
     public function update(UpdateBookingsRequest $request, Bookings $booking)
     {
         $request->validate([
-          "pickup" => "required",
-          "pickup_time" => "required",
-          "dropoff" => "required",
-          "dropoff_time" => "required",
-          "status" => "required",
-          "approval" => "required",
-          "returned_on" => "nullable",
+            "status" => 'required',
+            "approval" => 'required',
+            "pickup" => 'required',
+            "pickup_time" => 'required',
+            "pickup_mileage" => 'nullable',
+            "pickup_fuel_level" => 'nullable',
+            "dropoff" => 'required',
+            "dropoff_time" => 'required',
+            "dropoff_mileage" => 'nullable',
+            "dropoff_fuel_level" => 'nullable',
+            "return" => 'nullable',
+            "return_time" => 'nullable',
+            "return_mileage" => 'nullable',
+            "return_fuel_level" => 'nullable',
+            "customer_name" => 'nullable',
+            "customer_phone" => 'nullable',
+            "customer_email" => 'nullable',
+            "customer_dob" => 'nullable',
+            "customer_address_line_1" => 'nullable',
+            "customer_address_line_2" => 'nullable',
+            "customer_license" => 'nullable',
+            "customer_license_expiry_year" => 'nullable',
+            "customer_license_expiry_month" => 'nullable',
+            "customer_license_expiry_date" => 'nullable',
+            "additional_driver_name" => 'nullable',
+            "additional_driver_mobile" => 'nullable',
+            "additional_driver_address_line_1" => 'nullable',
+            "additional_driver_address_line_2" => 'nullable',
+            "body_damage_left" => 'nullable',
+            "body_damage_right" => 'nullable',
+            "body_damage_front" => 'nullable',
+            "body_damage_back" => 'nullable',
+            "allowed_vehicle_mileage" => 'nullable',
+            "rate" => 'nullable',
+            "insurance_premium" => 'nullable',
+            "rental" => 'nullable',
+            "extra_mileage" => 'nullable',
+            "damage_liablity_reduction" => 'nullable',
+            "card_fee" => 'nullable',
+            "others" => 'nullable',
+            "reverse_camera" => 'nullable',
+            "cargo_barrier" => 'nullable',
+            "fuel_cap" => 'nullable',
+            "rim_cups" => 'nullable'
         ]);
 
         $booking->update([
-          "pickup" => $request->pickup,
-          "pickup_time" => $request->pickup_time,
-          "dropoff" => $request->dropoff,
-          "dropoff_time" => $request->dropoff_time,
-          "status" => $request->status,
-          "approval" => $request->approval,
-          "returned_on" => $request->returned_on
+            "status" => $request->status ?? null,
+            "approval" => $request->approval ?? null,
+            "pickup" => $request->pickup ?? null,
+            "pickup_time" => $request->pickup_time ?? null,
+            "pickup_mileage" => $request->pickup_mileage ?? null,
+            "pickup_fuel_level" => $request->pickup_fuel_level ?? null,
+            "dropoff" => $request->dropoff ?? null,
+            "dropoff_time" => $request->dropoff_time ?? null,
+            "dropoff_mileage" => $request->dropoff_mileage ?? null,
+            "dropoff_fuel_level" => $request->dropoff_fuel_level ?? null,
+            "return" => $request->return ?? null,
+            "return_time" => $request->return_time ?? null,
+            "return_mileage" => $request->return_mileage ?? null,
+            "return_fuel_level" => $request->return_fuel_level ?? null,
+            "customer_name" => $request->customer_name ?? null,
+            "customer_phone" => $request->customer_phone ?? null,
+            "customer_email" => $request->customer_email ?? null,
+            "customer_dob" => $request->customer_dob ?? null,
+            "customer_address_line_1" => $request->customer_address_line_1 ?? null,
+            "customer_address_line_2" => $request->customer_address_line_2 ?? null,
+            "customer_license" => $request->customer_license ?? null,
+            "customer_license_expiry_year" => $request->customer_license_expiry_year ?? null,
+            "customer_license_expiry_month" => $request->customer_license_expiry_month ?? null,
+            "customer_license_expiry_date" => $request->customer_license_expiry_date ?? null,
+            "additional_driver_name" => $request->additional_driver_name ?? null,
+            "additional_driver_mobile" => $request->additional_driver_mobile ?? null,
+            "additional_driver_address_line_1" => $request->additional_driver_address_line_1 ?? null,
+            "additional_driver_address_line_2" => $request->additional_driver_address_line_2 ?? null,
+            "body_damage_left" => $request->body_damage_left ?? null,
+            "body_damage_right" => $request->body_damage_right ?? null,
+            "body_damage_front" => $request->body_damage_front ?? null,
+            "body_damage_back" => $request->body_damage_back ?? null,
+            "allowed_vehicle_mileage" => $request->allowed_vehicle_mileage ?? null,
+            "rate" => $request->rate ?? null,
+            "insurance_premium" => $request->insurance_premium ?? null,
+            "rental" => $request->rental ?? null,
+            "extra_mileage" => $request->extra_mileage ?? null,
+            "damage_liablity_reduction" => $request->damage_liablity_reduction ?? null,
+            "card_fee" => $request->card_fee ?? null,
+            "others" => $request->others ?? null,
+            "reverse_camera" => $request->reverse_camera ?? false,
+            "cargo_barrier" => $request->cargo_barrier ?? false,
+            "fuel_cap" => $request->fuel_cap ?? false,
+            "rim_cups" => $request->rim_cups ?? false
         ]);
-
+        dd($booking);
         return back()->with('message', 'Booking updated.');
     }
 

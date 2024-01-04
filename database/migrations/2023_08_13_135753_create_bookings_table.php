@@ -23,17 +23,17 @@ return new class extends Migration
 
             // Booking details
             $table->string('pickup');
-            $table->dateTime('pickup_time')->nullable();
+            $table->dateTimeTz('pickup_time')->nullable();
             $table->string('pickup_mileage')->nullable();
             $table->string('pickup_fuel_level')->nullable();
 
             $table->string('dropoff');
-            $table->dateTime('dropoff_time')->nullable();
+            $table->dateTimeTz('dropoff_time')->nullable();
             $table->string('dropoff_mileage')->nullable();
             $table->string('dropoff_fuel_level')->nullable();
 
             $table->string('return')->nullable();
-            $table->dateTime('return_time')->nullable();
+            $table->dateTimeTz('return_time')->nullable();
             $table->string('return_mileage')->nullable();
             $table->string('return_fuel_level')->nullable();
 
@@ -87,7 +87,6 @@ return new class extends Migration
             $table->string('bond_depost')->nullable();
             $table->string('card_fee')->nullable();
             $table->string('others')->nullable();
-            $table->string('total')->nullable();
 
             // Checklist
             $table->boolean('reverse_camera')->nullable();
