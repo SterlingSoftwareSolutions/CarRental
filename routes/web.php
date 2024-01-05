@@ -59,7 +59,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/bookings/create', [CreateBookingController::class, 'store'])->name('bookings.store');
 
     // Step 3 - Agree
-    Route::get('/bookings/{booking}/pdf', [CreateBookingController::class, 'agreement_pdf'])->name('bookings.pdf');
     Route::get('/bookings/{booking}/agree', [CreateBookingController::class, 'agreement_form'])->name('bookings.agree');
     Route::post('/bookings/{booking}/agree', [CreateBookingController::class, 'agree'])->name('bookings.agree_post');
 
@@ -85,6 +84,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/bookings', [BookingsController::class, 'index'])->name('bookings.all');
         Route::get('/bookings', [BookingsController::class, 'searchs'])->name('bookings.all');
         Route::get('/bookings/{booking}', [BookingsController::class, 'show'])->name('bookings.show');
+        Route::get('/bookings/{booking}/pdf', [BookingsController::class, 'show_pdf'])->name('bookings.pdf');
         Route::post('/bookings/{booking}/surcharge', [BookingsController::class, 'add_surcharge'])->name('bookings.surcharge');
         Route::post('/bookings/{booking}/return', [BookingsController::class, 'return'])->name('bookings.return');
         Route::post('/bookings/{booking}/return_confirm', [BookingsController::class, 'return_confirm'])->name('bookings.return_confirm');

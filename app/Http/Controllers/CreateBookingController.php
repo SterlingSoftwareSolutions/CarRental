@@ -40,15 +40,6 @@ class CreateBookingController extends Controller
         return redirect()->route('bookings.agree', compact('booking'));
     }
 
-    public function agreement_pdf(Bookings $booking)
-    {
-        $mpdf = new \Mpdf\Mpdf();
-        $mpdf->useActiveForms = true;
-        $html = view('pdf/agreement', ['booking' => $booking, 'agreement' => $booking?->agreement, 'vehicle' => $booking->vehicle])->render();
-        $mpdf->WriteHTML($html);
-        $mpdf->Output('agreement.pdf', 'I');
-    }
-
     /**
      * Show Agreement Form
      */

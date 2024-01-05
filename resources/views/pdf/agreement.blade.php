@@ -33,37 +33,37 @@
 	<div>
 		<div>
 			<h3 style="margin-top: 30px;"><b>CUSTOMER DETAILS</b></h3>
-			<label>Customer/Company Name: <input style="width: 100%;" name="customer_name" value="{{$agreement?->customer_name}}" type="text" readonly="readonly" /></label><br />
-			<label>Phone: <input style="width: 100%;" name="customer_phone" value="{{$agreement?->customer_phone}}" type="text" readonly="readonly" /></label><br />
-			<label>Email: <input style="width: 100%;" name="customer_email" value="{{$agreement?->customer_email}}" type="text" readonly="readonly" /></label><br />
+			<label>Customer/Company Name: <input style="width: 100%;" name="customer_name" value="{{$booking?->customer_name}}" type="text" /></label><br />
+			<label>Phone: <input style="width: 100%;" name="customer_phone" value="{{$booking?->customer_phone}}" type="text" /></label><br />
+			<label>Email: <input style="width: 100%;" name="customer_email" value="{{$booking?->customer_email}}" type="text" /></label><br />
 			<label>Address: </label>
-				<input style="width: 100%;" name="customer_address_line_1" value="{{$agreement?->customer_address_line_1}}" type="text" readonly="readonly" /><br />
-				<input style="width: 100%;" name="customer_address_line_2" value="{{$agreement?->customer_address_line_2}}" type="text" readonly="readonly" />
-			<label>License No.:</label><input style="width: 100%;" name="customer_license" value="{{$agreement?->customer_license}}" type="text" readonly="readonly" /><br />
+				<input style="width: 100%;" name="customer_address_line_1" value="{{$booking?->customer_address_line_1}}" type="text" /><br />
+				<input style="width: 100%;" name="customer_address_line_2" value="{{$booking?->customer_address_line_2}}" type="text" />
+			<label>License No.:</label><input style="width: 100%;" name="customer_license" value="{{$booking?->customer_license}}" type="text" /><br />
 			<label style="width: 100%;">Expiry Date:</label><br />
-				Year: <input style="width: 25%;" name="customer_license_expiry_year" value="{{$agreement?->customer_license_expiry_year}}" type="text" readonly="readonly" />
-				Month: <input style="width: 25%;" name="customer_license_expiry_month" value="{{$agreement?->customer_license_expiry_month}}" type="text" readonly="readonly" />
-				Date: <input style="width: 25%;" name="customer_license_expiry_date" value="{{$agreement?->customer_license_expiry_date}}" type="text" readonly="readonly" /><br/>
-			<label>DOB: <input style="width: 100%;" name="customer_dob" value="{{$agreement?->customer_dob}} "type="text" readonly="readonly" /></label><br />
+				Year: <input style="width: 25%;" name="customer_license_expiry_year" value="{{$booking?->customer_license_expiry_year}}" type="text" />
+				Month: <input style="width: 25%;" name="customer_license_expiry_month" value="{{$booking?->customer_license_expiry_month}}" type="text" />
+				Date: <input style="width: 25%;" name="customer_license_expiry_date" value="{{$booking?->customer_license_expiry_date}}" type="text" /><br/>
+			<label>DOB: <input style="width: 100%;" name="customer_dob" value="{{$booking?->customer_dob}} "type="text" /></label><br />
 		</div>
 		<div>
 			<h3 style="margin-top: 30px;"><b>ADDITIONAL DRIVER DETAILS</b></h3>
 			<p style="margin-bottom: 10px; margin-top: 0;">Please note that any additional drivers for this vehicle booking must be declared. If there are no additional drivers for this booking, please leave the questions blank.</p>
-			<label>Additional Driver: <input style="width: 100%;" name="additional_driver_name" value="{{$agreement?->additional_driver_name}}" type="text" readonly="readonly" /></label><br />
-			<label>Contact Number:<input style="width: 100%;" name="additional_driver_mobile" value="{{$agreement?->additional_driver_mobile}}" type="text" readonly="readonly" /></label><br />
+			<label>Additional Driver: <input style="width: 100%;" name="additional_driver_name" value="{{$booking?->additional_driver_name}}" type="text" /></label><br />
+			<label>Contact Number:<input style="width: 100%;" name="additional_driver_mobile" value="{{$booking?->additional_driver_mobile}}" type="text" /></label><br />
 			<label>Address:</label>
-			<input style="width: 100%;" name="additional_driver_address_line_1" value="{{$agreement?->additional_driver_address_line_1}}" type="text" readonly="readonly" />
-			<input style="width: 100%;" name="additional_driver_address_line_2" value="{{$agreement?->additional_driver_address_line_2}}" type="text" readonly="readonly" />
+			<input style="width: 100%;" name="additional_driver_address_line_1" value="{{$booking?->additional_driver_address_line_1}}" type="text" />
+			<input style="width: 100%;" name="additional_driver_address_line_2" value="{{$booking?->additional_driver_address_line_2}}" type="text" />
 		</div>
 
 		<div style="page-break-before: always;">
 			<h3 style="margin-top: 30px;"><b>VEHICLE DETAILS</b></h3>
 			<p style="margin-bottom: 10px; margin-top: 0;">To be filled out by admin</p>
 			<div>
-				<label>Registration No.: <input style="width: 100%;" name="vehicle_reg_no" value="{{$vehicle['reg_no']}} "type="text" readonly="readonly" /></label><br>
-				<label>Type: <input style="width: 100%;" name="vehicle_type" value="{{$vehicle['body_type']}} "type="text" readonly="readonly" /></label><br>
-				<label>Make: <input style="width: 100%;" name="vehicle_make" value="{{$vehicle['make']}} "type="text" readonly="readonly" /> </label><br>
-				<label>Model: <input style="width: 100%;" name="vehicle_model" value="{{$vehicle['model']}} "type="text" readonly="readonly" /> </label>
+				<label>Registration No.: <input style="width: 100%;" name="vehicle_reg_no" value="{{$vehicle['reg_no']}} "type="text" /></label><br>
+				<label>Type: <input style="width: 100%;" name="vehicle_type" value="{{$vehicle['body_type']}} "type="text" /></label><br>
+				<label>Make: <input style="width: 100%;" name="vehicle_make" value="{{$vehicle['make']}} "type="text" /> </label><br>
+				<label>Model: <input style="width: 100%;" name="vehicle_model" value="{{$vehicle['model']}} "type="text" /> </label>
 			</div>
 			<div>
 				<table>
@@ -79,25 +79,25 @@
 					<tbody>
 						<tr>
 							<td>Pick up:</td>
-							<td><input name="pickup_date" value="{{\Carbon\Carbon::parse($booking['pickup_time'])->format('Y-m-d') }}" style="width: 20%;" type="text"></td>
-							<td><input name="pickup_time" value="{{ \Carbon\Carbon::parse($booking['pickup_time'])->format('H:i') }}" style="width: 20%;" type="text"></td>
-							<td><input name="pickup_mileage" style="width: 20%;" type="text"></td>
-							<td><input name="pickup_fuel_level" style="width: 20%;" type="text"></td>
+							<td><input name="pickup_date" value="{{\Carbon\Carbon::parse($booking->pickup_time)->format('Y-m-d') }}" style="width: 20%;" type="text"></td>
+							<td><input name="pickup_time" value="{{ \Carbon\Carbon::parse($booking->pickup_time)->format('H:i') }}" style="width: 20%;" type="text"></td>
+							<td><input name="pickup_mileage" value="{{$booking->pickup_mileage}}" style="width: 20%;" type="text"></td>
+							<td><input name="pickup_fuel_level" value="{{$booking->pickup_fuel_level}}" style="width: 20%;" type="text"></td>
 						</tr>
 						<tr>
 							<td>Drop off:</td>
-							<td><input name="dropoff_date" value="{{\Carbon\Carbon::parse($booking['dropoff_time'])->format('Y-m-d') }}" style="width: 20%;" type="text"></td>
-							<td><input name="dropoff_time" value="{{ \Carbon\Carbon::parse($booking['dropoff_time'])->format('H:i') }}" style="width: 20%;" type="text"></td>
-							<td><input name="dropoff_mileage" style="width: 20%;" type="text"></td>
-							<td><input name="dropoff_fuel_level" style="width: 20%;" type="text"></td>
+							<td><input name="dropoff_date" value="{{\Carbon\Carbon::parse($booking->dropoff_time)->format('Y-m-d') }}" style="width: 20%;" type="text"></td>
+							<td><input name="dropoff_time" value="{{ \Carbon\Carbon::parse($booking->dropoff_time)->format('H:i') }}" style="width: 20%;" type="text"></td>
+							<td><input name="dropoff_mileage" value="{{$booking->pickup_mileage}}" style="width: 20%;" type="text"></td>
+							<td><input name="dropoff_fuel_level" value="{{$booking->dropoff_fuel_level}}" style="width: 20%;" type="text"></td>
 						</tr>
 						<tr>
 						<tr>
 							<td>Returned:</td>
-							<td><input name="return_date" style="width: 20%;" type="text"></td>
-							<td><input name="return_time" style="width: 20%;" type="text"></td>
-							<td><input name="return_mileage" style="width: 20%;" type="text"></td>
-							<td><input name="return_fuel_level" style="width: 20%;" type="text"></td>
+							<td><input name="return_date" value="{{\Carbon\Carbon::parse($booking->return_time)->format('Y-m-d') }}" style="width: 20%;" type="text"></td>
+							<td><input name="return_time" value="{{ \Carbon\Carbon::parse($booking->return_time)->format('H:i') }}" style="width: 20%;" type="text"></td>
+							<td><input name="return_mileage" value="{{$booking->pickup_mileage}}" style="width: 20%;" type="text"></td>
+							<td><input name="return_fuel_level" value="{{$booking->return_fuel_level}}" style="width: 20%;" type="text"></td>
 						</tr>
 						</tr>
 					</tbody>
@@ -115,8 +115,8 @@
 							<p style="width: 100%;">Side (Left)</p>
 						</td>
 						<td style="vertical-align: top;">
-							<textarea style="width: 100%" name="body_damage_left" rows="8">&nbsp;</textarea>
-							<p><input type="checkbox" name="body_damage_left_none" value="1"/> No visible damages</p>
+							<textarea style="width: 100%" name="body_damage_left" rows="8">{{$booking->body_damage_left}}&nbsp;</textarea>
+							<p><input type="checkbox" name="body_damage_left_none" value="body_damage_left" @if(!$booking->body_damage_left) checked="checked" @endif/> No visible damages</p>
 						</td>
 					</tr>
 					<tr>						
@@ -125,8 +125,8 @@
 							<p style="width: 100%;">Side (Right)</p>
 						</td>
 						<td style="vertical-align: top;">
-							<textarea style="width: 100%" name="body_damage_right" rows="8">&nbsp;</textarea>
-							<p><input type="checkbox" name="body_damage_right_none" value="1"/> No visible damages</p>
+							<textarea style="width: 100%" name="body_damage_right" rows="8">{{$booking->body_damage_right}}&nbsp;</textarea>
+							<p><input type="checkbox" name="body_damage_right_none" value="body_damage_right" @if(!$booking->body_damage_right) checked="checked" @endif/> No visible damages</p>
 						</td>
 					</tr>
 					<tr>						
@@ -135,8 +135,8 @@
 							<p style="width: 100%;">Front</p>
 						</td>
 						<td style="vertical-align: top;">
-							<textarea style="width: 100%" name="body_damage_front" rows="8">&nbsp;</textarea>
-							<p><input type="checkbox" name="body_damage_front_none" value="1"/> No visible damages</p>
+							<textarea style="width: 100%" name="body_damage_front" rows="8">{{$booking->body_damage_front}}&nbsp;</textarea>
+							<p><input type="checkbox" name="body_damage_front_none" value="body_damage_front" @if(!$booking->body_damage_front) checked="checked" @endif/> No visible damages</p>
 						</td>
 					</tr>
 					<tr>						
@@ -145,8 +145,8 @@
 							<p style="width: 100%;">Back</p>
 						</td>
 						<td style="vertical-align: top;">
-							<textarea style="width: 100%" name="body_damage_back" rows="8">&nbsp;</textarea>
-							<p><input type="checkbox" name="body_damage_back_none" value="1"/> No visible damages</p>
+							<textarea style="width: 100%" name="body_damage_back" rows="8">{{$booking->body_damage_back}}&nbsp;</textarea>
+							<p><input type="checkbox" name="body_damage_back_none" value="body_damage_back" @if(!$booking->body_damage_back) checked="checked" @endif/> No visible damages</p>
 						</td>
 					</tr>
 				</table>
@@ -162,28 +162,28 @@
 							<tr>
 								<td style="width: 50%;">
 									<label>Number of days</label>
-									<input name="number_of_days" type="text" style="width: 50%;">
+									<input name="number_of_days" value="{{$booking->pickup_time->diff($booking?->return_time)->days}}" type="text" style="width: 50%;">
 								</td>
 								<td style="width: 50%;">
 									<label>Allowed vehicle mileage km/day/week</label>
-									<input name="allowed_vehicle_mileage" type="text" style="width: 50%;">
+									<input name="allowed_vehicle_mileage" value="{{$booking->allowed_vehicle_mileage}}" type="text" style="width: 50%;">
 								</td>
 							</tr>
 							<tr>
 								<td style="width: 50%;">
 									<label>Rate per day/week</label>
-									<input name="rate" type="text" style="width: 50%;">
+									<input name="rate" value="{{$booking->rate}}" type="text" style="width: 50%;">
 								</td>
 								<td style="width: 50%;">
 									<label>Charge for extra km</label>
-									<input name="extra_charge_km" type="text" style="width: 50%;">
+									<input name="extra_charge_km" value="{{$booking->extra_charge_km}}" type="text" style="width: 50%;">
 								</td>
 							</tr>
 							<tr>
 
 								<td style="width: 50%;">
 									<label>Insurance premium</label>
-									<input name="insurance_premium" type="text" style="width: 50%;">
+									<input name="insurance_premium" value="{{$booking->insurance_premium}}" type="text" style="width: 50%;">
 								</td>
 							</tr>
 						</tbody>
@@ -202,19 +202,19 @@
 				<tbody>
 					<tr>
 						<td>Reverse camera</td>
-						<td><input value="null" name="reverse_camera" type="checkbox"></td>
+						<td><input name="reverse_camera" value="reverse_camera" type="checkbox" @if($booking->reverse_camera) checked="checked" @endif /></td>
 					</tr>
 					<tr>
 						<td>Cargo Barrier</td>
-						<td><input value="null" name="cargo_barrier" type="checkbox"></td>
+						<td><input name="cargo_barrier" value="cargo_barrier" type="checkbox" @if($booking->cargo_barrier) checked="checked" @endif /></td>
 					</tr>
 					<tr>
 						<td>Fuel Cap</td>
-						<td><input value="null" name="fuel_cap" type="checkbox"></td>
+						<td><input name="fuel_cap" value="fuel_cap" type="checkbox" @if($booking->fuel_cap) checked="checked" @endif /></td>
 					</tr>
 					<tr>
 						<td>Rim Cups</td>
-						<td><input value="null" name="rim_cups" type="checkbox"></td>
+						<td><input name="rim_cups" value="rim_cups" type="checkbox" @if($booking->rim_cups) checked="checked" @endif /></td>
 					</tr>
 				</tbody>
 			</table>
@@ -224,37 +224,47 @@
 				<tr>
 					<td>
 						<label>□ Rental</label>
-						<input name="rental" type="text" style="width: 50%;">
+						<input name="rental" type="text" style="width: 50%;" value="{{$booking->rental}}">
 					</td>
 					<td>
 						<label>□ Extra Mileage</label>
-						<input name="extra_mileage" type="text" style="width: 50%;">
+						<input name="extra_mileage" type="text" style="width: 50%;" value="{{$booking->extra_mileage}}">
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<label>□ Damage Liability Reduction</label>
-						<input name="damage_liablity_reduction" type="text" style="width: 50%;">
+						<input name="damage_liablity_reduction" type="text" style="width: 50%;" value="{{$booking->damage_liablity_reduction}}">
 					</td>
 					<td>
 						<label>□ Bond / Deposit</label>
-						<input name="bond_depost" type="text" style="width: 50%;">
+						<input name="bond_deposit" type="text" style="width: 50%;" value="{{$booking->bond_deposit}}">
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<label>□ Card fee</label>
-						<input name="card_fee" type="text" style="width: 50%;">
+						<input name="card_fee" type="text" style="width: 50%;" value="{{$booking->card_fee}}">
 					</td>
 					<td>
 						<label>□ Others</label>
-						<input name="others" type="text" style="width: 50%;">
+						<input name="others" type="text" style="width: 50%;" value="{{$booking->others}}">
 					</td>
 				</tr>
 				<tr>
+					@php
+						$total = (
+							$booking->rental +
+							$booking->extra_mileage +
+							$booking->damage_liablity_reduction +
+							$booking->bond_deposit +
+							$booking->card_fee +
+							$booking->others
+						);
+					@endphp
 					<td>
 						<label>Total</label>
-						<input name="total" type="text" style="width: 50%;">
+						<input name="total" type="text" value="{{$total}}" style="width: 50%;">
 					</td>
 				</tr>
 			</table>
@@ -296,7 +306,7 @@
 			13. In the instances where the customer intends to extend the rental period, customer must get prior
 			approval from Automobiles Unlimited. If the vehicle is
 			not returned at the time mentioned in the agreement, actions will be taken considering the has been stolen.
-			<br  /><br>
+			<br /><br>
 			14. It is customer’s responsibility to assure the safety of the vehicle. In case of any damage, accident to
 			the vehicle or a third party, during the rental period
 			the authorized drivers must inform all the details to Automobiles Unlimited and the police (if required) at

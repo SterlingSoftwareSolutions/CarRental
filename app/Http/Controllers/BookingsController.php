@@ -90,6 +90,16 @@ class BookingsController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     */
+    public function show_pdf(Bookings $booking)
+    {
+        $mpdf = new \Mpdf\Mpdf();
+        $html = view('pdf/agreement', ['booking' => $booking, 'agreement' => $booking?->agreement, 'vehicle' => $booking->vehicle])->render();
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('agreement.pdf', 'I');    }
+
+    /**
      * Show the form for editing the specified resource.
      */
     public function edit_booking(Bookings $booking)
