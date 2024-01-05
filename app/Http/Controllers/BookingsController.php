@@ -97,7 +97,7 @@ class BookingsController extends Controller
         $mpdf = new \Mpdf\Mpdf();
         $html = view('pdf/agreement', ['booking' => $booking, 'agreement' => $booking?->agreement, 'vehicle' => $booking->vehicle])->render();
         $mpdf->WriteHTML($html);
-        $mpdf->Output('agreement.pdf', 'I');    }
+        $mpdf->Output('booking.pdf', 'I');    }
 
     /**
      * Show the form for editing the specified resource.
@@ -243,6 +243,10 @@ class BookingsController extends Controller
             "fuel_cap" => $request->has('fuel_cap'),
             "rim_cups" => $request->has('rim_cups')
         ]);
+
+        if($request->has('download_pdf')){
+            return redirect()->route('bookings.pdf', ['booking' => $booking]);
+        }
 
         return back()->with('message', 'Booking updated.');
     }

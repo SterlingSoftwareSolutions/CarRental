@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Agreement</title>
+	<title>Booking</title>
 </head>
 
 <body style="font-family: sans-serif;">
@@ -255,7 +255,7 @@
 					@php
 						$total = (
 							$booking->rental +
-							$booking->extra_mileage +
+							($booking->extra_mileage * $booking->extra_charge_km) +
 							$booking->damage_liablity_reduction +
 							$booking->bond_deposit +
 							$booking->card_fee +
@@ -320,7 +320,7 @@
 			top of the standard excess. Insurance will
 			not cover overhead, under body, tyre, windscreen and water damages to the vehicle.<br /><br>
 			16. In case of a total write-off caused by the driver, the driver is liable to pay the insurance premiums
-			for the remainder of the year.
+			for the remainder of the year.<br /><br>
 			17. If the rental and the insurance payment have not made in advance at the time of an accident, the
 			insurance may not cover the damages and the
 			customer is liable for all the damages.<br /><br>
