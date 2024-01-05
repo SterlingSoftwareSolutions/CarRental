@@ -18,13 +18,13 @@
 
             <div class="m-2 p-4 overflow-auto bg-white rounded">
                 @if(session()->has('message'))
-                    <div class="p-4 m-4 text-green-800 bg-green-100 rounded">
+                    <div class="p-4 text-green-800 bg-green-100 rounded">
                         {{ session()->get('message') }}
                     </div>
                 @endif
 
                 @if($errors->any())
-                    <div class="p-4 m-4 text-red-800 bg-red-100 rounded">
+                    <div class="p-4 text-red-800 bg-red-100 rounded">
                         {{ $errors->count().' error' . ($errors->count() == 1 ? '' : 's') .' found.' }}
                     </div>
                 @endif
@@ -38,7 +38,7 @@
                     @method('put')
                     @csrf
 
-                    <x-accordion :open="0" :title="'Booking Info'">
+                    <x-accordion :open="$errors->any() ? 1 : 0" :title="'Booking Info'">
                         {{-- status --}}
                         <div class="p-2 md:w-1/2">
                             <x-input-label :value="__('Status')" />
@@ -149,7 +149,7 @@
                         </div>
                     </x-accordion>
 
-                    <x-accordion :open="0" :title="'Customer Details'">
+                    <x-accordion :open="$errors->any() ? 1 : 0" :title="'Customer Details'">
                         {{-- Customer Name --}}
                         <div class="p-2 md:w-1/2">
                             <x-input-label for="customer_name" :value="__('Customer Name')" />
@@ -220,7 +220,7 @@
                         </div>
                     </x-accordion>
 
-                    <x-accordion :open="0" :title="'Additional Driver Details'">
+                    <x-accordion :open="$errors->any() ? 1 : 0" :title="'Additional Driver Details'">
                         {{-- Additional Driver Name --}}
                         <div class="p-2 md:w-1/2">
                             <x-input-label for="additional_driver_name" :value="__('Additional Driver Name')" />
@@ -249,7 +249,7 @@
                         </div>
                     </x-accordion>
 
-                    <x-accordion :open="0" :title="'License Images'">
+                    <x-accordion :open="$errors->any() ? 1 : 0" :title="'License Images'">
                         {{-- License Image Front --}}
                         <div class="p-2 md:w-1/3">
                             <x-input-label :value="__('Front')" />
@@ -263,7 +263,7 @@
                         </div>
                     </x-accordion>
 
-                    <x-accordion :open="0" :title="'Signatures'">
+                    <x-accordion :open="$errors->any() ? 1 : 0" :title="'Signatures'">
                         {{-- Customer Signature --}}
                         <div class="p-2 md:w-1/4">
                             <x-input-label :value="__('Customer Signature')" />
@@ -287,7 +287,7 @@
                         </div>
                     </x-accordion>
 
-                    <x-accordion :open="0" :title="'Body Damage Details'">
+                    <x-accordion :open="$errors->any() ? 1 : 0" :title="'Body Damage Details'">
                         <div class="flex flex-wrap">                            
                             <div class="flex flex-wrap w-1/2 items-center p-2">
                                 <p class="w-full text-sm">Side (Left)</p>
@@ -332,7 +332,7 @@
                         </div>
                     </x-accordion>
 
-                    <x-accordion :open="0" :title="'Fees'">
+                    <x-accordion :open="$errors->any() ? 1 : 0" :title="'Fees'">
 
                         {{-- Allowed Vehicle Mileage km/day/week--}}
                         <div class="p-2 md:w-1/3">
@@ -398,7 +398,7 @@
                         </div>
                     </x-accordion>
 
-                    <x-accordion :open="0" :title="'Checklist'">
+                    <x-accordion :open="$errors->any() ? 1 : 0" :title="'Checklist'">
                         {{-- Reverse Camera--}}
                         <div class="p-2 md:w-1/4">
                             <label for="reverse_camera" class="w-full flex gap-2 hover:bg-green-600 hover:bg-opacity-10 text-gray-800 p-3 rounded-md items-center cursor-pointer">
