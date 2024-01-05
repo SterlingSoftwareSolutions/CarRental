@@ -48,7 +48,7 @@
                                 <option value="{{$booking->status}}" selected>{{ucfirst($booking->status)}}</option>
                                 @endif
                                 @foreach($statuses as $status)
-                                <option value="{{$status}}" @if($booking->status == $status) selected @endif>{{ucfirst($status)}}</option>
+                                <option value="{{$status}}" @selected($booking->status == $status)>{{ucfirst($status)}}</option>
                                 @endforeach
                             </select>
                             <x-input-error :messages="$errors->get('status')" class="mt-2" />

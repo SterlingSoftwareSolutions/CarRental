@@ -91,8 +91,8 @@
                                 <td class="p-2 text-right border-b-2 border-dotted">AUD {{ number_format($amount, 2) }}</td>
                             </tr>
                             <tr>
-                                <td class="p-2 mt-2 font-bold text-red-600">Due</td>
-                                <td class="p-2 font-bold text-right text-red-600">AUD {{ number_format($amount - $days * $booking->vehicle->price, 2)}}</td>
+                                <td class="p-2 mt-2 font-bold text-red-600">Remaining Amount</td>
+                                <td class="p-2 font-bold text-right text-red-600">AUD {{ number_format($days * $booking->vehicle->price - $amount, 2)}}</td>
                             </tr>
                         </tbody>
                     </table>
