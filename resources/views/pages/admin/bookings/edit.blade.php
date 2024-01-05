@@ -16,22 +16,22 @@
             <!-- booking List  -->
             <h1 class="p-2 font-semibold text-lg text-[#707070]">Booking Details</h1>
 
-            <div class="p-4 m-2 overflow-auto bg-white rounded">
+            <div class="m-2 p-4 overflow-auto bg-white rounded">
                 @if(session()->has('message'))
-                    <div class="p-4 text-green-800 bg-green-100 rounded">
+                    <div class="p-4 m-4 text-green-800 bg-green-100 rounded">
                         {{ session()->get('message') }}
                     </div>
                 @endif
 
                 @if($errors->any())
-                    <div class="p-4 text-red-800 bg-red-100 rounded">
+                    <div class="p-4 m-4 text-red-800 bg-red-100 rounded">
                         {{ $errors->count().' error' . ($errors->count() == 1 ? '' : 's') .' found.' }}
                     </div>
                 @endif
 
-                <div class="flex">
-                    <a href="/admin/users/{{$booking->user->id}}" class="w-1/2 text-slate-700"><b>User:</b> {{$booking->user->first_name}} {{$booking->user->last_name}}</a>
-                    <a href="/admin/vehicles/{{$booking->vehicle->id}}" class="w-1/2 text-slate-700"><b>Vehicle:</b> {{$booking->vehicle->make}} {{$booking->vehicle->model}} {{$booking->vehicle->vin}}</a>
+                <div class="flex gap-4">
+                    <a href="/admin/users/{{$booking->user->id}}" class="w-1/2 text-lg text-green-900 hover hover:bg-green-600 hover:bg-opacity-10 p-2 rounded-md"><b>User:</b> {{$booking->user->first_name}} {{$booking->user->last_name}}</a>
+                    <a href="/admin/vehicles/{{$booking->vehicle->id}}" class="w-1/2 text-lg text-green-900 hover hover:bg-green-600 hover:bg-opacity-10 p-2 rounded-md"><b>Vehicle:</b> {{$booking->vehicle->make}} {{$booking->vehicle->model}} {{$booking->vehicle->vin}}</a>
                 </div>
 
                 <form action="/admin/bookings/{{$booking->id}}" method="post" class="flex flex-col">
@@ -42,7 +42,7 @@
                         {{-- status --}}
                         <div class="p-2 md:w-1/2">
                             <x-input-label :value="__('Status')" />
-                            <select name="status" class="w-full border-gray-300 rounded-md shadow-sm focus:border-green-600 focus:ring-green-600">
+                            <select name="status" class="w-full border-gray-300 rounded-md shadow-sm focus:border-green-500 focus:ring-green-500">
                                 <option value="">Unknown</option>
                                 @if(!in_array($booking->status, $statuses))
                                 <option value="{{$booking->status}}" selected>{{ucfirst($booking->status)}}</option>
@@ -57,7 +57,7 @@
                         {{-- approval --}}
                         <div class="p-2 md:w-1/2">
                             <x-input-label for="approval" :value="__('Approval')" />
-                            <select name="approval" class="w-full border-gray-300 rounded-md shadow-sm focus:border-green-600 focus:ring-green-600">
+                            <select name="approval" class="w-full border-gray-300 rounded-md shadow-sm focus:border-green-500 focus:ring-green-500 ">
                                 <option value="Pending" {{ $booking['approval'] === 'Pending' ? 'selected' : '' }}>Pending</option>
                                 <option value="Approved" {{ $booking['approval'] === 'Approved' ? 'selected' : '' }}>Approved</option>
                             </select>
@@ -67,84 +67,84 @@
                         <!-- pickup -->
                         <div class="p-2 md:w-1/4">
                             <x-input-label for="pickup" :value="__('Pickup Location')" />
-                            <x-text-input id="pickup" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="text" name="pickup" :value="old('pickup', $booking->pickup)" />
+                            <x-text-input id="pickup" class="block w-full mt-1" type="text" name="pickup" :value="old('pickup', $booking->pickup)" />
                             <x-input-error :messages="$errors->get('pickup')" class="mt-2" />
                         </div>
 
                         <!-- pickup time -->
                         <div class="p-2 md:w-1/4">
                             <x-input-label for="pickup_time" :value="__('Pickup Time')" />
-                            <input id="pickup_time" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1 border-gray-300 rounded" type="datetime-local" name="pickup_time" :value="old('pickup_time', $booking->pickup_time)" />
+                            <input id="pickup_time" class="block w-full mt-1 border-gray-300 rounded focus:border-green-500 focus:ring-green-500" type="datetime-local" name="pickup_time" :value="old('pickup_time', $booking->pickup_time)" />
                             <x-input-error :messages="$errors->get('pickup_time')" class="mt-2" />
                         </div>
 
                         <!-- pickup mileage -->
                         <div class="p-2 md:w-1/4">
                             <x-input-label for="pickup_mileage" :value="__('Pickup Mileage')" />
-                            <x-text-input id="pickup_mileage" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="number" name="pickup_mileage" :value="old('pickup_mileage', $booking->pickup_mileage)" />
+                            <x-text-input id="pickup_mileage" class="block w-full mt-1" type="number" name="pickup_mileage" :value="old('pickup_mileage', $booking->pickup_mileage)" />
                             <x-input-error :messages="$errors->get('pickup_mileage')" class="mt-2" />
                         </div>
 
                         <!-- pickup fuel level -->
                         <div class="p-2 md:w-1/4">
                             <x-input-label for="pickup_fuel_level" :value="__('Pickup Fuel Level')" />
-                            <x-text-input id="pickup_fuel_level" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="number" name="pickup_fuel_level" :value="old('pickup_fuel_level', $booking->pickup_fuel_level)" />
+                            <x-text-input id="pickup_fuel_level" class="block w-full mt-1" type="number" name="pickup_fuel_level" :value="old('pickup_fuel_level', $booking->pickup_fuel_level)" />
                             <x-input-error :messages="$errors->get('pickup_fuel_level')" class="mt-2" />
                         </div>
 
                         <!-- dropoff -->
                         <div class="p-2 md:w-1/4">
                             <x-input-label for="dropoff" :value="__('Dropoff Location')" />
-                            <x-text-input id="dropoff" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="text" name="dropoff" :value="old('dropoff', $booking->dropoff)" />
+                            <x-text-input id="dropoff" class="block w-full mt-1" type="text" name="dropoff" :value="old('dropoff', $booking->dropoff)" />
                             <x-input-error :messages="$errors->get('dropoff')" class="mt-2" />
                         </div>
 
                         <!-- dropoff time -->
                         <div class="p-2 md:w-1/4">
                             <x-input-label for="dropoff_time" :value="__('Dropoff Time')" />
-                            <input id="dropoff_time" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1 border-gray-300 rounded" type="datetime-local" name="dropoff_time" :value="old('dropoff_time', $booking->dropoff_time)" />
+                            <input id="dropoff_time" class="block w-full mt-1 border-gray-300 rounded focus:border-green-500 focus:ring-green-500" type="datetime-local" name="dropoff_time" :value="old('dropoff_time', $booking->dropoff_time)" />
                             <x-input-error :messages="$errors->get('dropoff_time')" class="mt-2" />
                         </div>
 
                         <!-- dropoff mileage -->
                         <div class="p-2 md:w-1/4">
                             <x-input-label for="dropoff_mileage" :value="__('Dropoff Mileage')" />
-                            <x-text-input id="dropoff_mileage" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="number" name="dropoff_mileage" :value="old('dropoff_mileage', $booking->dropoff_mileage)" />
+                            <x-text-input id="dropoff_mileage" class="block w-full mt-1" type="number" name="dropoff_mileage" :value="old('dropoff_mileage', $booking->dropoff_mileage)" />
                             <x-input-error :messages="$errors->get('dropoff_mileage')" class="mt-2" />
                         </div>
 
                         <!-- dropoff fuel level -->
                         <div class="p-2 md:w-1/4">
                             <x-input-label for="dropoff_time" :value="__('Dropoff Fuel Level')" />
-                            <x-text-input id="dropoff_fuel_level" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="number" name="dropoff_fuel_level" :value="old('dropoff_fuel_level', $booking->dropoff_fuel_level)" />
+                            <x-text-input id="dropoff_fuel_level" class="block w-full mt-1" type="number" name="dropoff_fuel_level" :value="old('dropoff_fuel_level', $booking->dropoff_fuel_level)" />
                             <x-input-error :messages="$errors->get('dropoff_fuel_level')" class="mt-2" />
                         </div>
 
                         <!-- return -->
                         <div class="p-2 md:w-1/4">
                             <x-input-label for="return" :value="__('Return Location')" />
-                            <x-text-input id="return" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="text" name="return" :value="old('return', $booking->return)" />
+                            <x-text-input id="return" class="block w-full mt-1" type="text" name="return" :value="old('return', $booking->return)" />
                             <x-input-error :messages="$errors->get('return')" class="mt-2" />
                         </div>
 
                         <!-- return time -->
                         <div class="p-2 md:w-1/4">
                             <x-input-label for="return_time" :value="__('Return Time')" />
-                            <input id="return_time" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1 border-gray-300 rounded" type="datetime-local" name="return_time" :value="old('return_time', $booking->return_time)" />
+                            <input id="return_time" class="block w-full mt-1 border-gray-300 rounded focus:border-green-500 focus:ring-green-500" type="datetime-local" name="return_time" :value="old('return_time', $booking->return_time)" />
                             <x-input-error :messages="$errors->get('return_time')" class="mt-2" />
                         </div>
 
                         <!-- return mileage -->
                         <div class="p-2 md:w-1/4">
                             <x-input-label for="return_mileage" :value="__('Return Mileage')" />
-                            <x-text-input id="return_mileage" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="number" name="return_mileage" :value="old('return_mileage', $booking->return_mileage)" />
+                            <x-text-input id="return_mileage" class="block w-full mt-1" type="number" name="return_mileage" :value="old('return_mileage', $booking->return_mileage)" />
                             <x-input-error :messages="$errors->get('return_mileage')" class="mt-2" />
                         </div>
 
                         <!-- return fuel level -->
                         <div class="p-2 md:w-1/4">
                             <x-input-label for="return_fuel_level" :value="__('Return Fuel Level')" />
-                            <x-text-input id="return_fuel_level" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="number" name="return_fuel_level" :value="old('return_fuel_level', $booking->return_fuel_level)" />
+                            <x-text-input id="return_fuel_level" class="block w-full mt-1" type="number" name="return_fuel_level" :value="old('return_fuel_level', $booking->return_fuel_level)" />
                             <x-input-error :messages="$errors->get('return_fuel_level')" class="mt-2" />
                         </div>
                     </x-accordion>
@@ -153,69 +153,69 @@
                         {{-- Customer Name --}}
                         <div class="p-2 md:w-1/2">
                             <x-input-label for="customer_name" :value="__('Customer Name')" />
-                            <x-text-input id="customer_name" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="text" name="customer_name" :value="old('customer_name', $booking->customer_name)" />
+                            <x-text-input id="customer_name" class="block w-full mt-1" type="text" name="customer_name" :value="old('customer_name', $booking->customer_name)" />
                             <x-input-error :messages="$errors->get('customer_name')" class="mt-2" />
                         </div>
 
                         {{-- Customer Phone --}}
                         <div class="p-2 md:w-1/2">
                             <x-input-label for="customer_phone" :value="__('Customer Phone')" />
-                            <x-text-input id="customer_phone" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="text" name="customer_phone" :value="old('customer_phone', $booking->customer_phone)" />
+                            <x-text-input id="customer_phone" class="block w-full mt-1" type="text" name="customer_phone" :value="old('customer_phone', $booking->customer_phone)" />
                             <x-input-error :messages="$errors->get('customer_phone')" class="mt-2" />
                         </div>
 
                         {{-- Customer Email --}}
                         <div class="p-2 md:w-1/2">
                             <x-input-label for="customer_email" :value="__('Customer Email')" />
-                            <x-text-input id="customer_email" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="text" name="customer_email" :value="old('customer_email', $booking->customer_email)" />
+                            <x-text-input id="customer_email" class="block w-full mt-1" type="text" name="customer_email" :value="old('customer_email', $booking->customer_email)" />
                             <x-input-error :messages="$errors->get('customer_email')" class="mt-2" />
                         </div>
 
                         {{-- Customer DOB --}}
                         <div class="p-2 md:w-1/2">
                             <x-input-label for="customer_dob" :value="__('Customer Date of Birth')" />
-                            <x-text-input id="customer_dob" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="text" name="customer_dob" :value="old('customer_dob', $booking->customer_dob)" />
+                            <x-text-input id="customer_dob" class="block w-full mt-1" type="text" name="customer_dob" :value="old('customer_dob', $booking->customer_dob)" />
                             <x-input-error :messages="$errors->get('customer_dob')" class="mt-2" />
                         </div>
 
                         {{-- Customer Address --}}
                         <div class="p-2 md:w-1/2">
                             <x-input-label for="customer_address_line_1" :value="__('Customer Address')" />
-                            <x-text-input id="customer_address_line_1" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="text" name="customer_address_line_1" :value="old('customer_address_line_1', $booking->customer_address_line_1)" />
+                            <x-text-input id="customer_address_line_1" class="block w-full mt-1" type="text" name="customer_address_line_1" :value="old('customer_address_line_1', $booking->customer_address_line_1)" />
                             <x-input-error :messages="$errors->get('customer_address_line_1')" class="mt-2" />
                         </div>
 
                         <div class="p-2 md:w-1/2">
                             <x-input-label for="customer_address_line_2" :value="' '" />
-                            <x-text-input id="customer_address_line_2" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="text" name="customer_address_line_2" :value="old('customer_address_line_2', $booking->customer_address_line_2)" />
+                            <x-text-input id="customer_address_line_2" class="block w-full mt-1" type="text" name="customer_address_line_2" :value="old('customer_address_line_2', $booking->customer_address_line_2)" />
                             <x-input-error :messages="$errors->get('customer_address_line_2')" class="mt-2" />
                         </div>
 
                         {{-- Customer License --}}
                         <div class="p-2 md:w-full">
                             <x-input-label for="customer_license" :value="__('Customer License')" />
-                            <x-text-input id="customer_license" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="text" name="customer_license" :value="old('customer_license', $booking->customer_license)" />
+                            <x-text-input id="customer_license" class="block w-full mt-1" type="text" name="customer_license" :value="old('customer_license', $booking->customer_license)" />
                             <x-input-error :messages="$errors->get('customer_license')" class="mt-2" />
                         </div>
 
                         {{-- Customer License Expiry Year --}}
                         <div class="p-2 md:w-1/3">
                             <x-input-label for="customer_license_expiry_year" :value="__('Expiry Year')" />
-                            <x-text-input id="customer_license_expiry_year" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="text" name="customer_license_expiry_year" :value="old('customer_license_expiry_year', $booking->customer_license_expiry_year)" />
+                            <x-text-input id="customer_license_expiry_year" class="block w-full mt-1" type="text" name="customer_license_expiry_year" :value="old('customer_license_expiry_year', $booking->customer_license_expiry_year)" />
                             <x-input-error :messages="$errors->get('customer_license_expiry_year')" class="mt-2" />
                         </div>
 
                         {{-- Customer License Expiry Month --}}
                         <div class="p-2 md:w-1/3">
                             <x-input-label for="customer_license_expiry_month" :value="__('Expiry Month')" />
-                            <x-text-input id="customer_license_expiry_month" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="text" name="customer_license_expiry_month" :value="old('customer_license_expiry_month', $booking->customer_license_expiry_month)" />
+                            <x-text-input id="customer_license_expiry_month" class="block w-full mt-1" type="text" name="customer_license_expiry_month" :value="old('customer_license_expiry_month', $booking->customer_license_expiry_month)" />
                             <x-input-error :messages="$errors->get('customer_license_expiry_month')" class="mt-2" />
                         </div>
 
                         {{-- Customer License Expiry Date --}}
                         <div class="p-2 md:w-1/3">
                             <x-input-label for="customer_license_expiry_date" :value="__('Expiry Date')" />
-                            <x-text-input id="customer_license_expiry_date" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="text" name="customer_license_expiry_date" :value="old('customer_license_expiry_date', $booking->customer_license_expiry_date)" />
+                            <x-text-input id="customer_license_expiry_date" class="block w-full mt-1" type="text" name="customer_license_expiry_date" :value="old('customer_license_expiry_date', $booking->customer_license_expiry_date)" />
                             <x-input-error :messages="$errors->get('customer_license_expiry_date')" class="mt-2" />
                         </div>
                     </x-accordion>
@@ -224,27 +224,27 @@
                         {{-- Additional Driver Name --}}
                         <div class="p-2 md:w-1/2">
                             <x-input-label for="additional_driver_name" :value="__('Additional Driver Name')" />
-                            <x-text-input id="additional_driver_name" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="text" name="additional_driver_name" :value="old('additional_driver_name', $booking->additional_driver_name)" />
+                            <x-text-input id="additional_driver_name" class="block w-full mt-1" type="text" name="additional_driver_name" :value="old('additional_driver_name', $booking->additional_driver_name)" />
                             <x-input-error :messages="$errors->get('additional_driver_name')" class="mt-2" />
                         </div>
 
                         {{-- Additional Driver Phone --}}
                         <div class="p-2 md:w-1/2">
                             <x-input-label for="additional_driver_mobile" :value="__('Additional Driver Phone')" />
-                            <x-text-input id="additional_driver_mobile" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="text" name="additional_driver_mobile" :value="old('additional_driver_mobile', $booking->additional_driver_mobile)" />
+                            <x-text-input id="additional_driver_mobile" class="block w-full mt-1" type="text" name="additional_driver_mobile" :value="old('additional_driver_mobile', $booking->additional_driver_mobile)" />
                             <x-input-error :messages="$errors->get('additional_driver_mobile')" class="mt-2" />
                         </div>
 
                         {{-- Additional Driver Address --}}
                         <div class="p-2 md:w-1/2">
                             <x-input-label for="additional_driver_address_line_1" :value="__('Additional Driver Address')" />
-                            <x-text-input id="additional_driver_address_line_1" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="text" name="additional_driver_address_line_1" :value="old('additional_driver_address_line_1', $booking->additional_driver_address_line_1)" />
+                            <x-text-input id="additional_driver_address_line_1" class="block w-full mt-1" type="text" name="additional_driver_address_line_1" :value="old('additional_driver_address_line_1', $booking->additional_driver_address_line_1)" />
                             <x-input-error :messages="$errors->get('additional_driver_address_line_1')" class="mt-2" />
                         </div>
 
                         <div class="p-2 md:w-1/2">
                             <x-input-label for="additional_driver_address_line_2" :value="' '" />
-                            <x-text-input id="additional_driver_address_line_2" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="text" name="additional_driver_address_line_2" :value="old('additional_driver_address_line_2', $booking->additional_driver_address_line_2)" />
+                            <x-text-input id="additional_driver_address_line_2" class="block w-full mt-1" type="text" name="additional_driver_address_line_2" :value="old('additional_driver_address_line_2', $booking->additional_driver_address_line_2)" />
                             <x-input-error :messages="$errors->get('additional_driver_address_line_2')" class="mt-2" />
                         </div>
                     </x-accordion>
@@ -337,63 +337,63 @@
                         {{-- Allowed Vehicle Mileage km/day/week--}}
                         <div class="p-2 md:w-1/3">
                             <x-input-label for="allowed_vehicle_mileage" :value="__('Allowed Vehicle Mileage  km/day/week')" />
-                            <x-text-input id="allowed_vehicle_mileage" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="number" name="allowed_vehicle_mileage" :value="old('allowed_vehicle_mileage', $booking->allowed_vehicle_mileage)" />
+                            <x-text-input id="allowed_vehicle_mileage" class="block w-full mt-1" type="number" name="allowed_vehicle_mileage" :value="old('allowed_vehicle_mileage', $booking->allowed_vehicle_mileage)" />
                             <x-input-error :messages="$errors->get('allowed_vehicle_mileage')" class="mt-2" />
                         </div>
 
                         {{-- Rate per day/week --}}
                         <div class="p-2 md:w-1/3">
                             <x-input-label for="rate" :value="__('Rate per day/week')" />
-                            <x-text-input id="rate" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="number" name="rate" :value="old('rate', $booking->rate)" />
+                            <x-text-input id="rate" class="block w-full mt-1" type="number" name="rate" :value="old('rate', $booking->rate)" />
                             <x-input-error :messages="$errors->get('rate')" class="mt-2" />
                         </div>
 
                         {{-- Insurance Premium --}}
                         <div class="p-2 md:w-1/3">
                             <x-input-label for="insurance_premium" :value="__('Insurance Premium')" />
-                            <x-text-input id="insurance_premium" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="number" name="insurance_premium" :value="old('insurance_premium', $booking->insurance_premium)" />
+                            <x-text-input id="insurance_premium" class="block w-full mt-1" type="number" name="insurance_premium" :value="old('insurance_premium', $booking->insurance_premium)" />
                             <x-input-error :messages="$errors->get('insurance_premium')" class="mt-2" />
                         </div>
 
                         {{-- Rental --}}
                         <div class="p-2 md:w-1/3">
                             <x-input-label for="rental" :value="__('Rental')" />
-                            <x-text-input id="rental" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="number" name="rental" :value="old('rental', $booking->rental)" />
+                            <x-text-input id="rental" class="block w-full mt-1" type="number" name="rental" :value="old('rental', $booking->rental)" />
                             <x-input-error :messages="$errors->get('rental')" class="mt-2" />
                         </div>
 
                         {{-- Extra Mileage --}}
                         <div class="p-2 md:w-1/3">
                             <x-input-label for="extra_mileage" :value="__('Extra Mileage')" />
-                            <x-text-input id="extra_mileage" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="number" name="extra_mileage" :value="old('extra_mileage', $booking->extra_mileage)" />
+                            <x-text-input id="extra_mileage" class="block w-full mt-1" type="number" name="extra_mileage" :value="old('extra_mileage', $booking->extra_mileage)" />
                             <x-input-error :messages="$errors->get('extra_mileage')" class="mt-2" />
                         </div>
 
                         {{-- Damage Liability Reduction --}}
                         <div class="p-2 md:w-1/3">
                             <x-input-label for="damage_liablity_reduction" :value="__('Damage Liability Reduction')" />
-                            <x-text-input id="damage_liablity_reduction" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="number" name="damage_liablity_reduction" :value="old('damage_liablity_reduction', $booking->damage_liablity_reduction)" />
+                            <x-text-input id="damage_liablity_reduction" class="block w-full mt-1" type="number" name="damage_liablity_reduction" :value="old('damage_liablity_reduction', $booking->damage_liablity_reduction)" />
                             <x-input-error :messages="$errors->get('damage_liablity_reduction')" class="mt-2" />
                         </div>
 
                         {{-- Bond / Deposits --}}
                         <div class="p-2 md:w-1/3">
                             <x-input-label for="damage_liablity_reduction" :value="__('Bond / Deposits')" />
-                            <x-text-input id="damage_liablity_reduction" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="number" name="damage_liablity_reduction" :value="old('damage_liablity_reduction', $booking->damage_liablity_reduction)" />
+                            <x-text-input id="damage_liablity_reduction" class="block w-full mt-1" type="number" name="damage_liablity_reduction" :value="old('damage_liablity_reduction', $booking->damage_liablity_reduction)" />
                             <x-input-error :messages="$errors->get('damage_liablity_reduction')" class="mt-2" />
                         </div>
 
                         {{-- Card Fee --}}
                         <div class="p-2 md:w-1/3">
                             <x-input-label for="card_fee" :value="__('Card Fee')" />
-                            <x-text-input id="card_fee" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="number" name="card_fee" :value="old('card_fee', $booking->card_fee)" />
+                            <x-text-input id="card_fee" class="block w-full mt-1" type="number" name="card_fee" :value="old('card_fee', $booking->card_fee)" />
                             <x-input-error :messages="$errors->get('card_fee')" class="mt-2" />
                         </div>
 
                         {{-- Others --}}
                         <div class="p-2 md:w-1/3">
                             <x-input-label for="others" :value="__('Others')" />
-                            <x-text-input id="others" class="focus:border-green-600 focus:ring-green-600 block w-full mt-1" type="number" name="others" :value="old('others', $booking->others)" />
+                            <x-text-input id="others" class="block w-full mt-1" type="number" name="others" :value="old('others', $booking->others)" />
                             <x-input-error :messages="$errors->get('others')" class="mt-2" />
                         </div>
                     </x-accordion>

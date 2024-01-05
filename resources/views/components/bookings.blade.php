@@ -7,39 +7,39 @@
 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
         <tr>
-            <th scope="col" class="px-6 py-2">
+            <th scope="col" class="px-4 py-2">
                 #
             </th>
 
-            <th scope="col" class="px-6 py-2">
+            <th scope="col" class="px-4 py-2">
                 Pickup
             </th>
 
-            <th scope="col" class="px-6 py-2">
+            <th scope="col" class="px-4 py-2">
                 Drop Off
             </th>
 
-            <th scope="col" class="px-6 py-2">
+            <th scope="col" class="px-4 py-2">
                 Returned On
             </th>
 
-            <th scope="col" class="px-6 py-2">
+            <th scope="col" class="px-4 py-2">
                 Approval
             </th>
 
-            <th scope="col" class="px-6 py-2">
+            <th scope="col" class="px-4 py-2">
                 Paid
             </th>
 
-            <th scope="col" class="px-6 py-2">
+            <th scope="col" class="px-4 py-2">
                 Due
             </th>
 
-            <th scope="col" class="px-6 py-2">
+            <th scope="col" class="px-4 py-2">
                 Status
             </th>
             
-            <th scope="col" class="px-6 py-2">
+            <th scope="col" class="px-4 py-2">
                 Actions
             </th>
         </tr>
@@ -48,7 +48,7 @@
     <tbody>
         @foreach ($bookings as $booking)
         <tr class="bg-white border-b">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
+            <th scope="row" class="px-4 py-2 font-medium text-gray-500">
                 @if(Auth::user()->role == 'admin')
                 <a href="/admin/bookings/{{$booking->id}}">
                     @if(isset($booking->vehicle))
@@ -60,7 +60,7 @@
                                     @else
                                         /images/blank.png
                                     @endif
-                                " class="w-10 h-10 rounded-full" alt="Vehicle Image">
+                                "alt="Vehicle Image" class="w-32 aspect-[3/2] object-cover">
                         </div>
                         <div>
                             <p>{{ $booking->vehicle['make']}} {{ $booking->vehicle['model']}} #{{ $booking->vehicle['vin']}}</p>
@@ -98,7 +98,7 @@
 
             </th>
 
-            <td class="px-6 py-4">
+            <td class="px-4 py-2">
                 <p>
                     {{ $booking['pickup']}}
                 </p>
@@ -107,7 +107,7 @@
                 </p>
             </td>
 
-            <td class="px-6 py-4">
+            <td class="px-4 py-2">
                 <p>
                     {{ $booking['dropoff']}}
                 </p>
@@ -116,11 +116,11 @@
                 </p>
             </td>
 
-            <td class="px-6 py-4">
+            <td class="px-4 py-2">
                 {{$booking['returned_on'] ?? '-'}}
             </td>
 
-            <td class="px-6 py-4">
+            <td class="px-4 py-2">
                 @if(($booking->approval) == 'Pending')
                 <span class="px-3 py-2 text-yellow-500 ">Pending</span>
                 @elseif($booking->approval == 'Rejected')
@@ -130,12 +130,12 @@
                 @endif
             </td>
 
-            <td class="px-6 py-4">
+            <td class="px-4 py-2">
                 ${{ $booking->amount_paid()}}
             </td>
             
 
-            <td class="px-6 py-4">
+            <td class="px-4 py-2">
                 @php $due = $booking['returned_on'] ? $booking->invoices->where('paid', '0')->sum('amount') : $booking->amount() - $booking->amount_paid() @endphp
                 @if($due == 0)
                 <p class="text-green-600">Paid</p>
@@ -144,7 +144,7 @@
                 @endif
             </td>
 
-            <td class="px-6 py-4">
+            <td class="px-4 py-2">
                 @if(strtolower($booking->status) == 'unpaid')
                 <span class="px-3 py-2 text-red-600 border border-red-600 rounded-full">Unpaid</span>
                 @elseif(strtolower($booking->status) == 'returned')
@@ -157,7 +157,7 @@
             </td>
 
             @if(Auth::user()->role == 'client')
-            <td class="px-6 py-4">
+            <td class="px-4 py-2">
                 @if($booking->approval == 'Approved')
                     @if($booking->status == 'Unpaid')
                         <a href="{{ route('bookings.pay', compact('booking')) }}" class="px-3 py-2 text-center text-white bg-green-500 rounded-full">Pay</a>
@@ -173,16 +173,18 @@
             @endif
 
             @if(Auth::user()->role == 'admin')
-            <td class="px-6 py-4">
+            <td class="px-4 py-2">
                 <div class="flex flex-wrap items-center gap-1">
 
-                    {{-- RETURN BUTTON --}}
-                    @if(!$booking['returned_on'] && $return)
-                    <button class="px-3 py-2 text-center text-white bg-blue-600 rounded-full" onclick="show_return_modal({{$booking->id}})">Return</button>
-                    @endif
+                    @if($booking['approval'] !== 'Pending')
+                        {{-- RETURN BUTTON --}}
+                        @if(!$booking['returned_on'] && $return)
+                        <button class="px-3 py-2 text-center text-white bg-blue-600 rounded-full" onclick="show_return_modal({{$booking->id}})">Return</button>
+                        @endif
 
-                    {{-- SURCHARGES --}}
-                    <button class="px-3 py-2 text-center text-white bg-orange-500 rounded-full" onclick="show_surcharge_modal({{$booking->id}})">Fine/Toll</button>
+                        {{-- SURCHARGES --}}
+                        <button class="px-3 py-2 text-center text-white bg-orange-500 rounded-full" onclick="show_surcharge_modal({{$booking->id}})">Fine/Toll</button>
+                    @endif
 
                     {{-- EDIT BUTTON --}}
                     <a href="/admin/bookings/{{ $booking['id'] }}/edit" class="px-3 py-2 text-center text-white bg-gray-500 rounded-full">Edit</a>
@@ -296,5 +298,5 @@
 </script>
 
 @else
-<div class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">No Bookings Found</div>
+<div class="px-4 py-2 font-medium text-gray-500 whitespace-nowrap">No Bookings Found</div>
 @endif
