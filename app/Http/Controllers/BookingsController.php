@@ -224,12 +224,12 @@ class BookingsController extends Controller
             "damage_liablity_reduction" => $request->damage_liablity_reduction ?? null,
             "card_fee" => $request->card_fee ?? null,
             "others" => $request->others ?? null,
-            "reverse_camera" => $request->reverse_camera ?? false,
-            "cargo_barrier" => $request->cargo_barrier ?? false,
-            "fuel_cap" => $request->fuel_cap ?? false,
-            "rim_cups" => $request->rim_cups ?? false
+            "reverse_camera" => $request->has('reverse_camera'),
+            "cargo_barrier" => $request->has('cargo_barrier'),
+            "fuel_cap" => $request->has('fuel_cap'),
+            "rim_cups" => $request->has('rim_cups')
         ]);
-        dd($booking);
+
         return back()->with('message', 'Booking updated.');
     }
 

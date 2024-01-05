@@ -74,7 +74,7 @@
                         <!-- pickup time -->
                         <div class="p-2 md:w-1/4">
                             <x-input-label for="pickup_time" :value="__('Pickup Time')" />
-                            <input id="pickup_time" class="block w-full mt-1 border-gray-300 rounded focus:border-green-500 focus:ring-green-500" type="datetime-local" name="pickup_time" :value="old('pickup_time', $booking->pickup_time)" />
+                            <input id="pickup_time" class="block w-full mt-1 border-gray-300 rounded focus:border-green-500 focus:ring-green-500" type="datetime-local" name="pickup_time" value="{{old('pickup_time', $booking->pickup_time?->format('Y-m-d\TH:i'))}}" />
                             <x-input-error :messages="$errors->get('pickup_time')" class="mt-2" />
                         </div>
 
@@ -102,7 +102,7 @@
                         <!-- dropoff time -->
                         <div class="p-2 md:w-1/4">
                             <x-input-label for="dropoff_time" :value="__('Dropoff Time')" />
-                            <input id="dropoff_time" class="block w-full mt-1 border-gray-300 rounded focus:border-green-500 focus:ring-green-500" type="datetime-local" name="dropoff_time" :value="old('dropoff_time', $booking->dropoff_time)" />
+                            <input id="dropoff_time" class="block w-full mt-1 border-gray-300 rounded focus:border-green-500 focus:ring-green-500" type="datetime-local" name="dropoff_time" value="{{old('dropoff_time', $booking->dropoff_time?->format('Y-m-d\TH:i'))}}" />
                             <x-input-error :messages="$errors->get('dropoff_time')" class="mt-2" />
                         </div>
 
@@ -130,7 +130,7 @@
                         <!-- return time -->
                         <div class="p-2 md:w-1/4">
                             <x-input-label for="return_time" :value="__('Return Time')" />
-                            <input id="return_time" class="block w-full mt-1 border-gray-300 rounded focus:border-green-500 focus:ring-green-500" type="datetime-local" name="return_time" :value="old('return_time', $booking->return_time)" />
+                            <input id="return_time" class="block w-full mt-1 border-gray-300 rounded focus:border-green-500 focus:ring-green-500" type="datetime-local" name="return_time" value="{{old('return_time', $booking->return_time?->format('Y-m-d\TH:i'))}}" />
                             <x-input-error :messages="$errors->get('return_time')" class="mt-2" />
                         </div>
 
@@ -295,7 +295,7 @@
                                     <img class="mx-auto" src="/images/body_damage_left.png">
                                 </div>
                                 <div class="w-1/2 ps-4">
-                                    <textarea class="w-full rounded border-gray-300 p-1" name="body_damage_left" rows="4">&nbsp;</textarea>
+                                    <textarea class="w-full rounded border-gray-300 p-1" name="body_damage_left" rows="4">{{$booking->body_damage_left}}&nbsp;</textarea>
                                 </div>
                                 <x-input-error :messages="$errors->get('body_damage_left')" class="mt-2" />
                             </div>
@@ -305,7 +305,7 @@
                                     <img class="mx-auto" src="/images/body_damage_right.png">
                                 </div>
                                 <div class="w-1/2 ps-4">
-                                    <textarea class="w-full rounded border-gray-300 p-1" name="body_damage_right" rows="4">&nbsp;</textarea>
+                                    <textarea class="w-full rounded border-gray-300 p-1" name="body_damage_right" rows="4">{{$booking->body_damage_right}}&nbsp;</textarea>
                                 </div>
                                 <x-input-error :messages="$errors->get('body_damage_right')" class="mt-2" />
                             </div>
@@ -315,7 +315,7 @@
                                     <img class="mx-auto" src="/images/body_damage_front.png">
                                 </div>
                                 <div class="w-1/2 ps-4">
-                                    <textarea class="w-full rounded border-gray-300 p-1" name="body_damage_front" rows="4">&nbsp;</textarea>
+                                    <textarea class="w-full rounded border-gray-300 p-1" name="body_damage_front" rows="4">{{$booking->body_damage_front}}&nbsp;</textarea>
                                 </div>
                                 <x-input-error :messages="$errors->get('body_damage_front')" class="mt-2" />
                             </div>
@@ -325,7 +325,7 @@
                                     <img class="mx-auto" src="/images/body_damage_back.png">
                                 </div>
                                 <div class="w-1/2 ps-4">
-                                    <textarea class="w-full rounded border-gray-300 p-1" name="body_damage_back" rows="4">&nbsp;</textarea>
+                                    <textarea class="w-full rounded border-gray-300 p-1" name="body_damage_back" rows="4">{{$booking->body_damage_back}}&nbsp;</textarea>
                                 </div>
                                 <x-input-error :messages="$errors->get('body_damage_back')" class="mt-2" />
                             </div>
@@ -402,7 +402,7 @@
                         {{-- Reverse Camera--}}
                         <div class="p-2 md:w-1/4">
                             <label for="reverse_camera" class="w-full flex gap-2 hover:bg-green-600 hover:bg-opacity-10 text-gray-800 p-3 rounded-md items-center cursor-pointer">
-                                <input id="reverse_camera" class="focus:ring-0 border-2 border-green-900 checked:bg-green-600 checked:focus:bg-green-600 checked:hover:bg-green-600 rounded-md p-2" type="checkbox" name="reverse_camera" :value="old('reverse_camera', $booking->reverse_camera)" />
+                                <input id="reverse_camera" class="focus:ring-0 border-2 border-green-900 checked:bg-green-600 checked:focus:bg-green-600 checked:hover:bg-green-600 rounded-md p-2" type="checkbox" name="reverse_camera" @checked(old('reverse_camera', $booking->reverse_camera)) />
                                 Reverse Camera
                             </label>
                             <x-input-error :messages="$errors->get('reverse_camera')" class="mt-2" />
@@ -411,7 +411,7 @@
                         {{-- Cargo Barrier--}}
                         <div class="p-2 md:w-1/4">
                             <label for="cargo_barrier" class="w-full flex gap-2 hover:bg-green-600 hover:bg-opacity-10 text-gray-800 p-3 rounded-md items-center cursor-pointer">
-                                <input id="cargo_barrier" class="focus:ring-0 border-2 border-green-900 checked:bg-green-600 checked:focus:bg-green-600 checked:hover:bg-green-600 rounded-md p-2" type="checkbox" name="cargo_barrier" :value="old('cargo_barrier', $booking->cargo_barrier)" />
+                                <input id="cargo_barrier" class="focus:ring-0 border-2 border-green-900 checked:bg-green-600 checked:focus:bg-green-600 checked:hover:bg-green-600 rounded-md p-2" type="checkbox" name="cargo_barrier" @checked(old('cargo_barrier', $booking->cargo_barrier)) />
                                 Cargo Barrier
                             </label>
                             <x-input-error :messages="$errors->get('cargo_barrier')" class="mt-2" />
@@ -420,7 +420,7 @@
                         {{-- Fuel Cap--}}
                         <div class="p-2 md:w-1/4">
                             <label for="fuel_cap" class="w-full flex gap-2 hover:bg-green-600 hover:bg-opacity-10 text-gray-800 p-3 rounded-md items-center cursor-pointer">
-                                <input id="fuel_cap" class="focus:ring-0 border-2 border-green-900 checked:bg-green-600 checked:focus:bg-green-600 checked:hover:bg-green-600 rounded-md p-2" type="checkbox" name="fuel_cap" :value="old('fuel_cap', $booking->fuel_cap)" />
+                                <input id="fuel_cap" class="focus:ring-0 border-2 border-green-900 checked:bg-green-600 checked:focus:bg-green-600 checked:hover:bg-green-600 rounded-md p-2" type="checkbox" name="fuel_cap" @checked(old('fuel_cap', $booking->fuel_cap)) />
                                 Fuel Cap
                             </label>
                             <x-input-error :messages="$errors->get('fuel_cap')" class="mt-2" />
@@ -429,7 +429,7 @@
                         {{-- Rim Cups--}}
                         <div class="p-2 md:w-1/4">
                             <label for="rim_cups" class="w-full flex gap-2 hover:bg-green-600 hover:bg-opacity-10 text-gray-800 p-3 rounded-md items-center cursor-pointer">
-                                <input id="rim_cups" class="focus:ring-0 border-2 border-green-900 checked:bg-green-600 checked:focus:bg-green-600 checked:hover:bg-green-600 rounded-md p-2" type="checkbox" name="rim_cups" :value="old('rim_cups', $booking->rim_cups)" />
+                                <input id="rim_cups" class="focus:ring-0 border-2 border-green-900 checked:bg-green-600 checked:focus:bg-green-600 checked:hover:bg-green-600 rounded-md p-2" type="checkbox" name="rim_cups" @checked(old('rim_cups', $booking->rim_cups)) />
                                 Rim Cups
                             </label>
                             <x-input-error :messages="$errors->get('rim_cups')" class="mt-2" />

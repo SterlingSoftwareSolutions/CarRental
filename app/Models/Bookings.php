@@ -19,9 +19,9 @@ class Bookings extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'pickup_time' => 'date',
-        'dropoff_time' => 'date',
-        'returned_time' => 'date',
+        'pickup_time' => 'datetime',
+        'dropoff_time' => 'datetime',
+        'return_time' => 'datetime',
     ];
 
     public function duration(){
