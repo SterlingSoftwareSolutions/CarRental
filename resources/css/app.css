@@ -925,8 +925,7 @@ fieldset {
         width: 100% !important;
     }
 
-    .tab label,
-    input {
+    .tab label {
         position: relative;
         left: 30px;
     }
