@@ -84,7 +84,7 @@ return new class extends Migration
             $table->string('rental')->nullable();
             $table->string('extra_mileage')->nullable();
             $table->string('damage_liablity_reduction')->nullable();
-            $table->string('bond_depost')->nullable();
+            $table->string('bond_deposit')->nullable();
             $table->string('card_fee')->nullable();
             $table->string('others')->nullable();
 

@@ -348,6 +348,14 @@
                             <x-input-error :messages="$errors->get('rate')" class="mt-2" />
                         </div>
 
+                        {{-- Extra Charge / KM --}}
+                        <div class="p-2 md:w-1/3">
+                            <x-input-label for="extra_charge_km" :value="__('Extra Charge / KM')" />
+                            <x-text-input id="extra_charge_km" class="block w-full mt-1" type="number" name="extra_charge_km" :value="old('extra_charge_km', $booking->extra_charge_km)" />
+                            <x-input-error :messages="$errors->get('extra_charge_km')" class="mt-2" />
+                        </div>
+
+
                         {{-- Insurance Premium --}}
                         <div class="p-2 md:w-1/3">
                             <x-input-label for="insurance_premium" :value="__('Insurance Premium')" />
@@ -378,9 +386,9 @@
 
                         {{-- Bond / Deposits --}}
                         <div class="p-2 md:w-1/3">
-                            <x-input-label for="damage_liablity_reduction" :value="__('Bond / Deposits')" />
-                            <x-text-input id="damage_liablity_reduction" class="block w-full mt-1" type="number" name="damage_liablity_reduction" :value="old('damage_liablity_reduction', $booking->damage_liablity_reduction)" />
-                            <x-input-error :messages="$errors->get('damage_liablity_reduction')" class="mt-2" />
+                            <x-input-label for="bond_deposit" :value="__('Bond / Deposits')" />
+                            <x-text-input id="bond_deposit" class="block w-full mt-1" type="number" name="bond_deposit" :value="old('bond_deposit', $booking->bond_deposit)" />
+                            <x-input-error :messages="$errors->get('bond_deposit')" class="mt-2" />
                         </div>
 
                         {{-- Card Fee --}}
